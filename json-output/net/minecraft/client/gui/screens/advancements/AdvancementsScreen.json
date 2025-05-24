@@ -1,0 +1,920 @@
+{
+  "type": "class",
+  "name": "AdvancementsScreen",
+  "qualified_name": "net.minecraft.client.gui.screens.advancements.AdvancementsScreen",
+  "package": "net.minecraft.client.gui.screens.advancements",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [
+      "AdvancementTree.Listener",
+      "ContainerEventHandler",
+      "GuiEventListener",
+      "Renderable",
+      "TabOrderedElement",
+      "ClientAdvancements.Listener"
+    ],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraft.client.gui.components.events.AbstractContainerEventHandler",
+      "net.minecraft.client.gui.screens.Screen"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "WINDOW_LOCATION",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceLocation",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "WINDOW_WIDTH",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "WINDOW_HEIGHT",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "WINDOW_INSIDE_X",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "WINDOW_INSIDE_Y",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "WINDOW_INSIDE_WIDTH",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "WINDOW_INSIDE_HEIGHT",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "WINDOW_TITLE_X",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "WINDOW_TITLE_Y",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BACKGROUND_TILE_WIDTH",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BACKGROUND_TILE_HEIGHT",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BACKGROUND_TILE_COUNT_X",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BACKGROUND_TILE_COUNT_Y",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SCROLL_SPEED",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "double",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "VERY_SAD_LABEL",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NO_ADVANCEMENTS_LABEL",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "TITLE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "layout",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "HeaderAndFooterLayout",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastScreen",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "Screen",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "advancements",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ClientAdvancements",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tabs",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Map < AdvancementHolder , AdvancementTab >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "selectedTab",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "AdvancementTab",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isScrolling",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tabPage",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "maxPages",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "AdvancementsScreen",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "p_97340_",
+          "type": "ClientAdvancements",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "AdvancementsScreen",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "p_331393_",
+          "type": "ClientAdvancements",
+          "annotations": []
+        },
+        {
+          "name": "p_331693_",
+          "type": "Screen",
+          "annotations": [
+            "@Nullable"
+          ]
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "init",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "init in class Screen",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "repositionElements",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "repositionElements in class Screen",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onClose",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "onClose in class Screen",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "removed",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "removed in class Screen",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "mouseClicked",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_97343_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_97344_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_97345_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "keyPressed",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_97353_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_97354_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_97355_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "keyPressed in class Screen",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "render",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_282589_",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "p_282255_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_283354_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_283123_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Description copied from class: Screen",
+      "overrides": "render in class Screen",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "mouseDragged",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_97347_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_97348_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_97349_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_97350_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_97351_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "mouseScrolled",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_295690_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_295286_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_295339_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_296270_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "renderInside",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_282012_",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "p_97375_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_97376_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_97377_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_97378_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "renderWindow",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_283395_",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "p_281890_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_282532_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "renderTooltips",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_282784_",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "p_283556_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_282458_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_281519_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_283371_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onAddAdvancementRoot",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_301276_",
+          "type": "AdvancementNode",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onRemoveAdvancementRoot",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_301028_",
+          "type": "AdvancementNode",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onAddAdvancementTask",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_301205_",
+          "type": "AdvancementNode",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onRemoveAdvancementTask",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_301004_",
+          "type": "AdvancementNode",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onUpdateAdvancementProgress",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_301161_",
+          "type": "AdvancementNode",
+          "annotations": []
+        },
+        {
+          "name": "p_97369_",
+          "type": "AdvancementProgress",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onSelectedTabChanged",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_301084_",
+          "type": "AdvancementHolder",
+          "annotations": [
+            "@Nullable"
+          ]
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onAdvancementsCleared",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getAdvancementWidget",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "AdvancementWidget",
+      "parameters": [
+        {
+          "name": "p_300894_",
+          "type": "AdvancementNode",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getTab",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "AdvancementTab",
+      "parameters": [
+        {
+          "name": "p_301151_",
+          "type": "AdvancementNode",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/minecraft/client/gui/screens/advancements/AdvancementsScreen.html"
+}

@@ -1,0 +1,153 @@
+{
+  "type": "class",
+  "name": "AddSectionGeometryEvent",
+  "qualified_name": "net.neoforged.neoforge.client.event.AddSectionGeometryEvent",
+  "package": "net.neoforged.neoforge.client.event",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "This event can be used to add static geometry to chunk sections. The event is fired on the main client thread whenever a section is queued for (re)building. A rebuild can be triggered manually using e.g. LevelRenderer.setSectionDirty(int, int, int) . While the event itself is fired on the main client thread, the renderers registered using addRenderer(net.neoforged.neoforge.client.event.AddSectionGeometryEvent.AdditionalSectionRenderer) while be executed on the thread performing the rebuild, which will typically not be the main thread. Therefore, any data from non-thread-safe data structures need to be retrieved during the event handler itself rather than the renderer. A typical usage would look like @SubscribeEvent public static void addChunkGeometry(AddSectionGeometryEvent ev) { if (shouldAddGeometryTo(ev.getLevel(), ev.getSectionOrigin())) { final var renderingData = getDataOnMainThread(ev.getLevel(), ev.getSectionOrigin()); ev.addRenderer(context -> renderThreadsafe(renderingData, context)); } } Note that the renderer is only added if something will actually be rendered in this example. This structure should be replicated whenever the event is used, to allow for optimizations related to entirely empty sections. This event is not cancellable This event is fired on the main Forge event bus , only on the logical client.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [
+    "AddSectionGeometryEvent.AdditionalSectionRenderer",
+    "AddSectionGeometryEvent.SectionRenderingContext"
+  ],
+  "fields": [
+    {
+      "name": "additionalRenderers",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "List < AddSectionGeometryEvent.AdditionalSectionRenderer >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sectionOrigin",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "BlockPos",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "level",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Level",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "AddSectionGeometryEvent",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "sectionOrigin",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "addRenderer",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "renderer",
+          "type": "AddSectionGeometryEvent.AdditionalSectionRenderer",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Adds a renderer which will add geometry to the chunk section.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getAdditionalRenderers",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "List < AddSectionGeometryEvent.AdditionalSectionRenderer >",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getSectionOrigin",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "BlockPos",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getLevel",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "Level",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/neoforged/neoforge/client/event/AddSectionGeometryEvent.html"
+}

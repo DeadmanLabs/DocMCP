@@ -1,0 +1,1079 @@
+{
+  "type": "class",
+  "name": "EntityRenderDispatcher",
+  "qualified_name": "net.minecraft.client.renderer.entity.EntityRenderDispatcher",
+  "package": "net.minecraft.client.renderer.entity",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [
+      "PreparableReloadListener",
+      "ResourceManagerReloadListener"
+    ],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "SHADOW_RENDER_TYPE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "RenderType",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MAX_SHADOW_RADIUS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "float",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SHADOW_POWER_FALLOFF_Y",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "float",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderers",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "Map < EntityType <?>, EntityRenderer <?>>",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playerRenderers",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "Map < PlayerSkin.Model , EntityRenderer <? extends Player >>",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "textureManager",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "annotations": [],
+      "type": "TextureManager",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "level",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "Level",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "camera",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "type": "Camera",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cameraOrientation",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "org.joml.Quaternionf",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "crosshairPickEntity",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "type": "Entity",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "itemRenderer",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ItemRenderer",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blockRenderDispatcher",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "BlockRenderDispatcher",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "itemInHandRenderer",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ItemInHandRenderer",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "font",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Font",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "options",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Options",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "entityModels",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "EntityModelSet",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldRenderShadow",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderHitBoxes",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "EntityRenderDispatcher",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "p_234579_",
+          "type": "Minecraft",
+          "annotations": []
+        },
+        {
+          "name": "p_234580_",
+          "type": "TextureManager",
+          "annotations": []
+        },
+        {
+          "name": "p_234581_",
+          "type": "ItemRenderer",
+          "annotations": []
+        },
+        {
+          "name": "p_234582_",
+          "type": "BlockRenderDispatcher",
+          "annotations": []
+        },
+        {
+          "name": "p_234583_",
+          "type": "Font",
+          "annotations": []
+        },
+        {
+          "name": "p_234584_",
+          "type": "Options",
+          "annotations": []
+        },
+        {
+          "name": "p_234585_",
+          "type": "EntityModelSet",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getPackedLightCoords",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_114395_",
+          "type": "E",
+          "annotations": []
+        },
+        {
+          "name": "p_114396_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getRenderer",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "EntityRenderer <? super T>",
+      "parameters": [
+        {
+          "name": "p_114383_",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "prepare",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_114409_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_114410_",
+          "type": "Camera",
+          "annotations": []
+        },
+        {
+          "name": "p_114411_",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "overrideCameraOrientation",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_254264_",
+          "type": "org.joml.Quaternionf",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setRenderShadow",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_114469_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setRenderHitBoxes",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_114474_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "shouldRenderHitBoxes",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "shouldRender",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_114398_",
+          "type": "E",
+          "annotations": []
+        },
+        {
+          "name": "p_114399_",
+          "type": "Frustum",
+          "annotations": []
+        },
+        {
+          "name": "p_114400_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_114401_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_114402_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "render",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_114385_",
+          "type": "E",
+          "annotations": []
+        },
+        {
+          "name": "p_114386_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_114387_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_114388_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_114389_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_114390_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_114391_",
+          "type": "PoseStack",
+          "annotations": []
+        },
+        {
+          "name": "p_114392_",
+          "type": "MultiBufferSource",
+          "annotations": []
+        },
+        {
+          "name": "p_114393_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "renderServerSideHitbox",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_353069_",
+          "type": "PoseStack",
+          "annotations": []
+        },
+        {
+          "name": "p_353061_",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "p_353074_",
+          "type": "MultiBufferSource",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getServerSideEntity",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "Entity",
+      "parameters": [
+        {
+          "name": "p_353043_",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "renderHitbox",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_114442_",
+          "type": "PoseStack",
+          "annotations": []
+        },
+        {
+          "name": "p_114443_",
+          "type": "VertexConsumer",
+          "annotations": []
+        },
+        {
+          "name": "p_114444_",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "p_114445_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_353064_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_353059_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_353042_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "renderVector",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_353057_",
+          "type": "PoseStack",
+          "annotations": []
+        },
+        {
+          "name": "p_353027_",
+          "type": "VertexConsumer",
+          "annotations": []
+        },
+        {
+          "name": "p_353068_",
+          "type": "org.joml.Vector3f",
+          "annotations": []
+        },
+        {
+          "name": "p_353070_",
+          "type": "Vec3",
+          "annotations": []
+        },
+        {
+          "name": "p_353032_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "renderFlame",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_114454_",
+          "type": "PoseStack",
+          "annotations": []
+        },
+        {
+          "name": "p_114455_",
+          "type": "MultiBufferSource",
+          "annotations": []
+        },
+        {
+          "name": "p_114456_",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "p_304964_",
+          "type": "org.joml.Quaternionf",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "fireVertex",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_114415_",
+          "type": "PoseStack.Pose",
+          "annotations": []
+        },
+        {
+          "name": "p_114416_",
+          "type": "VertexConsumer",
+          "annotations": []
+        },
+        {
+          "name": "p_114417_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_114418_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_114419_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_114420_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_114421_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "renderShadow",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_114458_",
+          "type": "PoseStack",
+          "annotations": []
+        },
+        {
+          "name": "p_114459_",
+          "type": "MultiBufferSource",
+          "annotations": []
+        },
+        {
+          "name": "p_114460_",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "p_114461_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_114462_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_114463_",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "p_114464_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "renderBlockShadow",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_277956_",
+          "type": "PoseStack.Pose",
+          "annotations": []
+        },
+        {
+          "name": "p_277533_",
+          "type": "VertexConsumer",
+          "annotations": []
+        },
+        {
+          "name": "p_277501_",
+          "type": "ChunkAccess",
+          "annotations": []
+        },
+        {
+          "name": "p_277622_",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "p_277911_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_277682_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_278099_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_277806_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_277844_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_277496_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "shadowVertex",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_114423_",
+          "type": "PoseStack.Pose",
+          "annotations": []
+        },
+        {
+          "name": "p_114424_",
+          "type": "VertexConsumer",
+          "annotations": []
+        },
+        {
+          "name": "p_350992_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_114425_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_114426_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_114427_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_114428_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_114429_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setLevel",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_114407_",
+          "type": "Level",
+          "annotations": [
+            "@Nullable"
+          ]
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "distanceToSqr",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "double",
+      "parameters": [
+        {
+          "name": "p_114472_",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "distanceToSqr",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "double",
+      "parameters": [
+        {
+          "name": "p_114379_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_114380_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_114381_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "cameraOrientation",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "org.joml.Quaternionf",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getItemInHandRenderer",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "ItemInHandRenderer",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getSkinMap",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "Map < PlayerSkin.Model , EntityRenderer <? extends Player >>",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onResourceManagerReload",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_174004_",
+          "type": "ResourceManager",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/minecraft/client/renderer/entity/EntityRenderDispatcher.html"
+}

@@ -1,0 +1,1829 @@
+{
+  "type": "class",
+  "name": "RealmsMainScreen",
+  "qualified_name": "com.mojang.realmsclient.RealmsMainScreen",
+  "package": "com.mojang.realmsclient",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [
+      "ContainerEventHandler",
+      "GuiEventListener",
+      "Renderable",
+      "TabOrderedElement"
+    ],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraft.client.gui.components.events.AbstractContainerEventHandler",
+      "net.minecraft.client.gui.screens.Screen",
+      "net.minecraft.realms.RealmsScreen"
+    ]
+  },
+  "nested_classes": [
+    "RealmsMainScreen.AvailableSnapshotEntry",
+    "RealmsMainScreen.ButtonEntry",
+    "RealmsMainScreen.CrossButton",
+    "RealmsMainScreen.EmptyEntry",
+    "RealmsMainScreen.Entry",
+    "RealmsMainScreen.LayoutState",
+    "RealmsMainScreen.NotificationButton",
+    "RealmsMainScreen.NotificationMessageEntry",
+    "RealmsMainScreen.ParentEntry",
+    "RealmsMainScreen.RealmsCall",
+    "RealmsMainScreen.RealmSelectionList",
+    "RealmsMainScreen.ServerEntry"
+  ],
+  "fields": [
+    {
+      "name": "INFO_SPRITE",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceLocation",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NEW_REALM_SPRITE",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceLocation",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "EXPIRED_SPRITE",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceLocation",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "EXPIRES_SOON_SPRITE",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceLocation",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "OPEN_SPRITE",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceLocation",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CLOSED_SPRITE",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceLocation",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "INVITE_SPRITE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceLocation",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NEWS_SPRITE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceLocation",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "org.slf4j.Logger",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOGO_LOCATION",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceLocation",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NO_REALMS_LOCATION",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceLocation",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "TITLE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOADING_TEXT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SERVER_UNITIALIZED_TEXT",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SUBSCRIPTION_EXPIRED_TEXT",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SUBSCRIPTION_RENEW_TEXT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "TRIAL_EXPIRED_TEXT",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PLAY_TEXT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LEAVE_SERVER_TEXT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CONFIGURE_SERVER_TEXT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SERVER_EXPIRED_TOOLTIP",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SERVER_EXPIRES_SOON_TOOLTIP",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SERVER_EXPIRES_IN_DAY_TOOLTIP",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SERVER_OPEN_TOOLTIP",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SERVER_CLOSED_TOOLTIP",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UNITIALIZED_WORLD_NARRATION",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NO_REALMS_TEXT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NO_PENDING_INVITES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PENDING_INVITES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "INCOMPATIBLE_POPUP_TITLE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "INCOMPATIBLE_RELEASE_TYPE_POPUP_MESSAGE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BUTTON_WIDTH",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BUTTON_COLUMNS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BUTTON_SPACING",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CONTENT_WIDTH",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOGO_WIDTH",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOGO_HEIGHT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOGO_TEXTURE_WIDTH",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOGO_TEXTURE_HEIGHT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOGO_PADDING",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "HEADER_HEIGHT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "FOOTER_PADDING",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NEW_REALM_SPRITE_WIDTH",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NEW_REALM_SPRITE_HEIGHT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ENTRY_WIDTH",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ITEM_HEIGHT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SNAPSHOT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "snapshotToggle",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "availability",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "CompletableFuture < RealmsAvailability.Result >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dataSubscription",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "DataFetcher.Subscription",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handledSeenNotifications",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Set < UUID >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "regionsPinged",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "inviteNarrationLimiter",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "com.google.common.util.concurrent.RateLimiter",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastScreen",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Screen",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playButton",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "Button",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "backButton",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "Button",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renewButton",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "Button",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "configureButton",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "Button",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "leaveButton",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "Button",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "realmSelectionList",
+      "modifiers": [],
+      "annotations": [],
+      "type": "RealmsMainScreen.RealmSelectionList",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "serverList",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "RealmsServerList",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "availableSnapshotServers",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "List < RealmsServer >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onlinePlayersPerRealm",
+      "modifiers": [],
+      "annotations": [],
+      "type": "RealmsServerPlayerLists",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "trialsAvailable",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "newsLink",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "String",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastClickTime",
+      "modifiers": [],
+      "annotations": [],
+      "type": "long",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "notifications",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "List < RealmsNotification >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addRealmButton",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "Button",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pendingInvitesButton",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "RealmsMainScreen.NotificationButton",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "newsButton",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "RealmsMainScreen.NotificationButton",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "activeLayoutState",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "RealmsMainScreen.LayoutState",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "layout",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "HeaderAndFooterLayout",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "RealmsMainScreen",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "p_86315_",
+          "type": "Screen",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "init",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "init in class Screen",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isSnapshot",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "repositionElements",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "repositionElements in class Screen",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onClose",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "onClose in class Screen",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "updateLayout",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "updateLayout",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_294474_",
+          "type": "RealmsMainScreen.LayoutState",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "createLayout",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "HeaderAndFooterLayout",
+      "parameters": [
+        {
+          "name": "p_295052_",
+          "type": "RealmsMainScreen.LayoutState",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "createHeader",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "Layout",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "createFooter",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "Layout",
+      "parameters": [
+        {
+          "name": "p_294561_",
+          "type": "RealmsMainScreen.LayoutState",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "createNoRealmsContent",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "LinearLayout",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "updateButtonStates",
+      "modifiers": [],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "shouldPlayButtonBeActive",
+      "modifiers": [],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_86563_",
+          "type": "RealmsServer",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "shouldRenewButtonBeActive",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_86595_",
+          "type": "RealmsServer",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "shouldConfigureButtonBeActive",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_86620_",
+          "type": "RealmsServer",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "shouldLeaveButtonBeActive",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_86645_",
+          "type": "RealmsServer",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "tick in class Screen",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "refreshPendingInvites",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "refreshServerList",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "debugRefreshDataFetchers",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "initDataFetcher",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "DataFetcher.Subscription",
+      "parameters": [
+        {
+          "name": "p_238836_",
+          "type": "RealmsDataFetcher",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "markNotificationsAsSeen",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_304698_",
+          "type": "Collection < RealmsNotification >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "callRealmsClient",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_275561_",
+          "type": "RealmsMainScreen.RealmsCall <T>",
+          "annotations": []
+        },
+        {
+          "name": "p_275686_",
+          "type": "Consumer <T>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "refreshListAndLayout",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "addListEntriesForNotification",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_304511_",
+          "type": "RealmsNotification",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "pingRegions",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getOwnedNonExpiredRealmIds",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "List < Long >",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onRenew",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_193500_",
+          "type": "RealmsServer",
+          "annotations": [
+            "@Nullable"
+          ]
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "configureClicked",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_86657_",
+          "type": "RealmsServer",
+          "annotations": [
+            "@Nullable"
+          ]
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "leaveClicked",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_86670_",
+          "type": "RealmsServer",
+          "annotations": [
+            "@Nullable"
+          ]
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getSelectedServer",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "RealmsServer",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "leaveServer",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_193495_",
+          "type": "RealmsServer",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "dismissNotification",
+      "modifiers": [],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_275349_",
+          "type": "UUID",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "resetScreen",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getNarrationMessage",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "Component",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getNarrationMessage in class Screen",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "render",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_282736_",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "p_283347_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_282480_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_283485_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Description copied from class: Screen",
+      "overrides": "render in class Screen",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "openTrialAvailablePopup",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "play",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_86516_",
+          "type": "RealmsServer",
+          "annotations": [
+            "@Nullable"
+          ]
+        },
+        {
+          "name": "p_86517_",
+          "type": "Screen",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "play",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_305964_",
+          "type": "RealmsServer",
+          "annotations": [
+            "@Nullable"
+          ]
+        },
+        {
+          "name": "p_305959_",
+          "type": "Screen",
+          "annotations": []
+        },
+        {
+          "name": "p_306296_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "confirmToPlay",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_305792_",
+          "type": "RealmsServer",
+          "annotations": []
+        },
+        {
+          "name": "p_306263_",
+          "type": "Screen",
+          "annotations": []
+        },
+        {
+          "name": "p_305782_",
+          "type": "Component",
+          "annotations": []
+        },
+        {
+          "name": "p_306311_",
+          "type": "Component",
+          "annotations": []
+        },
+        {
+          "name": "p_306238_",
+          "type": "Component",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "upgradeRealmAndPlay",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_350306_",
+          "type": "RealmsServer",
+          "annotations": []
+        },
+        {
+          "name": "p_351001_",
+          "type": "Screen",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getVersionComponent",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "Component",
+      "parameters": [
+        {
+          "name": "p_307541_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_307256_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getVersionComponent",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "Component",
+      "parameters": [
+        {
+          "name": "p_307429_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_307536_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isSelfOwnedServer",
+      "modifiers": [
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_86684_",
+          "type": "RealmsServer",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isSelfOwnedNonExpiredServer",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_86689_",
+          "type": "RealmsServer",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "renderEnvironment",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_294591_",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "p_295050_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_294351_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/com/mojang/realmsclient/RealmsMainScreen.html"
+}

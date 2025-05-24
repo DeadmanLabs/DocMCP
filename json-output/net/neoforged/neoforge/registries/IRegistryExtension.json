@@ -1,0 +1,249 @@
+{
+  "type": "interface",
+  "name": "IRegistryExtension<T>",
+  "qualified_name": "net.neoforged.neoforge.registries.IRegistryExtension<T>",
+  "package": "net.neoforged.neoforge.registries",
+  "modifiers": [
+    "public",
+    "interface"
+  ],
+  "annotations": [],
+  "description": "An extension for Registry , adding some additional functionality to vanilla registries, such as callbacks and ID limits.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": []
+  },
+  "nested_classes": [],
+  "fields": [],
+  "constructors": [],
+  "methods": [
+    {
+      "name": "doesSync",
+      "modifiers": [],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Returns whether this registry should be synced to clients.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getMaxId",
+      "modifiers": [],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Returns the highest id that an entry in this registry is allowed to use. For the size of this registry, see IdMap.size() .",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "addCallback",
+      "modifiers": [],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "callback",
+          "type": "RegistryCallback < T >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Adds a callback to this registry. Depending on the interfaces implemented by the object, the callback will be called when the registry is added to , baked , and/or cleared .",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "addCallback",
+      "modifiers": [
+        "default"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "type",
+          "type": "Class <C>",
+          "annotations": []
+        },
+        {
+          "name": "callback",
+          "type": "C",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Adds a lambda-implemented callback to this registry. The callback will be called when the registry is added to, baked, or cleared. The Class parameter is used to determine the lambda type.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "addAlias",
+      "modifiers": [],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "from",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "to",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Adds an alias that maps from the name specified by from to the name specified by to . Any registry lookups that target the first name will resolve as the second name, if the first name is not present.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "resolve",
+      "modifiers": [],
+      "annotations": [],
+      "return_type": "ResourceLocation",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Resolves a registry name of a potential object in this registry. The original name will be returned if it is contained in this registry. If not, the alias map will be checked for entries. Resolving supports alias chains (A -> B -> C) and will terminate when an alias has an entry or the last alias in the chain is reached.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "resolve",
+      "modifiers": [],
+      "annotations": [],
+      "return_type": "ResourceKey < T >",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "ResourceKey < T >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Resolves a registry key of a potential object in this registry. The original key will be returned if it is contained in this registry. If not, the alias map will be checked for entries. Resolving supports alias chains (A -> B -> C) and will terminate when an alias has an entry or the last alias in the chain is reached.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getId",
+      "modifiers": [],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "ResourceKey < T >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Gets the integer id linked to the given key. If the key is not present in the registry, the default entry's integer id is returned if the registry is defaulted or -1 if the registry is not defaulted",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getId",
+      "modifiers": [],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Gets the integer id linked to the given name. If the name is not present in the registry, the default entry's integer id is returned if the registry is defaulted or -1 if the registry is not defaulted",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "containsValue",
+      "modifiers": [],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "value",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Returns true if this registry contains the value .",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getData",
+      "modifiers": [],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "A",
+      "parameters": [
+        {
+          "name": "type",
+          "type": "DataMapType < T , A>",
+          "annotations": []
+        },
+        {
+          "name": "key",
+          "type": "ResourceKey < T >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Returns the data map value attached with the object with the key, or null if there's no attached value.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getDataMap",
+      "modifiers": [],
+      "annotations": [],
+      "return_type": "Map < ResourceKey < T >, A>",
+      "parameters": [
+        {
+          "name": "type",
+          "type": "DataMapType < T , A>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Returns the data map of the given type .",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/neoforged/neoforge/registries/IRegistryExtension.html"
+}

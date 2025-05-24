@@ -1,0 +1,1943 @@
+{
+  "type": "class",
+  "name": "Screen",
+  "qualified_name": "net.minecraft.client.gui.screens.Screen",
+  "package": "net.minecraft.client.gui.screens",
+  "modifiers": [
+    "public",
+    "abstract",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [
+      "ContainerEventHandler",
+      "GuiEventListener",
+      "Renderable",
+      "TabOrderedElement"
+    ],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraft.client.gui.components.events.AbstractContainerEventHandler"
+    ]
+  },
+  "nested_classes": [
+    "Screen.DeferredTooltipRendering",
+    "Screen.NarratableSearchResult"
+  ],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "org.slf4j.Logger",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "USAGE_NARRATION",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CUBE_MAP",
+      "modifiers": [
+        "protected",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "CubeMap",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PANORAMA",
+      "modifiers": [
+        "protected",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "PanoramaRenderer",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MENU_BACKGROUND",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceLocation",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "HEADER_SEPARATOR",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceLocation",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "FOOTER_SEPARATOR",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceLocation",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "INWORLD_MENU_BACKGROUND",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceLocation",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "INWORLD_HEADER_SEPARATOR",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceLocation",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "INWORLD_FOOTER_SEPARATOR",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceLocation",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "title",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "children",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "List < GuiEventListener >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "narratables",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "List < NarratableEntry >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "minecraft",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "Minecraft",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "initialized",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "width",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "height",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderables",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "annotations": [],
+      "type": "List < Renderable >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "font",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "type": "Font",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NARRATE_SUPPRESS_AFTER_INIT_TIME",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "long",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NARRATE_DELAY_NARRATOR_ENABLED",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "long",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NARRATE_DELAY_MOUSE_MOVE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "long",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NARRATE_DELAY_MOUSE_ACTION",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "long",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NARRATE_DELAY_KEYBOARD_ACTION",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "long",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "narrationState",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ScreenNarrationCollector",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "narrationSuppressTime",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "long",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "nextNarrationTime",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "long",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "narratorButton",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "CycleButton < NarratorStatus >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastNarratable",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "NarratableEntry",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "deferredTooltipRendering",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "Screen.DeferredTooltipRendering",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "screenExecutor",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Executor",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "Screen",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "p_96550_",
+          "type": "Component",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getTitle",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "Component",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getNarrationMessage",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "Component",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "renderWithTooltip",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_282345_",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "p_283456_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_283586_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_282339_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "render",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_281549_",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "p_281550_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_282878_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_282465_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Neo: mixins targeting this method won't fire for container screens as AbstractContainerScreen.render(net.minecraft.client.gui.GuiGraphics, int, int, float) replicates this method in place of a super call to insert an event",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "keyPressed",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_96552_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_96553_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_96554_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "createTabEvent",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "FocusNavigationEvent.TabNavigation",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "createArrowEvent",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "FocusNavigationEvent.ArrowNavigation",
+      "parameters": [
+        {
+          "name": "p_265049_",
+          "type": "ScreenDirection",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setInitialFocus",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setInitialFocus",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_265756_",
+          "type": "GuiEventListener",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "clearFocus",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "changeFocus",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_265308_",
+          "type": "ComponentPath",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "shouldCloseOnEsc",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onClose",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "addRenderableWidget",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "p_169406_",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "addRenderableOnly",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "p_254514_",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "addWidget",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "p_96625_",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "removeWidget",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_169412_",
+          "type": "GuiEventListener",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "clearWidgets",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getTooltipFromItem",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "List < Component >",
+      "parameters": [
+        {
+          "name": "p_281881_",
+          "type": "Minecraft",
+          "annotations": []
+        },
+        {
+          "name": "p_282833_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "insertText",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_96587_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_96588_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "handleComponentClicked",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_96592_",
+          "type": "Style",
+          "annotations": [
+            "@Nullable"
+          ]
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "init",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_96607_",
+          "type": "Minecraft",
+          "annotations": []
+        },
+        {
+          "name": "p_96608_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_96609_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "rebuildWidgets",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "children",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "List <? extends GuiEventListener >",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "init",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "removed",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "added",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "renderBackground",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_283688_",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "p_296369_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_296477_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_294317_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "renderBlurredBackground",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_330683_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "renderPanorama",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_331628_",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "p_331316_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "renderMenuBackground",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_331074_",
+          "type": "GuiGraphics",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "renderMenuBackground",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_331077_",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "p_331957_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_331095_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_331894_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_332138_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "renderMenuBackgroundTexture",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_331514_",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "p_333918_",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "p_330327_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_331282_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_334038_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_334054_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_331309_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_331449_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "renderTransparentBackground",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_294586_",
+          "type": "GuiGraphics",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isPauseScreen",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "hasControlDown",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "hasShiftDown",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "hasAltDown",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isCut",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_96629_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isPaste",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_96631_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isCopy",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_96633_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isSelectAll",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_96635_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "repositionElements",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "resize",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_96575_",
+          "type": "Minecraft",
+          "annotations": []
+        },
+        {
+          "name": "p_96576_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_96577_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "wrapScreenError",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_96580_",
+          "type": "Runnable",
+          "annotations": []
+        },
+        {
+          "name": "p_96581_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_96582_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isValidCharacterForName",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_96584_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_96585_",
+          "type": "char",
+          "annotations": []
+        },
+        {
+          "name": "p_96586_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isMouseOver",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_96595_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_96596_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onFilesDrop",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_96591_",
+          "type": "List < Path >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getMinecraft",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "Minecraft",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "scheduleNarration",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_169381_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_169382_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "suppressNarration",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_169379_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "afterMouseMove",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "afterMouseAction",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "afterKeyboardAction",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "shouldRunNarration",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "handleDelayedNarration",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "triggerImmediateNarration",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_169408_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "runNarration",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_169410_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "shouldNarrateNavigation",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "updateNarrationState",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_169396_",
+          "type": "NarrationElementOutput",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "updateNarratedWidget",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_169403_",
+          "type": "NarrationElementOutput",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getUsageNarration",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "Component",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "findNarratableWidget",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "Screen.NarratableSearchResult",
+      "parameters": [
+        {
+          "name": "p_169401_",
+          "type": "List <? extends NarratableEntry >",
+          "annotations": []
+        },
+        {
+          "name": "p_169402_",
+          "type": "NarratableEntry",
+          "annotations": [
+            "@Nullable"
+          ]
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "updateNarratorStatus",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_352211_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "clearTooltipForNextRenderPass",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setTooltipForNextRenderPass",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_259937_",
+          "type": "List < FormattedCharSequence >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setTooltipForNextRenderPass",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_262939_",
+          "type": "List < FormattedCharSequence >",
+          "annotations": []
+        },
+        {
+          "name": "p_263078_",
+          "type": "ClientTooltipPositioner",
+          "annotations": []
+        },
+        {
+          "name": "p_263107_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setTooltipForNextRenderPass",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_259986_",
+          "type": "Component",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setTooltipForNextRenderPass",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_262992_",
+          "type": "Tooltip",
+          "annotations": []
+        },
+        {
+          "name": "p_262980_",
+          "type": "ClientTooltipPositioner",
+          "annotations": []
+        },
+        {
+          "name": "p_262988_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getRectangle",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "ScreenRectangle",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getBackgroundMusic",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "Music",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "addEventWidget",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "b",
+          "type": "GuiEventListener",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/minecraft/client/gui/screens/Screen.html"
+}

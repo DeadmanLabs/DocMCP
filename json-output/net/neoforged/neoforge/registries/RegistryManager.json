@@ -1,0 +1,478 @@
+{
+  "type": "class",
+  "name": "RegistryManager",
+  "qualified_name": "net.neoforged.neoforge.registries.RegistryManager",
+  "package": "net.neoforged.neoforge.registries",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [
+    "@Internal"
+  ],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [
+    "RegistryManager.SnapshotType"
+  ],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "org.slf4j.Logger",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "REGISTRIES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "org.slf4j.Marker",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pendingModdedRegistries",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "type": "Set < ResourceLocation >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "vanillaRegistryKeys",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "type": "Set < ResourceLocation >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "vanillaSnapshot",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "type": "Map < ResourceLocation , RegistrySnapshot >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "frozenSnapshot",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "type": "Map < ResourceLocation , RegistrySnapshot >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dataMaps",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "type": "Map < ResourceKey < Registry <?>>, Map < ResourceLocation , DataMapType <?, ?>>>",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ATTRIBUTE_KNOWN_DATA_MAPS",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "io.netty.util.AttributeKey< Map < ResourceKey <? extends Registry <?>>, Collection < ResourceLocation >>>",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "RegistryManager",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "trackModdedRegistry",
+      "modifiers": [
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "registry",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Called by RegistryBuilder to make sure that modders don't forget to register their registries.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getDataMap",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "@Nullable DataMapType <R, ?>",
+      "parameters": [
+        {
+          "name": "registry",
+          "type": "ResourceKey <? extends Registry <R>>",
+          "annotations": []
+        },
+        {
+          "name": "key",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getDataMaps",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "Map < ResourceKey < Registry <?>>, Map < ResourceLocation , DataMapType <?, ?>>>",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Returns a view of all registered data maps.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "postNewRegistryEvent",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "initDataMaps",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "takeVanillaSnapshot",
+      "modifiers": [
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "takeFrozenSnapshot",
+      "modifiers": [
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "revertToVanilla",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "revertToFrozen",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "applySnapshot",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "Set < ResourceKey <?>>",
+      "parameters": [
+        {
+          "name": "snapshots",
+          "type": "Map < ResourceLocation , RegistrySnapshot >",
+          "annotations": []
+        },
+        {
+          "name": "allowMissing",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "isLocalWorld",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Applies the snapshot to the current state of the BuiltInRegistries .",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "applySnapshot",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "registry",
+          "type": "MappedRegistry <T>",
+          "annotations": []
+        },
+        {
+          "name": "snapshot",
+          "type": "RegistrySnapshot",
+          "annotations": []
+        },
+        {
+          "name": "missing",
+          "type": "Set < ResourceKey <?>>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "takeSnapshot",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "Map < ResourceLocation , RegistrySnapshot >",
+      "parameters": [
+        {
+          "name": "snapshotType",
+          "type": "RegistryManager.SnapshotType",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Takes a snapshot of the current registries registered to BuiltInRegistries.REGISTRY .",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "generateRegistryPackets",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "List < FrozenRegistryPayload >",
+      "parameters": [
+        {
+          "name": "isLocal",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getRegistryNamesForSyncToClient",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "List < ResourceLocation >",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getVanillaRegistryKeys",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "Set < ResourceLocation >",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "handleKnownDataMapsReply",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [
+        "@Internal"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "payload",
+          "type": "KnownRegistryDataMapsReplyPayload",
+          "annotations": []
+        },
+        {
+          "name": "context",
+          "type": "IPayloadContext",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isNonSyncedBuiltInRegistry",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "registry",
+          "type": "Registry <?>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/neoforged/neoforge/registries/RegistryManager.html"
+}

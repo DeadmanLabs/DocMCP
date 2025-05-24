@@ -1,0 +1,779 @@
+{
+  "type": "class",
+  "name": "Breeze",
+  "qualified_name": "net.minecraft.world.entity.monster.breeze.Breeze",
+  "package": "net.minecraft.world.entity.monster.breeze",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [
+      "CommandSource",
+      "SyncedDataHolder",
+      "Attackable",
+      "EquipmentUser",
+      "Leashable",
+      "Enemy",
+      "Targeting",
+      "EntityAccess",
+      "Nameable",
+      "ScoreHolder",
+      "IAttachmentHolder",
+      "IEntityExtension",
+      "ILivingEntityExtension",
+      "INBTSerializable",
+      "CompoundTag"
+    ],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.neoforged.neoforge.attachment.AttachmentHolder",
+      "net.minecraft.world.entity.Entity",
+      "net.minecraft.world.entity.LivingEntity",
+      "net.minecraft.world.entity.Mob",
+      "net.minecraft.world.entity.PathfinderMob",
+      "net.minecraft.world.entity.monster.Monster"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "SLIDE_PARTICLES_AMOUNT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "IDLE_PARTICLES_AMOUNT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "JUMP_DUST_PARTICLES_AMOUNT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "JUMP_TRAIL_PARTICLES_AMOUNT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "JUMP_TRAIL_DURATION_TICKS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "JUMP_CIRCLE_DISTANCE_Y",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "FALL_DISTANCE_SOUND_TRIGGER_THRESHOLD",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "float",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "WHIRL_SOUND_FREQUENCY_MIN",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "WHIRL_SOUND_FREQUENCY_MAX",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "idle",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "type": "AnimationState",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "slide",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "type": "AnimationState",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "slideBack",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "type": "AnimationState",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "longJump",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "type": "AnimationState",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shoot",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "type": "AnimationState",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "inhale",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "type": "AnimationState",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "jumpTrailStartedTick",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "soundTick",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PROJECTILE_DEFLECTION",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ProjectileDeflection",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "Breeze",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "p_312213_",
+          "type": "EntityType <? extends Monster >",
+          "annotations": []
+        },
+        {
+          "name": "p_312377_",
+          "type": "Level",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "createAttributes",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "AttributeSupplier.Builder",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "makeBrain",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "Brain <?>",
+      "parameters": [
+        {
+          "name": "p_312201_",
+          "type": "com.mojang.serialization.Dynamic<?>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "makeBrain in class LivingEntity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getBrain",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "Brain < Breeze >",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getBrain in class LivingEntity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "brainProvider",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "Brain.Provider < Breeze >",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "brainProvider in class LivingEntity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onSyncedDataUpdated",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_312373_",
+          "type": "EntityDataAccessor <?>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "onSyncedDataUpdated in class LivingEntity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "resetAnimations",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "tick in class Mob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "resetJumpTrail",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "Breeze",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "emitJumpTrailParticles",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "emitGroundParticles",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_312637_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "playAmbientSound",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "playAmbientSound in class Mob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "playWhirlSound",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "deflection",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "ProjectileDeflection",
+      "parameters": [
+        {
+          "name": "p_320843_",
+          "type": "Projectile",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "deflection in class Entity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getSoundSource",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "SoundSource",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getSoundSource in class Monster",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getDeathSound",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "SoundEvent",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getDeathSound in class Monster",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getHurtSound",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "SoundEvent",
+      "parameters": [
+        {
+          "name": "p_312252_",
+          "type": "DamageSource",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getHurtSound in class Monster",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getAmbientSound",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "SoundEvent",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getAmbientSound in class Mob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getHurtBy",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "Optional < LivingEntity >",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "withinInnerCircleRange",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_312331_",
+          "type": "Vec3",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "customServerAiStep",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "customServerAiStep in class Mob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "sendDebugPackets",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "sendDebugPackets in class Mob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "canAttackType",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_312806_",
+          "type": "EntityType <?>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "canAttackType in class Mob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getMaxHeadYRot",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getMaxHeadYRot in class Mob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getHeadRotSpeed",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getHeadRotSpeed in class Mob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getSnoutYPosition",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "double",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isInvulnerableTo",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_312691_",
+          "type": "DamageSource",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "isInvulnerableTo in class LivingEntity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getFluidJumpThreshold",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "double",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getFluidJumpThreshold in class Entity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "causeFallDamage",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_312702_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_312120_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_312076_",
+          "type": "DamageSource",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "causeFallDamage in class LivingEntity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getMovementEmission",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "Entity.MovementEmission",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getMovementEmission in class Entity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getTarget",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "LivingEntity",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getTarget in class Mob",
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/minecraft/world/entity/monster/breeze/Breeze.html"
+}

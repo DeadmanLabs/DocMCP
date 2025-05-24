@@ -1,0 +1,539 @@
+{
+  "type": "class",
+  "name": "R>",
+  "qualified_name": "net.neoforged.neoforge.registries.R>",
+  "package": "net.neoforged.neoforge.registries",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "A Deferred Holder is a Holder that is constructed with only a ResourceKey. It will be populated with the underlying Holder from the registry when available.",
+  "inheritance": {
+    "extends": null,
+    "implements": [
+      "Supplier",
+      "Holder",
+      "IHolderExtension",
+      "IWithData"
+    ],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "key",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceKey < R >",
+      "value": null,
+      "description": "The resource key of the target object.",
+      "deprecated": false
+    },
+    {
+      "name": "holder",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "@Nullable Holder < R >",
+      "value": null,
+      "description": "The currently cached value.",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "DeferredHolder",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "key",
+          "type": "ResourceKey < R >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Creates a new DeferredHolder with a ResourceKey. Attempts to bind immediately if possible.",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "create",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "DeferredHolder <R, T>",
+      "parameters": [
+        {
+          "name": "registryKey",
+          "type": "ResourceKey <? extends Registry <R>>",
+          "annotations": []
+        },
+        {
+          "name": "valueName",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Creates a new DeferredHolder targeting the value with the specified name in the specified registry.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "create",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "DeferredHolder <R, T>",
+      "parameters": [
+        {
+          "name": "registryName",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "valueName",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Creates a new DeferredHolder targeting the value with the specified name in the specified registry.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "create",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "DeferredHolder <R, T>",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "ResourceKey <R>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Creates a new DeferredHolder targeting the specified value.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "value",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "T",
+      "parameters": [],
+      "exceptions": [
+        "IllegalStateException - If the backing registry is unavailable."
+      ],
+      "description": "Gets the object stored by this DeferredHolder, if this holder is bound .",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "get",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "T",
+      "parameters": [],
+      "exceptions": [
+        "IllegalStateException - If the backing registry is unavailable."
+      ],
+      "description": "Gets the object stored by this DeferredHolder, if this holder is bound .",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "asOptional",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "Optional < T >",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Returns an optional containing the target object, if bound ; otherwise an empty optional .",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getRegistry",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "@Nullable Registry < R >",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Returns the registry that this DeferredHolder is pointing at, or null if it doesn't exist.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "bind",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "throwOnMissingRegistry",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [
+        "IllegalStateException - If throwOnMissingRegistry is true and the backing registry is unavailable."
+      ],
+      "description": "Binds this DeferredHolder to the underlying registry and target object. Has no effect if already bound.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getId",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "ResourceLocation",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getKey",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "ResourceKey < R >",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "equals",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "obj",
+          "type": "Object",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "equals in class Object",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "hashCode",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "hashCode in class Object",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "toString",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "String",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "toString in class Object",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isBound",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Returns true if the underlying object is available. If true , the underlying object was added to the registry, and value() or get() can be called.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "is",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Returns true if the passed ResourceLocation is the same as the ID of the target object.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "is",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "ResourceKey < R >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Returns true if the passed ResourceKey is the same as this holder's resource key.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "is",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "filter",
+          "type": "Predicate < ResourceKey < R >>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Evaluates the passed predicate against this holder's resource key.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "is",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "tag",
+          "type": "TagKey < R >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Returns true if this holder is a member of the passed tag.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "is",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Deprecated"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "holder",
+          "type": "Holder < R >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Returns true if the holder is the same as this holder.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getData",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "Z",
+      "parameters": [
+        {
+          "name": "type",
+          "type": "DataMapType < R , Z>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Returns the data of the given type that is attached to this object, or null if one isn't.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "tags",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "Stream < TagKey < R >>",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Returns all tags present on the underlying object. If the underlying object is not bound yet, and empty stream is returned.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "unwrap",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "com.mojang.datafixers.util.Either< ResourceKey < R >, R >",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Returns an Either.left() containing the resource key of this holder .",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "unwrapKey",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "Optional < ResourceKey < R >>",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Returns the resource key of this holder.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "kind",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "Holder.Kind",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "canSerializeIn",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "owner",
+          "type": "HolderOwner < R >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getDelegate",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "Holder < R >",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Description copied from interface: IHolderExtension",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/neoforged/neoforge/registries/DeferredHolder.html"
+}

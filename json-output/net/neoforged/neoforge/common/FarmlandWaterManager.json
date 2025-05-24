@@ -1,0 +1,240 @@
+{
+  "type": "class",
+  "name": "FarmlandWaterManager",
+  "qualified_name": "net.neoforged.neoforge.common.FarmlandWaterManager",
+  "package": "net.neoforged.neoforge.common",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "DEBUG",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "customWaterHandler",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Map < LevelReader , Map < ChunkPos , ChunkTicketManager < Vec3 >>>",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "org.apache.logging.log4j.Logger",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "FarmlandWaterManager",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "addCustomTicket",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "ticket",
+          "type": "T",
+          "annotations": []
+        },
+        {
+          "name": "masterChunk",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "additionalChunks",
+          "type": "ChunkPos ...",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Adds a custom ticket. Use addAABBTicket(Level, AABB) if you just need a ticket that can water a certain area. If you don't want to water the region anymore, call SimpleTicket.invalidate() . Also call this when the region this is unloaded (e.g. your TE is unloaded or the block is removed), and validate once it is loaded",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "addAABBTicket",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "AABBTicket",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "aabb",
+          "type": "AABB",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Convenience method to add a ticket that is backed by an AABB. If you don't want to water the region anymore, call SimpleTicket.invalidate() . Also call this when the region this is unloaded (e.g. your TE is unloaded or the block is removed), and validate once it is loaded The AABB in the ticket is immutable",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getDistanceSq",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "double",
+      "parameters": [
+        {
+          "name": "pos",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "vec3d",
+          "type": "Vec3",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "hasBlockWaterTicket",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Tests if a block is in a region that is watered by blocks. This does not check vanilla water, see net.minecraft.level.level.block.FarmBlock#isNearWater(LevelReader, BlockPos)",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "removeTickets",
+      "modifiers": [
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "chunk",
+          "type": "ChunkAccess",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getTicketManager",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "ChunkTicketManager < Vec3 >",
+      "parameters": [
+        {
+          "name": "pos",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "LevelReader",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/neoforged/neoforge/common/FarmlandWaterManager.html"
+}

@@ -1,0 +1,182 @@
+{
+  "type": "class",
+  "name": "VanillaConnectionNetworkFilter",
+  "qualified_name": "net.neoforged.neoforge.network.filters.VanillaConnectionNetworkFilter",
+  "package": "net.neoforged.neoforge.network.filters",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [
+    "@Internal @Sharable"
+  ],
+  "description": "A filter for impl packets, used to filter/modify parts of vanilla impl messages that will cause errors or warnings on vanilla clients, for example entity attributes that are added by Forge or mods.",
+  "inheritance": {
+    "extends": null,
+    "implements": [
+      "DynamicChannelHandler"
+    ],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "Packet",
+      "net.neoforged.neoforge.network.filters.VanillaPacketFilter"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "org.slf4j.Logger",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "connectionType",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ConnectionType",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "VanillaConnectionNetworkFilter",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "connectionType",
+          "type": "ConnectionType",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "isNecessary",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "manager",
+          "type": "Connection",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Description copied from class: VanillaPacketFilter",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "filterEntityProperties",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "ClientboundUpdateAttributesPacket",
+      "parameters": [
+        {
+          "name": "msg",
+          "type": "ClientboundUpdateAttributesPacket",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Filter for SEntityPropertiesPacket. Filters out any entity attributes that are not in the \"minecraft\" namespace. A vanilla client would ignore these with an error log.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "filterCommandList",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "ClientboundCommandsPacket",
+      "parameters": [
+        {
+          "name": "packet",
+          "type": "ClientboundCommandsPacket",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Filter for SCommandListPacket. Uses CommandTreeCleaner to filter out any ArgumentTypes that are not in the \"minecraft\" or \"brigadier\" namespace. A vanilla client would fail to deserialize the packet and disconnect with an error message if these were sent.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "filterCustomTagTypes",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "ClientboundUpdateTagsPacket",
+      "parameters": [
+        {
+          "name": "packet",
+          "type": "ClientboundUpdateTagsPacket",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Filters out custom tag types that the vanilla client won't recognize. It prevents a rare error from logging and reduces the packet size",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isVanillaRegistry",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "location",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/neoforged/neoforge/network/filters/VanillaConnectionNetworkFilter.html"
+}

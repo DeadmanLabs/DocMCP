@@ -1,0 +1,291 @@
+{
+  "type": "class",
+  "name": "SizedIngredient",
+  "qualified_name": "net.neoforged.neoforge.common.crafting.SizedIngredient",
+  "package": "net.neoforged.neoforge.common.crafting",
+  "modifiers": [
+    "public",
+    "final",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Standard implementation for an ingredient and a count. Ingredient does not perform count checks, so this class is used to wrap an ingredient with a count, and provide a standard serialization format.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "FLAT_CODEC",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "com.mojang.serialization.Codec< SizedIngredient >",
+      "value": null,
+      "description": "The \"flat\" codec for SizedIngredient . The count is serialized inline with the rest of the ingredient, for example: { \"item\": \"minecraft:apple\", \"count\": 3 } Array ingredients are serialized using the compound ingredient type: { \"type\": \"neoforge:compound\", \"ingredients\": [ { \"item\": \"minecraft:coal\" }, { \"item\": \"minecraft:charcoal\" } ], \"count\": 2 } See Ingredient.MAP_CODEC_NONEMPTY for details of the ingredient serialization.",
+      "deprecated": false
+    },
+    {
+      "name": "NESTED_CODEC",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "com.mojang.serialization.Codec< SizedIngredient >",
+      "value": null,
+      "description": "The \"nested\" codec for SizedIngredient . The count is serialized separately from the rest of the ingredient, for example: { \"ingredient\": { \"item\": \"minecraft:apple\" }, \"count\": 3 }",
+      "deprecated": false
+    },
+    {
+      "name": "STREAM_CODEC",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "StreamCodec < RegistryFriendlyByteBuf , SizedIngredient >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ingredient",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Ingredient",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "count",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cachedStacks",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "@Nullable ItemStack []",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "SizedIngredient",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "ingredient",
+          "type": "Ingredient",
+          "annotations": []
+        },
+        {
+          "name": "count",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "of",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "SizedIngredient",
+      "parameters": [
+        {
+          "name": "item",
+          "type": "ItemLike",
+          "annotations": []
+        },
+        {
+          "name": "count",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Helper method to create a simple sized ingredient that matches a single item.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "of",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "SizedIngredient",
+      "parameters": [
+        {
+          "name": "tag",
+          "type": "TagKey < Item >",
+          "annotations": []
+        },
+        {
+          "name": "count",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Helper method to create a simple sized ingredient that matches items in a tag.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "ingredient",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "Ingredient",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "count",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "test",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Performs a size-sensitive test on the given stack.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getItems",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "ItemStack []",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Returns a list of the stacks from this ingredient , with an updated count .",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "equals",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Object",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "equals in class Object",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "hashCode",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "hashCode in class Object",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "toString",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "String",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "toString in class Object",
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/neoforged/neoforge/common/crafting/SizedIngredient.html"
+}

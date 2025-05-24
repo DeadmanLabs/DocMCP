@@ -1,0 +1,2679 @@
+{
+  "type": "class",
+  "name": "CommonHooks",
+  "qualified_name": "net.neoforged.neoforge.common.CommonHooks",
+  "package": "net.neoforged.neoforge.common",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Class for various common (i.e. client and server-side) hooks.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [
+    "CommonHooks.BiomeCallbackFunction"
+  ],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "org.apache.logging.log4j.Logger",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "WORLDPERSISTENCE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "org.apache.logging.log4j.Marker",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "URL_PATTERN",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Pattern",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "craftingPlayer",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "type": "ThreadLocal < Player >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "VANILLA_SERIALIZER_LIMIT",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "VANILLA_DIMS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Set < String >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DIMENSIONS_KEY",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "String",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SEED_KEY",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "String",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "FORGE_ATTRIBUTES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Map < EntityType <? extends LivingEntity >, AttributeSupplier >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "FORGE_CONVERSION_MAP",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Lazy < Map < String , StructuresBecomeConfiguredFix.Conversion >>",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "checkedComponentClasses",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Set < Class <?>>",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "CommonHooks",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "canContinueUsing",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "from",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "to",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onItemStackedOn",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "carriedItem",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "stackedOnItem",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "slot",
+          "type": "Slot",
+          "annotations": []
+        },
+        {
+          "name": "action",
+          "type": "ClickAction",
+          "annotations": []
+        },
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "carriedSlotAccess",
+          "type": "SlotAccess",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onDifficultyChange",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "difficulty",
+          "type": "Difficulty",
+          "annotations": []
+        },
+        {
+          "name": "oldDifficulty",
+          "type": "Difficulty",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onLivingChangeTarget",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "LivingChangeTargetEvent",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "LivingEntity",
+          "annotations": []
+        },
+        {
+          "name": "originalTarget",
+          "type": "LivingEntity",
+          "annotations": []
+        },
+        {
+          "name": "targetType",
+          "type": "LivingChangeTargetEvent.ILivingTargetType",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onLivingAttack",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "LivingEntity",
+          "annotations": []
+        },
+        {
+          "name": "src",
+          "type": "DamageSource",
+          "annotations": []
+        },
+        {
+          "name": "amount",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onPlayerAttack",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "LivingEntity",
+          "annotations": []
+        },
+        {
+          "name": "src",
+          "type": "DamageSource",
+          "annotations": []
+        },
+        {
+          "name": "amount",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onLivingKnockBack",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "LivingKnockBackEvent",
+      "parameters": [
+        {
+          "name": "target",
+          "type": "LivingEntity",
+          "annotations": []
+        },
+        {
+          "name": "strength",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "ratioX",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "ratioZ",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onLivingUseTotem",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "LivingEntity",
+          "annotations": []
+        },
+        {
+          "name": "damageSource",
+          "type": "DamageSource",
+          "annotations": []
+        },
+        {
+          "name": "totem",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "hand",
+          "type": "InteractionHand",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onLivingHurt",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "LivingEntity",
+          "annotations": []
+        },
+        {
+          "name": "src",
+          "type": "DamageSource",
+          "annotations": []
+        },
+        {
+          "name": "amount",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onLivingDamage",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "LivingEntity",
+          "annotations": []
+        },
+        {
+          "name": "src",
+          "type": "DamageSource",
+          "annotations": []
+        },
+        {
+          "name": "amount",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onLivingDeath",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "LivingEntity",
+          "annotations": []
+        },
+        {
+          "name": "src",
+          "type": "DamageSource",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onLivingDrops",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "LivingEntity",
+          "annotations": []
+        },
+        {
+          "name": "source",
+          "type": "DamageSource",
+          "annotations": []
+        },
+        {
+          "name": "drops",
+          "type": "Collection < ItemEntity >",
+          "annotations": []
+        },
+        {
+          "name": "recentlyHit",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onLivingFall",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "@org.jetbrains.annotations.Nullable float[]",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "LivingEntity",
+          "annotations": []
+        },
+        {
+          "name": "distance",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "damageMultiplier",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getEntityVisibilityMultiplier",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "double",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "LivingEntity",
+          "annotations": []
+        },
+        {
+          "name": "lookingEntity",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "originalMultiplier",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isLivingOnLadder",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "Optional < BlockPos >",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "entity",
+          "type": "LivingEntity",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onLivingJump",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "LivingEntity",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onPlayerTossEvent",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "@Nullable ItemEntity",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "item",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "includeName",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onVanillaGameEvent",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "vanillaEvent",
+          "type": "Holder < GameEvent >",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "Vec3",
+          "annotations": []
+        },
+        {
+          "name": "context",
+          "type": "GameEvent.Context",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getRawText",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "String",
+      "parameters": [
+        {
+          "name": "message",
+          "type": "Component",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onServerChatSubmittedEvent",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "@Nullable Component",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "ServerPlayer",
+          "annotations": []
+        },
+        {
+          "name": "plain",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "decorated",
+          "type": "Component",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getServerChatSubmittedDecorator",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "ChatDecorator",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "newChatWithLinks",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "Component",
+      "parameters": [
+        {
+          "name": "string",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "newChatWithLinks",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "Component",
+      "parameters": [
+        {
+          "name": "string",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "allowMissingHeader",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "handleBlockDrops",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "state",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "blockEntity",
+          "type": "BlockEntity",
+          "annotations": [
+            "@Nullable",
+            "@Nullable"
+          ]
+        },
+        {
+          "name": "drops",
+          "type": "List < ItemEntity >",
+          "annotations": []
+        },
+        {
+          "name": "breaker",
+          "type": "Entity",
+          "annotations": [
+            "@Nullable",
+            "@Nullable"
+          ]
+        },
+        {
+          "name": "tool",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Fires the BlockDropsEvent when block drops (items and experience) are determined. If the event is not cancelled, all drops will be added to the world, and then BlockBehaviour.spawnAfterBreak(net.minecraft.world.level.block.state.BlockState, net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos, net.minecraft.world.item.ItemStack, boolean) will be called.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "fireBlockBreak",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "BlockEvent.BreakEvent",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "gameType",
+          "type": "GameType",
+          "annotations": []
+        },
+        {
+          "name": "player",
+          "type": "ServerPlayer",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "state",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Fires BlockEvent.BreakEvent , pre-emptively canceling the event based on the conditions that will cause the block to not be broken anyway. Note that undoing the pre-cancel will not permit breaking the block, since the vanilla conditions will always be checked.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onPlaceItemIntoWorld",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "InteractionResult",
+      "parameters": [
+        {
+          "name": "context",
+          "type": "UseOnContext",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onAnvilChange",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "container",
+          "type": "AnvilMenu",
+          "annotations": []
+        },
+        {
+          "name": "left",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "right",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "outputSlot",
+          "type": "Container",
+          "annotations": []
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "baseCost",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onAnvilRepair",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "output",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "left",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "right",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onGrindstoneChange",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "top",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "bottom",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "outputSlot",
+          "type": "Container",
+          "annotations": []
+        },
+        {
+          "name": "xp",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onGrindstoneTake",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "inputSlots",
+          "type": "Container",
+          "annotations": []
+        },
+        {
+          "name": "access",
+          "type": "ContainerLevelAccess",
+          "annotations": []
+        },
+        {
+          "name": "xpFunction",
+          "type": "Function < Level , Integer >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setCraftingPlayer",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getCraftingPlayer",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "Player",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getCraftingRemainingItem",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "ItemStack",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onPlayerAttackTarget",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "target",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onTravelToDimension",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "dimension",
+          "type": "ResourceKey < Level >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onInteractEntityAt",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "@Nullable InteractionResult",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "entity",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "ray",
+          "type": "HitResult",
+          "annotations": []
+        },
+        {
+          "name": "hand",
+          "type": "InteractionHand",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onInteractEntityAt",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "@Nullable InteractionResult",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "entity",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "vec3d",
+          "type": "Vec3",
+          "annotations": []
+        },
+        {
+          "name": "hand",
+          "type": "InteractionHand",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onInteractEntity",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "@Nullable InteractionResult",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "entity",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "hand",
+          "type": "InteractionHand",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onItemRightClick",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "@Nullable InteractionResult",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "hand",
+          "type": "InteractionHand",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onLeftClickBlock",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "PlayerInteractEvent.LeftClickBlock",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "face",
+          "type": "Direction",
+          "annotations": []
+        },
+        {
+          "name": "action",
+          "type": "ServerboundPlayerActionPacket.Action",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onClientMineHold",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "PlayerInteractEvent.LeftClickBlock",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "face",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onRightClickBlock",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "PlayerInteractEvent.RightClickBlock",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "hand",
+          "type": "InteractionHand",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "hitVec",
+          "type": "BlockHitResult",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onEmptyClick",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "hand",
+          "type": "InteractionHand",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onEmptyLeftClick",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onChangeGameType",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "@Nullable GameType",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "currentGameType",
+          "type": "GameType",
+          "annotations": []
+        },
+        {
+          "name": "newGameType",
+          "type": "GameType",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "lootPoolsCodec",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [
+        "@Internal"
+      ],
+      "return_type": "com.mojang.serialization.Codec< List < LootPool >>",
+      "parameters": [
+        {
+          "name": "nameSetter",
+          "type": "BiConsumer < LootPool , String >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getVanillaFluidType",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "FluidType",
+      "parameters": [
+        {
+          "name": "fluid",
+          "type": "Fluid",
+          "annotations": []
+        }
+      ],
+      "exceptions": [
+        "RuntimeException - if the fluid is not a vanilla one"
+      ],
+      "description": "Returns a vanilla fluid type for the given fluid.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getTagFromVanillaTier",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "TagKey < Block >",
+      "parameters": [
+        {
+          "name": "tier",
+          "type": "Tiers",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onCheckCreativeTabs",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "Collection < CreativeModeTab >",
+      "parameters": [
+        {
+          "name": "vanillaTabs",
+          "type": "CreativeModeTab ...",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "canCropGrow",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "state",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "def",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Checks if a crop can grow by firing CropGrowEvent.Pre .",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "fireCropGrowPost",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "state",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "fireCriticalHit",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "CriticalHitEvent",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "target",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "vanillaCritical",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "damageModifier",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Fires the CriticalHitEvent and returns the resulting event.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "computeModifiedAttributes",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "ItemAttributeModifiers",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "defaultModifiers",
+          "type": "ItemAttributeModifiers",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Hook to fire ItemAttributeModifierEvent . Modders should use ItemStack.forEachModifier(EquipmentSlot, BiConsumer) instead.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getProjectile",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "ItemStack",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "LivingEntity",
+          "annotations": []
+        },
+        {
+          "name": "projectileWeaponItem",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "projectile",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Hook to fire LivingGetProjectileEvent . Returns the ammo to be used.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getDefaultCreatorModId",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "@Nullable String",
+      "parameters": [
+        {
+          "name": "itemStack",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Used as the default implementation of IItemExtension.getCreatorModId(net.minecraft.world.item.ItemStack) . Call that method instead.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onFarmlandTrample",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "state",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "fallDistance",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "entity",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onNoteChange",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "state",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "old",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "_new",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getSerializer",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "@Nullable EntityDataSerializer <?>",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "vanilla",
+          "type": "CrudeIncrementalIntIdentityHashBiMap < EntityDataSerializer <?>>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getSerializerId",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "serializer",
+          "type": "EntityDataSerializer <?>",
+          "annotations": []
+        },
+        {
+          "name": "vanilla",
+          "type": "CrudeIncrementalIntIdentityHashBiMap < EntityDataSerializer <?>>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "canEntityDestroy",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "entity",
+          "type": "LivingEntity",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "modifyLoot",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [
+        "@Deprecated"
+      ],
+      "return_type": "List < ItemStack >",
+      "parameters": [
+        {
+          "name": "list",
+          "type": "List < ItemStack >",
+          "annotations": []
+        },
+        {
+          "name": "context",
+          "type": "LootContext",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "All loot table drops should be passed to this function so that mod added effects (e.g. smelting enchantments) can be processed.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "modifyLoot",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "it.unimi.dsi.fastutil.objects.ObjectArrayList< ItemStack >",
+      "parameters": [
+        {
+          "name": "lootTableId",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "generatedLoot",
+          "type": "it.unimi.dsi.fastutil.objects.ObjectArrayList< ItemStack >",
+          "annotations": []
+        },
+        {
+          "name": "context",
+          "type": "LootContext",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Handles the modification of loot table drops via the registered Global Loot Modifiers, so that custom effects can be processed. All loot-table generated loot should be passed to this function.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getModDataPacks",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "List < String >",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getModDataPacksWithVanilla",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "List < String >",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getAttributesView",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [
+        "@Deprecated"
+      ],
+      "return_type": "Map < EntityType <? extends LivingEntity >, AttributeSupplier >",
+      "parameters": [],
+      "exceptions": [],
+      "description": "FOR INTERNAL USE ONLY, DO NOT CALL DIRECTLY",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "modifyAttributes",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [
+        "@Deprecated"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "FOR INTERNAL USE ONLY, DO NOT CALL DIRECTLY",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onEntityEnterSection",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "packedOldPos",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "packedNewPos",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onShieldBlock",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "ShieldBlockEvent",
+      "parameters": [
+        {
+          "name": "blocker",
+          "type": "LivingEntity",
+          "annotations": []
+        },
+        {
+          "name": "source",
+          "type": "DamageSource",
+          "annotations": []
+        },
+        {
+          "name": "blocked",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onLivingSwapHandItems",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "LivingSwapItemsEvent.Hands",
+      "parameters": [
+        {
+          "name": "livingEntity",
+          "type": "LivingEntity",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "writeAdditionalLevelSaveData",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [
+        "@Internal"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "worldData",
+          "type": "WorldData",
+          "annotations": []
+        },
+        {
+          "name": "levelTag",
+          "type": "CompoundTag",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "readAdditionalLevelSaveData",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [
+        "@Internal"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "rootTag",
+          "type": "CompoundTag",
+          "annotations": []
+        },
+        {
+          "name": "levelDirectory",
+          "type": "LevelStorageSource.LevelDirectory",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "encodeLifecycle",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "String",
+      "parameters": [
+        {
+          "name": "lifecycle",
+          "type": "com.mojang.serialization.Lifecycle",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "parseLifecycle",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "com.mojang.serialization.Lifecycle",
+      "parameters": [
+        {
+          "name": "lifecycle",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "saveMobEffect",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "nbt",
+          "type": "CompoundTag",
+          "annotations": []
+        },
+        {
+          "name": "key",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "effect",
+          "type": "MobEffect",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "loadMobEffect",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "@Nullable MobEffect",
+      "parameters": [
+        {
+          "name": "nbt",
+          "type": "CompoundTag",
+          "annotations": []
+        },
+        {
+          "name": "key",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "fallback",
+          "type": "MobEffect",
+          "annotations": [
+            "@Nullable",
+            "@Nullable"
+          ]
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "shouldSuppressEnderManAnger",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "enderMan",
+          "type": "EnderMan",
+          "annotations": []
+        },
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "mask",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "prefixNamespace",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "String",
+      "parameters": [
+        {
+          "name": "registryKey",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "This method is used to prefix the path, where elements of the associated registry are stored, with their namespace, if it is not minecraft This rules conflicts with equal paths out. If for example the mod fancy_cheese adds a registry named cheeses , but the mod awesome_cheese also adds a registry called cheeses , they are going to have the same path cheeses , just with different namespaces. If additional_cheese wants to add additional cheese to awesome_cheese , but not fancy_cheese , it can not differentiate both. Both paths will look like data/additional_cheese/cheeses . The fix, which is applied here prefixes the path of the registry with the namespace, so fancy_cheese 's registry stores its elements in data/<namespace>/fancy_cheese/cheeses and awesome_cheese 's registry stores its elements in data/namespace/awesome_cheese/cheeses",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "canUseEntitySelectors",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "provider",
+          "type": "SharedSuggestionProvider",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "wrapRegistryLookup",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [
+        "@Internal"
+      ],
+      "return_type": "HolderLookup.RegistryLookup <T>",
+      "parameters": [
+        {
+          "name": "lookup",
+          "type": "HolderLookup.RegistryLookup <T>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onLivingBreathe",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "LivingEntity",
+          "annotations": []
+        },
+        {
+          "name": "consumeAirAmount",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "refillAirAmount",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Handles living entities being underwater. This fires the LivingBreatheEvent and if the entity's air supply is less than or equal to zero also the LivingDrownEvent . Additionally, when the entity is underwater it will dismount if IEntityExtension.canBeRiddenUnderFluidType(FluidType, Entity) returns false.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "markComponentClassAsValid",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "clazz",
+          "type": "Class <?>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Marks a class as being safe to use as a data component . Keep in mind that data components are compared with Object.equals(Object) and hashed with Object.hashCode() . They must also be immutable. Only call this method if the default implementations of Object.equals(Object) and Object.hashCode() are suitable for this class, and if instances of this class are immutable. Typically, this is only the case for singletons such as Block instances.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "validateComponent",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [
+        "@Internal"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "dataComponent",
+          "type": "Object",
+          "annotations": [
+            "@Nullable",
+            "@Nullable"
+          ]
+        }
+      ],
+      "exceptions": [],
+      "description": "Checks that all data components override equals and hashCode.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isPotentialRegistryObject",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "value",
+          "type": "Object",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "overridesEqualsAndHashCode",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "clazz",
+          "type": "Class <?>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onChunkUnload",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "poiManager",
+          "type": "PoiManager",
+          "annotations": []
+        },
+        {
+          "name": "chunkAccess",
+          "type": "ChunkAccess",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "The goal here is to fix the POI memory leak that happens due to SectionStorage.storage field never actually removing POIs long after they become irrelevant. We do it here in chunk unload event so that chunk that are fully unloaded now gets the POI removed from the POI cached storage map.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "canMobEffectBeApplied",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "LivingEntity",
+          "annotations": []
+        },
+        {
+          "name": "effect",
+          "type": "MobEffectInstance",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Checks if a mob effect can be applied to an entity by firing MobEffectEvent.Applicable .",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "resolveLookup",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "@Nullable HolderLookup.RegistryLookup <T>",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "ResourceKey <? extends Registry <T>>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Attempts to resolve a HolderLookup.RegistryLookup using the current global state. Prioritizes the server's lookup, only attempting to retrieve it from the client if the server is unavailable.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/neoforged/neoforge/common/CommonHooks.html"
+}

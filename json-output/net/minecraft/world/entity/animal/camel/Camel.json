@@ -1,0 +1,1535 @@
+{
+  "type": "class",
+  "name": "Camel",
+  "qualified_name": "net.minecraft.world.entity.animal.camel.Camel",
+  "package": "net.minecraft.world.entity.animal.camel",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [
+      "CommandSource",
+      "SyncedDataHolder",
+      "ContainerListener",
+      "Attackable",
+      "EquipmentUser",
+      "HasCustomInventoryScreen",
+      "Leashable",
+      "OwnableEntity",
+      "PlayerRideable",
+      "PlayerRideableJumping",
+      "Saddleable",
+      "Targeting",
+      "EntityAccess",
+      "Nameable",
+      "ScoreHolder",
+      "IAttachmentHolder",
+      "IEntityExtension",
+      "ILivingEntityExtension",
+      "INBTSerializable",
+      "CompoundTag"
+    ],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.neoforged.neoforge.attachment.AttachmentHolder",
+      "net.minecraft.world.entity.Entity",
+      "net.minecraft.world.entity.LivingEntity",
+      "net.minecraft.world.entity.Mob",
+      "net.minecraft.world.entity.PathfinderMob",
+      "net.minecraft.world.entity.AgeableMob",
+      "net.minecraft.world.entity.animal.Animal",
+      "net.minecraft.world.entity.animal.horse.AbstractHorse"
+    ]
+  },
+  "nested_classes": [
+    "Camel.CamelBodyRotationControl",
+    "Camel.CamelLookControl",
+    "Camel.CamelMoveControl"
+  ],
+  "fields": [
+    {
+      "name": "BABY_SCALE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "float",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DASH_COOLDOWN_TICKS",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MAX_HEAD_Y_ROT",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "RUNNING_SPEED_BONUS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "float",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DASH_VERTICAL_MOMENTUM",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "float",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DASH_HORIZONTAL_MOMENTUM",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "float",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DASH_MINIMUM_DURATION_TICKS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SITDOWN_DURATION_TICKS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "STANDUP_DURATION_TICKS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "IDLE_MINIMAL_DURATION_TICKS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SITTING_HEIGHT_DIFFERENCE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "float",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DASH",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "EntityDataAccessor < Boolean >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LAST_POSE_CHANGE_TICK",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "EntityDataAccessor < Long >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sitAnimationState",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "annotations": [],
+      "type": "AnimationState",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sitPoseAnimationState",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "annotations": [],
+      "type": "AnimationState",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sitUpAnimationState",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "annotations": [],
+      "type": "AnimationState",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "idleAnimationState",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "annotations": [],
+      "type": "AnimationState",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dashAnimationState",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "annotations": [],
+      "type": "AnimationState",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SITTING_DIMENSIONS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "EntityDimensions",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dashCooldown",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "idleAnimationTimeout",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "Camel",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "p_248516_",
+          "type": "EntityType <? extends Camel >",
+          "annotations": []
+        },
+        {
+          "name": "p_249295_",
+          "type": "Level",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "addAdditionalSaveData",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_250330_",
+          "type": "CompoundTag",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "addAdditionalSaveData in class AbstractHorse",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "readAdditionalSaveData",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_250781_",
+          "type": "CompoundTag",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "readAdditionalSaveData in class AbstractHorse",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "createAttributes",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "AttributeSupplier.Builder",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "defineSynchedData",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_326213_",
+          "type": "SynchedEntityData.Builder",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "defineSynchedData in class AbstractHorse",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "finalizeSpawn",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "SpawnGroupData",
+      "parameters": [
+        {
+          "name": "p_249190_",
+          "type": "ServerLevelAccessor",
+          "annotations": []
+        },
+        {
+          "name": "p_251264_",
+          "type": "DifficultyInstance",
+          "annotations": []
+        },
+        {
+          "name": "p_250254_",
+          "type": "MobSpawnType",
+          "annotations": []
+        },
+        {
+          "name": "p_249259_",
+          "type": "SpawnGroupData",
+          "annotations": [
+            "@Nullable"
+          ]
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "finalizeSpawn in class AbstractHorse",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "brainProvider",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "Brain.Provider < Camel >",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "brainProvider in class LivingEntity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "registerGoals",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "registerGoals in class AbstractHorse",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "makeBrain",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "Brain <?>",
+      "parameters": [
+        {
+          "name": "p_251586_",
+          "type": "com.mojang.serialization.Dynamic<?>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "makeBrain in class LivingEntity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getDefaultDimensions",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "EntityDimensions",
+      "parameters": [
+        {
+          "name": "p_316664_",
+          "type": "Pose",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getDefaultDimensions in class LivingEntity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "customServerAiStep",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "customServerAiStep in class Animal",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "tick in class AbstractHorse",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setupAnimationStates",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "updateWalkAnimation",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_268362_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "updateWalkAnimation in class LivingEntity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "travel",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_250068_",
+          "type": "Vec3",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "travel in class LivingEntity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "tickRidden",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_278319_",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "p_278301_",
+          "type": "Vec3",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "tickRidden in class AbstractHorse",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "refuseToMove",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getRiddenSpeed",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_278241_",
+          "type": "Player",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getRiddenSpeed in class AbstractHorse",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getRiddenRotation",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "Vec2",
+      "parameters": [
+        {
+          "name": "p_275271_",
+          "type": "LivingEntity",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getRiddenRotation in class AbstractHorse",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getRiddenInput",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "Vec3",
+      "parameters": [
+        {
+          "name": "p_278264_",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "p_278298_",
+          "type": "Vec3",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getRiddenInput in class AbstractHorse",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "canJump",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "canJump in class AbstractHorse",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onPlayerJump",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_249138_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "onPlayerJump in class AbstractHorse",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "canSprint",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "canSprint in class Entity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "executeRidersJump",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_251967_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_275627_",
+          "type": "Vec3",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "executeRidersJump in class AbstractHorse",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isDashing",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setDashing",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_251380_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "handleStartJump",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_249968_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "handleStartJump in class AbstractHorse",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "handleStopJump",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "handleStopJump in class AbstractHorse",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getJumpCooldown",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getAmbientSound",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "SoundEvent",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getAmbientSound in class Mob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getDeathSound",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "SoundEvent",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getDeathSound in class LivingEntity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getHurtSound",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "SoundEvent",
+      "parameters": [
+        {
+          "name": "p_250052_",
+          "type": "DamageSource",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getHurtSound in class LivingEntity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "playStepSound",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_252056_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_251457_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "playStepSound in class AbstractHorse",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isFood",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_248671_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "isFood in class AbstractHorse",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "mobInteract",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "InteractionResult",
+      "parameters": [
+        {
+          "name": "p_249032_",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "p_251004_",
+          "type": "InteractionHand",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "mobInteract in class AbstractHorse",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "handleLeashAtDistance",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_352419_",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "p_352358_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "handleLeashAtDistance in class AbstractHorse",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "canCamelChangePose",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "handleEating",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_249923_",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "p_248995_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "handleEating in class AbstractHorse",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "canPerformRearing",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "canPerformRearing in class AbstractHorse",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "canMate",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_251650_",
+          "type": "Animal",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "canMate in class AbstractHorse",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getBreedOffspring",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "Camel",
+      "parameters": [
+        {
+          "name": "p_251227_",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "p_251047_",
+          "type": "AgeableMob",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getBreedOffspring in class AbstractHorse",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getEatingSound",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "SoundEvent",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getEatingSound in class AbstractHorse",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "actuallyHurt",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_250410_",
+          "type": "DamageSource",
+          "annotations": []
+        },
+        {
+          "name": "p_251451_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "actuallyHurt in class Animal",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getPassengerAttachmentPoint",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "Vec3",
+      "parameters": [
+        {
+          "name": "p_295101_",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "p_294765_",
+          "type": "EntityDimensions",
+          "annotations": []
+        },
+        {
+          "name": "p_294716_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getPassengerAttachmentPoint in class AbstractHorse",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getAgeScale",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "float",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getAgeScale in class LivingEntity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getBodyAnchorAnimationYOffset",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "double",
+      "parameters": [
+        {
+          "name": "p_249228_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_251763_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_296157_",
+          "type": "EntityDimensions",
+          "annotations": []
+        },
+        {
+          "name": "p_296299_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getLeashOffset",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "Vec3",
+      "parameters": [
+        {
+          "name": "p_251477_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getLeashOffset in class Entity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getMaxHeadYRot",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getMaxHeadYRot in class Mob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "canAddPassenger",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_248594_",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "canAddPassenger in class Entity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "sendDebugPackets",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "sendDebugPackets in class Mob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isCamelSitting",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isCamelVisuallySitting",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isInPoseTransition",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isVisuallySittingDown",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "sitDown",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "standUp",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "standUpInstantly",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "resetLastPoseChangeTick",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_248642_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "resetLastPoseChangeTickToFullStand",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_265447_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getPoseTime",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "long",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getSaddleSoundEvent",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "SoundEvent",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onSyncedDataUpdated",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_252215_",
+          "type": "EntityDataAccessor <?>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "onSyncedDataUpdated in class AgeableMob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isTamed",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "isTamed in class AbstractHorse",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "openCustomInventoryScreen",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_248613_",
+          "type": "Player",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "openCustomInventoryScreen in class AbstractHorse",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "createBodyControl",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "BodyRotationControl",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "createBodyControl in class Mob",
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/minecraft/world/entity/animal/camel/Camel.html"
+}

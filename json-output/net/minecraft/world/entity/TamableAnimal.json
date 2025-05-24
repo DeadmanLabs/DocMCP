@@ -1,0 +1,731 @@
+{
+  "type": "class",
+  "name": "TamableAnimal",
+  "qualified_name": "net.minecraft.world.entity.TamableAnimal",
+  "package": "net.minecraft.world.entity",
+  "modifiers": [
+    "public",
+    "abstract",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [
+      "CommandSource",
+      "SyncedDataHolder",
+      "Attackable",
+      "EquipmentUser",
+      "Leashable",
+      "OwnableEntity",
+      "Targeting",
+      "EntityAccess",
+      "Nameable",
+      "ScoreHolder",
+      "IAttachmentHolder",
+      "IEntityExtension",
+      "ILivingEntityExtension",
+      "INBTSerializable",
+      "CompoundTag"
+    ],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.neoforged.neoforge.attachment.AttachmentHolder",
+      "net.minecraft.world.entity.Entity",
+      "net.minecraft.world.entity.LivingEntity",
+      "net.minecraft.world.entity.Mob",
+      "net.minecraft.world.entity.PathfinderMob",
+      "net.minecraft.world.entity.AgeableMob",
+      "net.minecraft.world.entity.animal.Animal"
+    ]
+  },
+  "nested_classes": [
+    "TamableAnimal.TamableAnimalPanicGoal"
+  ],
+  "fields": [
+    {
+      "name": "TELEPORT_WHEN_DISTANCE_IS_SQ",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MIN_HORIZONTAL_DISTANCE_FROM_TARGET_AFTER_TELEPORTING",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MAX_HORIZONTAL_DISTANCE_FROM_TARGET_AFTER_TELEPORTING",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MAX_VERTICAL_DISTANCE_FROM_TARGET_AFTER_TELEPORTING",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_FLAGS_ID",
+      "modifiers": [
+        "protected",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "EntityDataAccessor < Byte >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_OWNERUUID_ID",
+      "modifiers": [
+        "protected",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "EntityDataAccessor < Optional < UUID >>",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "orderedToSit",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "TamableAnimal",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "p_21803_",
+          "type": "EntityType <? extends TamableAnimal >",
+          "annotations": []
+        },
+        {
+          "name": "p_21804_",
+          "type": "Level",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "defineSynchedData",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_326034_",
+          "type": "SynchedEntityData.Builder",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "defineSynchedData in class AgeableMob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "addAdditionalSaveData",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21819_",
+          "type": "CompoundTag",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "addAdditionalSaveData in class Animal",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "readAdditionalSaveData",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21815_",
+          "type": "CompoundTag",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "readAdditionalSaveData in class Animal",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "canBeLeashed",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "canBeLeashed in class Mob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "handleLeashAtDistance",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_352258_",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "p_352278_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "handleLeashAtDistance in class PathfinderMob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "spawnTamingParticles",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21835_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "handleEntityEvent",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21807_",
+          "type": "byte",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "handleEntityEvent in class Animal",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isTame",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setTame",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21836_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_326134_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "applyTamingSideEffects",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isInSittingPose",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setInSittingPose",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21838_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getOwnerUUID",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "UUID",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setOwnerUUID",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21817_",
+          "type": "UUID",
+          "annotations": [
+            "@Nullable"
+          ]
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "tame",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21829_",
+          "type": "Player",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "canAttack",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_21822_",
+          "type": "LivingEntity",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "canAttack in class LivingEntity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isOwnedBy",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_21831_",
+          "type": "LivingEntity",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "wantsToAttack",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_21810_",
+          "type": "LivingEntity",
+          "annotations": []
+        },
+        {
+          "name": "p_21811_",
+          "type": "LivingEntity",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getTeam",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "PlayerTeam",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getTeam in class Entity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isAlliedTo",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_21833_",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "isAlliedTo in class Entity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "die",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21809_",
+          "type": "DamageSource",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "die in class LivingEntity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isOrderedToSit",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setOrderedToSit",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21840_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "tryToTeleportToOwner",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "shouldTryTeleportToOwner",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "teleportToAroundBlockPos",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_350657_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "maybeTeleportTo",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_350930_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_350303_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_350410_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "canTeleportTo",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_350767_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "unableToMoveToOwner",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "canFlyToOwner",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/minecraft/world/entity/TamableAnimal.html"
+}

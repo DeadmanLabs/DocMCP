@@ -1,0 +1,308 @@
+{
+  "type": "class",
+  "name": "C>",
+  "qualified_name": "net.neoforged.neoforge.capabilities.C>",
+  "package": "net.neoforged.neoforge.capabilities",
+  "modifiers": [
+    "public",
+    "final",
+    "class"
+  ],
+  "annotations": [],
+  "description": "A cache for block capabilities, to be used to track capabilities at a specific position, with a specific context. The cache is invalidated when the level is notified of a change via ILevelExtension.invalidateCapabilities(BlockPos) . Instances are automatically cleared by the garbage collector when they are no longer in use.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "capability",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "BlockCapability < T , C >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "level",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ServerLevel",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pos",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "BlockPos",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "context",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "C",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cacheValid",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "true if notifications received by the cache will be forwarded to listener . By default and after each invalidation, this is set to false . Calling getCapability() sets it to true .",
+      "deprecated": false
+    },
+    {
+      "name": "cachedCap",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "T",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canQuery",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "listener",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ICapabilityInvalidationListener",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "BlockCapabilityCache",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "capability",
+          "type": "BlockCapability < T , C >",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "context",
+          "type": "C",
+          "annotations": []
+        },
+        {
+          "name": "isValid",
+          "type": "BooleanSupplier",
+          "annotations": []
+        },
+        {
+          "name": "invalidationListener",
+          "type": "Runnable",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "create",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "BlockCapabilityCache <T, C>",
+      "parameters": [
+        {
+          "name": "capability",
+          "type": "BlockCapability <T, C>",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "context",
+          "type": "C",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Creates a new cache instance and registers it to the level.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "create",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "BlockCapabilityCache <T, C>",
+      "parameters": [
+        {
+          "name": "capability",
+          "type": "BlockCapability <T, C>",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "context",
+          "type": "C",
+          "annotations": []
+        },
+        {
+          "name": "isValid",
+          "type": "BooleanSupplier",
+          "annotations": []
+        },
+        {
+          "name": "invalidationListener",
+          "type": "Runnable",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Creates a new cache instance with an invalidation listener, and registers it to the level. A few details regarding the system: Calling getCapability() from the invalidation listener is not supported, as the block being invalidated might not be ready to be queried again yet. If you receive an invalidation notification, you should wait for some time (e.g. until your own tick) before checking getCapability() again. In general, do not perform any level access for the listener. The listener itself might be in a chunk that is being unloaded, for example. The listener does not receive notifications before getCapability() is called. After each invalidation, getCapability() must be called again to enable further notifications.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "level",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "ServerLevel",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "pos",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "BlockPos",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "context",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "C",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getCapability",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "T",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Gets the capability instance, or null if the capability is not present. If the target position is not loaded, this method will return null .",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/neoforged/neoforge/capabilities/BlockCapabilityCache.html"
+}

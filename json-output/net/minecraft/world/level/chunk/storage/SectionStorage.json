@@ -1,0 +1,572 @@
+{
+  "type": "class",
+  "name": "SectionStorage<R>",
+  "qualified_name": "net.minecraft.world.level.chunk.storage.SectionStorage<R>",
+  "package": "net.minecraft.world.level.chunk.storage",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [
+      "AutoCloseable"
+    ],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "org.slf4j.Logger",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SECTIONS_TAG",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "String",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "simpleRegionStorage",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "SimpleRegionStorage",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "storage",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "it.unimi.dsi.fastutil.longs.Long2ObjectMap< Optional < R >>",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dirty",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "codec",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Function < Runnable , com.mojang.serialization.Codec< R >>",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "factory",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Function < Runnable , R >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registryAccess",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "RegistryAccess",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "errorReporter",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ChunkIOErrorReporter",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "levelHeightAccessor",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "annotations": [],
+      "type": "LevelHeightAccessor",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "SectionStorage",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "p_321814_",
+          "type": "SimpleRegionStorage",
+          "annotations": []
+        },
+        {
+          "name": "p_223510_",
+          "type": "Function < Runnable , com.mojang.serialization.Codec< R >>",
+          "annotations": []
+        },
+        {
+          "name": "p_223511_",
+          "type": "Function < Runnable , R >",
+          "annotations": []
+        },
+        {
+          "name": "p_223515_",
+          "type": "RegistryAccess",
+          "annotations": []
+        },
+        {
+          "name": "p_352357_",
+          "type": "ChunkIOErrorReporter",
+          "annotations": []
+        },
+        {
+          "name": "p_223516_",
+          "type": "LevelHeightAccessor",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "tick",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_63812_",
+          "type": "BooleanSupplier",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "hasWork",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "get",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "Optional < R >",
+      "parameters": [
+        {
+          "name": "p_63819_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getOrLoad",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "Optional < R >",
+      "parameters": [
+        {
+          "name": "p_63824_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "outsideStoredRange",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_156631_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getOrCreate",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "R",
+      "parameters": [
+        {
+          "name": "p_63828_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "readColumn",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_63815_",
+          "type": "ChunkPos",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "tryRead",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "CompletableFuture < Optional < CompoundTag >>",
+      "parameters": [
+        {
+          "name": "p_223533_",
+          "type": "ChunkPos",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "readColumn",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_63802_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_321830_",
+          "type": "RegistryOps < Tag >",
+          "annotations": []
+        },
+        {
+          "name": "p_321530_",
+          "type": "CompoundTag",
+          "annotations": [
+            "@Nullable"
+          ]
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "writeColumn",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_63826_",
+          "type": "ChunkPos",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "writeColumn",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "com.mojang.serialization.Dynamic<T>",
+      "parameters": [
+        {
+          "name": "p_63799_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_63800_",
+          "type": "com.mojang.serialization.DynamicOps<T>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getKey",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "long",
+      "parameters": [
+        {
+          "name": "p_156628_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_156629_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onSectionLoad",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_63813_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setDirty",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_63788_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getVersion",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_63806_",
+          "type": "com.mojang.serialization.Dynamic<?>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "flush",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_63797_",
+          "type": "ChunkPos",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "close",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [
+        "IOException"
+      ],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "remove",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "sectionPosAsLong",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Neo: Removes the data for the given chunk position. See PR #937",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/minecraft/world/level/chunk/storage/SectionStorage.html"
+}

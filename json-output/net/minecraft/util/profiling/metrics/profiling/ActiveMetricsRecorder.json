@@ -1,0 +1,459 @@
+{
+  "type": "class",
+  "name": "ActiveMetricsRecorder",
+  "qualified_name": "net.minecraft.util.profiling.metrics.profiling.ActiveMetricsRecorder",
+  "package": "net.minecraft.util.profiling.metrics.profiling",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [
+      "MetricsRecorder"
+    ],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "PROFILING_MAX_DURATION_SECONDS",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "globalOnReportFinished",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "Consumer < Path >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "deviationsBySampler",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Map < MetricSampler , List < RecordedDeviation >>",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "taskProfiler",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ContinuousProfiler",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ioExecutor",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Executor",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "metricsPersister",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "MetricsPersister",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onProfilingEnd",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Consumer < ProfileResults >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onReportFinished",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Consumer < Path >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "metricsSamplerProvider",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "MetricsSamplerProvider",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "wallTimeSource",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "LongSupplier",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "deadlineNano",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "long",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "currentTick",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "singleTickProfiler",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "ProfileCollector",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "killSwitch",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "thisTickSamplers",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "Set < MetricSampler >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ActiveMetricsRecorder",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "p_146121_",
+          "type": "MetricsSamplerProvider",
+          "annotations": []
+        },
+        {
+          "name": "p_146122_",
+          "type": "LongSupplier",
+          "annotations": []
+        },
+        {
+          "name": "p_146123_",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "p_146124_",
+          "type": "MetricsPersister",
+          "annotations": []
+        },
+        {
+          "name": "p_146125_",
+          "type": "Consumer < ProfileResults >",
+          "annotations": []
+        },
+        {
+          "name": "p_146126_",
+          "type": "Consumer < Path >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "createStarted",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "ActiveMetricsRecorder",
+      "parameters": [
+        {
+          "name": "p_146133_",
+          "type": "MetricsSamplerProvider",
+          "annotations": []
+        },
+        {
+          "name": "p_146134_",
+          "type": "LongSupplier",
+          "annotations": []
+        },
+        {
+          "name": "p_146135_",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "p_146136_",
+          "type": "MetricsPersister",
+          "annotations": []
+        },
+        {
+          "name": "p_146137_",
+          "type": "Consumer < ProfileResults >",
+          "annotations": []
+        },
+        {
+          "name": "p_146138_",
+          "type": "Consumer < Path >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "end",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "cancel",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "startTick",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "endTick",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isRecording",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getProfiler",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "ProfilerFiller",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "verifyStarted",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "scheduleSaveResults",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_146129_",
+          "type": "ProfileResults",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "cleanup",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_216817_",
+          "type": "Collection < MetricSampler >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "registerGlobalCompletionCallback",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_146143_",
+          "type": "Consumer < Path >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/minecraft/util/profiling/metrics/profiling/ActiveMetricsRecorder.html"
+}

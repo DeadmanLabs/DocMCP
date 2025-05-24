@@ -1,0 +1,247 @@
+{
+  "type": "class",
+  "name": "PlayerInteractEvent.RightClickBlock",
+  "qualified_name": "net.neoforged.neoforge.event.entity.player.PlayerInteractEvent.RightClickBlock",
+  "package": "net.neoforged.neoforge.event.entity.player",
+  "modifiers": [
+    "public",
+    "static",
+    "class"
+  ],
+  "annotations": [],
+  "description": "This event is fired on both sides whenever the player right clicks while targeting a block. This event controls which of IItemExtension.onItemUseFirst(net.minecraft.world.item.ItemStack, net.minecraft.world.item.context.UseOnContext) , invalid reference Block#use(BlockState, Level, BlockPos, Player, InteractionHand, BlockHitResult) , and Item.useOn(UseOnContext) will be called. Canceling the event will cause none of the above three to be called. Let result be the first non-pass return value of the above three methods, or pass, if they all pass. Or cancellationResult if the event is cancelled. If result equals InteractionResult.PASS , we proceed to PlayerInteractEvent.RightClickItem . There are various results to this event, see the getters below. Note that handling things differently on the client vs server may cause desynchronizations!",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.neoforged.neoforge.event.entity.EntityEvent",
+      "net.neoforged.neoforge.event.entity.living.LivingEvent",
+      "net.neoforged.neoforge.event.entity.player.PlayerEvent",
+      "net.neoforged.neoforge.event.entity.player.PlayerInteractEvent"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "cancellationResult",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "InteractionResult",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "useBlock",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "TriState",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "useItem",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "TriState",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hitVec",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "BlockHitResult",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "RightClickBlock",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "hand",
+          "type": "InteractionHand",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "hitVec",
+          "type": "BlockHitResult",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getUseBlock",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "TriState",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getUseItem",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "TriState",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getHitVec",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "BlockHitResult",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setUseBlock",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "triggerBlock",
+          "type": "TriState",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "FALSE: invalid reference Block#use(BlockState, Level, BlockPos, Player, InteractionHand, BlockHitResult) will never be called. DEFAULT: invalid reference Block#use(BlockState, Level, BlockPos, Player, InteractionHand, BlockHitResult) will be called if IItemExtension.onItemUseFirst(net.minecraft.world.item.ItemStack, net.minecraft.world.item.context.UseOnContext) passes. Note that default activation can be blocked if the user is sneaking and holding an item that does not return true to IItemExtension.doesSneakBypassUse(net.minecraft.world.item.ItemStack, net.minecraft.world.level.LevelReader, net.minecraft.core.BlockPos, net.minecraft.world.entity.player.Player) . TRUE: Block.updateOrDestroy(BlockState, BlockState, LevelAccessor, BlockPos, int, int) will always be called, unless IItemExtension.onItemUseFirst(net.minecraft.world.item.ItemStack, net.minecraft.world.item.context.UseOnContext) does not pass.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setUseItem",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "triggerItem",
+          "type": "TriState",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "FALSE: Neither Item.useOn(UseOnContext) or IItemExtension.onItemUseFirst(net.minecraft.world.item.ItemStack, net.minecraft.world.item.context.UseOnContext) will be called. DEFAULT: IItemExtension.onItemUseFirst(net.minecraft.world.item.ItemStack, net.minecraft.world.item.context.UseOnContext) will always be called, and Item.useOn(UseOnContext) will be called if the block passes. TRUE: IItemExtension.onItemUseFirst(net.minecraft.world.item.ItemStack, net.minecraft.world.item.context.UseOnContext) will always be called, and Item.useOn(UseOnContext) will be called if the block passes, regardless of cooldowns or emptiness.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setCanceled",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "canceled",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getCancellationResult",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "InteractionResult",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setCancellationResult",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "result",
+          "type": "InteractionResult",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Set the InteractionResult that will be returned to vanilla if the event is cancelled, instead of calling the relevant method of the event.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/neoforged/neoforge/event/entity/player/PlayerInteractEvent.RightClickBlock.html"
+}

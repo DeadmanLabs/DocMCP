@@ -1,0 +1,105 @@
+{
+  "type": "interface",
+  "name": "StructureModifier",
+  "qualified_name": "net.neoforged.neoforge.common.world.StructureModifier",
+  "package": "net.neoforged.neoforge.common.world",
+  "modifiers": [
+    "public",
+    "interface"
+  ],
+  "annotations": [],
+  "description": "JSON-serializable structure modifier. Requires a Codec to deserialize structure modifiers from structure modifier jsons. Structure modifier jsons have the following json format: { \"type\": \"yourmod:yourserializer\", // Indicates a registered structure modifier serializer // Additional fields can be specified here according to the codec } Datapacks can also disable a structure modifier by overriding the json and using \"type\": \"neoforge:none\" .",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": []
+  },
+  "nested_classes": [
+    "StructureModifier.Phase"
+  ],
+  "fields": [
+    {
+      "name": "DIRECT_CODEC",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "com.mojang.serialization.Codec< StructureModifier >",
+      "value": null,
+      "description": "Codec for (de)serializing structure modifiers inline. Mods can use this for data generation.",
+      "deprecated": false
+    },
+    {
+      "name": "REFERENCE_CODEC",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "com.mojang.serialization.Codec< Holder < StructureModifier >>",
+      "value": null,
+      "description": "Codec for referring to structure modifiers by id in other datapack registry files. Can only be used with RegistryOps .",
+      "deprecated": false
+    },
+    {
+      "name": "LIST_CODEC",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "com.mojang.serialization.Codec< HolderSet < StructureModifier >>",
+      "value": null,
+      "description": "Codec for referring to structure modifiers by id, list of id, or tags. Can only be used with RegistryOps .",
+      "deprecated": false
+    }
+  ],
+  "constructors": [],
+  "methods": [
+    {
+      "name": "modify",
+      "modifiers": [],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "structure",
+          "type": "Holder < Structure >",
+          "annotations": []
+        },
+        {
+          "name": "phase",
+          "type": "StructureModifier.Phase",
+          "annotations": []
+        },
+        {
+          "name": "builder",
+          "type": "ModifiableStructureInfo.StructureInfo.Builder",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Modifies the information via the provided structure builder. Allows mob spawns and world-gen features to be added or removed, and climate and client effects to be modified.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "codec",
+      "modifiers": [],
+      "annotations": [],
+      "return_type": "com.mojang.serialization.MapCodec<? extends StructureModifier >",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/neoforged/neoforge/common/world/StructureModifier.html"
+}

@@ -1,0 +1,2144 @@
+{
+  "type": "class",
+  "name": "Block",
+  "qualified_name": "net.minecraft.world.level.block.Block",
+  "package": "net.minecraft.world.level.block",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [
+      "FeatureElement",
+      "ItemLike",
+      "IBlockExtension"
+    ],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraft.world.level.block.state.BlockBehaviour"
+    ]
+  },
+  "nested_classes": [
+    "Block.BlockStatePairKey"
+  ],
+  "fields": [
+    {
+      "name": "CODEC",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "com.mojang.serialization.MapCodec< Block >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "org.slf4j.Logger",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "builtInRegistryHolder",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Holder.Reference < Block >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BLOCK_STATE_REGISTRY",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [
+        "@Deprecated"
+      ],
+      "type": "IdMapper < BlockState >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SHAPE_FULL_BLOCK_CACHE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "com.google.common.cache.LoadingCache< VoxelShape , Boolean >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UPDATE_NEIGHBORS",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UPDATE_CLIENTS",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UPDATE_INVISIBLE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UPDATE_IMMEDIATE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UPDATE_KNOWN_SHAPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UPDATE_SUPPRESS_DROPS",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UPDATE_MOVE_BY_PISTON",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UPDATE_NONE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UPDATE_ALL",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UPDATE_ALL_IMMEDIATE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "INDESTRUCTIBLE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "float",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "INSTANT",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "float",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UPDATE_LIMIT",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stateDefinition",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "annotations": [],
+      "type": "StateDefinition < Block , BlockState >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "defaultBlockState",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "BlockState",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "descriptionId",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "String",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "item",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "Item",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CACHE_SIZE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "OCCLUSION_CACHE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ThreadLocal <it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap< Block.BlockStatePairKey >>",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "capturedDrops",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "List < ItemEntity >",
+      "value": null,
+      "description": "Short-lived holder of dropped item entities. When not null, records all item entities from popResource(Level, Supplier, ItemStack) instead of adding them to the world.",
+      "deprecated": false
+    },
+    {
+      "name": "renderProperties",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "Object",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "Block",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "p_49795_",
+          "type": "BlockBehaviour.Properties",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "codec",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "com.mojang.serialization.MapCodec<? extends Block >",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getId",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_49957_",
+          "type": "BlockState",
+          "annotations": [
+            "@Nullable"
+          ]
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "stateById",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "p_49804_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "byItem",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "Block",
+      "parameters": [
+        {
+          "name": "p_49815_",
+          "type": "Item",
+          "annotations": [
+            "@Nullable"
+          ]
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "pushEntitiesUp",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "p_49898_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_49899_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_238252_",
+          "type": "LevelAccessor",
+          "annotations": []
+        },
+        {
+          "name": "p_49901_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "box",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "VoxelShape",
+      "parameters": [
+        {
+          "name": "p_49797_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_49798_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_49799_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_49800_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_49801_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_49802_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "updateFromNeighbourShapes",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "p_49932_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_49933_",
+          "type": "LevelAccessor",
+          "annotations": []
+        },
+        {
+          "name": "p_49934_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "updateOrDestroy",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_49903_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_49904_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_49905_",
+          "type": "LevelAccessor",
+          "annotations": []
+        },
+        {
+          "name": "p_49906_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_49907_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "updateOrDestroy",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_49909_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_49910_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_49911_",
+          "type": "LevelAccessor",
+          "annotations": []
+        },
+        {
+          "name": "p_49912_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_49913_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_49914_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isExceptionForConnection",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_152464_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "shouldRenderFace",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_152445_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_152446_",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "p_152447_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_152448_",
+          "type": "Direction",
+          "annotations": []
+        },
+        {
+          "name": "p_152449_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "canSupportRigidBlock",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_49937_",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "p_49938_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "canSupportCenter",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_49864_",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "p_49865_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_49866_",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isFaceFull",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_49919_",
+          "type": "VoxelShape",
+          "annotations": []
+        },
+        {
+          "name": "p_49920_",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isShapeFullBlock",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_49917_",
+          "type": "VoxelShape",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "animateTick",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_220827_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_220828_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_220829_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_220830_",
+          "type": "RandomSource",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "destroy",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_49860_",
+          "type": "LevelAccessor",
+          "annotations": []
+        },
+        {
+          "name": "p_49861_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_49862_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getDrops",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "List < ItemStack >",
+      "parameters": [
+        {
+          "name": "p_49870_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_49871_",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "p_49872_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_49873_",
+          "type": "BlockEntity",
+          "annotations": [
+            "@Nullable"
+          ]
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getDrops",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "List < ItemStack >",
+      "parameters": [
+        {
+          "name": "p_49875_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_49876_",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "p_49877_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_49878_",
+          "type": "BlockEntity",
+          "annotations": [
+            "@Nullable"
+          ]
+        },
+        {
+          "name": "p_49879_",
+          "type": "Entity",
+          "annotations": [
+            "@Nullable"
+          ]
+        },
+        {
+          "name": "p_49880_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "dropResources",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_49951_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_49952_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_49953_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "dropResources",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_49893_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_49894_",
+          "type": "LevelAccessor",
+          "annotations": []
+        },
+        {
+          "name": "p_49895_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_49896_",
+          "type": "BlockEntity",
+          "annotations": [
+            "@Nullable"
+          ]
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "dropResources",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_49882_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_49883_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_49884_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_49885_",
+          "type": "BlockEntity",
+          "annotations": [
+            "@Nullable"
+          ]
+        },
+        {
+          "name": "p_49886_",
+          "type": "Entity",
+          "annotations": [
+            "@Nullable"
+          ]
+        },
+        {
+          "name": "p_49887_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "popResource",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_49841_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_49842_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_49843_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "popResourceFromFace",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_152436_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_152437_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_152438_",
+          "type": "Direction",
+          "annotations": []
+        },
+        {
+          "name": "p_152439_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "popResource",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_152441_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_152442_",
+          "type": "Supplier < ItemEntity >",
+          "annotations": []
+        },
+        {
+          "name": "p_152443_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "popExperience",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_49806_",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "p_49807_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_49808_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getExplosionResistance",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Deprecated"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "wasExploded",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_49844_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_49845_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_49846_",
+          "type": "Explosion",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "stepOn",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_152431_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_152432_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_152433_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_152434_",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getStateForPlacement",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "p_49820_",
+          "type": "BlockPlaceContext",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "playerDestroy",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_49827_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_49828_",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "p_49829_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_49830_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_49831_",
+          "type": "BlockEntity",
+          "annotations": [
+            "@Nullable"
+          ]
+        },
+        {
+          "name": "p_49832_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setPlacedBy",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_49847_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_49848_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_49849_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_49850_",
+          "type": "LivingEntity",
+          "annotations": [
+            "@Nullable"
+          ]
+        },
+        {
+          "name": "p_49851_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isPossibleToRespawnInThis",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_279289_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getName",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "MutableComponent",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getDescriptionId",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "String",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "fallOn",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_152426_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_152427_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_152428_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_152429_",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "p_152430_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "updateEntityAfterFallOn",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_49821_",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "p_49822_",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getCloneItemStack",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Deprecated"
+      ],
+      "return_type": "ItemStack",
+      "parameters": [
+        {
+          "name": "p_304395_",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "p_49824_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_49825_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getFriction",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "float",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getSpeedFactor",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "float",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getJumpFactor",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "float",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "spawnDestroyParticles",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_152422_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_152423_",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "p_152424_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_152425_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "playerWillDestroy",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "p_49852_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_49853_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_49854_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_49855_",
+          "type": "Player",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "handlePrecipitation",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_152450_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_152451_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_152452_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_152453_",
+          "type": "Biome.Precipitation",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "dropFromExplosion",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Deprecated"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_49826_",
+          "type": "Explosion",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "createBlockStateDefinition",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_49915_",
+          "type": "StateDefinition.Builder < Block , BlockState >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getStateDefinition",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "StateDefinition < Block , BlockState >",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "registerDefaultState",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_49960_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "defaultBlockState",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "annotations": [],
+      "return_type": "BlockState",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "withPropertiesOf",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "annotations": [],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "p_152466_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "copyProperty",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "p_152455_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_152456_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_152457_",
+          "type": "Property <T>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "asItem",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "Item",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "hasDynamicShape",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "toString",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "String",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "toString in class Object",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "appendHoverText",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_49816_",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "p_339606_",
+          "type": "Item.TooltipContext",
+          "annotations": []
+        },
+        {
+          "name": "p_49818_",
+          "type": "List < Component >",
+          "annotations": []
+        },
+        {
+          "name": "p_49819_",
+          "type": "TooltipFlag",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "asBlock",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "Block",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getShapeForEachState",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "com.google.common.collect.ImmutableMap< BlockState , VoxelShape >",
+      "parameters": [
+        {
+          "name": "p_152459_",
+          "type": "Function < BlockState , VoxelShape >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "beginCapturingDrops",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Initializes capturedDrops , starting the drop capture process. Must only be called on the server thread.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "stopCapturingDrops",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "List < ItemEntity >",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Ends the drop capture process by setting capturedDrops to null and returning the old list. Must only be called on the server thread.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getRenderPropertiesInternal",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "Object",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "initClient",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "initializeClient",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "consumer",
+          "type": "Consumer < IClientBlockExtensions >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "canSustainPlant",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "world",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "facing",
+          "type": "Direction",
+          "annotations": []
+        },
+        {
+          "name": "plantable",
+          "type": "IPlantable",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Description copied from interface: IBlockExtension",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "builtInRegistryHolder",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Deprecated"
+      ],
+      "return_type": "Holder.Reference < Block >",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "tryDropExperience",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_220823_",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "p_220824_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_220825_",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "p_220826_",
+          "type": "IntProvider",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/minecraft/world/level/block/Block.html"
+}

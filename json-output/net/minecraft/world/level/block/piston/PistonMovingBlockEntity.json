@@ -1,0 +1,853 @@
+{
+  "type": "class",
+  "name": "PistonMovingBlockEntity",
+  "qualified_name": "net.minecraft.world.level.block.piston.PistonMovingBlockEntity",
+  "package": "net.minecraft.world.level.block.piston",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [
+      "IAttachmentHolder",
+      "IBlockEntityExtension"
+    ],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.neoforged.neoforge.attachment.AttachmentHolder",
+      "net.minecraft.world.level.block.entity.BlockEntity"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "TICKS_TO_EXTEND",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PUSH_OFFSET",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "double",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "TICK_MOVEMENT",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "double",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "movedState",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "BlockState",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "direction",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "Direction",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "extending",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isSourcePiston",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NOCLIP",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ThreadLocal < Direction >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "progress",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "float",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "progressO",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "float",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastTicked",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "long",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "deathTicks",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "PistonMovingBlockEntity",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "p_155901_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_155902_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PistonMovingBlockEntity",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "p_155904_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_155905_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_155906_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_155907_",
+          "type": "Direction",
+          "annotations": []
+        },
+        {
+          "name": "p_155908_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_155909_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getUpdateTag",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "CompoundTag",
+      "parameters": [
+        {
+          "name": "p_324521_",
+          "type": "HolderLookup.Provider",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getUpdateTag in class BlockEntity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isExtending",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getDirection",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "Direction",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isSourcePiston",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getProgress",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_60351_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getXOff",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_60381_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getYOff",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_60386_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getZOff",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_60389_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getExtendedProgress",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_60391_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getCollisionRelatedBlockState",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "BlockState",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "moveCollidedEntities",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_155911_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_155912_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_155913_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_155914_",
+          "type": "PistonMovingBlockEntity",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "moveEntityByPiston",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_60372_",
+          "type": "Direction",
+          "annotations": []
+        },
+        {
+          "name": "p_60373_",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "p_60374_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_60375_",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "moveStuckEntities",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_155932_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_155933_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_155934_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_155935_",
+          "type": "PistonMovingBlockEntity",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "matchesStickyCritera",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_287782_",
+          "type": "AABB",
+          "annotations": []
+        },
+        {
+          "name": "p_287720_",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "p_287775_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isStickyForEntities",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getMovementDirection",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "Direction",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getMovement",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "double",
+      "parameters": [
+        {
+          "name": "p_60368_",
+          "type": "AABB",
+          "annotations": []
+        },
+        {
+          "name": "p_60369_",
+          "type": "Direction",
+          "annotations": []
+        },
+        {
+          "name": "p_60370_",
+          "type": "AABB",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "moveByPositionAndProgress",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "AABB",
+      "parameters": [
+        {
+          "name": "p_155926_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_155927_",
+          "type": "AABB",
+          "annotations": []
+        },
+        {
+          "name": "p_155928_",
+          "type": "PistonMovingBlockEntity",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "fixEntityWithinPistonBase",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_155921_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_155922_",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "p_155923_",
+          "type": "Direction",
+          "annotations": []
+        },
+        {
+          "name": "p_155924_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getMovedState",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "BlockState",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "finalTick",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_155916_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_155917_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_155918_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_155919_",
+          "type": "PistonMovingBlockEntity",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "loadAdditional",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_155930_",
+          "type": "CompoundTag",
+          "annotations": []
+        },
+        {
+          "name": "p_324214_",
+          "type": "HolderLookup.Provider",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "loadAdditional in class BlockEntity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "saveAdditional",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_187530_",
+          "type": "CompoundTag",
+          "annotations": []
+        },
+        {
+          "name": "p_323923_",
+          "type": "HolderLookup.Provider",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "saveAdditional in class BlockEntity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getCollisionShape",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "VoxelShape",
+      "parameters": [
+        {
+          "name": "p_60357_",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "p_60358_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getLastTicked",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "long",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setLevel",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_250671_",
+          "type": "Level",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "setLevel in class BlockEntity",
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/minecraft/world/level/block/piston/PistonMovingBlockEntity.html"
+}

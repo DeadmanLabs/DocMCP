@@ -1,0 +1,204 @@
+{
+  "type": "class",
+  "name": "AttachmentType<T>",
+  "qualified_name": "net.neoforged.neoforge.attachment.AttachmentType<T>",
+  "package": "net.neoforged.neoforge.attachment",
+  "modifiers": [
+    "public",
+    "final",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Represents a data attachment type: some data that can be added to any object implementing IAttachmentHolder . Data attachment types must be registered to the registry . BlockEntity -exclusive behavior: Modifications to attachments should be followed by a call to BlockEntity.setChanged() . Entity -exclusive behavior: Serializable entity attachments are not copied on death by default (but they are copied when returning from the end). Serializable entity attachments can opt into copying on death via AttachmentType.Builder.copyOnDeath() . ItemStack -exclusive behavior: Serializable item stack attachments are synced between the server and the client. Serializable item stack attachments are copied when an item stack is copied. Serializable item stack attachments must match for item stack comparison to succeed. Level -exclusive behavior: (nothing) ChunkAccess -exclusive behavior: Modifications to attachments should be followed by a call to ChunkAccess.setUnsaved(boolean) . Serializable attachments are copied from a ProtoChunk to a LevelChunk on promotion.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [
+    "AttachmentType.Builder"
+  ],
+  "fields": [
+    {
+      "name": "defaultValueSupplier",
+      "modifiers": [
+        "final"
+      ],
+      "annotations": [],
+      "type": "Function < IAttachmentHolder , T >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "serializer",
+      "modifiers": [
+        "final"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "@Nullable IAttachmentSerializer <?, T >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "copyOnDeath",
+      "modifiers": [
+        "final"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "copyHandler",
+      "modifiers": [
+        "final"
+      ],
+      "annotations": [],
+      "type": "IAttachmentCopyHandler < T >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "AttachmentType",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "builder",
+          "type": "AttachmentType.Builder < T >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "defaultCopyHandler",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "IAttachmentCopyHandler <T>",
+      "parameters": [
+        {
+          "name": "serializer",
+          "type": "IAttachmentSerializer <H, T>",
+          "annotations": [
+            "@Nullable",
+            "@Nullable"
+          ]
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "builder",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "AttachmentType.Builder <T>",
+      "parameters": [
+        {
+          "name": "defaultValueSupplier",
+          "type": "Supplier <T>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Creates a builder for an attachment type. See builder(Function) for attachments that want to capture a reference to their holder.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "builder",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "AttachmentType.Builder <T>",
+      "parameters": [
+        {
+          "name": "defaultValueConstructor",
+          "type": "Function < IAttachmentHolder , T>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Creates a builder for an attachment type. This overload allows capturing a reference to the IAttachmentHolder for the attachment. To obtain a specific subtype, the holder can be cast. If the holder is of the wrong type, the constructor should throw an exception. See builder(Supplier) for an overload that does not capture the holder.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "serializable",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "AttachmentType.Builder <T>",
+      "parameters": [
+        {
+          "name": "defaultValueSupplier",
+          "type": "Supplier <T>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Create a builder for an attachment type that uses INBTSerializable for serialization. Other kinds of serialization can be implemented using builder(Supplier) and AttachmentType.Builder.serialize(IAttachmentSerializer) . See serializable(Function) for attachments that want to capture a reference to their holder.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "serializable",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "AttachmentType.Builder <T>",
+      "parameters": [
+        {
+          "name": "defaultValueConstructor",
+          "type": "Function < IAttachmentHolder , T>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Create a builder for an attachment type that uses INBTSerializable for serialization. Other kinds of serialization can be implemented using builder(Supplier) and AttachmentType.Builder.serialize(IAttachmentSerializer) . This overload allows capturing a reference to the IAttachmentHolder for the attachment. To obtain a specific subtype, the holder can be cast. If the holder is of the wrong type, the constructor should throw an exception. See serializable(Supplier) for an overload that does not capture the holder.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/neoforged/neoforge/attachment/AttachmentType.html"
+}

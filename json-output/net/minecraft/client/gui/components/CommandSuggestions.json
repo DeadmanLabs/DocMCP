@@ -1,0 +1,832 @@
+{
+  "type": "class",
+  "name": "CommandSuggestions",
+  "qualified_name": "net.minecraft.client.gui.components.CommandSuggestions",
+  "package": "net.minecraft.client.gui.components",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [
+    "CommandSuggestions.SuggestionsList"
+  ],
+  "fields": [
+    {
+      "name": "WHITESPACE_PATTERN",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Pattern",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UNPARSED_STYLE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Style",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LITERAL_STYLE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Style",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ARGUMENT_STYLES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "List < Style >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "minecraft",
+      "modifiers": [
+        "final"
+      ],
+      "annotations": [],
+      "type": "Minecraft",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "screen",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Screen",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "input",
+      "modifiers": [
+        "final"
+      ],
+      "annotations": [],
+      "type": "EditBox",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "font",
+      "modifiers": [
+        "final"
+      ],
+      "annotations": [],
+      "type": "Font",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "commandsOnly",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onlyShowIfCursorPastError",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lineStartOffset",
+      "modifiers": [
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suggestionLineLimit",
+      "modifiers": [
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "anchorToBottom",
+      "modifiers": [
+        "final"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fillColor",
+      "modifiers": [
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "commandUsage",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "List < FormattedCharSequence >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "commandUsagePosition",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "commandUsageWidth",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "currentParse",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "com.mojang.brigadier.ParseResults< SharedSuggestionProvider >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pendingSuggestions",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suggestions",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "CommandSuggestions.SuggestionsList",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "allowSuggestions",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "keepSuggestions",
+      "modifiers": [],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "allowHiding",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "CommandSuggestions",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "p_93871_",
+          "type": "Minecraft",
+          "annotations": []
+        },
+        {
+          "name": "p_93872_",
+          "type": "Screen",
+          "annotations": []
+        },
+        {
+          "name": "p_93873_",
+          "type": "EditBox",
+          "annotations": []
+        },
+        {
+          "name": "p_93874_",
+          "type": "Font",
+          "annotations": []
+        },
+        {
+          "name": "p_93875_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_93876_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_93877_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_93878_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_93879_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_93880_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "setAllowSuggestions",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_93923_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setAllowHiding",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_302228_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "keyPressed",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_93889_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_93890_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_93891_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "mouseScrolled",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_93883_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "mouseClicked",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_93885_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_93886_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_93887_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "showSuggestions",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_93931_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isVisible",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getUsageNarration",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "Component",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "hide",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "sortSuggestions",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "List <com.mojang.brigadier.suggestion.Suggestion>",
+      "parameters": [
+        {
+          "name": "p_93899_",
+          "type": "com.mojang.brigadier.suggestion.Suggestions",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "updateCommandInfo",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getLastWordIndex",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_93913_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getExceptionMessage",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "FormattedCharSequence",
+      "parameters": [
+        {
+          "name": "p_93897_",
+          "type": "com.mojang.brigadier.exceptions.CommandSyntaxException",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "updateUsageInfo",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "fillNodeUsage",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_289002_",
+          "type": "ChatFormatting",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "formatChat",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "FormattedCharSequence",
+      "parameters": [
+        {
+          "name": "p_93915_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_93916_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "calculateSuggestionSuffix",
+      "modifiers": [
+        "static"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "String",
+      "parameters": [
+        {
+          "name": "p_93928_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_93929_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "formatText",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "FormattedCharSequence",
+      "parameters": [
+        {
+          "name": "p_93893_",
+          "type": "com.mojang.brigadier.ParseResults< SharedSuggestionProvider >",
+          "annotations": []
+        },
+        {
+          "name": "p_93894_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_93895_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "render",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_282650_",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "p_282266_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_281963_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "renderSuggestions",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_283503_",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "p_281628_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_282260_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "renderUsage",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_282763_",
+          "type": "GuiGraphics",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getNarrationMessage",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "Component",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/minecraft/client/gui/components/CommandSuggestions.html"
+}

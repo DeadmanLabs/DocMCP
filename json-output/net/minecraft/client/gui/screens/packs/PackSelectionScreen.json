@@ -1,0 +1,566 @@
+{
+  "type": "class",
+  "name": "PackSelectionScreen",
+  "qualified_name": "net.minecraft.client.gui.screens.packs.PackSelectionScreen",
+  "package": "net.minecraft.client.gui.screens.packs",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [
+      "ContainerEventHandler",
+      "GuiEventListener",
+      "Renderable",
+      "TabOrderedElement"
+    ],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraft.client.gui.components.events.AbstractContainerEventHandler",
+      "net.minecraft.client.gui.screens.Screen"
+    ]
+  },
+  "nested_classes": [
+    "PackSelectionScreen.Watcher"
+  ],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "org.slf4j.Logger",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "AVAILABLE_TITLE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SELECTED_TITLE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "OPEN_PACK_FOLDER_TITLE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LIST_WIDTH",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DRAG_AND_DROP",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DIRECTORY_BUTTON_TOOLTIP",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "RELOAD_COOLDOWN",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DEFAULT_ICON",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceLocation",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "layout",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "HeaderAndFooterLayout",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "model",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "PackSelectionModel",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "watcher",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "PackSelectionScreen.Watcher",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ticksToReload",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "long",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "availablePackList",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "TransferableSelectionList",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "selectedPackList",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "TransferableSelectionList",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "packDir",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Path",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "doneButton",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "Button",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "packIcons",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Map < String , ResourceLocation >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "PackSelectionScreen",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "p_275398_",
+          "type": "PackRepository",
+          "annotations": []
+        },
+        {
+          "name": "p_275659_",
+          "type": "Consumer < PackRepository >",
+          "annotations": []
+        },
+        {
+          "name": "p_275522_",
+          "type": "Path",
+          "annotations": []
+        },
+        {
+          "name": "p_275337_",
+          "type": "Component",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "onClose",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "onClose in class Screen",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "closeWatcher",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "init",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "init in class Screen",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "repositionElements",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "repositionElements in class Screen",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "tick in class Screen",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "populateLists",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "updateList",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_100014_",
+          "type": "TransferableSelectionList",
+          "annotations": []
+        },
+        {
+          "name": "p_100015_",
+          "type": "Stream < PackSelectionModel.Entry >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "updateFocus",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_265419_",
+          "type": "TransferableSelectionList",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "clearSelected",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "reload",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "copyPacks",
+      "modifiers": [
+        "protected",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_100000_",
+          "type": "Minecraft",
+          "annotations": []
+        },
+        {
+          "name": "p_100001_",
+          "type": "List < Path >",
+          "annotations": []
+        },
+        {
+          "name": "p_100002_",
+          "type": "Path",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onFilesDrop",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_100029_",
+          "type": "List < Path >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "onFilesDrop in class Screen",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "extractPackNames",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "Stream < String >",
+      "parameters": [
+        {
+          "name": "p_296218_",
+          "type": "Collection < Path >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "loadPackIcon",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "ResourceLocation",
+      "parameters": [
+        {
+          "name": "p_100017_",
+          "type": "TextureManager",
+          "annotations": []
+        },
+        {
+          "name": "p_100018_",
+          "type": "Pack",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getPackIcon",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "ResourceLocation",
+      "parameters": [
+        {
+          "name": "p_99990_",
+          "type": "Pack",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/minecraft/client/gui/screens/packs/PackSelectionScreen.html"
+}

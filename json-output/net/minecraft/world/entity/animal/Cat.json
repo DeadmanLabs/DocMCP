@@ -1,0 +1,976 @@
+{
+  "type": "class",
+  "name": "Cat",
+  "qualified_name": "net.minecraft.world.entity.animal.Cat",
+  "package": "net.minecraft.world.entity.animal",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [
+      "CommandSource",
+      "SyncedDataHolder",
+      "Attackable",
+      "EquipmentUser",
+      "Leashable",
+      "OwnableEntity",
+      "Targeting",
+      "VariantHolder",
+      "Holder",
+      "CatVariant",
+      "EntityAccess",
+      "Nameable",
+      "ScoreHolder",
+      "IAttachmentHolder",
+      "IEntityExtension",
+      "ILivingEntityExtension",
+      "INBTSerializable",
+      "CompoundTag"
+    ],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.neoforged.neoforge.attachment.AttachmentHolder",
+      "net.minecraft.world.entity.Entity",
+      "net.minecraft.world.entity.LivingEntity",
+      "net.minecraft.world.entity.Mob",
+      "net.minecraft.world.entity.PathfinderMob",
+      "net.minecraft.world.entity.AgeableMob",
+      "net.minecraft.world.entity.animal.Animal",
+      "net.minecraft.world.entity.TamableAnimal"
+    ]
+  },
+  "nested_classes": [
+    "Cat.CatAvoidEntityGoal",
+    "Cat.CatRelaxOnOwnerGoal",
+    "Cat.CatTemptGoal"
+  ],
+  "fields": [
+    {
+      "name": "TEMPT_SPEED_MOD",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "double",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "WALK_SPEED_MOD",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "double",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SPRINT_SPEED_MOD",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "double",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_VARIANT_ID",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "EntityDataAccessor < Holder < CatVariant >>",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "IS_LYING",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "EntityDataAccessor < Boolean >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "RELAX_STATE_ONE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "EntityDataAccessor < Boolean >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_COLLAR_COLOR",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "EntityDataAccessor < Integer >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DEFAULT_VARIANT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceKey < CatVariant >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "avoidPlayersGoal",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "Cat.CatAvoidEntityGoal < Player >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "temptGoal",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "TemptGoal",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lieDownAmount",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "float",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lieDownAmountO",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "float",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lieDownAmountTail",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "float",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lieDownAmountOTail",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "float",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "relaxStateOneAmount",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "float",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "relaxStateOneAmountO",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "float",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "Cat",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "p_28114_",
+          "type": "EntityType <? extends Cat >",
+          "annotations": []
+        },
+        {
+          "name": "p_28115_",
+          "type": "Level",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getTextureId",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "ResourceLocation",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "registerGoals",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "registerGoals in class Mob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getVariant",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "Holder < CatVariant >",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setVariant",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_335581_",
+          "type": "Holder < CatVariant >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setLying",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_28182_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isLying",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setRelaxStateOne",
+      "modifiers": [],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_28186_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isRelaxStateOne",
+      "modifiers": [],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getCollarColor",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "DyeColor",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setCollarColor",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_28132_",
+          "type": "DyeColor",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "defineSynchedData",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_325925_",
+          "type": "SynchedEntityData.Builder",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "defineSynchedData in class TamableAnimal",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "addAdditionalSaveData",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_28156_",
+          "type": "CompoundTag",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "addAdditionalSaveData in class TamableAnimal",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "readAdditionalSaveData",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_28142_",
+          "type": "CompoundTag",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "readAdditionalSaveData in class TamableAnimal",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "customServerAiStep",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "customServerAiStep in class Animal",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getAmbientSound",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "SoundEvent",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getAmbientSound in class Mob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getAmbientSoundInterval",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getAmbientSoundInterval in class Animal",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "hiss",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getHurtSound",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "SoundEvent",
+      "parameters": [
+        {
+          "name": "p_28160_",
+          "type": "DamageSource",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getHurtSound in class LivingEntity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getDeathSound",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "SoundEvent",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getDeathSound in class LivingEntity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "createAttributes",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "AttributeSupplier.Builder",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "usePlayerItem",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_148866_",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "p_148867_",
+          "type": "InteractionHand",
+          "annotations": []
+        },
+        {
+          "name": "p_148868_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "usePlayerItem in class Animal",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "tick in class Mob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "handleLieDown",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "updateLieDownAmount",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "updateRelaxStateOneAmount",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getLieDownAmount",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_28184_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getLieDownAmountTail",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_28188_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getRelaxStateOneAmount",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_28117_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getBreedOffspring",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "Cat",
+      "parameters": [
+        {
+          "name": "p_148870_",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "p_148871_",
+          "type": "AgeableMob",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "canMate",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_28127_",
+          "type": "Animal",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "canMate in class Animal",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "finalizeSpawn",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "SpawnGroupData",
+      "parameters": [
+        {
+          "name": "p_28134_",
+          "type": "ServerLevelAccessor",
+          "annotations": []
+        },
+        {
+          "name": "p_28135_",
+          "type": "DifficultyInstance",
+          "annotations": []
+        },
+        {
+          "name": "p_28136_",
+          "type": "MobSpawnType",
+          "annotations": []
+        },
+        {
+          "name": "p_28137_",
+          "type": "SpawnGroupData",
+          "annotations": [
+            "@Nullable"
+          ]
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "finalizeSpawn in class AgeableMob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "mobInteract",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "InteractionResult",
+      "parameters": [
+        {
+          "name": "p_28153_",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "p_28154_",
+          "type": "InteractionHand",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "mobInteract in class Animal",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isFood",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_28177_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "removeWhenFarAway",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_28174_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "removeWhenFarAway in class Animal",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setTame",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_325911_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_326459_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "setTame in class TamableAnimal",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "reassessTameGoals",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "tryToTame",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_333858_",
+          "type": "Player",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isSteppingCarefully",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "isSteppingCarefully in class Entity",
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/minecraft/world/entity/animal/Cat.html"
+}

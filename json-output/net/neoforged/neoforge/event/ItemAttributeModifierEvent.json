@@ -1,0 +1,300 @@
+{
+  "type": "class",
+  "name": "ItemAttributeModifierEvent",
+  "qualified_name": "net.neoforged.neoforge.event.ItemAttributeModifierEvent",
+  "package": "net.neoforged.neoforge.event",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "This event is fired when the attributes for an item stack are queried (for any reason) through IItemStackExtension.getAttributeModifiers() . This event is fired regardless of if the stack has DataComponents.ATTRIBUTE_MODIFIERS or not. If your attribute should be ignored when attributes are overridden, you can check for the presence of the component. This event may be fired on both the logical server and logical client.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [
+    "ItemAttributeModifierEvent.ItemAttributeModifiersBuilder"
+  ],
+  "fields": [
+    {
+      "name": "stack",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ItemStack",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "defaultModifiers",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ItemAttributeModifiers",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "builder",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "ItemAttributeModifierEvent.ItemAttributeModifiersBuilder",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ItemAttributeModifierEvent",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Internal"
+      ],
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "defaultModifiers",
+          "type": "ItemAttributeModifiers",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getItemStack",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "ItemStack",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Returns the item stack whose attribute modifiers are being computed.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getDefaultModifiers",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "ItemAttributeModifiers",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Returns the default attribute modifiers before changes made by the event.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getModifiers",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "List < ItemAttributeModifiers.Entry >",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Returns an unmodifiable view of the attribute modifier entries. Do not use the returned value to create an ItemAttributeModifiers since the underlying list is not immutable. If you need an ItemAttributeModifiers , you may need to call build()",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "addModifier",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "attribute",
+          "type": "Holder < Attribute >",
+          "annotations": []
+        },
+        {
+          "name": "modifier",
+          "type": "AttributeModifier",
+          "annotations": []
+        },
+        {
+          "name": "slot",
+          "type": "EquipmentSlotGroup",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Adds a new attribute modifier to the given stack. Two modifiers with the same id may not exist for the same attribute, and this method will fail if one exists.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "removeModifier",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "attribute",
+          "type": "Holder < Attribute >",
+          "annotations": []
+        },
+        {
+          "name": "id",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Removes an attribute modifier for the target attribute by id",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "replaceModifier",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "attribute",
+          "type": "Holder < Attribute >",
+          "annotations": []
+        },
+        {
+          "name": "modifier",
+          "type": "AttributeModifier",
+          "annotations": []
+        },
+        {
+          "name": "slot",
+          "type": "EquipmentSlotGroup",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Adds a new attribute modifier to the given stack, optionally replacing any existing modifiers with the same id.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "removeIf",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "condition",
+          "type": "Predicate < ItemAttributeModifiers.Entry >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Removes modifiers based on a condition.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "removeAllModifiersFor",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "attribute",
+          "type": "Holder < Attribute >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Removes all modifiers for the given attribute.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "clearModifiers",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Removes all modifiers for all attributes.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "build",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "ItemAttributeModifiers",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Builds a new ItemAttributeModifiers with the results of this event, returning the default modifiers if no changes were made.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getBuilder",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "ItemAttributeModifierEvent.ItemAttributeModifiersBuilder",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Returns the builder used for adjusting the attribute modifiers, creating it if it does not already exist.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/neoforged/neoforge/event/ItemAttributeModifierEvent.html"
+}

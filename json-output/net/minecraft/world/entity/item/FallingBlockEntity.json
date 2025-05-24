@@ -1,0 +1,655 @@
+{
+  "type": "class",
+  "name": "FallingBlockEntity",
+  "qualified_name": "net.minecraft.world.entity.item.FallingBlockEntity",
+  "package": "net.minecraft.world.entity.item",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [
+      "CommandSource",
+      "SyncedDataHolder",
+      "EntityAccess",
+      "Nameable",
+      "ScoreHolder",
+      "IAttachmentHolder",
+      "IEntityExtension",
+      "INBTSerializable",
+      "CompoundTag"
+    ],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.neoforged.neoforge.attachment.AttachmentHolder",
+      "net.minecraft.world.entity.Entity"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "org.slf4j.Logger",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blockState",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "BlockState",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "time",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dropItem",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cancelDrop",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hurtEntities",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fallDamageMax",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fallDamagePerDistance",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "float",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blockData",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "CompoundTag",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "forceTickAfterTeleportToDuplicate",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_START_POS",
+      "modifiers": [
+        "protected",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "EntityDataAccessor < BlockPos >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "FallingBlockEntity",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "p_31950_",
+          "type": "EntityType <? extends FallingBlockEntity >",
+          "annotations": []
+        },
+        {
+          "name": "p_31951_",
+          "type": "Level",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "FallingBlockEntity",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "p_31953_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_31954_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_31955_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_31956_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_31957_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "fall",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "FallingBlockEntity",
+      "parameters": [
+        {
+          "name": "p_201972_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_201973_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_201974_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isAttackable",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "isAttackable in class Entity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setStartPos",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_31960_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getStartPos",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "BlockPos",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getMovementEmission",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "Entity.MovementEmission",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getMovementEmission in class Entity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "defineSynchedData",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_326465_",
+          "type": "SynchedEntityData.Builder",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isPickable",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "isPickable in class Entity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getDefaultGravity",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "double",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getDefaultGravity in class Entity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "tick in class Entity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "callOnBrokenAfterFall",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_149651_",
+          "type": "Block",
+          "annotations": []
+        },
+        {
+          "name": "p_149652_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "causeFallDamage",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_149643_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_149644_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_149645_",
+          "type": "DamageSource",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "causeFallDamage in class Entity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "addAdditionalSaveData",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_31973_",
+          "type": "CompoundTag",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "readAdditionalSaveData",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_31964_",
+          "type": "CompoundTag",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setHurtsEntities",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_149657_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_149658_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "disableDrop",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "displayFireAnimation",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "displayFireAnimation in class Entity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "fillCrashReportCategory",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_31962_",
+          "type": "CrashReportCategory",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "fillCrashReportCategory in class Entity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getBlockState",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "BlockState",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getTypeName",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "Component",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getTypeName in class Entity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onlyOpCanSetNbt",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "onlyOpCanSetNbt in class Entity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getAddEntityPacket",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "Packet < ClientGamePacketListener >",
+      "parameters": [
+        {
+          "name": "p_352287_",
+          "type": "ServerEntity",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getAddEntityPacket in class Entity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "recreateFromPacket",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_149654_",
+          "type": "ClientboundAddEntityPacket",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "recreateFromPacket in class Entity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "changeDimension",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "Entity",
+      "parameters": [
+        {
+          "name": "p_351015_",
+          "type": "DimensionTransition",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "changeDimension in class Entity",
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/minecraft/world/entity/item/FallingBlockEntity.html"
+}

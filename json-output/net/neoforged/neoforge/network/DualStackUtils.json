@@ -1,0 +1,207 @@
+{
+  "type": "class",
+  "name": "DualStackUtils",
+  "qualified_name": "net.neoforged.neoforge.network.DualStackUtils",
+  "package": "net.neoforged.neoforge.network",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "INITIAL_PREFER_IPv4_STACK",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "String",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "INITIAL_PREFER_IPv6_ADDRESSES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "String",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "org.slf4j.Logger",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "DualStackUtils",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "initialise",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [
+        "@Internal"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Called by NeoForge to load this class so that the initial network property constants are set before any of the other methods in this class are called. This is so we can distinguish what Java's read once on JVM start vs what we've set for Netty.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "checkIPv6",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "hostAddress",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Resolve the address and see if Java and the OS return an IPv6 or IPv4 one, then let Netty know accordingly (it doesn't understand the java.net.preferIPv6Addresses=system property).",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "checkIPv6",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "inetAddress",
+          "type": "InetAddress",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Checks if an address is an IPv6 one or an IPv4 one, lets Netty know accordingly and returns the result.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getLocalAddress",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "@Nullable InetAddress",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Get the device's local IP address, taking into account scenarios where the client's network adapter supports IPv6 and has it enabled but the router's LAN does not.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getMulticastGroup",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "String",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Used for the \"Open to LAN\" feature.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "logInitialPreferences",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Logs the initial values of the java.net.preferIPv4Stack and java.net.preferIPv6Addresses system properties that Java has read on JVM start. Useful for debugging hostname lookup failures.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getAddressString",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "String",
+      "parameters": [
+        {
+          "name": "address",
+          "type": "SocketAddress",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Object.toString() but with IPv6 address compression support",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/neoforged/neoforge/network/DualStackUtils.html"
+}

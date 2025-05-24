@@ -1,0 +1,876 @@
+{
+  "type": "class",
+  "name": "MultifaceBlock",
+  "qualified_name": "net.minecraft.world.level.block.MultifaceBlock",
+  "package": "net.minecraft.world.level.block",
+  "modifiers": [
+    "public",
+    "abstract",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [
+      "FeatureElement",
+      "ItemLike",
+      "IBlockExtension"
+    ],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraft.world.level.block.state.BlockBehaviour",
+      "net.minecraft.world.level.block.Block"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "AABB_OFFSET",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "float",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UP_AABB",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "VoxelShape",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DOWN_AABB",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "VoxelShape",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "WEST_AABB",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "VoxelShape",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "EAST_AABB",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "VoxelShape",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NORTH_AABB",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "VoxelShape",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SOUTH_AABB",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "VoxelShape",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PROPERTY_BY_DIRECTION",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Map < Direction , BooleanProperty >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SHAPE_BY_DIRECTION",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Map < Direction , VoxelShape >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DIRECTIONS",
+      "modifiers": [
+        "protected",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Direction []",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shapesCache",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "com.google.common.collect.ImmutableMap< BlockState , VoxelShape >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canRotate",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canMirrorX",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canMirrorZ",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "MultifaceBlock",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "p_153822_",
+          "type": "BlockBehaviour.Properties",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "codec",
+      "modifiers": [
+        "protected",
+        "abstract"
+      ],
+      "annotations": [],
+      "return_type": "com.mojang.serialization.MapCodec<? extends MultifaceBlock >",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "codec in class Block",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "availableFaces",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "Set < Direction >",
+      "parameters": [
+        {
+          "name": "p_221585_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "unpack",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "Set < Direction >",
+      "parameters": [
+        {
+          "name": "p_221570_",
+          "type": "byte",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "pack",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "byte",
+      "parameters": [
+        {
+          "name": "p_221577_",
+          "type": "Collection < Direction >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isFaceSupported",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_153921_",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "createBlockStateDefinition",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_153917_",
+          "type": "StateDefinition.Builder < Block , BlockState >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "createBlockStateDefinition in class Block",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "updateShape",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "p_153904_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_153905_",
+          "type": "Direction",
+          "annotations": []
+        },
+        {
+          "name": "p_153906_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_153907_",
+          "type": "LevelAccessor",
+          "annotations": []
+        },
+        {
+          "name": "p_153908_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_153909_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "updateShape in class BlockBehaviour",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getShape",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "VoxelShape",
+      "parameters": [
+        {
+          "name": "p_153851_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_153852_",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "p_153853_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_153854_",
+          "type": "CollisionContext",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getShape in class BlockBehaviour",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "canSurvive",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_153888_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_153889_",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "p_153890_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "canSurvive in class BlockBehaviour",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "canBeReplaced",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_153848_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_153849_",
+          "type": "BlockPlaceContext",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "canBeReplaced in class BlockBehaviour",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getStateForPlacement",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "p_153824_",
+          "type": "BlockPlaceContext",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getStateForPlacement in class Block",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isValidStateForPlacement",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_221572_",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "p_221573_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_221574_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_221575_",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getStateForPlacement",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "p_153941_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_153942_",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "p_153943_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_153944_",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "rotate",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "p_153895_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_153896_",
+          "type": "Rotation",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "rotate in class BlockBehaviour",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "mirror",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "p_153892_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_153893_",
+          "type": "Mirror",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "mirror in class BlockBehaviour",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "mapDirections",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "p_153911_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_153912_",
+          "type": "Function < Direction , Direction >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "hasFace",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_153901_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_153902_",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "canAttachTo",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_153830_",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "p_153831_",
+          "type": "Direction",
+          "annotations": []
+        },
+        {
+          "name": "p_153832_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_153833_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isWaterloggable",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "removeFace",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "p_153898_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_153899_",
+          "type": "BooleanProperty",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getFaceProperty",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "BooleanProperty",
+      "parameters": [
+        {
+          "name": "p_153934_",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getDefaultMultifaceState",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "p_153919_",
+          "type": "StateDefinition < Block , BlockState >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "calculateMultifaceShape",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "VoxelShape",
+      "parameters": [
+        {
+          "name": "p_153959_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "hasAnyFace",
+      "modifiers": [
+        "protected",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_153961_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "hasAnyVacantFace",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_153963_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getSpreader",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "annotations": [],
+      "return_type": "MultifaceSpreader",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/minecraft/world/level/block/MultifaceBlock.html"
+}

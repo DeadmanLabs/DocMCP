@@ -1,0 +1,68 @@
+{
+  "type": "class",
+  "name": "RegisterStructureConversionsEvent",
+  "qualified_name": "net.neoforged.neoforge.event.RegisterStructureConversionsEvent",
+  "package": "net.neoforged.neoforge.event",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Fired for registering structure conversions for pre-1.18.2 worlds. This is used by StructuresBecomeConfiguredFix for converting old structure IDs in pre-1.18.2 worlds to their new equivalents, which can be differentiated per biome. By default, structures whose old ID has a namespace which is not equal to \"minecraft\" will be assumed to belong to a modded structure and will be used as the new ID. Mods may choose to register structure conversions for their structures, if they wish to override this default behavior. This event will only fire if StructuresBecomeConfiguredFix is used, as a result of converting a pre-1.18.2 world to the current version. This event is not invalid reference cancelable , and does not invalid reference have a result . This event is fired on the main Forge event bus , only on the logical server.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "map",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Map < String , StructuresBecomeConfiguredFix.Conversion >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [],
+  "methods": [
+    {
+      "name": "register",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "oldStructureID",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "conversion",
+          "type": "StructuresBecomeConfiguredFix.Conversion",
+          "annotations": []
+        }
+      ],
+      "exceptions": [
+        "conversion - the conversion data"
+      ],
+      "description": "Registers a conversion for a structure. A structure conversion can be of two kinds: A trivial conversion, created using StructuresBecomeConfiguredFix.Conversion.trivial(String) , contains only the new structure ID and simply converts all mentions of the old structure ID to the new structure ID. A biome-mapped conversion, created using StructuresBecomeConfiguredFix.Conversion.biomeMapped(Map, String) , contains a fallback structure ID, and a biome-specific conversion map. Each entry in the map is composed of a list of biome IDs and the new structure ID. If a structure is in a biome which exists in the map, the structure ID in the corresponding entry is used as the new structure ID. If there is no such biome found, the new structure ID will be the fallback structure ID. For example, the following registers a biome-mapped conversion for exampleStructure with the following logic: If the structure is within either a minecraft:desert or a minecraft:jungle biome, it is mapped to examplemod:deserted_structure . If the structure is within a minecraft:ocean biome, it is mapped to examplemod:flooded_structure . Otherwise, the structure is mapped to examplemod:structure . event.register(\"exampleStructure\", StructuresBecomeConfiguredFix.Conversion.biomeMapped(Map.of( List.of(\"minecraft:desert\", \"minecraft:jungle\"), \"examplemod:deserted_structure\", List.of(\"minecraft:ocean\"), \"examplemod:flooded_structure\"), \"examplemod:structure\"));",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/neoforged/neoforge/event/RegisterStructureConversionsEvent.html"
+}

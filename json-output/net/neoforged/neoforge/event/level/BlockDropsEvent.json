@@ -1,0 +1,275 @@
+{
+  "type": "class",
+  "name": "BlockDropsEvent",
+  "qualified_name": "net.neoforged.neoforge.event.level.BlockDropsEvent",
+  "package": "net.neoforged.neoforge.event.level",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Fired when a block is broken and the drops have been determined, but before they have been added to the world. This event can be used to manipulate the dropped items and experience. No guarantees can be made about the block. It will either have already been removed from the world, or will be removed after the event terminates. If you wish to edit the state of the block in-world, use BlockEvent.BreakEvent .",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.neoforged.neoforge.event.level.BlockEvent"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "blockEntity",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "@Nullable BlockEntity",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "drops",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "List < ItemEntity >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "breaker",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "@Nullable Entity",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tool",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ItemStack",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "experience",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "BlockDropsEvent",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "level",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "state",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "blockEntity",
+          "type": "BlockEntity",
+          "annotations": [
+            "@Nullable",
+            "@Nullable"
+          ]
+        },
+        {
+          "name": "drops",
+          "type": "List < ItemEntity >",
+          "annotations": []
+        },
+        {
+          "name": "breaker",
+          "type": "Entity",
+          "annotations": [
+            "@Nullable",
+            "@Nullable"
+          ]
+        },
+        {
+          "name": "tool",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Constructs a new BlockDropsEvent",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getDrops",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "List < ItemEntity >",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Returns a mutable list of item entities that will be dropped by this block. When this event completes successfully, all entities in this list will be added to the world.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getBlockEntity",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "@Nullable BlockEntity",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Returns the block entity from the current position, if available.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getBreaker",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "@Nullable Entity",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Returns the entity that broke the block, or null if unknown.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getTool",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "ItemStack",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Returns the tool used when breaking this block; may be empty.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setCanceled",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "canceled",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Cancels this event, preventing any drops from being spawned and preventing BlockBehaviour.spawnAfterBreak(net.minecraft.world.level.block.state.BlockState, net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos, net.minecraft.world.item.ItemStack, boolean) from being called. Also prevents experience from being spawned.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getLevel",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "ServerLevel",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getLevel in class BlockEvent",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getDroppedExperience",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Returns the amount of experience points that will be dropped by the block.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setDroppedExperience",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "experience",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Set the amount of experience points that will be dropped by the block. This is the true value, after enchantments have been applied.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/neoforged/neoforge/event/level/BlockDropsEvent.html"
+}

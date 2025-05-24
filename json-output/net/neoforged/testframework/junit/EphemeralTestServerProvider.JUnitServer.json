@@ -1,0 +1,494 @@
+{
+  "type": "class",
+  "name": "EphemeralTestServerProvider.JUnitServer",
+  "qualified_name": "net.neoforged.testframework.junit.EphemeralTestServerProvider.JUnitServer",
+  "package": "net.neoforged.testframework.junit",
+  "modifiers": [
+    "public",
+    "static",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [
+      "AutoCloseable",
+      "Executor",
+      "CommandSource",
+      "ServerInfo",
+      "ProfilerMeasured",
+      "ProcessorHandle",
+      "TickTask",
+      "ChunkIOErrorReporter"
+    ],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraft.util.thread.BlockableEventLoop",
+      "TickTask",
+      "net.minecraft.util.thread.ReentrantBlockableEventLoop",
+      "TickTask",
+      "net.minecraft.server.MinecraftServer"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "org.slf4j.Logger",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NO_SERVICES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Services",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "TEST_GAME_RULES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "GameRules",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "WORLD_OPTIONS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "WorldOptions",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tempDir",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Path",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sampleLogger",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "LocalSampleLogger",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "JUnitServer",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "thread",
+          "type": "Thread",
+          "annotations": []
+        },
+        {
+          "name": "access",
+          "type": "LevelStorageSource.LevelStorageAccess",
+          "annotations": []
+        },
+        {
+          "name": "pack",
+          "type": "PackRepository",
+          "annotations": []
+        },
+        {
+          "name": "stem",
+          "type": "WorldStem",
+          "annotations": []
+        },
+        {
+          "name": "tempDir",
+          "type": "Path",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "create",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "EphemeralTestServerProvider.JUnitServer",
+      "parameters": [
+        {
+          "name": "thread",
+          "type": "Thread",
+          "annotations": []
+        },
+        {
+          "name": "tempDir",
+          "type": "Path",
+          "annotations": []
+        },
+        {
+          "name": "access",
+          "type": "LevelStorageSource.LevelStorageAccess",
+          "annotations": []
+        },
+        {
+          "name": "resources",
+          "type": "PackRepository",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "initServer",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "tickServer",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "sup",
+          "type": "BooleanSupplier",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "tickServer in class MinecraftServer",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "saveEverything",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_195515_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_195516_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_195517_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "saveEverything in class MinecraftServer",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "stopServer",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "stopServer in class MinecraftServer",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "waitUntilNextTick",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "waitUntilNextTick in class MinecraftServer",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "fillServerSystemReport",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "SystemReport",
+      "parameters": [
+        {
+          "name": "report",
+          "type": "SystemReport",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isHardcore",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "isHardcore in class MinecraftServer",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getOperatorUserPermissionLevel",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getFunctionCompilationLevel",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "shouldRconBroadcast",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isDedicatedServer",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getRateLimitPacketsPerSecond",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isEpollEnabled",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isCommandBlockEnabled",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isPublished",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "shouldInformAdmins",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isSingleplayerOwner",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "profile",
+          "type": "com.mojang.authlib.GameProfile",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getTickTimeLogger",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "SampleLogger",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isTickTimeLoggingEnabled",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/neoforged/testframework/junit/EphemeralTestServerProvider.JUnitServer.html"
+}

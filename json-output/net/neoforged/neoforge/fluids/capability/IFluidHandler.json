@@ -1,0 +1,168 @@
+{
+  "type": "interface",
+  "name": "IFluidHandler",
+  "qualified_name": "net.neoforged.neoforge.fluids.capability.IFluidHandler",
+  "package": "net.neoforged.neoforge.fluids.capability",
+  "modifiers": [
+    "public",
+    "interface"
+  ],
+  "annotations": [],
+  "description": "Implement this interface as a capability which should handle fluids, generally storing them in one or more internal IFluidTank objects. A reference implementation is provided invalid reference TileFluidHandler .",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": []
+  },
+  "nested_classes": [
+    "IFluidHandler.FluidAction"
+  ],
+  "fields": [],
+  "constructors": [],
+  "methods": [
+    {
+      "name": "getTanks",
+      "modifiers": [],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Returns the number of fluid storage units (\"tanks\") available",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getFluidInTank",
+      "modifiers": [],
+      "annotations": [],
+      "return_type": "FluidStack",
+      "parameters": [
+        {
+          "name": "tank",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Returns the FluidStack in a given tank. IMPORTANT: This FluidStack MUST NOT be modified. This method is not for altering internal contents. Any implementers who are able to detect modification via this method should throw an exception. It is ENTIRELY reasonable and likely that the stack returned here will be a copy. SERIOUSLY: DO NOT MODIFY THE RETURNED FLUIDSTACK",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getTankCapacity",
+      "modifiers": [],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "tank",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Retrieves the maximum fluid amount for a given tank.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isFluidValid",
+      "modifiers": [],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "tank",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "This function is a way to determine which fluids can exist inside a given handler. General purpose tanks will basically always return TRUE for this.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "fill",
+      "modifiers": [],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "resource",
+          "type": "FluidStack",
+          "annotations": []
+        },
+        {
+          "name": "action",
+          "type": "IFluidHandler.FluidAction",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Fills fluid into internal tanks, distribution is left entirely to the IFluidHandler.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "drain",
+      "modifiers": [],
+      "annotations": [],
+      "return_type": "FluidStack",
+      "parameters": [
+        {
+          "name": "resource",
+          "type": "FluidStack",
+          "annotations": []
+        },
+        {
+          "name": "action",
+          "type": "IFluidHandler.FluidAction",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Drains fluid out of internal tanks, distribution is left entirely to the IFluidHandler.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "drain",
+      "modifiers": [],
+      "annotations": [],
+      "return_type": "FluidStack",
+      "parameters": [
+        {
+          "name": "maxDrain",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "action",
+          "type": "IFluidHandler.FluidAction",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Drains fluid out of internal tanks, distribution is left entirely to the IFluidHandler. This method is not Fluid-sensitive.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/neoforged/neoforge/fluids/capability/IFluidHandler.html"
+}

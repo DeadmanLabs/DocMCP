@@ -1,0 +1,107 @@
+{
+  "type": "class",
+  "name": "ModifyDefaultComponentsEvent",
+  "qualified_name": "net.neoforged.neoforge.event.ModifyDefaultComponentsEvent",
+  "package": "net.neoforged.neoforge.event",
+  "modifiers": [
+    "public",
+    "final",
+    "class"
+  ],
+  "annotations": [],
+  "description": "The event used to modify the default components of an item. This event is fired on the mod event bus . Example usage: Copy import net.minecraft.core.component.DataComponents; import net.minecraft.world.item.Items; public void modifyComponents(ModifyDefaultComponentsEvent event) { event.modify(Items.MELON_SEEDS, builder -> builder .set(DataComponents.MAX_STACK_SIZE, 16)); // Stack melon seeds to at most 16 items event.modify(Items.APPLE, builder -> builder .remove(DataComponents.FOOD)); // Remove the ability of eating apples } // Lowest priority listener public void modifyComponentsLow(ModifyDefaultComponentsEvent event) { event.modifyMatching(item -> item.components().has(DataComponents.FIRE_RESISTANT), builder -> builder .set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)); // Make all fire resistant items have a glint }",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "ModifyDefaultComponentsEvent",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Internal"
+      ],
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "modify",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "item",
+          "type": "ItemLike",
+          "annotations": []
+        },
+        {
+          "name": "patch",
+          "type": "Consumer < DataComponentPatch.Builder >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Patches the default components of the given item .",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "modifyMatching",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "predicate",
+          "type": "Predicate <? super Item >",
+          "annotations": []
+        },
+        {
+          "name": "patch",
+          "type": "Consumer < DataComponentPatch.Builder >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Patches the default components of all items matching the given predicate . If this method is used to modify components based on the item's current default components, the event listener should use the lowest priority so that other mods' modifications are already applied.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getAllItems",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "Stream < Item >",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Returns all registered items.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/neoforged/neoforge/event/ModifyDefaultComponentsEvent.html"
+}

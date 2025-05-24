@@ -1,0 +1,355 @@
+{
+  "type": "class",
+  "name": "PermissionNode<T>",
+  "qualified_name": "net.neoforged.neoforge.server.permission.nodes.PermissionNode<T>",
+  "package": "net.neoforged.neoforge.server.permission.nodes",
+  "modifiers": [
+    "public",
+    "final",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Represents the basic unit at the heart of the permission system. A permission indicates the ability for an actor to perform an action, in its most general sense. In the permission system, all permissions are encoded as instances of this class, optionally integrated by a PermissionDynamicContext . A node is uniquely identified by its `nodeName`, which is a dot-separated string providing meaning to the node itself. The suggested structure of the name is `modid.name`, where `modid` is the ID of the owner of the node. This API does not require any implicit hierarchy, so `modid.name` is not considered a parent of `modid.name.sub`. Such decisions are left to the IPermissionHandler . Each node also has an associated PermissionType , detailing its exact type, along with a PermissionNode.PermissionResolver that is used to obtain the default value of the permission. More information can be found on their documentation. A node can also be bound to additional PermissionDynamicContextKey s, which are used when querying the availability of the permission. There are no restrictions on their amount. It is also not mandatory to provide a value for all dynamics in a permission query. See the above link for more information. Each node should be registered via the PermissionGatherEvent.Nodes and stored statically in a field. That instance should then be reused every-time a permission check needs to be performed via PermissionAPI.getPermission(ServerPlayer, PermissionNode, PermissionDynamicContext[]) .",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [
+    "PermissionNode.PermissionResolver"
+  ],
+  "fields": [
+    {
+      "name": "nodeName",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "String",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "type",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "PermissionType < T >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "defaultResolver",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "PermissionNode.PermissionResolver < T >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dynamics",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "PermissionDynamicContextKey <?>[]",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "readableName",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "@Nullable Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "description",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "@Nullable Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "PermissionNode",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "nodeName",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "type",
+          "type": "PermissionType < T >",
+          "annotations": []
+        },
+        {
+          "name": "defaultResolver",
+          "type": "PermissionNode.PermissionResolver < T >",
+          "annotations": []
+        },
+        {
+          "name": "dynamics",
+          "type": "PermissionDynamicContextKey ...",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Calls PermissionNode(String, PermissionType, PermissionResolver, PermissionDynamicContextKey[]) with \"namespace.path\" as the first parameter",
+      "deprecated": false
+    },
+    {
+      "name": "PermissionNode",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "modID",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "nodeName",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "type",
+          "type": "PermissionType < T >",
+          "annotations": []
+        },
+        {
+          "name": "defaultResolver",
+          "type": "PermissionNode.PermissionResolver < T >",
+          "annotations": []
+        },
+        {
+          "name": "dynamics",
+          "type": "PermissionDynamicContextKey ...",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Calls PermissionNode(String, PermissionType, PermissionResolver, PermissionDynamicContextKey[]) with \"modid.nodename\" as the first parameter",
+      "deprecated": false
+    },
+    {
+      "name": "PermissionNode",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "nodeName",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "type",
+          "type": "PermissionType < T >",
+          "annotations": []
+        },
+        {
+          "name": "defaultResolver",
+          "type": "PermissionNode.PermissionResolver < T >",
+          "annotations": []
+        },
+        {
+          "name": "dynamics",
+          "type": "PermissionDynamicContextKey ...",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "setInformation",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "PermissionNode",
+      "parameters": [
+        {
+          "name": "readableName",
+          "type": "Component",
+          "annotations": []
+        },
+        {
+          "name": "description",
+          "type": "Component",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Allows you to set a human-readable name and description for your Permission. Note: Even though not used by Default, PermissionHandlers may display this information in game, or provide it to the user by other means. You may use translatable components , but you'll need 2 language files. One inside the data directory for the server and one inside assets for the client.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getNodeName",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "String",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getType",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "PermissionType < T >",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getDynamics",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "PermissionDynamicContextKey <?>[]",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getDefaultResolver",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "PermissionNode.PermissionResolver < T >",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getReadableName",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "@Nullable Component",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getDescription",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "@Nullable Component",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "equals",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Object",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "equals in class Object",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "hashCode",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "hashCode in class Object",
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/neoforged/neoforge/server/permission/nodes/PermissionNode.html"
+}

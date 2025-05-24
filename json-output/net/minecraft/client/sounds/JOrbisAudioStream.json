@@ -1,0 +1,566 @@
+{
+  "type": "class",
+  "name": "JOrbisAudioStream",
+  "qualified_name": "net.minecraft.client.sounds.JOrbisAudioStream",
+  "package": "net.minecraft.client.sounds",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [
+      "Closeable",
+      "AutoCloseable",
+      "AudioStream",
+      "FiniteAudioStream",
+      "FloatSampleSource"
+    ],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "BUFSIZE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PAGEOUT_RECAPTURE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PAGEOUT_NEED_MORE_DATA",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PAGEOUT_OK",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PACKETOUT_ERROR",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PACKETOUT_NEED_MORE_DATA",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PACKETOUT_OK",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "syncState",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "com.jcraft.jogg.SyncState",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "page",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "com.jcraft.jogg.Page",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "streamState",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "com.jcraft.jogg.StreamState",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "packet",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "com.jcraft.jogg.Packet",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "info",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "com.jcraft.jorbis.Info",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dspState",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "com.jcraft.jorbis.DspState",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "block",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "com.jcraft.jorbis.Block",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "audioFormat",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "AudioFormat",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "input",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "InputStream",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "samplesWritten",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "long",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "totalSamplesInStream",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "long",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "JOrbisAudioStream",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "p_341241_",
+          "type": "InputStream",
+          "annotations": []
+        }
+      ],
+      "exceptions": [
+        "IOException"
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "isError",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_340842_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getFormat",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "AudioFormat",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "readToBuffer",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [
+        "IOException"
+      ],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "readPage",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "com.jcraft.jogg.Page",
+      "parameters": [],
+      "exceptions": [
+        "IOException"
+      ],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "readIdentificationPacket",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "com.jcraft.jogg.Packet",
+      "parameters": [
+        {
+          "name": "p_340874_",
+          "type": "com.jcraft.jogg.Page",
+          "annotations": []
+        }
+      ],
+      "exceptions": [
+        "IOException"
+      ],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "readPacket",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "com.jcraft.jogg.Packet",
+      "parameters": [],
+      "exceptions": [
+        "IOException"
+      ],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getSamplesToWrite",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "long",
+      "parameters": [
+        {
+          "name": "p_341351_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "readChunk",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_341270_",
+          "type": "it.unimi.dsi.fastutil.floats.FloatConsumer",
+          "annotations": []
+        }
+      ],
+      "exceptions": [
+        "IOException"
+      ],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "copyAnyChannels",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_340927_",
+          "type": "float[][]",
+          "annotations": []
+        },
+        {
+          "name": "p_341332_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_341269_",
+          "type": "int[]",
+          "annotations": []
+        },
+        {
+          "name": "p_341072_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_341382_",
+          "type": "it.unimi.dsi.fastutil.floats.FloatConsumer",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "copyMono",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_340838_",
+          "type": "float[]",
+          "annotations": []
+        },
+        {
+          "name": "p_341058_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_341397_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_340852_",
+          "type": "it.unimi.dsi.fastutil.floats.FloatConsumer",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "copyStereo",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_341142_",
+          "type": "float[]",
+          "annotations": []
+        },
+        {
+          "name": "p_341000_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_340922_",
+          "type": "float[]",
+          "annotations": []
+        },
+        {
+          "name": "p_341132_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_341389_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_341076_",
+          "type": "it.unimi.dsi.fastutil.floats.FloatConsumer",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "close",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [
+        "IOException"
+      ],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/minecraft/client/sounds/JOrbisAudioStream.html"
+}

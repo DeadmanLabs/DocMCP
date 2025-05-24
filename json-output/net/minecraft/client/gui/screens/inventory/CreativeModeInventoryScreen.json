@@ -1,0 +1,1344 @@
+{
+  "type": "class",
+  "name": "CreativeModeInventoryScreen",
+  "qualified_name": "net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen",
+  "package": "net.minecraft.client.gui.screens.inventory",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [
+      "ContainerEventHandler",
+      "GuiEventListener",
+      "Renderable",
+      "TabOrderedElement",
+      "MenuAccess",
+      "CreativeModeInventoryScreen.ItemPickerMenu"
+    ],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraft.client.gui.components.events.AbstractContainerEventHandler",
+      "net.minecraft.client.gui.screens.Screen",
+      "net.minecraft.client.gui.screens.inventory.AbstractContainerScreen",
+      "CreativeModeInventoryScreen.ItemPickerMenu",
+      "net.minecraft.client.gui.screens.inventory.EffectRenderingInventoryScreen",
+      "CreativeModeInventoryScreen.ItemPickerMenu"
+    ]
+  },
+  "nested_classes": [
+    "CreativeModeInventoryScreen.CustomCreativeSlot",
+    "CreativeModeInventoryScreen.ItemPickerMenu",
+    "CreativeModeInventoryScreen.SlotWrapper"
+  ],
+  "fields": [
+    {
+      "name": "SCROLLER_SPRITE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceLocation",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SCROLLER_DISABLED_SPRITE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceLocation",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UNSELECTED_TOP_TABS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceLocation []",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SELECTED_TOP_TABS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceLocation []",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UNSELECTED_BOTTOM_TABS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceLocation []",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SELECTED_BOTTOM_TABS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceLocation []",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NUM_ROWS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NUM_COLS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "TAB_WIDTH",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "TAB_HEIGHT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SCROLLER_WIDTH",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SCROLLER_HEIGHT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CONTAINER",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "SimpleContainer",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "TRASH_SLOT_TOOLTIP",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Component",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "TEXT_COLOR",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "selectedTab",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "annotations": [],
+      "type": "CreativeModeTab",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "scrollOffs",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "float",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "scrolling",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "searchBox",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "EditBox",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "originalSlots",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "List < Slot >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "destroyItemSlot",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "type": "Slot",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "listener",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "CreativeInventoryListener",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ignoreTextInput",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasClickedOutside",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "visibleTags",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Set < TagKey < Item >>",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "displayOperatorCreativeTab",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pages",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "List < CreativeTabsScreenPage >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "currentPage",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "CreativeTabsScreenPage",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "CreativeModeInventoryScreen",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "p_346290_",
+          "type": "LocalPlayer",
+          "annotations": []
+        },
+        {
+          "name": "p_260074_",
+          "type": "FeatureFlagSet",
+          "annotations": []
+        },
+        {
+          "name": "p_259569_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "hasPermissions",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_259959_",
+          "type": "Player",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "tryRefreshInvalidatedTabs",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_259501_",
+          "type": "FeatureFlagSet",
+          "annotations": []
+        },
+        {
+          "name": "p_259713_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_270898_",
+          "type": "HolderLookup.Provider",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "tryRebuildTabContents",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_345591_",
+          "type": "SessionSearchTrees",
+          "annotations": [
+            "@Nullable"
+          ]
+        },
+        {
+          "name": "p_345904_",
+          "type": "FeatureFlagSet",
+          "annotations": []
+        },
+        {
+          "name": "p_345731_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_344784_",
+          "type": "HolderLookup.Provider",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "refreshCurrentTabContents",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_261591_",
+          "type": "Collection < ItemStack >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "containerTick",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "containerTick in class AbstractContainerScreen < CreativeModeInventoryScreen.ItemPickerMenu >",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "slotClicked",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_98556_",
+          "type": "Slot",
+          "annotations": [
+            "@Nullable"
+          ]
+        },
+        {
+          "name": "p_98557_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_98558_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_98559_",
+          "type": "ClickType",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "slotClicked in class AbstractContainerScreen < CreativeModeInventoryScreen.ItemPickerMenu >",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isCreativeSlot",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_98554_",
+          "type": "Slot",
+          "annotations": [
+            "@Nullable"
+          ]
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "init",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "init in class AbstractContainerScreen < CreativeModeInventoryScreen.ItemPickerMenu >",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "resize",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_98595_",
+          "type": "Minecraft",
+          "annotations": []
+        },
+        {
+          "name": "p_98596_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_98597_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "resize in class Screen",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "removed",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "removed in class AbstractContainerScreen < CreativeModeInventoryScreen.ItemPickerMenu >",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "charTyped",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_98521_",
+          "type": "char",
+          "annotations": []
+        },
+        {
+          "name": "p_98522_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "keyPressed",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_98547_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_98548_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_98549_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "keyPressed in class AbstractContainerScreen < CreativeModeInventoryScreen.ItemPickerMenu >",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "keyReleased",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_98612_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_98613_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_98614_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "refreshSearchResults",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "updateVisibleTags",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_98620_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "renderLabels",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_283168_",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "p_281774_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_281466_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "renderLabels in class AbstractContainerScreen < CreativeModeInventoryScreen.ItemPickerMenu >",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "mouseClicked",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_98531_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_98532_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_98533_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "mouseClicked in class AbstractContainerScreen < CreativeModeInventoryScreen.ItemPickerMenu >",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "mouseReleased",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_98622_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_98623_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_98624_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "mouseReleased in class AbstractContainerScreen < CreativeModeInventoryScreen.ItemPickerMenu >",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "canScroll",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "selectTab",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_98561_",
+          "type": "CreativeModeTab",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "mouseScrolled",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_98527_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_98528_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_98529_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_296489_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "hasClickedOutside",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_98541_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_98542_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_98543_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_98544_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_98545_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "hasClickedOutside in class AbstractContainerScreen < CreativeModeInventoryScreen.ItemPickerMenu >",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "insideScrollbar",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_98524_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_98525_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "mouseDragged",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_98535_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_98536_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_98537_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_98538_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_98539_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "mouseDragged in class AbstractContainerScreen < CreativeModeInventoryScreen.ItemPickerMenu >",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "render",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_283000_",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "p_281317_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_282770_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_281295_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Description copied from class: Screen",
+      "overrides": "render in class EffectRenderingInventoryScreen < CreativeModeInventoryScreen.ItemPickerMenu >",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getTooltipFromContainerItem",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "List < Component >",
+      "parameters": [
+        {
+          "name": "p_281769_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getTooltipFromContainerItem in class AbstractContainerScreen < CreativeModeInventoryScreen.ItemPickerMenu >",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "renderBg",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_282663_",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "p_282504_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_282089_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_282249_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getTabX",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_260136_",
+          "type": "CreativeModeTab",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getTabY",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_260181_",
+          "type": "CreativeModeTab",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "checkTabClicked",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_98563_",
+          "type": "CreativeModeTab",
+          "annotations": []
+        },
+        {
+          "name": "p_98564_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_98565_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "checkTabHovering",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_282317_",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "p_282244_",
+          "type": "CreativeModeTab",
+          "annotations": []
+        },
+        {
+          "name": "p_283469_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_283411_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "renderTabButton",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_283590_",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "p_283489_",
+          "type": "CreativeModeTab",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isInventoryOpen",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "handleHotbarLoadOrSave",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_98599_",
+          "type": "Minecraft",
+          "annotations": []
+        },
+        {
+          "name": "p_98600_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_98601_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_98602_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getCurrentPage",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "CreativeTabsScreenPage",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setCurrentPage",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "currentPage",
+          "type": "CreativeTabsScreenPage",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/minecraft/client/gui/screens/inventory/CreativeModeInventoryScreen.html"
+}

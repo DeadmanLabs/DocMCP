@@ -1,0 +1,229 @@
+{
+  "type": "class",
+  "name": "C>",
+  "qualified_name": "net.neoforged.neoforge.capabilities.C>",
+  "package": "net.neoforged.neoforge.capabilities",
+  "modifiers": [
+    "public",
+    "final",
+    "class"
+  ],
+  "annotations": [],
+  "description": "A BlockCapability gives flexible access to objects of type T located in the world. Querying a block capability To get an object of type T , use ILevelExtension.getCapability(BlockCapability, BlockPos, Object) . For example, to query an item handler in the world, from a specific side: Level level = ...; BlockPos pos = ...; Direction side = ...; IItemHandler maybeHandler = level.getCapability(Capabilities.ItemHandler.BLOCK, pos, side); if (maybeHandler != null) { // Use maybeHandler } For repeated queries at a specific position, use BlockCapabilityCache to improve performance. Providing a capability for a block entity To provide objects of type T , register providers to RegisterCapabilitiesEvent . For example: modBus.addListener(RegisterCapabilitiesEvent.class, event -> { event.registerBlockEntity( Capabilities.ItemHandler.BLOCK, // capability to register for MY_BLOCK_ENTITY_TYPE, (myBlockEntity, side) -> <return the IItemHandler for myBlockEntity and side>); }); If a previously returned capability is not valid anymore, or if a new capability is available, ILevelExtension.invalidateCapabilities(BlockPos) MUST be called to notify the caches (see below). Providing a capability for a plain block For blocks without a block entity, we use registerBlock instead: modBus.addListener(RegisterCapabilitiesEvent.class, event -> { event.registerBlock( Capabilities.ItemHandler.BLOCK, // capability to register for (level, pos, state, be, side) -> <return the IItemHandler>, // blocks to register for MY_ITEM_HANDLER_BLOCK, MY_OTHER_ITEM_HANDLER_BLOCK); }); Plain blocks must invalidate their capabilities whenever they change, including on placement and removal . For example: public class MyBlock extends Block { ＠Override public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) { // Invalidate capabilities on block placement or block state change level.invalidateCapabilities(pos); } ＠Override public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) { super.onRemove(state, level, pos, newState, movedByPiston); // Invalidate capabilities on block removal or block state change level.invalidateCapabilities(pos); } }",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.neoforged.neoforge.capabilities.BaseCapability"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "registry",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "CapabilityRegistry < BlockCapability <?, ?>>",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "providers",
+      "modifiers": [
+        "final"
+      ],
+      "annotations": [],
+      "type": "Map < Block , List < IBlockCapabilityProvider < T , C >>>",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "BlockCapability",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "typeClass",
+          "type": "Class < T >",
+          "annotations": []
+        },
+        {
+          "name": "contextClass",
+          "type": "Class < C >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "create",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "BlockCapability <T, C>",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "typeClass",
+          "type": "Class <T>",
+          "annotations": []
+        },
+        {
+          "name": "contextClass",
+          "type": "Class <C>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Creates a new block capability, or gets it if it already exists.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "createVoid",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "BlockCapability <T, Void >",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "typeClass",
+          "type": "Class <T>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Creates a new block capability with Void context, or gets it if it already exists. This should be used for capabilities that do not require any additional context.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "createSided",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "BlockCapability <T, @Nullable Direction >",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "typeClass",
+          "type": "Class <T>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Creates a new block capability with nullable Direction context, or gets it if it already exists.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getAll",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "List < BlockCapability <?, ?>>",
+      "parameters": [],
+      "exceptions": [],
+      "description": "Returns a new immutable copy of all the currently known block capabilities.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getCapability",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Internal @Nullable"
+      ],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "state",
+          "type": "BlockState",
+          "annotations": [
+            "@Nullable",
+            "@Nullable"
+          ]
+        },
+        {
+          "name": "blockEntity",
+          "type": "BlockEntity",
+          "annotations": [
+            "@Nullable",
+            "@Nullable"
+          ]
+        },
+        {
+          "name": "context",
+          "type": "C",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/neoforged/neoforge/capabilities/BlockCapability.html"
+}

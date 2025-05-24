@@ -1,0 +1,802 @@
+{
+  "type": "class",
+  "name": "ChunkHolder",
+  "qualified_name": "net.minecraft.server.level.ChunkHolder",
+  "package": "net.minecraft.server.level",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraft.server.level.GenerationChunkHolder"
+    ]
+  },
+  "nested_classes": [
+    "ChunkHolder.LevelChangeListener",
+    "ChunkHolder.PlayerProvider"
+  ],
+  "fields": [
+    {
+      "name": "UNLOADED_LEVEL_CHUNK",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ChunkResult < LevelChunk >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UNLOADED_LEVEL_CHUNK_FUTURE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "CompletableFuture < ChunkResult < LevelChunk >>",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "levelHeightAccessor",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "LevelHeightAccessor",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fullChunkFuture",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "annotations": [],
+      "type": "CompletableFuture < ChunkResult < LevelChunk >>",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickingChunkFuture",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "annotations": [],
+      "type": "CompletableFuture < ChunkResult < LevelChunk >>",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "entityTickingChunkFuture",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "annotations": [],
+      "type": "CompletableFuture < ChunkResult < LevelChunk >>",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "oldTicketLevel",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ticketLevel",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "queueLevel",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasChangedSections",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "changedBlocksPerSection",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "it.unimi.dsi.fastutil.shorts.ShortSet[]",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blockChangedLightSectionFilter",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "BitSet",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "skyChangedLightSectionFilter",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "BitSet",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lightEngine",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "LevelLightEngine",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onLevelChange",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ChunkHolder.LevelChangeListener",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playerProvider",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ChunkHolder.PlayerProvider",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "wasAccessibleSinceLastSave",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pendingFullStateConfirmation",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "CompletableFuture <?>",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sendSync",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "CompletableFuture <?>",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "saveSync",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "CompletableFuture <?>",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ChunkHolder",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "p_142986_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_142987_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_142988_",
+          "type": "LevelHeightAccessor",
+          "annotations": []
+        },
+        {
+          "name": "p_142989_",
+          "type": "LevelLightEngine",
+          "annotations": []
+        },
+        {
+          "name": "p_142990_",
+          "type": "ChunkHolder.LevelChangeListener",
+          "annotations": []
+        },
+        {
+          "name": "p_142991_",
+          "type": "ChunkHolder.PlayerProvider",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getTickingChunkFuture",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "CompletableFuture < ChunkResult < LevelChunk >>",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getEntityTickingChunkFuture",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "CompletableFuture < ChunkResult < LevelChunk >>",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getFullChunkFuture",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "CompletableFuture < ChunkResult < LevelChunk >>",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getTickingChunk",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "LevelChunk",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getChunkToSend",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "LevelChunk",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getSendSyncFuture",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "CompletableFuture <?>",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "addSendDependency",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_301235_",
+          "type": "CompletableFuture <?>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getSaveSyncFuture",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "CompletableFuture <?>",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isReadyForSaving",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "addSaveDependency",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_200418_",
+          "type": "CompletableFuture <?>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "blockChanged",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_140057_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "sectionLightChanged",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_140037_",
+          "type": "LightLayer",
+          "annotations": []
+        },
+        {
+          "name": "p_140038_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "broadcastChanges",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_140055_",
+          "type": "LevelChunk",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "broadcastBlockEntityIfNeeded",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_288982_",
+          "type": "List < ServerPlayer >",
+          "annotations": []
+        },
+        {
+          "name": "p_289011_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_288969_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_288973_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "broadcastBlockEntity",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_288988_",
+          "type": "List < ServerPlayer >",
+          "annotations": []
+        },
+        {
+          "name": "p_289005_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_288981_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "broadcast",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_288998_",
+          "type": "List < ServerPlayer >",
+          "annotations": []
+        },
+        {
+          "name": "p_289013_",
+          "type": "Packet <?>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getTicketLevel",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getQueueLevel",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setQueueLevel",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_140087_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setTicketLevel",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_140028_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "scheduleFullChunkPromotion",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_142999_",
+          "type": "ChunkMap",
+          "annotations": []
+        },
+        {
+          "name": "p_143000_",
+          "type": "CompletableFuture < ChunkResult < LevelChunk >>",
+          "annotations": []
+        },
+        {
+          "name": "p_143001_",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "p_287621_",
+          "type": "FullChunkStatus",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "demoteFullChunk",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_287599_",
+          "type": "ChunkMap",
+          "annotations": []
+        },
+        {
+          "name": "p_287649_",
+          "type": "FullChunkStatus",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "updateFutures",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_143004_",
+          "type": "ChunkMap",
+          "annotations": []
+        },
+        {
+          "name": "p_143005_",
+          "type": "Executor",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "wasAccessibleSinceLastSave",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "refreshAccessibility",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/minecraft/server/level/ChunkHolder.html"
+}

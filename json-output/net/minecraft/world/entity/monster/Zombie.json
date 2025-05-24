@@ -1,0 +1,1070 @@
+{
+  "type": "class",
+  "name": "Zombie",
+  "qualified_name": "net.minecraft.world.entity.monster.Zombie",
+  "package": "net.minecraft.world.entity.monster",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [
+      "CommandSource",
+      "SyncedDataHolder",
+      "Attackable",
+      "EquipmentUser",
+      "Leashable",
+      "Enemy",
+      "Targeting",
+      "EntityAccess",
+      "Nameable",
+      "ScoreHolder",
+      "IAttachmentHolder",
+      "IEntityExtension",
+      "ILivingEntityExtension",
+      "INBTSerializable",
+      "CompoundTag"
+    ],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.neoforged.neoforge.attachment.AttachmentHolder",
+      "net.minecraft.world.entity.Entity",
+      "net.minecraft.world.entity.LivingEntity",
+      "net.minecraft.world.entity.Mob",
+      "net.minecraft.world.entity.PathfinderMob",
+      "net.minecraft.world.entity.monster.Monster"
+    ]
+  },
+  "nested_classes": [
+    "Zombie.ZombieAttackTurtleEggGoal",
+    "Zombie.ZombieGroupData"
+  ],
+  "fields": [
+    {
+      "name": "SPEED_MODIFIER_BABY_ID",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceLocation",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SPEED_MODIFIER_BABY",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "AttributeModifier",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "REINFORCEMENT_CALLER_CHARGE_ID",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceLocation",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ZOMBIE_REINFORCEMENT_CALLEE_CHARGE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "AttributeModifier",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LEADER_ZOMBIE_BONUS_ID",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceLocation",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ZOMBIE_RANDOM_SPAWN_BONUS_ID",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "ResourceLocation",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_BABY_ID",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "EntityDataAccessor < Boolean >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_SPECIAL_TYPE_ID",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "EntityDataAccessor < Integer >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_DROWNED_CONVERSION_ID",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "EntityDataAccessor < Boolean >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ZOMBIE_LEADER_CHANCE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "float",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "REINFORCEMENT_ATTEMPTS",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "REINFORCEMENT_RANGE_MAX",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "REINFORCEMENT_RANGE_MIN",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BABY_DIMENSIONS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "EntityDimensions",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BREAK_DOOR_CHANCE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "float",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DOOR_BREAKING_PREDICATE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Predicate < Difficulty >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "breakDoorGoal",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "BreakDoorGoal",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canBreakDoors",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "boolean",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "inWaterTime",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "conversionTime",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "Zombie",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "p_34271_",
+          "type": "EntityType <? extends Zombie >",
+          "annotations": []
+        },
+        {
+          "name": "p_34272_",
+          "type": "Level",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "Zombie",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "p_34274_",
+          "type": "Level",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "registerGoals",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "registerGoals in class Mob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "addBehaviourGoals",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "createAttributes",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "AttributeSupplier.Builder",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "defineSynchedData",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_326435_",
+          "type": "SynchedEntityData.Builder",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "defineSynchedData in class Mob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isUnderWaterConverting",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "canBreakDoors",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setCanBreakDoors",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_34337_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "supportsBreakDoorGoal",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isBaby",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "isBaby in class LivingEntity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getBaseExperienceReward",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "int",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getBaseExperienceReward in class Mob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "setBaby",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_34309_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "setBaby in class Mob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "onSyncedDataUpdated",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_34307_",
+          "type": "EntityDataAccessor <?>",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "onSyncedDataUpdated in class LivingEntity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "convertsInWater",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "tick in class Mob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "aiStep",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "aiStep in class Monster",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "startUnderWaterConversion",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_34279_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "doUnderWaterConversion",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "convertToZombieType",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_34311_",
+          "type": "EntityType <? extends Zombie >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isSunSensitive",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "hurt",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_34288_",
+          "type": "DamageSource",
+          "annotations": []
+        },
+        {
+          "name": "p_34289_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "hurt in class LivingEntity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "doHurtTarget",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_34276_",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "doHurtTarget in class Mob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getAmbientSound",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "SoundEvent",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getAmbientSound in class Mob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getHurtSound",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "SoundEvent",
+      "parameters": [
+        {
+          "name": "p_34327_",
+          "type": "DamageSource",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getHurtSound in class Monster",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getDeathSound",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "SoundEvent",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getDeathSound in class Monster",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getStepSound",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "SoundEvent",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "playStepSound",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_34316_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_34317_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "playStepSound in class Entity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "populateDefaultEquipmentSlots",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_219165_",
+          "type": "RandomSource",
+          "annotations": []
+        },
+        {
+          "name": "p_219166_",
+          "type": "DifficultyInstance",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "populateDefaultEquipmentSlots in class Mob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "addAdditionalSaveData",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_34319_",
+          "type": "CompoundTag",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "addAdditionalSaveData in class Mob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "readAdditionalSaveData",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_34305_",
+          "type": "CompoundTag",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "readAdditionalSaveData in class Mob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "killedEntity",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_219160_",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "p_219161_",
+          "type": "LivingEntity",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "killedEntity in class Entity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getDefaultDimensions",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "EntityDimensions",
+      "parameters": [
+        {
+          "name": "p_316771_",
+          "type": "Pose",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "getDefaultDimensions in class LivingEntity",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "canHoldItem",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_34332_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "canHoldItem in class Mob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "wantsToPickUp",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_182400_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "wantsToPickUp in class Mob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "finalizeSpawn",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "SpawnGroupData",
+      "parameters": [
+        {
+          "name": "p_34297_",
+          "type": "ServerLevelAccessor",
+          "annotations": []
+        },
+        {
+          "name": "p_34298_",
+          "type": "DifficultyInstance",
+          "annotations": []
+        },
+        {
+          "name": "p_34299_",
+          "type": "MobSpawnType",
+          "annotations": []
+        },
+        {
+          "name": "p_34300_",
+          "type": "SpawnGroupData",
+          "annotations": [
+            "@Nullable"
+          ]
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "finalizeSpawn in class Mob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getSpawnAsBabyOdds",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_219163_",
+          "type": "RandomSource",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "handleAttributes",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_34340_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "randomizeReinforcementsChance",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "dropCustomDeathLoot",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_348597_",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "p_34291_",
+          "type": "DamageSource",
+          "annotations": []
+        },
+        {
+          "name": "p_34293_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": "dropCustomDeathLoot in class Mob",
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "getSkull",
+      "modifiers": [
+        "protected"
+      ],
+      "annotations": [],
+      "return_type": "ItemStack",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/minecraft/world/entity/monster/Zombie.html"
+}

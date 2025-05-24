@@ -1,0 +1,475 @@
+{
+  "type": "class",
+  "name": "V>",
+  "qualified_name": "net.neoforged.neoforge.common.util.V>",
+  "package": "net.neoforged.neoforge.common.util",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "A mutable linked map with a hashing strategy and a merge function.",
+  "inheritance": {
+    "extends": null,
+    "implements": [
+      "Iterable",
+      "Map.Entry"
+    ],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [
+    "MutableHashedLinkedMap.BasicStrategy",
+    "MutableHashedLinkedMap.Entry",
+    "MutableHashedLinkedMap.IdentityStrategy",
+    "MutableHashedLinkedMap.MergeFunction"
+  ],
+  "fields": [
+    {
+      "name": "BASIC",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "it.unimi.dsi.fastutil.Hash.Strategy<? super Object >",
+      "value": null,
+      "description": "A strategy that uses Objects.hashCode(Object) and Object.equals(Object) .",
+      "deprecated": false
+    },
+    {
+      "name": "IDENTITY",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "annotations": [],
+      "type": "it.unimi.dsi.fastutil.Hash.Strategy<? super Object >",
+      "value": null,
+      "description": "A strategy that uses System.identityHashCode(Object) and a == b comparisons.",
+      "deprecated": false
+    },
+    {
+      "name": "strategy",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "it.unimi.dsi.fastutil.Hash.Strategy<? super K >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "entries",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "Map < K , MutableHashedLinkedMap < K , V >. Entry >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "merge",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "MutableHashedLinkedMap.MergeFunction < K , V >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "insertTest",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "annotations": [],
+      "type": "BiPredicate < K , V >",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "head",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "MutableHashedLinkedMap < K , V >. Entry",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "last",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "type": "MutableHashedLinkedMap < K , V >. Entry",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "changes",
+      "modifiers": [
+        "private",
+        "transient"
+      ],
+      "annotations": [],
+      "type": "int",
+      "value": null,
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "MutableHashedLinkedMap",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [],
+      "exceptions": [],
+      "description": "Creates a new instance using the BASIC strategy.",
+      "deprecated": false
+    },
+    {
+      "name": "MutableHashedLinkedMap",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "strategy",
+          "type": "it.unimi.dsi.fastutil.Hash.Strategy<? super K >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Creates a mutable linked map with a default new-value-selecting merge function.",
+      "deprecated": false
+    },
+    {
+      "name": "MutableHashedLinkedMap",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "strategy",
+          "type": "it.unimi.dsi.fastutil.Hash.Strategy<? super K >",
+          "annotations": []
+        },
+        {
+          "name": "merge",
+          "type": "MutableHashedLinkedMap.MergeFunction < K , V >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Creates a mutable linked map with a default new-value-selecting merge function.",
+      "deprecated": false
+    },
+    {
+      "name": "MutableHashedLinkedMap",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "strategy",
+          "type": "it.unimi.dsi.fastutil.Hash.Strategy<? super K >",
+          "annotations": []
+        },
+        {
+          "name": "insertTest",
+          "type": "BiPredicate < K , V >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Creates a mutable linked map with a default new-value-selecting merge function.",
+      "deprecated": false
+    },
+    {
+      "name": "MutableHashedLinkedMap",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "parameters": [
+        {
+          "name": "strategy",
+          "type": "it.unimi.dsi.fastutil.Hash.Strategy<? super K >",
+          "annotations": []
+        },
+        {
+          "name": "merge",
+          "type": "MutableHashedLinkedMap.MergeFunction < K , V >",
+          "annotations": []
+        },
+        {
+          "name": "insertTest",
+          "type": "BiPredicate < K , V >",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Creates a mutable linked map with a custom merge function.",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "put",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "V",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "K",
+          "annotations": []
+        },
+        {
+          "name": "value",
+          "type": "V",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Inserts the mapping with the specified key and value pair. If there is a mapping already associated with this key, then the previous value and the specified (new) value are merged according to this collection's merge function, and the position of the entry is not modified. If there is no such mapping, then the key-value mapping is inserted at the end of this collection.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "contains",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "K",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "isEmpty",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "remove",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "V",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "K",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "get",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "V",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "K",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "iterator",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [],
+      "return_type": "Iterator < Map.Entry < K , V >>",
+      "parameters": [],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "putFirst",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "V",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "K",
+          "annotations": []
+        },
+        {
+          "name": "value",
+          "type": "V",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Inserts the mapping with the specified key and value pair at the beginning of this map. If there is a mapping already associated with this key, then the previous value and the specified (new) value are first merged according to this map's merge function, then the entry is moved to the beginning of the map.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "putAfter",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "V",
+      "parameters": [
+        {
+          "name": "after",
+          "type": "K",
+          "annotations": []
+        },
+        {
+          "name": "key",
+          "type": "K",
+          "annotations": []
+        },
+        {
+          "name": "value",
+          "type": "V",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Inserts the mapping with this key and value pair immediately after the entry with the specified positioning key. If the specified positioning key is not present within this map, then this method behaves like put(Object, Object) . If there is a mapping already associated with this key, then the previous value and the specified (new) value are first merged according to this map's merge function, then the entry is moved to directly after the entry with the specified positioning key.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "putBefore",
+      "modifiers": [
+        "public"
+      ],
+      "annotations": [
+        "@Nullable"
+      ],
+      "return_type": "V",
+      "parameters": [
+        {
+          "name": "before",
+          "type": "K",
+          "annotations": []
+        },
+        {
+          "name": "key",
+          "type": "K",
+          "annotations": []
+        },
+        {
+          "name": "value",
+          "type": "V",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "Inserts the mapping with this key and value pair immediately before the entry with the specified positioning key. If the specified positioning key is not present within this map, then this method behaves like put(Object, Object) . If there is a mapping already associated with this key, then the previous value and the specified (new) value are first merged according to this map's merge function, then the entry is moved to directly before the entry with the specified positioning key.",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    },
+    {
+      "name": "remove",
+      "modifiers": [
+        "private"
+      ],
+      "annotations": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "e",
+          "type": "MutableHashedLinkedMap < K , V >. Entry",
+          "annotations": []
+        }
+      ],
+      "exceptions": [],
+      "description": "",
+      "overrides": null,
+      "since": null,
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "1.21.x-neoforge/net/neoforged/neoforge/common/util/MutableHashedLinkedMap.html"
+}
