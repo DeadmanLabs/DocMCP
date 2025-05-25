@@ -1,0 +1,289 @@
+{
+  "type": "class",
+  "name": "NetworkContext",
+  "qualified_name": "net.minecraftforge.network.NetworkContext",
+  "package": "net.minecraftforge.network",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "MARKER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NET_VERSION",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CHANNEL_KEY",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "io.netty.util.AttributeKey< NetworkContext >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "connection",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Connection",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "type",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ConnectionType",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "netVersion",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "remoteChannels",
+      "modifiers": [],
+      "type": "Set < ResourceLocation >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "remoteChannelsView",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Set < ResourceLocation >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sentChannels",
+      "modifiers": [],
+      "type": "Set < ResourceLocation >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "modList",
+      "modifiers": [],
+      "type": "Map < String , ModVersions.Info >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "modListView",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Map < String , ModVersions.Info >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "channelList",
+      "modifiers": [],
+      "type": "Map < ResourceLocation , Integer >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mismatchData",
+      "modifiers": [],
+      "type": "NetworkContext.NetworkMismatchData",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "NetworkContext",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [
+        {
+          "name": "connection",
+          "type": "Connection",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "get",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "NetworkContext",
+      "parameters": [
+        {
+          "name": "connection",
+          "type": "Connection",
+          "annotations": []
+        }
+      ],
+      "description": "Gets the associated NetworkContext from the connection, creating a new instance if necessary.",
+      "deprecated": false
+    },
+    {
+      "name": "getType",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ConnectionType",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getNetVersion",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRemoteChannels",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Set < ResourceLocation >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getModList",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Map < String , ModVersions.Info >",
+      "parameters": [],
+      "description": "A list of mods and their verisons reported by the other side of the connection. The remote side can and does lie about this, so not rely on it for any anti-cheat system.",
+      "deprecated": false
+    },
+    {
+      "name": "enhanceHostName",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "String",
+      "parameters": [
+        {
+          "name": "hostName",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "This is a hint that we are a modded client, This is sent in the first packet the client sends to the server. Unfortunately we do not have a modder facing value in this packet, so we have a long standing tradition of encoding it on the hostName field, which is a UTF string. Forge treats this string a null terminated list. With our value being anywhere in the list. Our identifier is currently FORGE, Optionally followed by a number indicating the network version. If the version is missing, we assume 0. TODO: Move out of the Intention packet and into a immediately sent Login custom payload? Which should arrive before we get to config stage?",
+      "deprecated": false
+    },
+    {
+      "name": "processIntention",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "hostName",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "finishTask",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "task",
+          "type": "ConfigurationTask.Type",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMismatchs",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "NetworkContext.NetworkMismatchData",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setConnectionType",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "type",
+          "type": "ConnectionType",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.6/net/minecraftforge/network/NetworkContext.html"
+}

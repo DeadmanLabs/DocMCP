@@ -1,0 +1,249 @@
+{
+  "type": "class",
+  "name": "VanillaPacketSplitter",
+  "qualified_name": "net.minecraftforge.network.VanillaPacketSplitter",
+  "package": "net.minecraftforge.network",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "A custom payload channel that allows sending vanilla server-to-client packets, even if they would normally be too large for the vanilla protocol. This is achieved by splitting them into multiple custom payload packets.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CHANNEL",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "ResourceLocation",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "VERSION",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PROTOCOL_MAX",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PAYLOAD_TO_CLIENT_MAX",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PART_SIZE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "STATE_FIRST",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "byte",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "STATE_LAST",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "byte",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "receivedBuffers",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "List < FriendlyByteBuf >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "VanillaPacketSplitter",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "register",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "appendPackets",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "protocol",
+          "type": "ConnectionProtocol",
+          "annotations": []
+        },
+        {
+          "name": "direction",
+          "type": "PacketFlow",
+          "annotations": []
+        },
+        {
+          "name": "packet",
+          "type": "Packet <?>",
+          "annotations": []
+        },
+        {
+          "name": "out",
+          "type": "List <? super Packet <?>>",
+          "annotations": []
+        }
+      ],
+      "description": "Append the given packet to the given list. If the packet needs to be split, multiple packets will be appened. Otherwise only the packet itself.",
+      "deprecated": false
+    },
+    {
+      "name": "heuristicIsDefinitelySmallEnough",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "packet",
+          "type": "Packet <?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onClientPacket",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "event",
+          "type": "NetworkEvent.ServerCustomPayloadEvent",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRemoteCompatibility",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "VanillaPacketSplitter.RemoteCompatibility",
+      "parameters": [
+        {
+          "name": "manager",
+          "type": "Connection",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isRemoteCompatible",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "manager",
+          "type": "Connection",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.17.1/net/minecraftforge/network/VanillaPacketSplitter.html"
+}

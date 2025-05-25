@@ -1,0 +1,1091 @@
+{
+  "type": "class",
+  "name": "ServerChunkCache",
+  "qualified_name": "net.minecraft.server.level.ServerChunkCache",
+  "package": "net.minecraft.server.level",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraft.world.level.chunk.ChunkSource"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "CHUNK_STATUSES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "List < ChunkStatus >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "distanceManager",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "DistanceManager",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "level",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "type": "ServerLevel",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mainThread",
+      "modifiers": [
+        "final"
+      ],
+      "type": "Thread",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lightEngine",
+      "modifiers": [
+        "final"
+      ],
+      "type": "ThreadedLevelLightEngine",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mainThreadProcessor",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ServerChunkCache.MainThreadExecutor",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "chunkMap",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "type": "ChunkMap",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dataStorage",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "DimensionDataStorage",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastInhabitedUpdate",
+      "modifiers": [
+        "private"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "spawnEnemies",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "spawnFriendlies",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CACHE_SIZE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastChunkPos",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "long[]",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastChunkStatus",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ChunkStatus []",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastChunk",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ChunkAccess []",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastSpawnState",
+      "modifiers": [
+        "private"
+      ],
+      "type": "NaturalSpawner.SpawnState",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ServerChunkCache",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_214982_",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "p_214983_",
+          "type": "LevelStorageSource.LevelStorageAccess",
+          "annotations": []
+        },
+        {
+          "name": "p_214984_",
+          "type": "com.mojang.datafixers.DataFixer",
+          "annotations": []
+        },
+        {
+          "name": "p_214985_",
+          "type": "StructureTemplateManager",
+          "annotations": []
+        },
+        {
+          "name": "p_214986_",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "p_214987_",
+          "type": "ChunkGenerator",
+          "annotations": []
+        },
+        {
+          "name": "p_214988_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_214989_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_214990_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_214991_",
+          "type": "ChunkProgressListener",
+          "annotations": []
+        },
+        {
+          "name": "p_214992_",
+          "type": "ChunkStatusUpdateListener",
+          "annotations": []
+        },
+        {
+          "name": "p_214993_",
+          "type": "Supplier < DimensionDataStorage >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getLightEngine",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ThreadedLevelLightEngine",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getVisibleChunkIfPresent",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "ChunkHolder",
+      "parameters": [
+        {
+          "name": "p_8365_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTickingGenerated",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "storeInCache",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_8367_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_8368_",
+          "type": "ChunkAccess",
+          "annotations": []
+        },
+        {
+          "name": "p_8369_",
+          "type": "ChunkStatus",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getChunk",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChunkAccess",
+      "parameters": [
+        {
+          "name": "p_8360_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_8361_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_8362_",
+          "type": "ChunkStatus",
+          "annotations": []
+        },
+        {
+          "name": "p_8363_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getChunkNow",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "LevelChunk",
+      "parameters": [
+        {
+          "name": "p_8357_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_8358_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clearCache",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getChunkFuture",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture <com.mojang.datafixers.util.Either< ChunkAccess , ChunkHolder.ChunkLoadingFailure >>",
+      "parameters": [
+        {
+          "name": "p_8432_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_8433_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_8434_",
+          "type": "ChunkStatus",
+          "annotations": []
+        },
+        {
+          "name": "p_8435_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getChunkFutureMainThread",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture <com.mojang.datafixers.util.Either< ChunkAccess , ChunkHolder.ChunkLoadingFailure >>",
+      "parameters": [
+        {
+          "name": "p_8457_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_8458_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_8459_",
+          "type": "ChunkStatus",
+          "annotations": []
+        },
+        {
+          "name": "p_8460_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "chunkAbsent",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_8417_",
+          "type": "ChunkHolder",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_8418_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasChunk",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_8429_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_8430_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getChunkForLighting",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "LightChunk",
+      "parameters": [
+        {
+          "name": "p_8454_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_8455_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Level",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pollTask",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "runDistanceManagerUpdates",
+      "modifiers": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isPositionTicking",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_143240_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "save",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_8420_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "close",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_201913_",
+          "type": "BooleanSupplier",
+          "annotations": []
+        },
+        {
+          "name": "p_201914_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickChunks",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFullChunk",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_8371_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_8372_",
+          "type": "Consumer < LevelChunk >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "gatherStats",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPendingTasksCount",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getGenerator",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChunkGenerator",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getGeneratorState",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChunkGeneratorStructureState",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "randomState",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "RandomState",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLoadedChunksCount",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blockChanged",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_8451_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onLightUpdate",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_8403_",
+          "type": "LightLayer",
+          "annotations": []
+        },
+        {
+          "name": "p_8404_",
+          "type": "SectionPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addRegionTicket",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_8388_",
+          "type": "TicketType <T>",
+          "annotations": []
+        },
+        {
+          "name": "p_8389_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_8390_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_8391_",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addRegionTicket",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_8388_",
+          "type": "TicketType <T>",
+          "annotations": []
+        },
+        {
+          "name": "p_8389_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_8390_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_8391_",
+          "type": "T",
+          "annotations": []
+        },
+        {
+          "name": "forceTicks",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removeRegionTicket",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_8439_",
+          "type": "TicketType <T>",
+          "annotations": []
+        },
+        {
+          "name": "p_8440_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_8441_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_8442_",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removeRegionTicket",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_8439_",
+          "type": "TicketType <T>",
+          "annotations": []
+        },
+        {
+          "name": "p_8440_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_8441_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_8442_",
+          "type": "T",
+          "annotations": []
+        },
+        {
+          "name": "forceTicks",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateChunkForced",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_8400_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_8401_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "move",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_8386_",
+          "type": "ServerPlayer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removeEntity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_8444_",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addEntity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_8464_",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "broadcastAndSend",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_8395_",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "p_8396_",
+          "type": "Packet <?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "broadcast",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_8446_",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "p_8447_",
+          "type": "Packet <?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setViewDistance",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_8355_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setSimulationDistance",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_184027_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setSpawnSettings",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_8425_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_8426_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getChunkDebugData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [
+        {
+          "name": "p_8449_",
+          "type": "ChunkPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDataStorage",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "DimensionDataStorage",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPoiManager",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "PoiManager",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "chunkScanner",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChunkScanAccess",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLastSpawnState",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "NaturalSpawner.SpawnState",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removeTicketsOnClosing",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.2/net/minecraft/server/level/ServerChunkCache.html"
+}

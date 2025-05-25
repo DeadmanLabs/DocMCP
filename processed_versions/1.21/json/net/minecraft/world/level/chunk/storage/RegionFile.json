@@ -1,0 +1,710 @@
+{
+  "type": "class",
+  "name": "RegionFile",
+  "qualified_name": "net.minecraft.world.level.chunk.storage.RegionFile",
+  "package": "net.minecraft.world.level.chunk.storage",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SECTOR_BYTES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SECTOR_INTS",
+      "modifiers": [
+        "protected",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CHUNK_HEADER_SIZE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "HEADER_OFFSET",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PADDING_BUFFER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "ByteBuffer",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "EXTERNAL_FILE_EXTENSION",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "EXTERNAL_STREAM_FLAG",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "EXTERNAL_CHUNK_THRESHOLD",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CHUNK_NOT_PRESENT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "info",
+      "modifiers": [
+        "final"
+      ],
+      "type": "RegionStorageInfo",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "path",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Path",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "file",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "FileChannel",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "externalFileDir",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Path",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "version",
+      "modifiers": [
+        "final"
+      ],
+      "type": "RegionFileVersion",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "header",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ByteBuffer",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "offsets",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "IntBuffer",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "timestamps",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "IntBuffer",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "usedSectors",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "RegionBitmap",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "RegionFile",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_333062_",
+          "type": "RegionStorageInfo",
+          "annotations": []
+        },
+        {
+          "name": "p_63633_",
+          "type": "Path",
+          "annotations": []
+        },
+        {
+          "name": "p_63634_",
+          "type": "Path",
+          "annotations": []
+        },
+        {
+          "name": "p_63636_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "RegionFile",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_335896_",
+          "type": "RegionStorageInfo",
+          "annotations": []
+        },
+        {
+          "name": "p_196950_",
+          "type": "Path",
+          "annotations": []
+        },
+        {
+          "name": "p_196951_",
+          "type": "Path",
+          "annotations": []
+        },
+        {
+          "name": "p_331589_",
+          "type": "RegionFileVersion",
+          "annotations": []
+        },
+        {
+          "name": "p_196952_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getPath",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Path",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getExternalChunkPath",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Path",
+      "parameters": [
+        {
+          "name": "p_63685_",
+          "type": "ChunkPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getChunkDataInputStream",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "DataInputStream",
+      "parameters": [
+        {
+          "name": "p_63646_",
+          "type": "ChunkPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTimestamp",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isExternalStreamChunk",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_63639_",
+          "type": "byte",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getExternalChunkVersion",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "byte",
+      "parameters": [
+        {
+          "name": "p_63670_",
+          "type": "byte",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createChunkInputStream",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "DataInputStream",
+      "parameters": [
+        {
+          "name": "p_63651_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_63652_",
+          "type": "byte",
+          "annotations": []
+        },
+        {
+          "name": "p_63653_",
+          "type": "InputStream",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createExternalChunkInputStream",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "DataInputStream",
+      "parameters": [
+        {
+          "name": "p_63648_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_63649_",
+          "type": "byte",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createStream",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "ByteArrayInputStream",
+      "parameters": [
+        {
+          "name": "p_63660_",
+          "type": "ByteBuffer",
+          "annotations": []
+        },
+        {
+          "name": "p_63661_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "packSectorOffset",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_63643_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_63644_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getNumSectors",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_63641_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSectorNumber",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_63672_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sizeToSectors",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_63677_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "doesChunkExist",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_63674_",
+          "type": "ChunkPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getChunkDataOutputStream",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "DataOutputStream",
+      "parameters": [
+        {
+          "name": "p_63679_",
+          "type": "ChunkPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "flush",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clear",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_156614_",
+          "type": "ChunkPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "write",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_63655_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_63656_",
+          "type": "ByteBuffer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createExternalStub",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "ByteBuffer",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "writeToExternalFile",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "RegionFile.CommitOp",
+      "parameters": [
+        {
+          "name": "p_63663_",
+          "type": "Path",
+          "annotations": []
+        },
+        {
+          "name": "p_63664_",
+          "type": "ByteBuffer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "writeHeader",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getOffset",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_63687_",
+          "type": "ChunkPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasChunk",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_63683_",
+          "type": "ChunkPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getOffsetIndex",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_63689_",
+          "type": "ChunkPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "close",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "padToFullSector",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21/net/minecraft/world/level/chunk/storage/RegionFile.html"
+}

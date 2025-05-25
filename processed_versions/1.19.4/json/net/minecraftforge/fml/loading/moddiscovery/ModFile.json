@@ -1,0 +1,546 @@
+{
+  "type": "class",
+  "name": "ModFile",
+  "qualified_name": "net.minecraftforge.fml.loading.moddiscovery.ModFile",
+  "package": "net.minecraftforge.fml.loading.moddiscovery",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "DEFAULTMANIFEST",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "Manifest",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "jarVersion",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "parser",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "net.minecraftforge.forgespi.locating.ModFileFactory.ModFileInfoParser",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fileProperties",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Map < String , Object >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loaders",
+      "modifiers": [
+        "private"
+      ],
+      "type": "List <net.minecraftforge.forgespi.language.IModLanguageProvider>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "scanError",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Throwable",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "jar",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "cpw.mods.jarhandling.SecureJar",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "modFileType",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "net.minecraftforge.forgespi.locating.IModFile.Type",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "manifest",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Manifest",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "provider",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "net.minecraftforge.forgespi.locating.IModProvider",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "modFileInfo",
+      "modifiers": [
+        "private"
+      ],
+      "type": "net.minecraftforge.forgespi.language.IModFileInfo",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fileModFileScanData",
+      "modifiers": [
+        "private"
+      ],
+      "type": "net.minecraftforge.forgespi.language.ModFileScanData",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "futureScanResult",
+      "modifiers": [
+        "private"
+      ],
+      "type": "CompletableFuture <net.minecraftforge.forgespi.language.ModFileScanData>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "coreMods",
+      "modifiers": [
+        "private"
+      ],
+      "type": "List < CoreModFile >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "accessTransformer",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Path",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "TYPE",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "Attributes.Name",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "securityStatus",
+      "modifiers": [
+        "private"
+      ],
+      "type": "cpw.mods.jarhandling.SecureJar.Status",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ModFile",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "jar",
+          "type": "cpw.mods.jarhandling.SecureJar",
+          "annotations": []
+        },
+        {
+          "name": "provider",
+          "type": "net.minecraftforge.forgespi.locating.IModProvider",
+          "annotations": []
+        },
+        {
+          "name": "parser",
+          "type": "net.minecraftforge.forgespi.locating.ModFileFactory.ModFileInfoParser",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ModFile",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "jar",
+          "type": "cpw.mods.jarhandling.SecureJar",
+          "annotations": []
+        },
+        {
+          "name": "provider",
+          "type": "net.minecraftforge.forgespi.locating.IModProvider",
+          "annotations": []
+        },
+        {
+          "name": "parser",
+          "type": "net.minecraftforge.forgespi.locating.ModFileFactory.ModFileInfoParser",
+          "annotations": []
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getSubstitutionMap",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Supplier < Map < String , Object >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getType",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "net.minecraftforge.forgespi.locating.IModFile.Type",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFilePath",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Path",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSecureJar",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "cpw.mods.jarhandling.SecureJar",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getModInfos",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "List <net.minecraftforge.forgespi.language.IModInfo>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAccessTransformer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < Path >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "identifyMods",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getCoreMods",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "List < CoreModFile >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "compileContent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "net.minecraftforge.forgespi.language.ModFileScanData",
+      "parameters": [],
+      "description": "Run in an executor thread to harvest the class and annotation list",
+      "deprecated": false
+    },
+    {
+      "name": "scanFile",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "pathConsumer",
+          "type": "Consumer < Path >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setFutureScanResult",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "future",
+          "type": "CompletableFuture <net.minecraftforge.forgespi.language.ModFileScanData>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getScanResult",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "net.minecraftforge.forgespi.language.ModFileScanData",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setScanResult",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "modFileScanData",
+          "type": "net.minecraftforge.forgespi.language.ModFileScanData",
+          "annotations": []
+        },
+        {
+          "name": "throwable",
+          "type": "Throwable",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setFileProperties",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "fileProperties",
+          "type": "Map < String , Object >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLoaders",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "List <net.minecraftforge.forgespi.language.IModLanguageProvider>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "findResource",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Path",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "String ...",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "identifyLanguage",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "toString",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFileName",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getProvider",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "net.minecraftforge.forgespi.locating.IModProvider",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getModFileInfo",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "net.minecraftforge.forgespi.language.IModFileInfo",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setSecurityStatus",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "status",
+          "type": "cpw.mods.jarhandling.SecureJar.Status",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getJarVersion",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "org.apache.maven.artifact.versioning.ArtifactVersion",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "parseType",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "String",
+      "parameters": [
+        {
+          "name": "jar",
+          "type": "cpw.mods.jarhandling.SecureJar",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.19.4/net/minecraftforge/fml/loading/moddiscovery/ModFile.html"
+}

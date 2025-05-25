@@ -1,0 +1,457 @@
+{
+  "type": "class",
+  "name": "ThreadedLevelLightEngine",
+  "qualified_name": "net.minecraft.server.level.ThreadedLevelLightEngine",
+  "package": "net.minecraft.server.level",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraft.world.level.lighting.LevelLightEngine"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "DEFAULT_BATCH_SIZE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "taskMailbox",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ProcessorMailbox < Runnable >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lightTasks",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.objects.ObjectList<com.mojang.datafixers.util.Pair< ThreadedLevelLightEngine.TaskType , Runnable >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "chunkMap",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ChunkMap",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sorterMailbox",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ProcessorHandle < ChunkTaskPriorityQueueSorter.Message < Runnable >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "taskPerBatch",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "scheduled",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "AtomicBoolean",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ThreadedLevelLightEngine",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_9305_",
+          "type": "LightChunkGetter",
+          "annotations": []
+        },
+        {
+          "name": "p_9306_",
+          "type": "ChunkMap",
+          "annotations": []
+        },
+        {
+          "name": "p_9307_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_9308_",
+          "type": "ProcessorMailbox < Runnable >",
+          "annotations": []
+        },
+        {
+          "name": "p_9309_",
+          "type": "ProcessorHandle < ChunkTaskPriorityQueueSorter.Message < Runnable >>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "close",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "runLightUpdates",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "checkBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_9357_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateChunkStatus",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_9331_",
+          "type": "ChunkPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateSectionStatus",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_9364_",
+          "type": "SectionPos",
+          "annotations": []
+        },
+        {
+          "name": "p_9365_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "propagateLightSources",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_285029_",
+          "type": "ChunkPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setLightEnabled",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_9336_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_9337_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "queueSectionData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_285046_",
+          "type": "LightLayer",
+          "annotations": []
+        },
+        {
+          "name": "p_285496_",
+          "type": "SectionPos",
+          "annotations": []
+        },
+        {
+          "name": "p_285495_",
+          "type": "DataLayer",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addTask",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_9313_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_9314_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_9315_",
+          "type": "ThreadedLevelLightEngine.TaskType",
+          "annotations": []
+        },
+        {
+          "name": "p_9316_",
+          "type": "Runnable",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addTask",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_9318_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_9319_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_9320_",
+          "type": "IntSupplier",
+          "annotations": []
+        },
+        {
+          "name": "p_9321_",
+          "type": "ThreadedLevelLightEngine.TaskType",
+          "annotations": []
+        },
+        {
+          "name": "p_9322_",
+          "type": "Runnable",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "retainData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_9370_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_9371_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "initializeLight",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture < ChunkAccess >",
+      "parameters": [
+        {
+          "name": "p_285128_",
+          "type": "ChunkAccess",
+          "annotations": []
+        },
+        {
+          "name": "p_285441_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lightChunk",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture < ChunkAccess >",
+      "parameters": [
+        {
+          "name": "p_9354_",
+          "type": "ChunkAccess",
+          "annotations": []
+        },
+        {
+          "name": "p_9355_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tryScheduleUpdate",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "runUpdate",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "waitForPendingTasks",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture <?>",
+      "parameters": [
+        {
+          "name": "p_301257_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_300921_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.6-neoforge/net/minecraft/server/level/ThreadedLevelLightEngine.html"
+}

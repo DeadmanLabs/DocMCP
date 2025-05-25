@@ -1,0 +1,284 @@
+{
+  "type": "class",
+  "name": "SimpleChannel.MessageBuilder<MSG>",
+  "qualified_name": "net.minecraftforge.network.SimpleChannel.MessageBuilder<MSG>",
+  "package": "net.minecraftforge.network",
+  "modifiers": [
+    "public",
+    "static",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "channel",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "SimpleChannel",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "type",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Class < MSG >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "id",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "direction",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Optional < NetworkDirection >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "encoder",
+      "modifiers": [
+        "private"
+      ],
+      "type": "BiConsumer < MSG , FriendlyByteBuf >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "decoder",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Function < FriendlyByteBuf , MSG >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "consumer",
+      "modifiers": [
+        "private"
+      ],
+      "type": "BiConsumer < MSG , CustomPayloadEvent.Context >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "MessageBuilder",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [
+        {
+          "name": "channel",
+          "type": "SimpleChannel",
+          "annotations": []
+        },
+        {
+          "name": "type",
+          "type": "Class < MSG >",
+          "annotations": []
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "networkDirection",
+          "type": "NetworkDirection",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "encoder",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SimpleChannel.MessageBuilder < MSG >",
+      "parameters": [
+        {
+          "name": "encoder",
+          "type": "BiConsumer < MSG , FriendlyByteBuf >",
+          "annotations": []
+        }
+      ],
+      "description": "Set the message encoder, which writes this message to a FriendlyByteBuf . The encoder is called immediately when the packet is sent. This means encoding typically occurs on the main server/client thread rather than on the network thread. However, this behaviour should not be relied on, and the encoder should try to be thread-safe and not interact with the current game state.",
+      "deprecated": false
+    },
+    {
+      "name": "decoder",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SimpleChannel.MessageBuilder < MSG >",
+      "parameters": [
+        {
+          "name": "decoder",
+          "type": "Function < FriendlyByteBuf , MSG >",
+          "annotations": []
+        }
+      ],
+      "description": "Set the message decoder, which reads the message from a FriendlyByteBuf . The decoder is called when the message is received on the network thread. The decoder should not attempt to access or mutate any game state, deferring that until the the message is handled.",
+      "deprecated": false
+    },
+    {
+      "name": "consumerNetworkThread",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SimpleChannel.MessageBuilder < MSG >",
+      "parameters": [
+        {
+          "name": "consumer",
+          "type": "BiConsumer < MSG , CustomPayloadEvent.Context >",
+          "annotations": []
+        }
+      ],
+      "description": "Set the message consumer, which is called once a message has been decoded. This accepts the decoded message object and the message's context. The consumer is called on the network thread, and so should not interact with most game state by default. CustomPayloadEvent.Context.enqueueWork(Runnable) can be used to handle the message on the main server or client thread. Alternatively one can use consumerMainThread(BiConsumer) to run the handler on the main thread.",
+      "deprecated": false
+    },
+    {
+      "name": "consumerNetworkThread",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SimpleChannel.MessageBuilder < MSG >",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "io.netty.util.AttributeKey<C>",
+          "annotations": []
+        },
+        {
+          "name": "consumer",
+          "type": "org.apache.commons.lang3.function.TriConsumer<C, MSG , CustomPayloadEvent.Context >",
+          "annotations": []
+        }
+      ],
+      "description": "Set the message consumer, which is called once a message has been decoded. This accepts the decoded message object and the message's context. The instance will be retrieved from the associated AttributeKey on the channel. The consumer is called on the network thread, and so should not interact with most game state by default. CustomPayloadEvent.Context.enqueueWork(Runnable) can be used to handle the message on the main server or client thread. Alternatively one can use #consumerMainThread(TriConsumer) to run the handler on the main thread.",
+      "deprecated": false
+    },
+    {
+      "name": "consumerNetworkThread",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SimpleChannel.MessageBuilder < MSG >",
+      "parameters": [
+        {
+          "name": "handler",
+          "type": "SimpleChannel.MessageBuilder.ToBooleanBiFunction < MSG , CustomPayloadEvent.Context >",
+          "annotations": []
+        }
+      ],
+      "description": "Function returning a boolean \"packet handled\" indication, for simpler channel building.",
+      "deprecated": false
+    },
+    {
+      "name": "consumerNetworkThread",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SimpleChannel.MessageBuilder < MSG >",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "io.netty.util.AttributeKey<C>",
+          "annotations": []
+        },
+        {
+          "name": "handler",
+          "type": "SimpleChannel.MessageBuilder.ToBooleanTriFunction <C, MSG , CustomPayloadEvent.Context >",
+          "annotations": []
+        }
+      ],
+      "description": "Function returning a boolean \"packet handled\" indication, for simpler channel building.",
+      "deprecated": false
+    },
+    {
+      "name": "consumerMainThread",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SimpleChannel.MessageBuilder < MSG >",
+      "parameters": [
+        {
+          "name": "consumer",
+          "type": "BiConsumer < MSG , CustomPayloadEvent.Context >",
+          "annotations": []
+        }
+      ],
+      "description": "Set the message consumer, which is called once a message has been decoded. This accepts the decoded message object and the message's context. Unlike consumerNetworkThread(BiConsumer) , the consumer is called on the main thread, and so can interact with most game state by default.",
+      "deprecated": false
+    },
+    {
+      "name": "consumerMainThread",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SimpleChannel.MessageBuilder < MSG >",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "io.netty.util.AttributeKey<C>",
+          "annotations": []
+        },
+        {
+          "name": "consumer",
+          "type": "org.apache.commons.lang3.function.TriConsumer<C, MSG , CustomPayloadEvent.Context >",
+          "annotations": []
+        }
+      ],
+      "description": "Set the message consumer, which is called once a message has been decoded. This accepts the decoded message object and the message's context. The instance will be retrieved from the associated AttributeKey on the channel. Unlike consumerNetworkThread(AttributeKey,TriConsumer) , the consumer is called on the main thread, and so can interact with most game state by default.",
+      "deprecated": false
+    },
+    {
+      "name": "add",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SimpleChannel",
+      "parameters": [],
+      "description": "Finishes building this packet.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.4/net/minecraftforge/network/SimpleChannel.MessageBuilder.html"
+}

@@ -1,0 +1,854 @@
+{
+  "type": "class",
+  "name": "BlockStateParser",
+  "qualified_name": "net.minecraft.commands.arguments.blocks.BlockStateParser",
+  "package": "net.minecraft.commands.arguments.blocks",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "ERROR_NO_TAGS_ALLOWED",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.brigadier.exceptions.SimpleCommandExceptionType",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ERROR_UNKNOWN_BLOCK",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.brigadier.exceptions.DynamicCommandExceptionType",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ERROR_UNKNOWN_PROPERTY",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ERROR_DUPLICATE_PROPERTY",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ERROR_INVALID_VALUE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.brigadier.exceptions.Dynamic3CommandExceptionType",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ERROR_EXPECTED_VALUE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ERROR_EXPECTED_END_OF_PROPERTIES",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.brigadier.exceptions.SimpleCommandExceptionType",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ERROR_UNKNOWN_TAG",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.brigadier.exceptions.DynamicCommandExceptionType",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SYNTAX_START_PROPERTIES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "char",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SYNTAX_START_NBT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "char",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SYNTAX_END_PROPERTIES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "char",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SYNTAX_EQUALS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "char",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SYNTAX_PROPERTY_SEPARATOR",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "char",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SYNTAX_TAG",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "char",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SUGGEST_NOTHING",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Function <com.mojang.brigadier.suggestion.SuggestionsBuilder, CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blocks",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "HolderLookup < Block >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "reader",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.mojang.brigadier.StringReader",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "forTesting",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "allowNbt",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "properties",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < Property <?>, Comparable <?>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "vagueProperties",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < String , String >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "id",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ResourceLocation",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "definition",
+      "modifiers": [
+        "private"
+      ],
+      "type": "StateDefinition < Block , BlockState >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "state",
+      "modifiers": [
+        "private"
+      ],
+      "type": "BlockState",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "nbt",
+      "modifiers": [
+        "private"
+      ],
+      "type": "CompoundTag",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tag",
+      "modifiers": [
+        "private"
+      ],
+      "type": "HolderSet < Block >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suggestions",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Function <com.mojang.brigadier.suggestion.SuggestionsBuilder, CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>>",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "BlockStateParser",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [
+        {
+          "name": "p_234673_",
+          "type": "HolderLookup < Block >",
+          "annotations": []
+        },
+        {
+          "name": "p_234674_",
+          "type": "com.mojang.brigadier.StringReader",
+          "annotations": []
+        },
+        {
+          "name": "p_234675_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_234676_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "parseForBlock",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "BlockStateParser.BlockResult",
+      "parameters": [
+        {
+          "name": "p_251394_",
+          "type": "HolderLookup < Block >",
+          "annotations": []
+        },
+        {
+          "name": "p_248677_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_250430_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "parseForBlock",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "BlockStateParser.BlockResult",
+      "parameters": [
+        {
+          "name": "p_234692_",
+          "type": "HolderLookup < Block >",
+          "annotations": []
+        },
+        {
+          "name": "p_234693_",
+          "type": "com.mojang.brigadier.StringReader",
+          "annotations": []
+        },
+        {
+          "name": "p_234694_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "parseForTesting",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "com.mojang.datafixers.util.Either< BlockStateParser.BlockResult , BlockStateParser.TagResult >",
+      "parameters": [
+        {
+          "name": "p_252082_",
+          "type": "HolderLookup < Block >",
+          "annotations": []
+        },
+        {
+          "name": "p_251830_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_249125_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "parseForTesting",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "com.mojang.datafixers.util.Either< BlockStateParser.BlockResult , BlockStateParser.TagResult >",
+      "parameters": [
+        {
+          "name": "p_234717_",
+          "type": "HolderLookup < Block >",
+          "annotations": []
+        },
+        {
+          "name": "p_234718_",
+          "type": "com.mojang.brigadier.StringReader",
+          "annotations": []
+        },
+        {
+          "name": "p_234719_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fillSuggestions",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>",
+      "parameters": [
+        {
+          "name": "p_234696_",
+          "type": "HolderLookup < Block >",
+          "annotations": []
+        },
+        {
+          "name": "p_234697_",
+          "type": "com.mojang.brigadier.suggestion.SuggestionsBuilder",
+          "annotations": []
+        },
+        {
+          "name": "p_234698_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_234699_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "parse",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suggestPropertyNameOrEnd",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>",
+      "parameters": [
+        {
+          "name": "p_234684_",
+          "type": "com.mojang.brigadier.suggestion.SuggestionsBuilder",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suggestVaguePropertyNameOrEnd",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>",
+      "parameters": [
+        {
+          "name": "p_234715_",
+          "type": "com.mojang.brigadier.suggestion.SuggestionsBuilder",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suggestPropertyName",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>",
+      "parameters": [
+        {
+          "name": "p_234729_",
+          "type": "com.mojang.brigadier.suggestion.SuggestionsBuilder",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suggestVaguePropertyName",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>",
+      "parameters": [
+        {
+          "name": "p_234731_",
+          "type": "com.mojang.brigadier.suggestion.SuggestionsBuilder",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suggestOpenNbt",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>",
+      "parameters": [
+        {
+          "name": "p_234733_",
+          "type": "com.mojang.brigadier.suggestion.SuggestionsBuilder",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasBlockEntity",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suggestEquals",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>",
+      "parameters": [
+        {
+          "name": "p_234735_",
+          "type": "com.mojang.brigadier.suggestion.SuggestionsBuilder",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suggestNextPropertyOrEnd",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>",
+      "parameters": [
+        {
+          "name": "p_234737_",
+          "type": "com.mojang.brigadier.suggestion.SuggestionsBuilder",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addSuggestions",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "com.mojang.brigadier.suggestion.SuggestionsBuilder",
+      "parameters": [
+        {
+          "name": "p_116787_",
+          "type": "com.mojang.brigadier.suggestion.SuggestionsBuilder",
+          "annotations": []
+        },
+        {
+          "name": "p_116788_",
+          "type": "Property <T>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suggestVaguePropertyValue",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>",
+      "parameters": [
+        {
+          "name": "p_234686_",
+          "type": "com.mojang.brigadier.suggestion.SuggestionsBuilder",
+          "annotations": []
+        },
+        {
+          "name": "p_234687_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suggestOpenVaguePropertiesOrNbt",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>",
+      "parameters": [
+        {
+          "name": "p_234739_",
+          "type": "com.mojang.brigadier.suggestion.SuggestionsBuilder",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suggestOpenPropertiesOrNbt",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>",
+      "parameters": [
+        {
+          "name": "p_234741_",
+          "type": "com.mojang.brigadier.suggestion.SuggestionsBuilder",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suggestTag",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>",
+      "parameters": [
+        {
+          "name": "p_234743_",
+          "type": "com.mojang.brigadier.suggestion.SuggestionsBuilder",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suggestItem",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>",
+      "parameters": [
+        {
+          "name": "p_234745_",
+          "type": "com.mojang.brigadier.suggestion.SuggestionsBuilder",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suggestBlockIdOrTag",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>",
+      "parameters": [
+        {
+          "name": "p_234747_",
+          "type": "com.mojang.brigadier.suggestion.SuggestionsBuilder",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "readBlock",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "readTag",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "readProperties",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "readVagueProperties",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "readNbt",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setValue",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_116776_",
+          "type": "Property <T>",
+          "annotations": []
+        },
+        {
+          "name": "p_116777_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_116778_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "serialize",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "String",
+      "parameters": [
+        {
+          "name": "p_116770_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "appendProperty",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_116803_",
+          "type": "StringBuilder",
+          "annotations": []
+        },
+        {
+          "name": "p_116804_",
+          "type": "Property <T>",
+          "annotations": []
+        },
+        {
+          "name": "p_116805_",
+          "type": "Comparable <?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.1/net/minecraft/commands/arguments/blocks/BlockStateParser.html"
+}

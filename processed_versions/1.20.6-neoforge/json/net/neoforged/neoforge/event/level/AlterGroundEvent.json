@@ -1,0 +1,130 @@
+{
+  "type": "class",
+  "name": "AlterGroundEvent",
+  "qualified_name": "net.neoforged.neoforge.event.level.AlterGroundEvent",
+  "package": "net.neoforged.neoforge.event.level",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "This event is fired when AlterGroundDecorator.placeBlockAt(TreeDecorator.Context, BlockPos) attempts to alter a ground block when generating a feature. An example of this would be large spruce trees converting grass blocks into podzol. This event is not invalid reference cancellable . This event is fired on the main Forge event bus only on the logical server. This event is fired on worker threads, meaning it is unsafe to access external global state. Doing so may induce ConcurrentModificationException or deadlocks.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "ctx",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "TreeDecorator.Context",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "positions",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "List < BlockPos >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "provider",
+      "modifiers": [
+        "private"
+      ],
+      "type": "AlterGroundEvent.StateProvider",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "AlterGroundEvent",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "ctx",
+          "type": "TreeDecorator.Context",
+          "annotations": []
+        },
+        {
+          "name": "positions",
+          "type": "List < BlockPos >",
+          "annotations": []
+        },
+        {
+          "name": "provider",
+          "type": "AlterGroundEvent.StateProvider",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getContext",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "TreeDecorator.Context",
+      "parameters": [],
+      "description": "Gets the tree decoration context for the current alteration.",
+      "deprecated": false
+    },
+    {
+      "name": "getPositions",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "List < BlockPos >",
+      "parameters": [],
+      "description": "The list of positions that are considered roots is different depending on if the context has roots, logs, or both. If roots are not present, this list is equivalent to the logs . If there are roots, and the roots have the same y-level as the lowest log, both this list is the union of both lists. Otherwise, this list is equal to only the roots. In either case, only positions which match the y-level of the zeroth element will be used during placement. This list is immutable.",
+      "deprecated": false
+    },
+    {
+      "name": "getStateProvider",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "AlterGroundEvent.StateProvider",
+      "parameters": [],
+      "description": "Gets the current BlockStateProvider that will be used by the AlterGroundDecorator .",
+      "deprecated": false
+    },
+    {
+      "name": "setStateProvider",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "provider",
+          "type": "AlterGroundEvent.StateProvider",
+          "annotations": []
+        }
+      ],
+      "description": "Sets the BlockStateProvider that will be used by the AlterGroundDecorator . Because this may be modified by multiple mods, it is advisable to wrap the current provider . An example of wrapping the current provider is shown below: StateProvider old = event.getStateProvider(); event.setStateProvider((rand, pos) -> { BlockState state = old.getState(rand, pos); return state.is(Blocks.PODZOL) ? Blocks.REDSTONE_BLOCK.defaultBlockState() : state; });",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.6-neoforge/net/neoforged/neoforge/event/level/AlterGroundEvent.html"
+}

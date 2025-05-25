@@ -1,0 +1,591 @@
+{
+  "type": "class",
+  "name": "Biome",
+  "qualified_name": "net.minecraft.world.level.biome.Biome",
+  "package": "net.minecraft.world.level.biome",
+  "modifiers": [
+    "public",
+    "final",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "DIRECT_CODEC",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.serialization.Codec< Biome >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NETWORK_CODEC",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.serialization.Codec< Biome >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CODEC",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.serialization.Codec< Holder < Biome >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LIST_CODEC",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.serialization.Codec< HolderSet < Biome >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "TEMPERATURE_NOISE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "PerlinSimplexNoise",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "FROZEN_TEMPERATURE_NOISE",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "PerlinSimplexNoise",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BIOME_INFO_NOISE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "PerlinSimplexNoise",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "TEMPERATURE_CACHE_SIZE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "climateSettings",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Biome.ClimateSettings",
+      "description": "Neo: Field accesses are redirected to getModifiedClimateSettings() with a coremod.",
+      "deprecated": false
+    },
+    {
+      "name": "generationSettings",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "BiomeGenerationSettings",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mobSettings",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "MobSpawnSettings",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "specialEffects",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "BiomeSpecialEffects",
+      "description": "Neo: Field accesses are redirected to getModifiedSpecialEffects() with a coremod.",
+      "deprecated": false
+    },
+    {
+      "name": "temperatureCache",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ThreadLocal <it.unimi.dsi.fastutil.longs.Long2FloatLinkedOpenHashMap>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "modifiableBiomeInfo",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ModifiableBiomeInfo",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "Biome",
+      "modifiers": [],
+      "parameters": [
+        {
+          "name": "p_220530_",
+          "type": "Biome.ClimateSettings",
+          "annotations": []
+        },
+        {
+          "name": "p_220531_",
+          "type": "BiomeSpecialEffects",
+          "annotations": []
+        },
+        {
+          "name": "p_220532_",
+          "type": "BiomeGenerationSettings",
+          "annotations": []
+        },
+        {
+          "name": "p_220533_",
+          "type": "MobSpawnSettings",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getSkyColor",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMobSettings",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "MobSpawnSettings",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasPrecipitation",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPrecipitationAt",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Biome.Precipitation",
+      "parameters": [
+        {
+          "name": "p_265163_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getHeightAdjustedTemperature",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_47529_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTemperature",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_47506_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldFreeze",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_47478_",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "p_47479_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldFreeze",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_47481_",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "p_47482_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_47483_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "coldEnoughToSnow",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_198905_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "warmEnoughToRain",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_198907_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldMeltFrozenOceanIcebergSlightly",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_198909_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldSnow",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_47520_",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "p_47521_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getGenerationSettings",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BiomeGenerationSettings",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFogColor",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getGrassColor",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_47465_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_47466_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getGrassColorFromTexture",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFoliageColor",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFoliageColorFromTexture",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBaseTemperature",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSpecialEffects",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BiomeSpecialEffects",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getWaterColor",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getWaterFogColor",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAmbientParticle",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < AmbientParticleSettings >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAmbientLoop",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < Holder < SoundEvent >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAmbientMood",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < AmbientMoodSettings >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAmbientAdditions",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < AmbientAdditionsSettings >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBackgroundMusic",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < Music >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "modifiableBiomeInfo",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ModifiableBiomeInfo",
+      "parameters": [],
+      "description": "Returns Cache of original biome data and biome data modified by biome modifiers. Modified biome data is set by server after datapacks and serverconfigs load. Climate and effects field reads are coremodded to redirect to this.",
+      "deprecated": false
+    },
+    {
+      "name": "getModifiedClimateSettings",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Biome.ClimateSettings",
+      "parameters": [],
+      "description": "Returns The biome's climate settings, with modifications if called after modifiers are applied in server init..",
+      "deprecated": false
+    },
+    {
+      "name": "getModifiedSpecialEffects",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BiomeSpecialEffects",
+      "parameters": [],
+      "description": "Returns The biome's client effects, with modifications if called after modifiers are applied in server init..",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21.x-neoforge/net/minecraft/world/level/biome/Biome.html"
+}

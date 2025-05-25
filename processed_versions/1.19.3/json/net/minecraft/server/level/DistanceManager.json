@@ -1,0 +1,865 @@
+{
+  "type": "class",
+  "name": "DistanceManager",
+  "qualified_name": "net.minecraft.server.level.DistanceManager",
+  "package": "net.minecraft.server.level",
+  "modifiers": [
+    "public",
+    "abstract",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ENTITY_TICKING_RANGE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PLAYER_TICKET_LEVEL",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "INITIAL_TICKET_LIST_CAPACITY",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ENTITY_TICKING_LEVEL_THRESHOLD",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BLOCK_TICKING_LEVEL_THRESHOLD",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playersPerChunk",
+      "modifiers": [
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.longs.Long2ObjectMap<it.unimi.dsi.fastutil.objects.ObjectSet< ServerPlayer >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickets",
+      "modifiers": [
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap< SortedArraySet < Ticket <?>>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ticketTracker",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "DistanceManager.ChunkTicketTracker",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "naturalSpawnChunkCounter",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "DistanceManager.FixedPlayerDistanceChunkTracker",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickingTicketsTracker",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "TickingTracker",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playerTicketManager",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "DistanceManager.PlayerTicketTracker",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "chunksToUpdateFutures",
+      "modifiers": [
+        "final"
+      ],
+      "type": "Set < ChunkHolder >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ticketThrottler",
+      "modifiers": [
+        "final"
+      ],
+      "type": "ChunkTaskPriorityQueueSorter",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ticketThrottlerInput",
+      "modifiers": [
+        "final"
+      ],
+      "type": "ProcessorHandle < ChunkTaskPriorityQueueSorter.Message < Runnable >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ticketThrottlerReleaser",
+      "modifiers": [
+        "final"
+      ],
+      "type": "ProcessorHandle < ChunkTaskPriorityQueueSorter.Release >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ticketsToRelease",
+      "modifiers": [
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.longs.LongSet",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mainThreadExecutor",
+      "modifiers": [
+        "final"
+      ],
+      "type": "Executor",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ticketTickCounter",
+      "modifiers": [
+        "private"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "simulationDistance",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "forcedTickets",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap< SortedArraySet < Ticket <?>>>",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "DistanceManager",
+      "modifiers": [
+        "protected"
+      ],
+      "parameters": [
+        {
+          "name": "p_140774_",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "p_140775_",
+          "type": "Executor",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "purgeStaleTickets",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTicketLevelAt",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_140798_",
+          "type": "SortedArraySet < Ticket <?>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isChunkToRemove",
+      "modifiers": [
+        "protected",
+        "abstract"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_140779_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getChunk",
+      "modifiers": [
+        "protected",
+        "abstract"
+      ],
+      "return_type": "ChunkHolder",
+      "parameters": [
+        {
+          "name": "p_140817_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateChunkScheduling",
+      "modifiers": [
+        "protected",
+        "abstract"
+      ],
+      "return_type": "ChunkHolder",
+      "parameters": [
+        {
+          "name": "p_140780_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_140781_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_140782_",
+          "type": "ChunkHolder",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_140783_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "runAllUpdates",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_140806_",
+          "type": "ChunkMap",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addTicket",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_140785_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_140786_",
+          "type": "Ticket <?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removeTicket",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_140819_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_140820_",
+          "type": "Ticket <?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addTicket",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_140793_",
+          "type": "TicketType <T>",
+          "annotations": []
+        },
+        {
+          "name": "p_140794_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_140795_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_140796_",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removeTicket",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_140824_",
+          "type": "TicketType <T>",
+          "annotations": []
+        },
+        {
+          "name": "p_140825_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_140826_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_140827_",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addRegionTicket",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_140841_",
+          "type": "TicketType <T>",
+          "annotations": []
+        },
+        {
+          "name": "p_140842_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_140843_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_140844_",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addRegionTicket",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_140841_",
+          "type": "TicketType <T>",
+          "annotations": []
+        },
+        {
+          "name": "p_140842_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_140843_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_140844_",
+          "type": "T",
+          "annotations": []
+        },
+        {
+          "name": "forceTicks",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removeRegionTicket",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_140850_",
+          "type": "TicketType <T>",
+          "annotations": []
+        },
+        {
+          "name": "p_140851_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_140852_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_140853_",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removeRegionTicket",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_140850_",
+          "type": "TicketType <T>",
+          "annotations": []
+        },
+        {
+          "name": "p_140851_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_140852_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_140853_",
+          "type": "T",
+          "annotations": []
+        },
+        {
+          "name": "forceTicks",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTickets",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "SortedArraySet < Ticket <?>>",
+      "parameters": [
+        {
+          "name": "p_140858_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateChunkForced",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_140800_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_140801_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addPlayer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_140803_",
+          "type": "SectionPos",
+          "annotations": []
+        },
+        {
+          "name": "p_140804_",
+          "type": "ServerPlayer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removePlayer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_140829_",
+          "type": "SectionPos",
+          "annotations": []
+        },
+        {
+          "name": "p_140830_",
+          "type": "ServerPlayer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPlayerTicketLevel",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "inEntityTickingRange",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_183914_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "inBlockTickingRange",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_183917_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTicketDebugString",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "String",
+      "parameters": [
+        {
+          "name": "p_140839_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updatePlayerTickets",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_140778_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateSimulationDistance",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_183912_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getNaturalSpawnChunkCount",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasPlayersNearby",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_140848_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDebugStatus",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldForceTicks",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "chunkPos",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dumpTickets",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_143208_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickingTracker",
+      "modifiers": [],
+      "return_type": "TickingTracker",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removeTicketsOnClosing",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasTickets",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.19.3/net/minecraft/server/level/DistanceManager.html"
+}

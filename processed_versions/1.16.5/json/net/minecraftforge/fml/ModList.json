@@ -1,0 +1,468 @@
+{
+  "type": "class",
+  "name": "ModList",
+  "qualified_name": "net.minecraftforge.fml.ModList",
+  "package": "net.minecraftforge.fml",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Master list of all mods - game-side version. This is classloaded in the game scope and can dispatch game level events as a result.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "INSTANCE",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ModList",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "modFiles",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "List < ModFileInfo >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sortedList",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "List < ModInfo >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fileById",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < String , ModFileInfo >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mods",
+      "modifiers": [
+        "private"
+      ],
+      "type": "List < ModContainer >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "indexedMods",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Map < String , ModContainer >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "modFileScanData",
+      "modifiers": [
+        "private"
+      ],
+      "type": "List <net.minecraftforge.forgespi.language.ModFileScanData>",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ModList",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [
+        {
+          "name": "modFiles",
+          "type": "List < ModFile >",
+          "annotations": []
+        },
+        {
+          "name": "sortedList",
+          "type": "List < ModInfo >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getModContainerState",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "String",
+      "parameters": [
+        {
+          "name": "modId",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fileToLine",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "String",
+      "parameters": [
+        {
+          "name": "mf",
+          "type": "ModFile",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "crashReport",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "of",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ModList",
+      "parameters": [
+        {
+          "name": "modFiles",
+          "type": "List < ModFile >",
+          "annotations": []
+        },
+        {
+          "name": "sortedList",
+          "type": "List < ModInfo >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "get",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ModList",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "newForkJoinWorkerThread",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "ForkJoinWorkerThread",
+      "parameters": [
+        {
+          "name": "pool",
+          "type": "ForkJoinPool",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getModFiles",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "List < ModFileInfo >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getModFileById",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ModFileInfo",
+      "parameters": [
+        {
+          "name": "modid",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "futureVisitor",
+      "modifiers": [],
+      "return_type": "Function < Executor , CompletableFuture < List < Throwable >>>",
+      "parameters": [
+        {
+          "name": "eventGenerator",
+          "type": "ModLoadingStage.EventGenerator <T>",
+          "annotations": []
+        },
+        {
+          "name": "stateChange",
+          "type": "BiFunction < ModLoadingStage , Throwable , ModLoadingStage >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "completableFutureFromExceptionList",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "CompletionStage < List < Throwable >>",
+      "parameters": [
+        {
+          "name": "t",
+          "type": "List <? extends Map.Entry <?, Throwable >>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "gather",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "CompletableFuture < List < Map.Entry <V, Throwable >>>",
+      "parameters": [
+        {
+          "name": "futures",
+          "type": "List <? extends CompletableFuture <? extends V>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setLoadedMods",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "modContainers",
+          "type": "List < ModContainer >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getModObjectById",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional <T>",
+      "parameters": [
+        {
+          "name": "modId",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getModContainerById",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional <? extends ModContainer >",
+      "parameters": [
+        {
+          "name": "modId",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getModContainerByObject",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional <? extends ModContainer >",
+      "parameters": [
+        {
+          "name": "obj",
+          "type": "Object",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMods",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "List < ModInfo >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isLoaded",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "modTarget",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "size",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAllScanData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "List <net.minecraftforge.forgespi.language.ModFileScanData>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "forEachModFile",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "fileConsumer",
+          "type": "Consumer < ModFile >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "applyForEachModFile",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Stream <T>",
+      "parameters": [
+        {
+          "name": "function",
+          "type": "Function < ModFile , T>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "forEachModContainer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "modContainerConsumer",
+          "type": "BiConsumer < String , ModContainer >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "applyForEachModContainer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Stream <T>",
+      "parameters": [
+        {
+          "name": "function",
+          "type": "Function < ModContainer , T>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.16.5/net/minecraftforge/fml/ModList.html"
+}

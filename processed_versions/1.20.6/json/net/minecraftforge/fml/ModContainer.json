@@ -1,0 +1,406 @@
+{
+  "type": "class",
+  "name": "ModContainer",
+  "qualified_name": "net.minecraftforge.fml.ModContainer",
+  "package": "net.minecraftforge.fml",
+  "modifiers": [
+    "public",
+    "abstract",
+    "class"
+  ],
+  "annotations": [],
+  "description": "The container that wraps around mods in the system. The philosophy is that individual mod implementation technologies should not impact the actual loading and management of mod code. This class provides a mechanism by which we can wrap actual mod code so that the loader and other facilities can treat mods at arms length.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "modId",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "namespace",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "modInfo",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "net.minecraftforge.forgespi.language.IModInfo",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "modLoadingStage",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "ModLoadingStage",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "contextExtension",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "Supplier <?>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "activityMap",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "Map < ModLoadingStage , Runnable >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "extensionPoints",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "Map < Class <? extends IExtensionPoint <?>>, Supplier <?>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "configs",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "EnumMap < ModConfig.Type , ModConfig >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "configHandler",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "Optional < Consumer < IConfigEvent >>",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ModContainer",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "info",
+          "type": "net.minecraftforge.forgespi.language.IModInfo",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ModContainer",
+      "modifiers": [],
+      "parameters": [],
+      "description": "Errored container state, used for filtering. Does nothing.",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getModId",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getNamespace",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getCurrentState",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ModLoadingStage",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "buildTransitionHandler",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "CompletableFuture < Void >",
+      "parameters": [
+        {
+          "name": "target",
+          "type": "ModContainer",
+          "annotations": []
+        },
+        {
+          "name": "eventGenerator",
+          "type": "IModStateTransition.EventGenerator <T>",
+          "annotations": []
+        },
+        {
+          "name": "progressBar",
+          "type": "ProgressMeter",
+          "annotations": []
+        },
+        {
+          "name": "stateChangeHandler",
+          "type": "BiFunction < ModLoadingStage , Throwable , ModLoadingStage >",
+          "annotations": []
+        },
+        {
+          "name": "executor",
+          "type": "Executor",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getModInfo",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "net.minecraftforge.forgespi.language.IModInfo",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getCustomExtension",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional <T>",
+      "parameters": [
+        {
+          "name": "point",
+          "type": "Class <? extends IExtensionPoint <T>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registerExtensionPoint",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "point",
+          "type": "Class <? extends IExtensionPoint <T>>",
+          "annotations": []
+        },
+        {
+          "name": "extension",
+          "type": "Supplier <T>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registerDisplayTest",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "displayTest",
+          "type": "IExtensionPoint.DisplayTest",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registerDisplayTest",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "displayTest",
+          "type": "Supplier < IExtensionPoint.DisplayTest >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registerDisplayTest",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "version",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "remoteVersionTest",
+          "type": "BiPredicate < String , Boolean >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registerDisplayTest",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "suppliedVersion",
+          "type": "Supplier < String >",
+          "annotations": []
+        },
+        {
+          "name": "remoteVersionTest",
+          "type": "BiPredicate < String , Boolean >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addConfig",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "modConfig",
+          "type": "ModConfig",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dispatchConfigEvent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "event",
+          "type": "IConfigEvent",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "matches",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "mod",
+          "type": "Object",
+          "annotations": []
+        }
+      ],
+      "description": "Does this mod match the supplied mod?",
+      "deprecated": false
+    },
+    {
+      "name": "getMod",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "Object",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "acceptEvent",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "e",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "Accept an arbitrary event for processing by the mod. Probably posted to an event bus in the lower level container.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.6/net/minecraftforge/fml/ModContainer.html"
+}

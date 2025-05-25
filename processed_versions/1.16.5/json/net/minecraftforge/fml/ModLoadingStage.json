@@ -1,0 +1,339 @@
+{
+  "type": "enum",
+  "name": "ModLoadingStage",
+  "qualified_name": "net.minecraftforge.fml.ModLoadingStage",
+  "package": "net.minecraftforge.fml",
+  "modifiers": [
+    "public",
+    "enum"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "java.lang.Enum",
+      "ModLoadingStage"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "eventFunctionStream",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Supplier < Stream < ModLoadingStage.EventGenerator <?>>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "parallelEventClass",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Optional < Class <? extends ParallelDispatchEvent >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "threadSelector",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ModLoadingStage.ThreadSelector",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "finalActivityGenerator",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "BiFunction < Executor , CompletableFuture < List < Throwable >>, CompletableFuture < List < Throwable >>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "preDispatchHook",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "BiFunction < Executor , ? extends ModLoadingStage.EventGenerator <?>, CompletableFuture < List < Throwable >>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "postDispatchHook",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "BiFunction < Executor , ? extends ModLoadingStage.EventGenerator <?>, CompletableFuture < List < Throwable >>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "deferredWorkQueue",
+      "modifiers": [
+        "private"
+      ],
+      "type": "DeferredWorkQueue",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ModLoadingStage",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [
+        {
+          "name": "parallelClass",
+          "type": "Class <? extends ParallelDispatchEvent >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ModLoadingStage",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [
+        {
+          "name": "eventStream",
+          "type": "Supplier < Stream < ModLoadingStage.EventGenerator <?>>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ModLoadingStage",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [
+        {
+          "name": "eventStream",
+          "type": "Supplier < Stream < ModLoadingStage.EventGenerator <?>>>",
+          "annotations": []
+        },
+        {
+          "name": "preDispatchHook",
+          "type": "BiFunction < Executor , ? extends ModLoadingStage.EventGenerator <T>, CompletableFuture < List < Throwable >>>",
+          "annotations": []
+        },
+        {
+          "name": "postDispatchHook",
+          "type": "BiFunction < Executor , ? extends ModLoadingStage.EventGenerator <T>, CompletableFuture < List < Throwable >>>",
+          "annotations": []
+        },
+        {
+          "name": "finalActivityGenerator",
+          "type": "BiFunction < Executor , CompletableFuture < List < Throwable >>, CompletableFuture < List < Throwable >>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ModLoadingStage",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "values",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ModLoadingStage []",
+      "parameters": [],
+      "description": "Returns an array containing the constants of this enum class, in the order they are declared.",
+      "deprecated": false
+    },
+    {
+      "name": "valueOf",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ModLoadingStage",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the enum constant of this class with the specified name. The string must match exactly an identifier used to declare an enum constant in this class. (Extraneous whitespace characters are not permitted.)",
+      "deprecated": false
+    },
+    {
+      "name": "buildTransition",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture < List < Throwable >>",
+      "parameters": [
+        {
+          "name": "syncExecutor",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "parallelExecutor",
+          "type": "Executor",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "buildTransition",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture < List < Throwable >>",
+      "parameters": [
+        {
+          "name": "syncExecutor",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "parallelExecutor",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "preSyncTask",
+          "type": "Function < Executor , CompletableFuture < Void >>",
+          "annotations": []
+        },
+        {
+          "name": "postSyncTask",
+          "type": "Function < Executor , CompletableFuture < Void >>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addCompletableFutureTaskForModDispatch",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "ModLoadingStage.EventGenerator <T>",
+      "parameters": [
+        {
+          "name": "syncExecutor",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "parallelExecutor",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "completeableFutures",
+          "type": "List < CompletableFuture < List < Throwable >>>",
+          "annotations": []
+        },
+        {
+          "name": "eventGenerator",
+          "type": "ModLoadingStage.EventGenerator <T>",
+          "annotations": []
+        },
+        {
+          "name": "nextState",
+          "type": "BiFunction < ModLoadingStage , Throwable , ModLoadingStage >",
+          "annotations": []
+        },
+        {
+          "name": "nextGenerator",
+          "type": "ModLoadingStage.EventGenerator <T>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "nextState",
+      "modifiers": [],
+      "return_type": "ModLoadingStage",
+      "parameters": [
+        {
+          "name": "exception",
+          "type": "Throwable",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "currentState",
+      "modifiers": [],
+      "return_type": "ModLoadingStage",
+      "parameters": [
+        {
+          "name": "exception",
+          "type": "Throwable",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getParallelEventClass",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < Class <? extends ParallelDispatchEvent >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDeferredWorkQueue",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "DeferredWorkQueue",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.16.5/net/minecraftforge/fml/ModLoadingStage.html"
+}

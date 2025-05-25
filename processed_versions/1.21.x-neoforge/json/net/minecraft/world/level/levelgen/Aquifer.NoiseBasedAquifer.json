@@ -1,0 +1,683 @@
+{
+  "type": "class",
+  "name": "Aquifer.NoiseBasedAquifer",
+  "qualified_name": "net.minecraft.world.level.levelgen.Aquifer.NoiseBasedAquifer",
+  "package": "net.minecraft.world.level.levelgen",
+  "modifiers": [
+    "public",
+    "static",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "X_RANGE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "Y_RANGE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "Z_RANGE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "X_SEPARATION",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "Y_SEPARATION",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "Z_SEPARATION",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "X_SPACING",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "Y_SPACING",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "Z_SPACING",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MAX_REASONABLE_DISTANCE_TO_AQUIFER_CENTER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "FLOWING_UPDATE_SIMULARITY",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "double",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "noiseChunk",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "NoiseChunk",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "barrierNoise",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "DensityFunction",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fluidLevelFloodednessNoise",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "DensityFunction",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fluidLevelSpreadNoise",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "DensityFunction",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lavaNoise",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "DensityFunction",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "positionalRandomFactory",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "PositionalRandomFactory",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "aquiferCache",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "Aquifer.FluidStatus []",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "aquiferLocationCache",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "long[]",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "globalFluidPicker",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Aquifer.FluidPicker",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "erosion",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "DensityFunction",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "depth",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "DensityFunction",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldScheduleFluidUpdate",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "minGridX",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "minGridY",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "minGridZ",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "gridSizeX",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "gridSizeZ",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SURFACE_SAMPLING_OFFSETS_IN_CHUNKS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int[][]",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "NoiseBasedAquifer",
+      "modifiers": [],
+      "parameters": [
+        {
+          "name": "p_223891_",
+          "type": "NoiseChunk",
+          "annotations": []
+        },
+        {
+          "name": "p_223892_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_223893_",
+          "type": "NoiseRouter",
+          "annotations": []
+        },
+        {
+          "name": "p_223894_",
+          "type": "PositionalRandomFactory",
+          "annotations": []
+        },
+        {
+          "name": "p_223895_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_223896_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_223897_",
+          "type": "Aquifer.FluidPicker",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getIndex",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_158028_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158029_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158030_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "computeSubstance",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "p_208186_",
+          "type": "DensityFunction.FunctionContext",
+          "annotations": []
+        },
+        {
+          "name": "p_208187_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldScheduleFluidUpdate",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "similarity",
+      "modifiers": [
+        "protected",
+        "static"
+      ],
+      "return_type": "double",
+      "parameters": [
+        {
+          "name": "p_158025_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158026_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "calculatePressure",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "double",
+      "parameters": [
+        {
+          "name": "p_208189_",
+          "type": "DensityFunction.FunctionContext",
+          "annotations": []
+        },
+        {
+          "name": "p_208190_",
+          "type": "org.apache.commons.lang3.mutable.MutableDouble",
+          "annotations": []
+        },
+        {
+          "name": "p_208191_",
+          "type": "Aquifer.FluidStatus",
+          "annotations": []
+        },
+        {
+          "name": "p_208192_",
+          "type": "Aquifer.FluidStatus",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "gridX",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_158040_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "gridY",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_158046_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "gridZ",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_158048_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAquiferStatus",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Aquifer.FluidStatus",
+      "parameters": [
+        {
+          "name": "p_188446_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "computeFluid",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Aquifer.FluidStatus",
+      "parameters": [
+        {
+          "name": "p_188448_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_188449_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_188450_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "computeSurfaceLevel",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_223910_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_223911_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_223912_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_223913_",
+          "type": "Aquifer.FluidStatus",
+          "annotations": []
+        },
+        {
+          "name": "p_223914_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_223915_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "computeRandomizedFluidSurfaceLevel",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_223899_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_223900_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_223901_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_223902_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "computeFluidType",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "p_223904_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_223905_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_223906_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_223907_",
+          "type": "Aquifer.FluidStatus",
+          "annotations": []
+        },
+        {
+          "name": "p_223908_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21.x-neoforge/net/minecraft/world/level/levelgen/Aquifer.NoiseBasedAquifer.html"
+}

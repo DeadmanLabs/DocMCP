@@ -1,0 +1,2019 @@
+{
+  "type": "class",
+  "name": "BlockStateProvider",
+  "qualified_name": "net.minecraftforge.client.model.generators.BlockStateProvider",
+  "package": "net.minecraftforge.client.model.generators",
+  "modifiers": [
+    "public",
+    "abstract",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Data provider for blockstate files. Extends BlockModelProvider so that blockstates and their referenced models can be provided in tandem.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "GSON",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "com.google.gson.Gson",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registeredBlocks",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "Map < Block , IGeneratedBlockstate >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "generator",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "DataGenerator",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "modid",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blockModels",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "BlockModelProvider",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "itemModels",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ItemModelProvider",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DEFAULT_ANGLE_OFFSET",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "WALL_PROPS",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.google.common.collect.ImmutableMap< Direction , Property < WallSide >>",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "BlockStateProvider",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "gen",
+          "type": "DataGenerator",
+          "annotations": []
+        },
+        {
+          "name": "modid",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "exFileHelper",
+          "type": "ExistingFileHelper",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "run",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "cache",
+          "type": "HashCache",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registerStatesAndModels",
+      "modifiers": [
+        "protected",
+        "abstract"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getVariantBuilder",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "VariantBlockStateBuilder",
+      "parameters": [
+        {
+          "name": "b",
+          "type": "Block",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMultipartBuilder",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "MultiPartBlockStateBuilder",
+      "parameters": [
+        {
+          "name": "b",
+          "type": "Block",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "models",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BlockModelProvider",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "itemModels",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ItemModelProvider",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "modLoc",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mcLoc",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "name",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "String",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "Block",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blockTexture",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "Block",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "extend",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [
+        {
+          "name": "rl",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "suffix",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cubeAll",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ModelFile",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "Block",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "simpleBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "Block",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "simpleBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "Block",
+          "annotations": []
+        },
+        {
+          "name": "expander",
+          "type": "Function < ModelFile , ConfiguredModel []>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "simpleBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "Block",
+          "annotations": []
+        },
+        {
+          "name": "model",
+          "type": "ModelFile",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "simpleBlockItem",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "Block",
+          "annotations": []
+        },
+        {
+          "name": "model",
+          "type": "ModelFile",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "simpleBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "Block",
+          "annotations": []
+        },
+        {
+          "name": "models",
+          "type": "ConfiguredModel ...",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "axisBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "RotatedPillarBlock",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "logBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "RotatedPillarBlock",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "axisBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "RotatedPillarBlock",
+          "annotations": []
+        },
+        {
+          "name": "baseName",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "axisBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "RotatedPillarBlock",
+          "annotations": []
+        },
+        {
+          "name": "side",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "end",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "axisBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "RotatedPillarBlock",
+          "annotations": []
+        },
+        {
+          "name": "vertical",
+          "type": "ModelFile",
+          "annotations": []
+        },
+        {
+          "name": "horizontal",
+          "type": "ModelFile",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "horizontalBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "Block",
+          "annotations": []
+        },
+        {
+          "name": "side",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "front",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "top",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "horizontalBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "Block",
+          "annotations": []
+        },
+        {
+          "name": "model",
+          "type": "ModelFile",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "horizontalBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "Block",
+          "annotations": []
+        },
+        {
+          "name": "model",
+          "type": "ModelFile",
+          "annotations": []
+        },
+        {
+          "name": "angleOffset",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "horizontalBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "Block",
+          "annotations": []
+        },
+        {
+          "name": "modelFunc",
+          "type": "Function < BlockState , ModelFile >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "horizontalBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "Block",
+          "annotations": []
+        },
+        {
+          "name": "modelFunc",
+          "type": "Function < BlockState , ModelFile >",
+          "annotations": []
+        },
+        {
+          "name": "angleOffset",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "horizontalFaceBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "Block",
+          "annotations": []
+        },
+        {
+          "name": "model",
+          "type": "ModelFile",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "horizontalFaceBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "Block",
+          "annotations": []
+        },
+        {
+          "name": "model",
+          "type": "ModelFile",
+          "annotations": []
+        },
+        {
+          "name": "angleOffset",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "horizontalFaceBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "Block",
+          "annotations": []
+        },
+        {
+          "name": "modelFunc",
+          "type": "Function < BlockState , ModelFile >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "horizontalFaceBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "Block",
+          "annotations": []
+        },
+        {
+          "name": "modelFunc",
+          "type": "Function < BlockState , ModelFile >",
+          "annotations": []
+        },
+        {
+          "name": "angleOffset",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "directionalBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "Block",
+          "annotations": []
+        },
+        {
+          "name": "model",
+          "type": "ModelFile",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "directionalBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "Block",
+          "annotations": []
+        },
+        {
+          "name": "model",
+          "type": "ModelFile",
+          "annotations": []
+        },
+        {
+          "name": "angleOffset",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "directionalBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "Block",
+          "annotations": []
+        },
+        {
+          "name": "modelFunc",
+          "type": "Function < BlockState , ModelFile >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "directionalBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "Block",
+          "annotations": []
+        },
+        {
+          "name": "modelFunc",
+          "type": "Function < BlockState , ModelFile >",
+          "annotations": []
+        },
+        {
+          "name": "angleOffset",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stairsBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "StairBlock",
+          "annotations": []
+        },
+        {
+          "name": "texture",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stairsBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "StairBlock",
+          "annotations": []
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "texture",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stairsBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "StairBlock",
+          "annotations": []
+        },
+        {
+          "name": "side",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "bottom",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "top",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stairsBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "StairBlock",
+          "annotations": []
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "side",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "bottom",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "top",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stairsBlockInternal",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "StairBlock",
+          "annotations": []
+        },
+        {
+          "name": "baseName",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "side",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "bottom",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "top",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stairsBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "StairBlock",
+          "annotations": []
+        },
+        {
+          "name": "stairs",
+          "type": "ModelFile",
+          "annotations": []
+        },
+        {
+          "name": "stairsInner",
+          "type": "ModelFile",
+          "annotations": []
+        },
+        {
+          "name": "stairsOuter",
+          "type": "ModelFile",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "slabBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "SlabBlock",
+          "annotations": []
+        },
+        {
+          "name": "doubleslab",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "texture",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "slabBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "SlabBlock",
+          "annotations": []
+        },
+        {
+          "name": "doubleslab",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "side",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "bottom",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "top",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "slabBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "SlabBlock",
+          "annotations": []
+        },
+        {
+          "name": "bottom",
+          "type": "ModelFile",
+          "annotations": []
+        },
+        {
+          "name": "top",
+          "type": "ModelFile",
+          "annotations": []
+        },
+        {
+          "name": "doubleslab",
+          "type": "ModelFile",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "buttonBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "ButtonBlock",
+          "annotations": []
+        },
+        {
+          "name": "texture",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "buttonBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "ButtonBlock",
+          "annotations": []
+        },
+        {
+          "name": "button",
+          "type": "ModelFile",
+          "annotations": []
+        },
+        {
+          "name": "buttonPressed",
+          "type": "ModelFile",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pressurePlateBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "PressurePlateBlock",
+          "annotations": []
+        },
+        {
+          "name": "texture",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pressurePlateBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "PressurePlateBlock",
+          "annotations": []
+        },
+        {
+          "name": "pressurePlate",
+          "type": "ModelFile",
+          "annotations": []
+        },
+        {
+          "name": "pressurePlateDown",
+          "type": "ModelFile",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "signBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "signBlock",
+          "type": "StandingSignBlock",
+          "annotations": []
+        },
+        {
+          "name": "wallSignBlock",
+          "type": "WallSignBlock",
+          "annotations": []
+        },
+        {
+          "name": "texture",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "signBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "signBlock",
+          "type": "StandingSignBlock",
+          "annotations": []
+        },
+        {
+          "name": "wallSignBlock",
+          "type": "WallSignBlock",
+          "annotations": []
+        },
+        {
+          "name": "sign",
+          "type": "ModelFile",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fourWayBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "CrossCollisionBlock",
+          "annotations": []
+        },
+        {
+          "name": "post",
+          "type": "ModelFile",
+          "annotations": []
+        },
+        {
+          "name": "side",
+          "type": "ModelFile",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fourWayMultipart",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "builder",
+          "type": "MultiPartBlockStateBuilder",
+          "annotations": []
+        },
+        {
+          "name": "side",
+          "type": "ModelFile",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fenceBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "FenceBlock",
+          "annotations": []
+        },
+        {
+          "name": "texture",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fenceBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "FenceBlock",
+          "annotations": []
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "texture",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fenceGateBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "FenceGateBlock",
+          "annotations": []
+        },
+        {
+          "name": "texture",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fenceGateBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "FenceGateBlock",
+          "annotations": []
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "texture",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fenceGateBlockInternal",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "FenceGateBlock",
+          "annotations": []
+        },
+        {
+          "name": "baseName",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "texture",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fenceGateBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "FenceGateBlock",
+          "annotations": []
+        },
+        {
+          "name": "gate",
+          "type": "ModelFile",
+          "annotations": []
+        },
+        {
+          "name": "gateOpen",
+          "type": "ModelFile",
+          "annotations": []
+        },
+        {
+          "name": "gateWall",
+          "type": "ModelFile",
+          "annotations": []
+        },
+        {
+          "name": "gateWallOpen",
+          "type": "ModelFile",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "wallBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "WallBlock",
+          "annotations": []
+        },
+        {
+          "name": "texture",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "wallBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "WallBlock",
+          "annotations": []
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "texture",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "wallBlockInternal",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "WallBlock",
+          "annotations": []
+        },
+        {
+          "name": "baseName",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "texture",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "wallBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "WallBlock",
+          "annotations": []
+        },
+        {
+          "name": "post",
+          "type": "ModelFile",
+          "annotations": []
+        },
+        {
+          "name": "side",
+          "type": "ModelFile",
+          "annotations": []
+        },
+        {
+          "name": "sideTall",
+          "type": "ModelFile",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "wallSidePart",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "builder",
+          "type": "MultiPartBlockStateBuilder",
+          "annotations": []
+        },
+        {
+          "name": "model",
+          "type": "ModelFile",
+          "annotations": []
+        },
+        {
+          "name": "entry",
+          "type": "Map.Entry < Direction , Property < WallSide >>",
+          "annotations": []
+        },
+        {
+          "name": "height",
+          "type": "WallSide",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "paneBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "IronBarsBlock",
+          "annotations": []
+        },
+        {
+          "name": "pane",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "edge",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "paneBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "IronBarsBlock",
+          "annotations": []
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "pane",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "edge",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "paneBlockInternal",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "IronBarsBlock",
+          "annotations": []
+        },
+        {
+          "name": "baseName",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "pane",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "edge",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "paneBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "IronBarsBlock",
+          "annotations": []
+        },
+        {
+          "name": "post",
+          "type": "ModelFile",
+          "annotations": []
+        },
+        {
+          "name": "side",
+          "type": "ModelFile",
+          "annotations": []
+        },
+        {
+          "name": "sideAlt",
+          "type": "ModelFile",
+          "annotations": []
+        },
+        {
+          "name": "noSide",
+          "type": "ModelFile",
+          "annotations": []
+        },
+        {
+          "name": "noSideAlt",
+          "type": "ModelFile",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "doorBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "DoorBlock",
+          "annotations": []
+        },
+        {
+          "name": "bottom",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "top",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "doorBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "DoorBlock",
+          "annotations": []
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "bottom",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "top",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "doorBlockInternal",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "DoorBlock",
+          "annotations": []
+        },
+        {
+          "name": "baseName",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "bottom",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "top",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "doorBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "DoorBlock",
+          "annotations": []
+        },
+        {
+          "name": "bottomLeft",
+          "type": "ModelFile",
+          "annotations": []
+        },
+        {
+          "name": "bottomRight",
+          "type": "ModelFile",
+          "annotations": []
+        },
+        {
+          "name": "topLeft",
+          "type": "ModelFile",
+          "annotations": []
+        },
+        {
+          "name": "topRight",
+          "type": "ModelFile",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "trapdoorBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "TrapDoorBlock",
+          "annotations": []
+        },
+        {
+          "name": "texture",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "orientable",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "trapdoorBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "TrapDoorBlock",
+          "annotations": []
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "texture",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "orientable",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "trapdoorBlockInternal",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "TrapDoorBlock",
+          "annotations": []
+        },
+        {
+          "name": "baseName",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "texture",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "orientable",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "trapdoorBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "TrapDoorBlock",
+          "annotations": []
+        },
+        {
+          "name": "bottom",
+          "type": "ModelFile",
+          "annotations": []
+        },
+        {
+          "name": "top",
+          "type": "ModelFile",
+          "annotations": []
+        },
+        {
+          "name": "open",
+          "type": "ModelFile",
+          "annotations": []
+        },
+        {
+          "name": "orientable",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "saveBlockState",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "cache",
+          "type": "HashCache",
+          "annotations": []
+        },
+        {
+          "name": "stateJson",
+          "type": "com.google.gson.JsonObject",
+          "annotations": []
+        },
+        {
+          "name": "owner",
+          "type": "Block",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getName",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.18.2/net/minecraftforge/client/model/generators/BlockStateProvider.html"
+}

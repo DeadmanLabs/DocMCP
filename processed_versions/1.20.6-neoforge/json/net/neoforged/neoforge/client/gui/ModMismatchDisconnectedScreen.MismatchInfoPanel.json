@@ -1,0 +1,366 @@
+{
+  "type": "class",
+  "name": "ModMismatchDisconnectedScreen.MismatchInfoPanel",
+  "qualified_name": "net.neoforged.neoforge.client.gui.ModMismatchDisconnectedScreen.MismatchInfoPanel",
+  "package": "net.neoforged.neoforge.client.gui",
+  "modifiers": [
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraft.client.gui.components.events.AbstractContainerEventHandler",
+      "net.neoforged.neoforge.client.gui.widget.ScrollPanel"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "nameIndent",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tableWidth",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "nameWidth",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "versionWidth",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lineTable",
+      "modifiers": [
+        "private"
+      ],
+      "type": "List <org.apache.commons.lang3.tuple.Pair< FormattedCharSequence , FormattedCharSequence >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "contentSize",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "oneChannelPerEntry",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "MismatchInfoPanel",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "client",
+          "type": "Minecraft",
+          "annotations": []
+        },
+        {
+          "name": "width",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "height",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "top",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "left",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "updateListContent",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sortAndMergeChannelData",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Map < List < ResourceLocation >, Component >",
+      "parameters": [
+        {
+          "name": "mismatchedChannelData",
+          "type": "Map < ResourceLocation , Component >",
+          "annotations": []
+        }
+      ],
+      "description": "Iterates over the raw channel mismatch data and merges entries with the same reason component into one channel mismatch entry each. Due to the reason component always containing the display name of the mod that likely owns the associated channel, this step effectively groups channels by their most likely owning mod candidate, so users can see more easily which mods might be the culprits of the negotiation failure that caused this screen to appear.",
+      "deprecated": false
+    },
+    {
+      "name": "splitLineToWidth",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "List <org.apache.commons.lang3.tuple.Pair< FormattedCharSequence , FormattedCharSequence >>",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "MutableComponent",
+          "annotations": []
+        },
+        {
+          "name": "reason",
+          "type": "MutableComponent",
+          "annotations": []
+        }
+      ],
+      "description": "Splits the raw channel namespace and mismatch reason strings, making them use multiple lines if needed, to fit within the table dimensions. The style assigned to the name element is then applied to the entire content row.",
+      "deprecated": false
+    },
+    {
+      "name": "toChannelComponent",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "MutableComponent",
+      "parameters": [
+        {
+          "name": "ids",
+          "type": "List < ResourceLocation >",
+          "annotations": []
+        },
+        {
+          "name": "color",
+          "type": "ChatFormatting",
+          "annotations": []
+        }
+      ],
+      "description": "Formats the given list of channel ids to a component which, depending on the current display mode of the list, will list either the first or all channel ids. If only one channel id is shown, the amount of channels that have the same reason component will also be displayed next to the channel id. The component is colored in the given color, which will be used for the whole content row.",
+      "deprecated": false
+    },
+    {
+      "name": "toggleSimplifiedView",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getContentHeight",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "drawPanel",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "guiGraphics",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "entryRight",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "relativeY",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "tess",
+          "type": "Tesselator",
+          "annotations": []
+        },
+        {
+          "name": "mouseX",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "mouseY",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "Description copied from class: ScrollPanel",
+      "deprecated": false
+    },
+    {
+      "name": "render",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "guiGraphics",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "mouseX",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "mouseY",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "partialTicks",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getComponentStyleAt",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Style",
+      "parameters": [
+        {
+          "name": "x",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "y",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mouseClicked",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "mouseX",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "mouseY",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "button",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "narrationPriority",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "NarratableEntry.NarrationPriority",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateNarration",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "output",
+          "type": "NarrationElementOutput",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.6-neoforge/net/neoforged/neoforge/client/gui/ModMismatchDisconnectedScreen.MismatchInfoPanel.html"
+}

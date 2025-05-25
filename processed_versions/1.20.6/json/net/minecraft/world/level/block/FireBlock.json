@@ -1,0 +1,823 @@
+{
+  "type": "class",
+  "name": "FireBlock",
+  "qualified_name": "net.minecraft.world.level.block.FireBlock",
+  "package": "net.minecraft.world.level.block",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraft.world.level.block.state.BlockBehaviour",
+      "net.minecraft.world.level.block.Block",
+      "net.minecraft.world.level.block.BaseFireBlock"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "CODEC",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.serialization.MapCodec< FireBlock >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MAX_AGE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "AGE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "IntegerProperty",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NORTH",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "BooleanProperty",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "EAST",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "BooleanProperty",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SOUTH",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "BooleanProperty",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "WEST",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "BooleanProperty",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UP",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "BooleanProperty",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PROPERTY_BY_DIRECTION",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Map < Direction , BooleanProperty >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UP_AABB",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "VoxelShape",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "WEST_AABB",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "VoxelShape",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "EAST_AABB",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "VoxelShape",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NORTH_AABB",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "VoxelShape",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SOUTH_AABB",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "VoxelShape",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shapesCache",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < BlockState , VoxelShape >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "IGNITE_INSTANT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "IGNITE_EASY",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "IGNITE_MEDIUM",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "IGNITE_HARD",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BURN_INSTANT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BURN_EASY",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BURN_MEDIUM",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BURN_HARD",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "igniteOdds",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.objects.Object2IntMap< Block >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "burnOdds",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.objects.Object2IntMap< Block >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "FireBlock",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_53425_",
+          "type": "BlockBehaviour.Properties",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "codec",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "com.mojang.serialization.MapCodec< FireBlock >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "calculateShape",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "VoxelShape",
+      "parameters": [
+        {
+          "name": "p_53491_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateShape",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "p_53458_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_53459_",
+          "type": "Direction",
+          "annotations": []
+        },
+        {
+          "name": "p_53460_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_53461_",
+          "type": "LevelAccessor",
+          "annotations": []
+        },
+        {
+          "name": "p_53462_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_53463_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getShape",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "VoxelShape",
+      "parameters": [
+        {
+          "name": "p_53474_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_53475_",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "p_53476_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_53477_",
+          "type": "CollisionContext",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getStateForPlacement",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "p_53427_",
+          "type": "BlockPlaceContext",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getStateForPlacement",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "p_53471_",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "p_53472_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canSurvive",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_53454_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_53455_",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "p_53456_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_221160_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_221161_",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "p_221162_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_221163_",
+          "type": "RandomSource",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isNearRain",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_53429_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_53430_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBurnOdds",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_221165_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getIgniteOdds",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_221167_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "checkBurnOut",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_221151_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_221152_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_221153_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_221154_",
+          "type": "RandomSource",
+          "annotations": []
+        },
+        {
+          "name": "p_221155_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "face",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getStateWithAge",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "p_53438_",
+          "type": "LevelAccessor",
+          "annotations": []
+        },
+        {
+          "name": "p_53439_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_53440_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isValidFireLocation",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_53486_",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "p_53487_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getIgniteOdds",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_221157_",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "p_221158_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canBurn",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_53489_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onPlace",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_53479_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_53480_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_53481_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_53482_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_53483_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFireTickDelay",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_221149_",
+          "type": "RandomSource",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createBlockStateDefinition",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_53465_",
+          "type": "StateDefinition.Builder < Block , BlockState >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setFlammable",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_53445_",
+          "type": "Block",
+          "annotations": []
+        },
+        {
+          "name": "p_53446_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_53447_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canCatchFire",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "world",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "face",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "description": "Side sensitive version that calls the block function.",
+      "deprecated": false
+    },
+    {
+      "name": "bootStrap",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.6/net/minecraft/world/level/block/FireBlock.html"
+}

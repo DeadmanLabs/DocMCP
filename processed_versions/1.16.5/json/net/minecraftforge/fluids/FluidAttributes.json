@@ -1,0 +1,988 @@
+{
+  "type": "class",
+  "name": "FluidAttributes",
+  "qualified_name": "net.minecraftforge.fluids.FluidAttributes",
+  "package": "net.minecraftforge.fluids",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Minecraft Forge Fluid Implementation This class is a fluid (liquid or gas) equivalent to \"Item.\" It describes the nature of a fluid and contains its general properties. These properties do not have inherent gameplay mechanics - they are provided so that mods may choose to take advantage of them. Fluid implementations are not required to actively use these properties, nor are objects interfacing with fluids required to make use of them, but it is encouraged. The default values can be used as a reference point for mods adding fluids such as oil or heavy water.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "BUCKET_VOLUME",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "translationKey",
+      "modifiers": [
+        "private"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stillTexture",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ResourceLocation",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "flowingTexture",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ResourceLocation",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "overlayTexture",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ResourceLocation",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fillSound",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "SoundEvent",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "emptySound",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "SoundEvent",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "luminosity",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "The light level emitted by this fluid. Default value is 0, as most fluids do not actively emit light.",
+      "deprecated": false
+    },
+    {
+      "name": "density",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "Density of the fluid - completely arbitrary; negative density indicates that the fluid is lighter than air. Default value is approximately the real-life density of water in kg/m^3.",
+      "deprecated": false
+    },
+    {
+      "name": "temperature",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "Temperature of the fluid - completely arbitrary; higher temperature indicates that the fluid is hotter than air. Default value is approximately the real-life room temperature of water in degrees Kelvin.",
+      "deprecated": false
+    },
+    {
+      "name": "viscosity",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "Viscosity (\"thickness\") of the fluid - completely arbitrary; negative values are not permissible. Default value is approximately the real-life density of water in m/s^2 (x10^-3). Higher viscosity means that a fluid flows more slowly, like molasses. Lower viscosity means that a fluid flows more quickly, like helium.",
+      "deprecated": false
+    },
+    {
+      "name": "isGaseous",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "boolean",
+      "description": "This indicates if the fluid is gaseous. Generally this is associated with negative density fluids.",
+      "deprecated": false
+    },
+    {
+      "name": "rarity",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Rarity",
+      "description": "The rarity of the fluid. Used primarily in tool tips.",
+      "deprecated": false
+    },
+    {
+      "name": "color",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "Color used by universal bucket and the ModelFluid baked model. Note that this int includes the alpha so converting this to RGB with alpha would be float r = ((color >> 16) & 0xFF) / 255f; // red float g = ((color >> 8) & 0xFF) / 255f; // green float b = ((color >> 0) & 0xFF) / 255f; // blue float a = ((color >> 24) & 0xFF) / 255f; // alpha",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "FluidAttributes",
+      "modifiers": [
+        "protected"
+      ],
+      "parameters": [
+        {
+          "name": "builder",
+          "type": "FluidAttributes.Builder",
+          "annotations": []
+        },
+        {
+          "name": "fluid",
+          "type": "Fluid",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getBucket",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ItemStack",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "reader",
+          "type": "IBlockDisplayReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "state",
+          "type": "FluidState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getStateForPlacement",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "FluidState",
+      "parameters": [
+        {
+          "name": "reader",
+          "type": "IBlockDisplayReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "state",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canBePlacedInWorld",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "reader",
+          "type": "IBlockDisplayReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "state",
+          "type": "FluidState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canBePlacedInWorld",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "reader",
+          "type": "IBlockDisplayReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "state",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isLighterThanAir",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "doesVaporize",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "reader",
+          "type": "IBlockDisplayReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "fluidStack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Determines if this fluid should vaporize in dimensions where water vaporizes when placed. To preserve the intentions of vanilla, fluids that can turn lava into obsidian should vaporize. This prevents players from making the nether safe with a single bucket. Based on net.minecraft.item.BucketItem#tryPlaceContainedLiquid(PlayerEntity, World, BlockPos)",
+      "deprecated": false
+    },
+    {
+      "name": "vaporize",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "PlayerEntity",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "worldIn",
+          "type": "World",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "fluidStack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Called instead of placing the fluid block if net.minecraft.world.dimension.Dimension#doesWaterVaporize() and #doesVaporize(FluidStack) are true. Override this to make your explosive liquid blow up instead of the default smoke, etc. Based on net.minecraft.item.BucketItem#tryPlaceContainedLiquid(PlayerEntity, World, BlockPos)",
+      "deprecated": false
+    },
+    {
+      "name": "getDisplayName",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ITextComponent",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the localized name of this fluid.",
+      "deprecated": false
+    },
+    {
+      "name": "getTranslationKey",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "A FluidStack sensitive version of getTranslationKey",
+      "deprecated": false
+    },
+    {
+      "name": "getTranslationKey",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "Returns the translation key of this fluid.",
+      "deprecated": false
+    },
+    {
+      "name": "getLuminosity",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDensity",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTemperature",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getViscosity",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isGaseous",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRarity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Rarity",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getColor",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getStillTexture",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFlowingTexture",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getOverlayTexture",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFillSound",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SoundEvent",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getEmptySound",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SoundEvent",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLuminosity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDensity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTemperature",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getViscosity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isGaseous",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRarity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Rarity",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getColor",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getStillTexture",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFlowingTexture",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFillSound",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SoundEvent",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getEmptySound",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SoundEvent",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLuminosity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "world",
+          "type": "IBlockDisplayReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDensity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "world",
+          "type": "IBlockDisplayReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTemperature",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "world",
+          "type": "IBlockDisplayReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getViscosity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "world",
+          "type": "IBlockDisplayReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isGaseous",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "world",
+          "type": "IBlockDisplayReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRarity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Rarity",
+      "parameters": [
+        {
+          "name": "world",
+          "type": "IBlockDisplayReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getColor",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "world",
+          "type": "IBlockDisplayReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getStillTexture",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [
+        {
+          "name": "world",
+          "type": "IBlockDisplayReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFlowingTexture",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [
+        {
+          "name": "world",
+          "type": "IBlockDisplayReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFillSound",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SoundEvent",
+      "parameters": [
+        {
+          "name": "world",
+          "type": "IBlockDisplayReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getEmptySound",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SoundEvent",
+      "parameters": [
+        {
+          "name": "world",
+          "type": "IBlockDisplayReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "builder",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "FluidAttributes.Builder",
+      "parameters": [
+        {
+          "name": "stillTexture",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "flowingTexture",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTextures",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Stream < ResourceLocation >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.16.5/net/minecraftforge/fluids/FluidAttributes.html"
+}

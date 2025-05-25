@@ -1,0 +1,445 @@
+{
+  "type": "class",
+  "name": "NetworkRegistry",
+  "qualified_name": "net.minecraftforge.fml.network.NetworkRegistry",
+  "package": "net.minecraftforge.fml.network",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "The network registry. Tracks channels on behalf of mods.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NETREGISTRY",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Marker",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "instances",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "Map < ResourceLocation , NetworkInstance >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ABSENT",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "type": "String",
+      "description": "Special value for clientAcceptedVersions and serverAcceptedVersions predicates indicating the other side lacks this channel.",
+      "deprecated": false
+    },
+    {
+      "name": "ACCEPTVANILLA",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lock",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "NetworkRegistry",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "acceptMissingOr",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "Predicate < String >",
+      "parameters": [
+        {
+          "name": "protocolVersion",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "Makes a version predicate that accepts connections to vanilla or without the channel.",
+      "deprecated": false
+    },
+    {
+      "name": "acceptMissingOr",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "Predicate < String >",
+      "parameters": [
+        {
+          "name": "versionCheck",
+          "type": "Predicate < String >",
+          "annotations": []
+        }
+      ],
+      "description": "Makes a version predicate that accepts connections to vanilla or without the channel.",
+      "deprecated": false
+    },
+    {
+      "name": "getServerNonVanillaNetworkMods",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "List < String >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getClientNonVanillaNetworkMods",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "List < String >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "acceptsVanillaClientConnections",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canConnectToVanillaServer",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "newSimpleChannel",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "SimpleChannel",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "networkProtocolVersion",
+          "type": "Supplier < String >",
+          "annotations": []
+        },
+        {
+          "name": "clientAcceptedVersions",
+          "type": "Predicate < String >",
+          "annotations": []
+        },
+        {
+          "name": "serverAcceptedVersions",
+          "type": "Predicate < String >",
+          "annotations": []
+        }
+      ],
+      "description": "Create a new SimpleChannel .",
+      "deprecated": false
+    },
+    {
+      "name": "newEventChannel",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "EventNetworkChannel",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "networkProtocolVersion",
+          "type": "Supplier < String >",
+          "annotations": []
+        },
+        {
+          "name": "clientAcceptedVersions",
+          "type": "Predicate < String >",
+          "annotations": []
+        },
+        {
+          "name": "serverAcceptedVersions",
+          "type": "Predicate < String >",
+          "annotations": []
+        }
+      ],
+      "description": "Create a new EventNetworkChannel .",
+      "deprecated": false
+    },
+    {
+      "name": "createInstance",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "NetworkInstance",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "networkProtocolVersion",
+          "type": "Supplier < String >",
+          "annotations": []
+        },
+        {
+          "name": "clientAcceptedVersions",
+          "type": "Predicate < String >",
+          "annotations": []
+        },
+        {
+          "name": "serverAcceptedVersions",
+          "type": "Predicate < String >",
+          "annotations": []
+        }
+      ],
+      "description": "Creates the internal NetworkInstance that tracks the channel data.",
+      "deprecated": false
+    },
+    {
+      "name": "findTarget",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "Optional < NetworkInstance >",
+      "parameters": [
+        {
+          "name": "resourceLocation",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "Find the NetworkInstance , if possible",
+      "deprecated": false
+    },
+    {
+      "name": "buildChannelVersions",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "Map < ResourceLocation , String >",
+      "parameters": [],
+      "description": "Construct the Map representation of the channel list, for use during login handshaking",
+      "deprecated": false
+    },
+    {
+      "name": "buildChannelVersionsForListPing",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "Map < ResourceLocation , org.apache.commons.lang3.tuple.Pair< String , Boolean >>",
+      "parameters": [],
+      "description": "Construct the Map representation of the channel list, for the client to check against during list ping",
+      "deprecated": false
+    },
+    {
+      "name": "listRejectedVanillaMods",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "List < String >",
+      "parameters": [
+        {
+          "name": "testFunction",
+          "type": "BiFunction < NetworkInstance , String , Boolean >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "validateClientChannels",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "channels",
+          "type": "Map < ResourceLocation , String >",
+          "annotations": []
+        }
+      ],
+      "description": "Validate the channels from the server on the client. Tests the client predicates against the server supplied network protocol version.",
+      "deprecated": false
+    },
+    {
+      "name": "validateServerChannels",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "channels",
+          "type": "Map < ResourceLocation , String >",
+          "annotations": []
+        }
+      ],
+      "description": "Validate the channels from the client on the server. Tests the server predicates against the client supplied network protocol version.",
+      "deprecated": false
+    },
+    {
+      "name": "validateChannels",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "incoming",
+          "type": "Map < ResourceLocation , String >",
+          "annotations": []
+        },
+        {
+          "name": "originName",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "testFunction",
+          "type": "BiFunction < NetworkInstance , String , Boolean >",
+          "annotations": []
+        }
+      ],
+      "description": "Tests if the map matches with the supplied predicate tester",
+      "deprecated": false
+    },
+    {
+      "name": "gatherLoginPayloads",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "List < NetworkRegistry.LoginPayload >",
+      "parameters": [
+        {
+          "name": "direction",
+          "type": "NetworkDirection",
+          "annotations": []
+        },
+        {
+          "name": "isLocal",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Retrieve the NetworkRegistry.LoginPayload list for dispatch during FMLHandshakeHandler.tickLogin(NetworkManager) handling. Dispatches NetworkEvent.GatherLoginPayloadsEvent to each NetworkInstance .",
+      "deprecated": false
+    },
+    {
+      "name": "checkListPingCompatibilityForClient",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "incoming",
+          "type": "Map < ResourceLocation , org.apache.commons.lang3.tuple.Pair< String , Boolean >>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isLocked",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lock",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.16.5/net/minecraftforge/fml/network/NetworkRegistry.html"
+}

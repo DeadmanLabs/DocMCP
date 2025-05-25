@@ -1,0 +1,1335 @@
+{
+  "type": "class",
+  "name": "FluidType",
+  "qualified_name": "net.minecraftforge.fluids.FluidType",
+  "package": "net.minecraftforge.fluids",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "A definition of common attributes, properties, and methods that is applied to a Fluid . This is used to link a flowing and source fluid together without relying on tags. Most accessors do not correlate to in-game features; they are provided for mods to take advantage of. Accessors are typically implemented in a method call chain. As such, it can provide a general implementation while more specific implementations can be implemented by overriding methods further in the call chain (on fluids, entities, etc.).",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "BUCKET_VOLUME",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "The number of fluid units that a bucket represents.",
+      "deprecated": false
+    },
+    {
+      "name": "SIZE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "Lazy < Integer >",
+      "description": "A lazy value which computes the number of fluid types within the registry.",
+      "deprecated": false
+    },
+    {
+      "name": "descriptionId",
+      "modifiers": [
+        "private"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "motionScale",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "double",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canPushEntity",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canSwim",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canDrown",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fallDistanceModifier",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canExtinguish",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canConvertToSource",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "supportsBoating",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pathType",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "@Nullable BlockPathTypes",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "adjacentPathType",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "@Nullable BlockPathTypes",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canHydrate",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lightLevel",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "density",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "temperature",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "viscosity",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rarity",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Rarity",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sounds",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "Map < SoundAction , SoundEvent >",
+      "description": "A map of actions performed to sound that should be played.",
+      "deprecated": false
+    },
+    {
+      "name": "renderProperties",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Object",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "FluidType",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "properties",
+          "type": "FluidType.Properties",
+          "annotations": []
+        }
+      ],
+      "description": "Default constructor.",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getDescription",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Component",
+      "parameters": [],
+      "description": "Returns the component representing the name of the fluid type.",
+      "deprecated": false
+    },
+    {
+      "name": "getDescriptionId",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "Returns the identifier representing the name of the fluid type. If no identifier was specified, then the identifier will be defaulted to fluid_type.<modid>.<registry_name> .",
+      "deprecated": false
+    },
+    {
+      "name": "getLightLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "Returns the light level emitted by the fluid. Note: This should be a value between [0,15] . If not specified, the light level is 0 as most fluids do not emit light. Implementation: This is used by the bucket model to determine whether the fluid should render full-bright when applyFluidLuminosity is true .",
+      "deprecated": false
+    },
+    {
+      "name": "getDensity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "Returns the density of the fluid. Note: This is an arbitrary number. Negative or zero values indicate that the fluid is lighter than air. If not specified, the density is approximately equivalent to the real-life density of water in kg/m^3 .",
+      "deprecated": false
+    },
+    {
+      "name": "getTemperature",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "Returns the temperature of the fluid. Note: This is an arbitrary number. Higher temperature values indicate that the fluid is hotter. If not specified, the temperature is approximately equivalent to the real-life room temperature of water in Kelvin .",
+      "deprecated": false
+    },
+    {
+      "name": "getViscosity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "Returns the viscosity, or thickness, of the fluid. Note: This is an arbitrary number. The value should never be negative. Higher viscosity values indicate that the fluid flows more slowly. If not specified, the viscosity is approximately equivalent to the real-life viscosity of water in m/s^2 .",
+      "deprecated": false
+    },
+    {
+      "name": "getRarity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Rarity",
+      "parameters": [],
+      "description": "Returns the rarity of the fluid. Note: If not specified, the rarity of the fluid is Rarity.COMMON .",
+      "deprecated": false
+    },
+    {
+      "name": "getSound",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@Nullable SoundEvent",
+      "parameters": [
+        {
+          "name": "action",
+          "type": "SoundAction",
+          "annotations": []
+        }
+      ],
+      "description": "Returns a sound to play when a certain action is performed. If no sound is present, then the sound will be null .",
+      "deprecated": false
+    },
+    {
+      "name": "motionScale",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "double",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "Returns how much the velocity of the fluid should be scaled by when applied to an entity.",
+      "deprecated": false
+    },
+    {
+      "name": "canPushEntity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "Returns whether the fluid can push an entity.",
+      "deprecated": false
+    },
+    {
+      "name": "canSwim",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "Returns whether the entity can swim in the fluid.",
+      "deprecated": false
+    },
+    {
+      "name": "getFallDistanceModifier",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "Returns how much the fluid should scale the damage done to a falling entity when hitting the ground per tick. Implementation: If the entity is in many fluids, the smallest modifier is applied.",
+      "deprecated": false
+    },
+    {
+      "name": "canExtinguish",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "Returns whether the entity can be extinguished by this fluid.",
+      "deprecated": false
+    },
+    {
+      "name": "move",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "FluidState",
+          "annotations": []
+        },
+        {
+          "name": "entity",
+          "type": "LivingEntity",
+          "annotations": []
+        },
+        {
+          "name": "movementVector",
+          "type": "Vec3",
+          "annotations": []
+        },
+        {
+          "name": "gravity",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "Performs how an entity moves when within the fluid. If using custom movement logic, the method should return true . Otherwise, the movement logic will default to water.",
+      "deprecated": false
+    },
+    {
+      "name": "canDrownIn",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "LivingEntity",
+          "annotations": []
+        }
+      ],
+      "description": "Returns whether the entity can drown in the fluid.",
+      "deprecated": false
+    },
+    {
+      "name": "setItemMovement",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "ItemEntity",
+          "annotations": []
+        }
+      ],
+      "description": "Performs what to do when an item is in a fluid.",
+      "deprecated": false
+    },
+    {
+      "name": "supportsBoating",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "boat",
+          "type": "Boat",
+          "annotations": []
+        }
+      ],
+      "description": "Returns whether the boat can be used on the fluid.",
+      "deprecated": false
+    },
+    {
+      "name": "supportsBoating",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "FluidState",
+          "annotations": []
+        },
+        {
+          "name": "boat",
+          "type": "Boat",
+          "annotations": []
+        }
+      ],
+      "description": "Returns whether the boat can be used on the fluid.",
+      "deprecated": false
+    },
+    {
+      "name": "shouldUpdateWhileBoating",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "FluidState",
+          "annotations": []
+        },
+        {
+          "name": "boat",
+          "type": "Boat",
+          "annotations": []
+        },
+        {
+          "name": "rider",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "When false , the fluid will no longer update its height value while within a boat while it is not within a fluid ( Boat.isUnderWater() .",
+      "deprecated": false
+    },
+    {
+      "name": "canRideVehicleUnder",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "vehicle",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "rider",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "Returns whether the entity can ride in this vehicle under the fluid.",
+      "deprecated": false
+    },
+    {
+      "name": "canHydrate",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "Returns whether the entity can be hydrated by this fluid. Hydration is an arbitrary word which depends on the entity.",
+      "deprecated": false
+    },
+    {
+      "name": "getSound",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@Nullable SoundEvent",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "action",
+          "type": "SoundAction",
+          "annotations": []
+        }
+      ],
+      "description": "Returns a sound to play when a certain action is performed by the entity in the fluid. If no sound is present, then the sound will be null .",
+      "deprecated": false
+    },
+    {
+      "name": "canExtinguish",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "FluidState",
+          "annotations": []
+        },
+        {
+          "name": "getter",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Returns whether the block can be extinguished by this fluid.",
+      "deprecated": false
+    },
+    {
+      "name": "canConvertToSource",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "FluidState",
+          "annotations": []
+        },
+        {
+          "name": "reader",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Returns whether the fluid can create a source.",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockPathType",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@Nullable BlockPathTypes",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "FluidState",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "mob",
+          "type": "Mob",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        },
+        {
+          "name": "canFluidLog",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Gets the path type of this fluid when an entity is pathfinding. When null , uses vanilla behavior.",
+      "deprecated": false
+    },
+    {
+      "name": "getAdjacentBlockPathType",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@Nullable BlockPathTypes",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "FluidState",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "mob",
+          "type": "Mob",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        },
+        {
+          "name": "originalType",
+          "type": "BlockPathTypes",
+          "annotations": []
+        }
+      ],
+      "description": "Gets the path type of the adjacent fluid to a pathfinding entity. Path types with a negative malus are not traversable for the entity. Pathfinding entities will favor paths consisting of a lower malus. When null , uses vanilla behavior.",
+      "deprecated": false
+    },
+    {
+      "name": "getSound",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@Nullable SoundEvent",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        },
+        {
+          "name": "getter",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "action",
+          "type": "SoundAction",
+          "annotations": []
+        }
+      ],
+      "description": "Returns a sound to play when a certain action is performed at a position. If no sound is present, then the sound will be null .",
+      "deprecated": false
+    },
+    {
+      "name": "canHydrate",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "FluidState",
+          "annotations": []
+        },
+        {
+          "name": "getter",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "source",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "sourcePos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Returns whether the block can be hydrated by a fluid. Hydration is an arbitrary word which depends on the block. A farmland has moisture A sponge can soak up the liquid A coral can live",
+      "deprecated": false
+    },
+    {
+      "name": "getLightLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "FluidState",
+          "annotations": []
+        },
+        {
+          "name": "getter",
+          "type": "BlockAndTintGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the light level emitted by the fluid. Note: This should be a value between [0,15] . If not specified, the light level is 0 as most fluids do not emit light.",
+      "deprecated": false
+    },
+    {
+      "name": "getDensity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "FluidState",
+          "annotations": []
+        },
+        {
+          "name": "getter",
+          "type": "BlockAndTintGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the density of the fluid. Note: This is an arbitrary number. Negative or zero values indicate that the fluid is lighter than air. If not specified, the density is approximately equivalent to the real-life density of water in kg/m^3 .",
+      "deprecated": false
+    },
+    {
+      "name": "getTemperature",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "FluidState",
+          "annotations": []
+        },
+        {
+          "name": "getter",
+          "type": "BlockAndTintGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the temperature of the fluid. Note: This is an arbitrary number. Higher temperature values indicate that the fluid is hotter. If not specified, the temperature is approximately equivalent to the real-life room temperature of water in Kelvin .",
+      "deprecated": false
+    },
+    {
+      "name": "getViscosity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "FluidState",
+          "annotations": []
+        },
+        {
+          "name": "getter",
+          "type": "BlockAndTintGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the viscosity, or thickness, of the fluid. Note: This is an arbitrary number. The value should never be negative. Higher viscosity values indicate that the fluid flows more slowly. If not specified, the viscosity is approximately equivalent to the real-life viscosity of water in m/s^2 .",
+      "deprecated": false
+    },
+    {
+      "name": "canConvertToSource",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Returns whether the fluid can create a source.",
+      "deprecated": false
+    },
+    {
+      "name": "getSound",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@Nullable SoundEvent",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        },
+        {
+          "name": "action",
+          "type": "SoundAction",
+          "annotations": []
+        }
+      ],
+      "description": "Returns a sound to play when a certain action is performed. If no sound is present, then the sound will be null .",
+      "deprecated": false
+    },
+    {
+      "name": "getDescription",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Component",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the component representing the name of the fluid type.",
+      "deprecated": false
+    },
+    {
+      "name": "getDescriptionId",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the identifier representing the name of the fluid. If no identifier was specified, then the identifier will be defaulted to fluid_type.<modid>.<registry_name> .",
+      "deprecated": false
+    },
+    {
+      "name": "canHydrate",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Returns whether the fluid can hydrate. Hydration is an arbitrary word which depends on the implementation.",
+      "deprecated": false
+    },
+    {
+      "name": "getLightLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the light level emitted by the fluid. Note: This should be a value between [0,15] . If not specified, the light level is 0 as most fluids do not emit light.",
+      "deprecated": false
+    },
+    {
+      "name": "getDensity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the density of the fluid. Note: This is an arbitrary number. Negative or zero values indicate that the fluid is lighter than air. If not specified, the density is approximately equivalent to the real-life density of water in kg/m^3 .",
+      "deprecated": false
+    },
+    {
+      "name": "getTemperature",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the temperature of the fluid. Note: This is an arbitrary number. Higher temperature values indicate that the fluid is hotter. If not specified, the temperature is approximately equivalent to the real-life room temperature of water in Kelvin .",
+      "deprecated": false
+    },
+    {
+      "name": "getViscosity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the viscosity, or thickness, of the fluid. Note: This is an arbitrary number. The value should never be negative. Higher viscosity values indicate that the fluid flows more slowly. If not specified, the viscosity is approximately equivalent to the real-life viscosity of water in m/s^2 .",
+      "deprecated": false
+    },
+    {
+      "name": "getRarity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Rarity",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the rarity of the fluid. Note: If not specified, the rarity of the fluid is Rarity.COMMON .",
+      "deprecated": false
+    },
+    {
+      "name": "isAir",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "Returns whether the fluid type represents air.",
+      "deprecated": false
+    },
+    {
+      "name": "isVanilla",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "Returns whether the fluid type is from vanilla.",
+      "deprecated": false
+    },
+    {
+      "name": "getBucket",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ItemStack",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the bucket containing the fluid.",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockForFluidState",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "getter",
+          "type": "BlockAndTintGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "state",
+          "type": "FluidState",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the associated BlockState for a FluidState .",
+      "deprecated": false
+    },
+    {
+      "name": "getStateForPlacement",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "FluidState",
+      "parameters": [
+        {
+          "name": "getter",
+          "type": "BlockAndTintGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the FluidState when a FluidStack is trying to place it.",
+      "deprecated": false
+    },
+    {
+      "name": "canBePlacedInLevel",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "getter",
+          "type": "BlockAndTintGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "state",
+          "type": "FluidState",
+          "annotations": []
+        }
+      ],
+      "description": "Returns whether the fluid can be placed in the level.",
+      "deprecated": false
+    },
+    {
+      "name": "canBePlacedInLevel",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "getter",
+          "type": "BlockAndTintGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Returns whether the fluid can be placed in the level.",
+      "deprecated": false
+    },
+    {
+      "name": "isLighterThanAir",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "Returns whether a fluid is lighter than air. If the fluid's density is lower than or equal 0 , the fluid is considered lighter than air. Tip: 0 is the \"canonical\" density of air within Forge. Note: Fluids lighter than air will have their bucket model rotated upside-down; fluid block models will have their vertices inverted.",
+      "deprecated": false
+    },
+    {
+      "name": "isVaporizedOnPlacement",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Determines if this fluid should be vaporized when placed into a level. Note: Fluids that can turn lava into obsidian should vaporize within the nether to preserve the intentions of vanilla.",
+      "deprecated": false
+    },
+    {
+      "name": "onVaporize",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        },
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Performs an action when a fluid can be vaporized when placed into a level. Note: The fluid will already have been drained from the stack.",
+      "deprecated": false
+    },
+    {
+      "name": "toString",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRenderPropertiesInternal",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Object",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "initClient",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "initializeClient",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "consumer",
+          "type": "Consumer < IClientFluidTypeExtensions >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.3/net/minecraftforge/fluids/FluidType.html"
+}

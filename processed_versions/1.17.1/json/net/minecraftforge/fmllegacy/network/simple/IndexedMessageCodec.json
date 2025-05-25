@@ -1,0 +1,279 @@
+{
+  "type": "class",
+  "name": "IndexedMessageCodec",
+  "qualified_name": "net.minecraftforge.fmllegacy.network.simple.IndexedMessageCodec",
+  "package": "net.minecraftforge.fmllegacy.network.simple",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SIMPLENET",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Marker",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "indicies",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.shorts.Short2ObjectArrayMap< IndexedMessageCodec.MessageHandler <?>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "types",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap< Class <?>,​ IndexedMessageCodec.MessageHandler <?>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "networkInstance",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "NetworkInstance",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "IndexedMessageCodec",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "IndexedMessageCodec",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "instance",
+          "type": "NetworkInstance",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "findMessageType",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "IndexedMessageCodec.MessageHandler <MSG>",
+      "parameters": [
+        {
+          "name": "msgToReply",
+          "type": "MSG",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "findIndex",
+      "modifiers": [],
+      "return_type": "IndexedMessageCodec.MessageHandler <MSG>",
+      "parameters": [
+        {
+          "name": "i",
+          "type": "short",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tryDecode",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "payload",
+          "type": "FriendlyByteBuf",
+          "annotations": []
+        },
+        {
+          "name": "context",
+          "type": "Supplier < NetworkEvent.Context >",
+          "annotations": []
+        },
+        {
+          "name": "payloadIndex",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "codec",
+          "type": "IndexedMessageCodec.MessageHandler <M>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tryEncode",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "target",
+          "type": "FriendlyByteBuf",
+          "annotations": []
+        },
+        {
+          "name": "message",
+          "type": "M",
+          "annotations": []
+        },
+        {
+          "name": "codec",
+          "type": "IndexedMessageCodec.MessageHandler <M>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "build",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "message",
+          "type": "MSG",
+          "annotations": []
+        },
+        {
+          "name": "target",
+          "type": "FriendlyByteBuf",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "consume",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "payload",
+          "type": "FriendlyByteBuf",
+          "annotations": []
+        },
+        {
+          "name": "payloadIndex",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "context",
+          "type": "Supplier < NetworkEvent.Context >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addCodecIndex",
+      "modifiers": [],
+      "return_type": "IndexedMessageCodec.MessageHandler <MSG>",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "messageType",
+          "type": "Class <MSG>",
+          "annotations": []
+        },
+        {
+          "name": "encoder",
+          "type": "BiConsumer <MSG,​ FriendlyByteBuf >",
+          "annotations": []
+        },
+        {
+          "name": "decoder",
+          "type": "Function < FriendlyByteBuf ,​MSG>",
+          "annotations": []
+        },
+        {
+          "name": "messageConsumer",
+          "type": "BiConsumer <MSG,​ Supplier < NetworkEvent.Context >>",
+          "annotations": []
+        },
+        {
+          "name": "networkDirection",
+          "type": "Optional < NetworkDirection >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.17.1/net/minecraftforge/fmllegacy/network/simple/IndexedMessageCodec.html"
+}

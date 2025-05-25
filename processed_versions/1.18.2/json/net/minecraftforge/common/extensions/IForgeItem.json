@@ -1,0 +1,1188 @@
+{
+  "type": "interface",
+  "name": "IForgeItem",
+  "qualified_name": "net.minecraftforge.common.extensions.IForgeItem",
+  "package": "net.minecraftforge.common.extensions",
+  "modifiers": [
+    "public",
+    "interface"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": []
+  },
+  "nested_classes": [],
+  "fields": [],
+  "constructors": [],
+  "methods": [
+    {
+      "name": "self",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Item",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAttributeModifiers",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "com.google.common.collect.Multimap< Attribute , AttributeModifier >",
+      "parameters": [
+        {
+          "name": "slot",
+          "type": "EquipmentSlot",
+          "annotations": []
+        },
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "ItemStack sensitive version of getItemAttributeModifiers",
+      "deprecated": false
+    },
+    {
+      "name": "onDroppedByPlayer",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "item",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        }
+      ],
+      "description": "Called when a player drops the item into the world, returning false from this will prevent the item from being removed from the players inventory and spawning in the world",
+      "deprecated": false
+    },
+    {
+      "name": "getHighlightTip",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "Component",
+      "parameters": [
+        {
+          "name": "item",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "displayName",
+          "type": "Component",
+          "annotations": []
+        }
+      ],
+      "description": "Allow the item one last chance to modify its name used for the tool highlight useful for adding something extra that can't be removed by a user in the displayed name, such as a mode of operation.",
+      "deprecated": false
+    },
+    {
+      "name": "onItemUseFirst",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "InteractionResult",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "context",
+          "type": "UseOnContext",
+          "annotations": []
+        }
+      ],
+      "description": "This is called when the item is used, before the block is activated.",
+      "deprecated": false
+    },
+    {
+      "name": "isPiglinCurrency",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "Called by Piglins when checking to see if they will give an item or something in exchange for this item.",
+      "deprecated": false
+    },
+    {
+      "name": "makesPiglinsNeutral",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "wearer",
+          "type": "LivingEntity",
+          "annotations": []
+        }
+      ],
+      "description": "Called by Piglins to check if a given item prevents hostility on sight. If this is true the Piglins will be neutral to the entity wearing this item, and will not attack on sight. Note: This does not prevent Piglins from becoming hostile due to other actions, nor does it make Piglins that are already hostile stop being so.",
+      "deprecated": false
+    },
+    {
+      "name": "isRepairable",
+      "modifiers": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "Called by CraftingManager to determine if an item is reparable.",
+      "deprecated": false
+    },
+    {
+      "name": "getXpRepairRatio",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "Determines the amount of durability the mending enchantment will repair, on average, per point of experience.",
+      "deprecated": false
+    },
+    {
+      "name": "getShareTag",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "CompoundTag",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "Override this method to change the NBT data being sent to the client. You should ONLY override this when you have no other choice, as this might change behavior client side! Note that this will sometimes be applied multiple times, the following MUST be supported: Item item = stack.getItem(); NBTTagCompound nbtShare1 = item.getNBTShareTag(stack); stack.setTagCompound(nbtShare1); NBTTagCompound nbtShare2 = item.getNBTShareTag(stack); assert nbtShare1.equals(nbtShare2);",
+      "deprecated": false
+    },
+    {
+      "name": "readShareTag",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "nbt",
+          "type": "CompoundTag",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "Override this method to decide what to do with the NBT data received from getNBTShareTag().",
+      "deprecated": false
+    },
+    {
+      "name": "onBlockStartBreak",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "itemstack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        }
+      ],
+      "description": "Called before a block is broken. Return true to prevent default block harvesting. Note: In SMP, this is called on both client and server sides!",
+      "deprecated": false
+    },
+    {
+      "name": "onUsingTick",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "player",
+          "type": "LivingEntity",
+          "annotations": []
+        },
+        {
+          "name": "count",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "Called each tick while using an item.",
+      "deprecated": false
+    },
+    {
+      "name": "onLeftClickEntity",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "entity",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "Called when the player Left Clicks (attacks) an entity. Processed before damage is done, if return value is true further processing is canceled and the entity is not attacked.",
+      "deprecated": false
+    },
+    {
+      "name": "getContainerItem",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "ItemStack",
+      "parameters": [
+        {
+          "name": "itemStack",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "ItemStack sensitive version of getContainerItem. Returns a full ItemStack instance of the result.",
+      "deprecated": false
+    },
+    {
+      "name": "hasContainerItem",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "ItemStack sensitive version of hasContainerItem",
+      "deprecated": false
+    },
+    {
+      "name": "getEntityLifespan",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "itemStack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        }
+      ],
+      "description": "Retrieves the normal 'lifespan' of this item when it is dropped on the ground as a EntityItem. This is in ticks, standard result is 6000, or 5 mins.",
+      "deprecated": false
+    },
+    {
+      "name": "hasCustomEntity",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "Determines if this Item has a special entity for when they are in the world. Is called when a EntityItem is spawned in the world, if true and Item#createCustomEntity returns non null, the EntityItem will be destroyed and the new Entity will be added to the world.",
+      "deprecated": false
+    },
+    {
+      "name": "createEntity",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "Entity",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "location",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "This function should return a new entity to replace the dropped item. Returning null here will not kill the EntityItem and will leave it to function normally. Called when the item it placed in a level.",
+      "deprecated": false
+    },
+    {
+      "name": "onEntityItemUpdate",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "entity",
+          "type": "ItemEntity",
+          "annotations": []
+        }
+      ],
+      "description": "Called by the default implemetation of EntityItem's onUpdate method, allowing for cleaner control over the update of the item without having to write a subclass.",
+      "deprecated": false
+    },
+    {
+      "name": "getCreativeTabs",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "Collection < CreativeModeTab >",
+      "parameters": [],
+      "description": "Gets a list of tabs that items belonging to this class can display on, combined properly with getSubItems allows for a single item to span many sub-items across many tabs.",
+      "deprecated": false
+    },
+    {
+      "name": "doesSneakBypassUse",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        }
+      ],
+      "description": "Should this item, when held, allow sneak-clicks to pass through to the underlying block?",
+      "deprecated": false
+    },
+    {
+      "name": "onArmorTick",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        }
+      ],
+      "description": "Called to tick armor in the armor slot. Override to do something",
+      "deprecated": false
+    },
+    {
+      "name": "canEquip",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "armorType",
+          "type": "EquipmentSlot",
+          "annotations": []
+        },
+        {
+          "name": "entity",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "Determines if the specific ItemStack can be placed in the specified armor slot, for the entity.",
+      "deprecated": false
+    },
+    {
+      "name": "getEquipmentSlot",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "EquipmentSlot",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "Override this to set a non-default armor slot for an ItemStack, but do not use this to get the armor slot of said stack; for that, use LivingEntity.getEquipmentSlotForItem(ItemStack) ..",
+      "deprecated": false
+    },
+    {
+      "name": "isBookEnchantable",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "book",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "Allow or forbid the specific book/item combination as an anvil enchant",
+      "deprecated": false
+    },
+    {
+      "name": "getArmorTexture",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "String",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "entity",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "slot",
+          "type": "EquipmentSlot",
+          "annotations": []
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "Called by RenderBiped and RenderPlayer to determine the armor texture that should be use for the currently equipped item. This will only be called on instances of ItemArmor. Returning null from this function will use the default value.",
+      "deprecated": false
+    },
+    {
+      "name": "onEntitySwing",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "entity",
+          "type": "LivingEntity",
+          "annotations": []
+        }
+      ],
+      "description": "Called when a entity tries to play the 'swing' animation.",
+      "deprecated": false
+    },
+    {
+      "name": "getDamage",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "Return the itemDamage represented by this ItemStack. Defaults to the Damage entry in the stack NBT, but can be overridden here for other sources.",
+      "deprecated": false
+    },
+    {
+      "name": "getMaxDamage",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "Return the maxDamage for this ItemStack. Defaults to the maxDamage field in this item, but can be overridden here for other sources such as NBT.",
+      "deprecated": false
+    },
+    {
+      "name": "isDamaged",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "Return if this itemstack is damaged. Note only called if ItemStack.isDamageableItem() is true.",
+      "deprecated": false
+    },
+    {
+      "name": "setDamage",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "damage",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "Set the damage for this itemstack. Note, this method is responsible for zero checking.",
+      "deprecated": false
+    },
+    {
+      "name": "canPerformAction",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "toolAction",
+          "type": "ToolAction",
+          "annotations": []
+        }
+      ],
+      "description": "Queries if an item can perform the given action. See ToolActions for a description of each stock action",
+      "deprecated": false
+    },
+    {
+      "name": "isCorrectToolForDrops",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "state",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "ItemStack sensitive version of Item.isCorrectToolForDrops(BlockState)",
+      "deprecated": false
+    },
+    {
+      "name": "getItemStackLimit",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "Gets the maximum number of items that this stack should be able to hold. This is a ItemStack (and thus NBT) sensitive version of Item.getItemStackLimit()",
+      "deprecated": false
+    },
+    {
+      "name": "getItemEnchantability",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "ItemStack sensitive version of getItemEnchantability",
+      "deprecated": false
+    },
+    {
+      "name": "canApplyAtEnchantingTable",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "enchantment",
+          "type": "Enchantment",
+          "annotations": []
+        }
+      ],
+      "description": "Checks whether an item can be enchanted with a certain enchantment. This applies specifically to enchanting an item in the enchanting table and is called when retrieving the list of possible enchantments for an item. Enchantments may additionally (or exclusively) be doing their own checks in Enchantment.canApplyAtEnchantingTable(ItemStack) ; check the individual implementation for reference. By default this will check if the enchantment type is valid for this item type.",
+      "deprecated": false
+    },
+    {
+      "name": "shouldCauseReequipAnimation",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "oldStack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "newStack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "slotChanged",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Determine if the player switching between these two item stacks",
+      "deprecated": false
+    },
+    {
+      "name": "shouldCauseBlockBreakReset",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "oldStack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "newStack",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "Called when the player is mining a block and the item in his hand changes. Allows to not reset blockbreaking if only NBT or similar changes.",
+      "deprecated": false
+    },
+    {
+      "name": "canContinueUsing",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "oldStack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "newStack",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "Called while an item is in 'active' use to determine if usage should continue. Allows items to continue being used while sustaining damage, for example.",
+      "deprecated": false
+    },
+    {
+      "name": "getCreatorModId",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "String",
+      "parameters": [
+        {
+          "name": "itemStack",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "Called to get the Mod ID of the mod that *created* the ItemStack, instead of the real Mod ID that *registered* it. For example the Forge Universal Bucket creates a subitem for each modded fluid, and it returns the modded fluid's Mod ID here. Mods that register subitems for other mods can override this. Informational mods can call it to show the mod that created the item.",
+      "deprecated": false
+    },
+    {
+      "name": "initCapabilities",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "ICapabilityProvider",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "nbt",
+          "type": "CompoundTag",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "Called from ItemStack.setItem, will hold extra data for the life of this ItemStack. Can be retrieved from stack.getCapabilities() The NBT can be null if this is not called from readNBT or if the item the stack is changing FROM is different then this item, or the previous item had no capabilities. This is called BEFORE the stacks item is set so you can use stack.getItem() to see the OLD item. Remember that getItem CAN return null.",
+      "deprecated": false
+    },
+    {
+      "name": "canDisableShield",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "shield",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "entity",
+          "type": "LivingEntity",
+          "annotations": []
+        },
+        {
+          "name": "attacker",
+          "type": "LivingEntity",
+          "annotations": []
+        }
+      ],
+      "description": "Can this Item disable a shield",
+      "deprecated": false
+    },
+    {
+      "name": "getBurnTime",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "itemStack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "recipeType",
+          "type": "RecipeType <?>",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onHorseArmorTick",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "horse",
+          "type": "Mob",
+          "annotations": []
+        }
+      ],
+      "description": "Called every tick from Horse#playGallopSound(SoundEvent) on the item in the armor slot.",
+      "deprecated": false
+    },
+    {
+      "name": "damageItem",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "amount",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "entity",
+          "type": "T",
+          "annotations": []
+        },
+        {
+          "name": "onBroken",
+          "type": "Consumer <T>",
+          "annotations": []
+        }
+      ],
+      "description": "Reduce the durability of this item by the amount given. This can be used to e.g. consume power from NBT before durability.",
+      "deprecated": false
+    },
+    {
+      "name": "onDestroyed",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "itemEntity",
+          "type": "ItemEntity",
+          "annotations": []
+        },
+        {
+          "name": "damageSource",
+          "type": "DamageSource",
+          "annotations": []
+        }
+      ],
+      "description": "Called when an item entity for this stack is destroyed. Note: The ItemStack can be retrieved from the item entity.",
+      "deprecated": false
+    },
+    {
+      "name": "isEnderMask",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "endermanEntity",
+          "type": "EnderMan",
+          "annotations": []
+        }
+      ],
+      "description": "Whether this Item can be used to hide player head for enderman.",
+      "deprecated": false
+    },
+    {
+      "name": "canElytraFly",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "entity",
+          "type": "LivingEntity",
+          "annotations": []
+        }
+      ],
+      "description": "Used to determine if the player can use Elytra flight. This is called Client and Server side.",
+      "deprecated": false
+    },
+    {
+      "name": "elytraFlightTick",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "entity",
+          "type": "LivingEntity",
+          "annotations": []
+        },
+        {
+          "name": "flightTicks",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "Used to determine if the player can continue Elytra flight, this is called each tick, and can be used to apply ItemStack damage, consume Energy, or what have you. For example the Vanilla implementation of this, applies damage to the ItemStack every 20 ticks.",
+      "deprecated": false
+    },
+    {
+      "name": "canWalkOnPowderedSnow",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "wearer",
+          "type": "LivingEntity",
+          "annotations": []
+        }
+      ],
+      "description": "Called by the powdered snow block to check if a living entity wearing this can walk on the snow, granting the same behavior as leather boots. Only affects items worn in the boots slot.",
+      "deprecated": false
+    },
+    {
+      "name": "isDamageable",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "Used to test if this item can be damaged, but with the ItemStack in question. Please note that in some cases no ItemStack is available, so the stack-less method will be used.",
+      "deprecated": false
+    },
+    {
+      "name": "getSweepHitBox",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "AABB",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": [
+            "Nonnull"
+          ]
+        },
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": [
+            "Nonnull"
+          ]
+        },
+        {
+          "name": "target",
+          "type": "Entity",
+          "annotations": [
+            "Nonnull"
+          ]
+        }
+      ],
+      "description": "Get a bounding box ( AABB ) of a sweep attack.",
+      "deprecated": false
+    },
+    {
+      "name": "getDefaultTooltipHideFlags",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": [
+            "Nonnull"
+          ]
+        }
+      ],
+      "description": "Get the tooltip parts that should be hidden by default on the given stack if the HideFlags tag is not set.",
+      "deprecated": false
+    },
+    {
+      "name": "getFoodProperties",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "FoodProperties",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "entity",
+          "type": "LivingEntity",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "Get the food properties for this item. Use this instead of the Item.getFoodProperties() method, for ItemStack sensitivity. The @Nullable annotation was only added, due to the default method, also being @Nullable. Use this with a grain of salt, as if you return null here and true at Item.isEdible() , NPEs will occur!",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.18.2/net/minecraftforge/common/extensions/IForgeItem.html"
+}

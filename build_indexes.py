@@ -69,35 +69,42 @@ class JavaAPIIndexBuilder:
             return
         
         # Index class by name and qualified name
-        self.indexes['classes_by_name'][class_name] = class_info
+        # Use qualified name as primary key to avoid collisions
         if qualified_name:
+            self.indexes['classes_by_name'][qualified_name] = class_info
             self.indexes['classes_by_qualified_name'][qualified_name] = class_info
+        else:
+            # Fallback to simple name if no qualified name
+            self.indexes['classes_by_name'][class_name] = class_info
+        
+        # Use qualified name as key for consistency, fallback to simple name
+        index_key = qualified_name if qualified_name else class_name
         
         # Index by package
         if package_name:
-            self.indexes['packages'][package_name].append(class_name)
+            self.indexes['packages'][package_name].append(index_key)
         
         # Index by type
-        self.indexes['classes_by_type'][class_type].append(class_name)
+        self.indexes['classes_by_type'][class_type].append(index_key)
         
         # Index inheritance
         inheritance = class_info.get('inheritance', {})
         if inheritance:
-            self.indexes['inheritance_tree'][class_name] = inheritance
+            self.indexes['inheritance_tree'][index_key] = inheritance
         
         # Index nested classes
         nested_classes = class_info.get('nested_classes', [])
         if nested_classes:
-            self.indexes['nested_classes'][class_name] = nested_classes
+            self.indexes['nested_classes'][index_key] = nested_classes
         
         # Index methods
         methods = class_info.get('methods', [])
         for method in methods:
             method_name = method.get('name', '')
             if method_name:
-                if method_name not in self.indexes['methods_by_class'][class_name]:
-                    self.indexes['methods_by_class'][class_name][method_name] = []
-                self.indexes['methods_by_class'][class_name][method_name].append(method)
+                if method_name not in self.indexes['methods_by_class'][index_key]:
+                    self.indexes['methods_by_class'][index_key][method_name] = []
+                self.indexes['methods_by_class'][index_key][method_name].append(method)
                 self.indexes['all_method_names'].add(method_name)
         
         # Index fields
@@ -105,19 +112,19 @@ class JavaAPIIndexBuilder:
         for field in fields:
             field_name = field.get('name', '')
             if field_name:
-                self.indexes['fields_by_class'][class_name][field_name] = field
+                self.indexes['fields_by_class'][index_key][field_name] = field
                 self.indexes['all_field_names'].add(field_name)
         
         # Index constructors
         constructors = class_info.get('constructors', [])
-        self.indexes['constructors_by_class'][class_name] = constructors
+        self.indexes['constructors_by_class'][index_key] = constructors
         
         # Index enum constants
         enum_constants = class_info.get('enum_constants', [])
         for constant in enum_constants:
             constant_name = constant.get('name', '')
             if constant_name:
-                self.indexes['enum_constants_by_class'][class_name][constant_name] = constant
+                self.indexes['enum_constants_by_class'][index_key][constant_name] = constant
     
     def _finalize_indexes(self):
         """Finalize indexes by converting sets to lists and defaultdicts to regular dicts."""

@@ -1,0 +1,887 @@
+{
+  "type": "class",
+  "name": "CreateWorldScreen",
+  "qualified_name": "net.minecraft.client.gui.screens.worldselection.CreateWorldScreen",
+  "package": "net.minecraft.client.gui.screens.worldselection",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraft.client.gui.GuiComponent",
+      "net.minecraft.client.gui.components.events.AbstractContainerEventHandler",
+      "net.minecraft.client.gui.screens.Screen"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "TEMP_WORLD_PREFIX",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "GAME_MODEL_LABEL",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Component",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SEED_LABEL",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Component",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SEED_INFO",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Component",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NAME_LABEL",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Component",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "OUTPUT_DIR_INFO",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Component",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "COMMANDS_INFO",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Component",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PREPARING_WORLD_DATA",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Component",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastScreen",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Screen",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "nameEdit",
+      "modifiers": [
+        "private"
+      ],
+      "type": "EditBox",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "resultFolder",
+      "modifiers": [],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "gameMode",
+      "modifiers": [
+        "private"
+      ],
+      "type": "CreateWorldScreen.SelectedGameMode",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "oldGameMode",
+      "modifiers": [
+        "private"
+      ],
+      "type": "CreateWorldScreen.SelectedGameMode",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "difficulty",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Difficulty",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "commands",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "commandsChanged",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hardCore",
+      "modifiers": [
+        "public"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dataConfiguration",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "WorldDataConfiguration",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tempDataPackDir",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Path",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tempDataPackRepository",
+      "modifiers": [
+        "private"
+      ],
+      "type": "PackRepository",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "worldGenSettingsVisible",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createButton",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Button",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "modeButton",
+      "modifiers": [
+        "private"
+      ],
+      "type": "CycleButton < CreateWorldScreen.SelectedGameMode >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "difficultyButton",
+      "modifiers": [
+        "private"
+      ],
+      "type": "CycleButton < Difficulty >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "moreOptionsButton",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Button",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "gameRulesButton",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Button",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dataPacksButton",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Button",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "commandsButton",
+      "modifiers": [
+        "private"
+      ],
+      "type": "CycleButton < Boolean >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "gameModeHelp1",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Component",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "gameModeHelp2",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Component",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "initName",
+      "modifiers": [
+        "private"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "gameRules",
+      "modifiers": [
+        "private"
+      ],
+      "type": "GameRules",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "worldGenSettingsComponent",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "type": "WorldGenSettingsComponent",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "CreateWorldScreen",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [
+        {
+          "name": "p_249549_",
+          "type": "Screen",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_250099_",
+          "type": "WorldDataConfiguration",
+          "annotations": []
+        },
+        {
+          "name": "p_249670_",
+          "type": "WorldGenSettingsComponent",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "openFresh",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_232897_",
+          "type": "Minecraft",
+          "annotations": []
+        },
+        {
+          "name": "p_232898_",
+          "type": "Screen",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createFromExisting",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "CreateWorldScreen",
+      "parameters": [
+        {
+          "name": "p_249522_",
+          "type": "Screen",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_249091_",
+          "type": "LevelSettings",
+          "annotations": []
+        },
+        {
+          "name": "p_249742_",
+          "type": "WorldCreationContext",
+          "annotations": []
+        },
+        {
+          "name": "p_252076_",
+          "type": "Path",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "init",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getEffectiveDifficulty",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Difficulty",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateGameModeHelp",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateResultFolder",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "queueLoadScreen",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_232900_",
+          "type": "Minecraft",
+          "annotations": []
+        },
+        {
+          "name": "p_232901_",
+          "type": "Component",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onCreate",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createNewWorld",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_250577_",
+          "type": "PrimaryLevelData.SpecialWorldProperty",
+          "annotations": []
+        },
+        {
+          "name": "p_249152_",
+          "type": "LayeredRegistryAccess < RegistryLayer >",
+          "annotations": []
+        },
+        {
+          "name": "p_249994_",
+          "type": "com.mojang.serialization.Lifecycle",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createLevelSettings",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "LevelSettings",
+      "parameters": [
+        {
+          "name": "p_205448_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "toggleWorldGenSettingsVisibility",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setGameMode",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_100901_",
+          "type": "CreateWorldScreen.SelectedGameMode",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "refreshWorldGenSettingsVisibility",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setWorldGenSettingsVisible",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_170197_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "keyPressed",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_100875_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_100876_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_100877_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onClose",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "popScreen",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "render",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_100890_",
+          "type": "PoseStack",
+          "annotations": []
+        },
+        {
+          "name": "p_100891_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_100892_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_100893_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addWidget",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "p_100948_",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addRenderableWidget",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "p_170199_",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTempDataPackDir",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Path",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "openDataPackSelectionScreen",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tryApplyNewDataPacks",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_100879_",
+          "type": "PackRepository",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "applyNewPackConfig",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_251497_",
+          "type": "PackRepository",
+          "annotations": []
+        },
+        {
+          "name": "p_249845_",
+          "type": "WorldDataConfiguration",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createDefaultLoadConfig",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "WorldLoader.InitConfig",
+      "parameters": [
+        {
+          "name": "p_251829_",
+          "type": "PackRepository",
+          "annotations": []
+        },
+        {
+          "name": "p_251555_",
+          "type": "WorldDataConfiguration",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removeTempDataPackDir",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "copyBetweenDirs",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_100913_",
+          "type": "Path",
+          "annotations": []
+        },
+        {
+          "name": "p_100914_",
+          "type": "Path",
+          "annotations": []
+        },
+        {
+          "name": "p_100915_",
+          "type": "Path",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createNewWorldDirectory",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Optional < LevelStorageSource.LevelStorageAccess >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createTempDataPackDirFromExistingWorld",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "Path",
+      "parameters": [
+        {
+          "name": "p_100907_",
+          "type": "Path",
+          "annotations": []
+        },
+        {
+          "name": "p_100908_",
+          "type": "Minecraft",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDataPackSelectionSettings",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "com.mojang.datafixers.util.Pair< Path , PackRepository >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.19.3/net/minecraft/client/gui/screens/worldselection/CreateWorldScreen.html"
+}

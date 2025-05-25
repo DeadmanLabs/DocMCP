@@ -1,0 +1,279 @@
+{
+  "type": "class",
+  "name": "MobSpawnEvent.FinalizeSpawn",
+  "qualified_name": "net.minecraftforge.event.entity.living.MobSpawnEvent.FinalizeSpawn",
+  "package": "net.minecraftforge.event.entity.living",
+  "modifiers": [
+    "public",
+    "static",
+    "class"
+  ],
+  "annotations": [],
+  "description": "This event is fired before Mob.finalizeSpawn(net.minecraft.world.level.ServerLevelAccessor, net.minecraft.world.DifficultyInstance, net.minecraft.world.entity.MobSpawnType, net.minecraft.world.entity.SpawnGroupData, net.minecraft.nbt.CompoundTag) is called. This allows mods to control mob initialization. In vanilla code, this event is injected by a transformer and not via patch, so calls cannot be traced via call hierarchy (it is not source-visible). Canceling this event will result in Mob.finalizeSpawn(net.minecraft.world.level.ServerLevelAccessor, net.minecraft.world.DifficultyInstance, net.minecraft.world.entity.MobSpawnType, net.minecraft.world.entity.SpawnGroupData, net.minecraft.nbt.CompoundTag) not being called, and the returned value always being null, instead of propagating the SpawnGroupData. The entity will still be spawned. If you want to prevent the spawn, use setSpawnCancelled(boolean) , which will cause Forge to prevent the spawn. This event is fired on MinecraftForge.EVENT_BUS , and is only fired on the logical server.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraftforge.event.entity.EntityEvent",
+      "net.minecraftforge.event.entity.living.MobSpawnEvent"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "spawnType",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "MobSpawnType",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "spawner",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "@Nullable BaseSpawner",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "difficulty",
+      "modifiers": [
+        "private"
+      ],
+      "type": "DifficultyInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "spawnData",
+      "modifiers": [
+        "private"
+      ],
+      "type": "@Nullable SpawnGroupData",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "spawnTag",
+      "modifiers": [
+        "private"
+      ],
+      "type": "@Nullable CompoundTag",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "FinalizeSpawn",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "Mob",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "ServerLevelAccessor",
+          "annotations": []
+        },
+        {
+          "name": "x",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "y",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "z",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "difficulty",
+          "type": "DifficultyInstance",
+          "annotations": []
+        },
+        {
+          "name": "spawnType",
+          "type": "MobSpawnType",
+          "annotations": []
+        },
+        {
+          "name": "spawnData",
+          "type": "SpawnGroupData",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        },
+        {
+          "name": "spawnTag",
+          "type": "CompoundTag",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        },
+        {
+          "name": "spawner",
+          "type": "BaseSpawner",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getDifficulty",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "DifficultyInstance",
+      "parameters": [],
+      "description": "Retrieves the DifficultyInstance for the chunk where the mob is about to be spawned.",
+      "deprecated": false
+    },
+    {
+      "name": "setDifficulty",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "inst",
+          "type": "DifficultyInstance",
+          "annotations": []
+        }
+      ],
+      "description": "Sets the difficulty instance for this event, which will be propagated to Mob.finalizeSpawn(net.minecraft.world.level.ServerLevelAccessor, net.minecraft.world.DifficultyInstance, net.minecraft.world.entity.MobSpawnType, net.minecraft.world.entity.SpawnGroupData, net.minecraft.nbt.CompoundTag) unless cancelled. The difficulty instance controls how likely certain random effects are to occur, or if certain mob abilities are enabled.",
+      "deprecated": false
+    },
+    {
+      "name": "getSpawnType",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "MobSpawnType",
+      "parameters": [],
+      "description": "Retrieves the type of mob spawn that happened (the event that caused the spawn). The enum names are self-explanatory.",
+      "deprecated": false
+    },
+    {
+      "name": "getSpawnData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@Nullable SpawnGroupData",
+      "parameters": [],
+      "description": "Retrieves the SpawnGroupData for this entity. When spawning mobs in a loop, this group data is used for the entire group and impacts future spawns. This is how entities like horses ensure that the whole group spawns as a single variant. How this is used varies on a per-entity basis.",
+      "deprecated": false
+    },
+    {
+      "name": "setSpawnData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "data",
+          "type": "SpawnGroupData",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "Sets the spawn data for this entity. If this event is cancelled, this value is not used, since Mob.finalizeSpawn(net.minecraft.world.level.ServerLevelAccessor, net.minecraft.world.DifficultyInstance, net.minecraft.world.entity.MobSpawnType, net.minecraft.world.entity.SpawnGroupData, net.minecraft.nbt.CompoundTag) will not be called.",
+      "deprecated": false
+    },
+    {
+      "name": "getSpawnTag",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@Nullable CompoundTag",
+      "parameters": [],
+      "description": "This is the NBT data the entity was loaded from, if applicable. It is unknown if the entity has already been loaded from this data, or if it will be loaded later. Callers should not modify this data. If you need to change the data, you can create a copy, modify it, and set it via setSpawnTag(net.minecraft.nbt.CompoundTag)",
+      "deprecated": false
+    },
+    {
+      "name": "setSpawnTag",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "tag",
+          "type": "CompoundTag",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "Sets the spawn data for this event, which will be propagated to Mob.finalizeSpawn(net.minecraft.world.level.ServerLevelAccessor, net.minecraft.world.DifficultyInstance, net.minecraft.world.entity.MobSpawnType, net.minecraft.world.entity.SpawnGroupData, net.minecraft.nbt.CompoundTag) unless cancelled. The only vanilla mob known to use this tag for anything in finalize is tropical fish for setting the variant when spawned via bucket.",
+      "deprecated": false
+    },
+    {
+      "name": "getSpawner",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@Nullable BaseSpawner",
+      "parameters": [],
+      "description": "Retrieves the underlying BaseSpawner instance if this mob was created by a Mob Spawner of some form. This is always null unless getSpawnType() is MobSpawnType.SPAWNER , and may still be null even then.",
+      "deprecated": false
+    },
+    {
+      "name": "setSpawnCancelled",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "cancel",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "This method can be used to cancel the spawn of this mob. This method must be used if you want to block the spawn, as canceling the event only blocks the call to Mob.finalizeSpawn(net.minecraft.world.level.ServerLevelAccessor, net.minecraft.world.DifficultyInstance, net.minecraft.world.entity.MobSpawnType, net.minecraft.world.entity.SpawnGroupData, net.minecraft.nbt.CompoundTag) . Note that if the spawn is cancelled, but the event is not, then Mob.finalizeSpawn(net.minecraft.world.level.ServerLevelAccessor, net.minecraft.world.DifficultyInstance, net.minecraft.world.entity.MobSpawnType, net.minecraft.world.entity.SpawnGroupData, net.minecraft.nbt.CompoundTag) will still be called, but the entity will not be spawned. Usually that has no side effects, but callers should be aware.",
+      "deprecated": false
+    },
+    {
+      "name": "isSpawnCancelled",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "Returns the current spawn cancellation status, which can be changed via setSpawnCancelled(boolean) .",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.4/net/minecraftforge/event/entity/living/MobSpawnEvent.FinalizeSpawn.html"
+}

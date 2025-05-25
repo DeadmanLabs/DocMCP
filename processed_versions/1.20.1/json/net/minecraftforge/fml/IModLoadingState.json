@@ -1,0 +1,134 @@
+{
+  "type": "interface",
+  "name": "IModLoadingState",
+  "qualified_name": "net.minecraftforge.fml.IModLoadingState",
+  "package": "net.minecraftforge.fml",
+  "modifiers": [
+    "public",
+    "interface"
+  ],
+  "annotations": [],
+  "description": "A mod loading state. During mod loading, the mod loader transitions between states in a defined sorted list of states, grouped into various phases .",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": []
+  },
+  "nested_classes": [],
+  "fields": [],
+  "constructors": [],
+  "methods": [
+    {
+      "name": "name",
+      "modifiers": [],
+      "return_type": "String",
+      "parameters": [],
+      "description": "Returns the name of this state.",
+      "deprecated": false
+    },
+    {
+      "name": "previous",
+      "modifiers": [],
+      "return_type": "String",
+      "parameters": [],
+      "description": "Returns the name of the state immediately previous to this state. This may be a blank name, which indicates this is either the first mod loading state or an exceptional mod loading state (such as a situation where errors prevent the loading process from continuing normally).",
+      "deprecated": false
+    },
+    {
+      "name": "phase",
+      "modifiers": [],
+      "return_type": "ModLoadingPhase",
+      "parameters": [],
+      "description": "Returns the mod loading phase this state belongs to. For exceptional mod loading states, this should be ModLoadingPhase.ERROR .",
+      "deprecated": false
+    },
+    {
+      "name": "message",
+      "modifiers": [],
+      "return_type": "Function < ModList , String >",
+      "parameters": [],
+      "description": "Returns a function returning a human-friendly message for this state.",
+      "deprecated": false
+    },
+    {
+      "name": "size",
+      "modifiers": [],
+      "return_type": "ToIntFunction < ModList >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "inlineRunnable",
+      "modifiers": [],
+      "return_type": "Optional < Consumer < ModList >>",
+      "parameters": [],
+      "description": "Returns an optional runnable, which runs before starting the transition from this state to the next.",
+      "deprecated": false
+    },
+    {
+      "name": "buildTransition",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "Optional < CompletableFuture < Void >>",
+      "parameters": [
+        {
+          "name": "syncExecutor",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "parallelExecutor",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "progressBar",
+          "type": "ProgressMeter",
+          "annotations": []
+        }
+      ],
+      "description": "Builds the transition task for this state with a blank pre-sync and post-sync task.",
+      "deprecated": false
+    },
+    {
+      "name": "buildTransition",
+      "modifiers": [],
+      "return_type": "Optional < CompletableFuture < Void >>",
+      "parameters": [
+        {
+          "name": "syncExecutor",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "parallelExecutor",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "progressBar",
+          "type": "ProgressMeter",
+          "annotations": []
+        },
+        {
+          "name": "preSyncTask",
+          "type": "Function < Executor , CompletableFuture < Void >>",
+          "annotations": []
+        },
+        {
+          "name": "postSyncTask",
+          "type": "Function < Executor , CompletableFuture < Void >>",
+          "annotations": []
+        }
+      ],
+      "description": "Builds the transition task for this state. The pre-sync and post-sync task functions allow the transition builder to run these tasks on the same executor as the actual event dispatch and pre/post hooks.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.1/net/minecraftforge/fml/IModLoadingState.html"
+}

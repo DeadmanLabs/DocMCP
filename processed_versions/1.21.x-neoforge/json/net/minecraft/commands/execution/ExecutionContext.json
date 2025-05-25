@@ -1,0 +1,400 @@
+{
+  "type": "class",
+  "name": "ExecutionContext<T>",
+  "qualified_name": "net.minecraft.commands.execution.ExecutionContext<T>",
+  "package": "net.minecraft.commands.execution",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "MAX_QUEUE_DEPTH",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "commandLimit",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "forkLimit",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "profiler",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ProfilerFiller",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tracer",
+      "modifiers": [
+        "private"
+      ],
+      "type": "TraceCallbacks",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "commandQuota",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "queueOverflow",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "commandQueue",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Deque < CommandQueueEntry < T >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "newTopCommands",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "List < CommandQueueEntry < T >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "currentFrameDepth",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ExecutionContext",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_306012_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_306180_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_306142_",
+          "type": "ProfilerFiller",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "createTopFrame",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "Frame",
+      "parameters": [
+        {
+          "name": "p_309594_",
+          "type": "ExecutionContext <T>",
+          "annotations": []
+        },
+        {
+          "name": "p_309689_",
+          "type": "CommandResultCallback",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "queueInitialFunctionCall",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_309686_",
+          "type": "ExecutionContext <T>",
+          "annotations": []
+        },
+        {
+          "name": "p_306145_",
+          "type": "InstantiatedFunction <T>",
+          "annotations": []
+        },
+        {
+          "name": "p_309607_",
+          "type": "T",
+          "annotations": []
+        },
+        {
+          "name": "p_309681_",
+          "type": "CommandResultCallback",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "queueInitialCommandExecution",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_306236_",
+          "type": "ExecutionContext <T>",
+          "annotations": []
+        },
+        {
+          "name": "p_305860_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_305784_",
+          "type": "com.mojang.brigadier.context.ContextChain<T>",
+          "annotations": []
+        },
+        {
+          "name": "p_306195_",
+          "type": "T",
+          "annotations": []
+        },
+        {
+          "name": "p_309622_",
+          "type": "CommandResultCallback",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleQueueOverflow",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "queueNext",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_305869_",
+          "type": "CommandQueueEntry < T >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "discardAtDepthOrHigher",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_306290_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "frameControlForDepth",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Frame.FrameControl",
+      "parameters": [
+        {
+          "name": "p_309645_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "runCommandQueue",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pushNewCommands",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tracer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_305950_",
+          "type": "TraceCallbacks",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tracer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "TraceCallbacks",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "profiler",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ProfilerFiller",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "forkLimit",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "incrementCost",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "close",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21.x-neoforge/net/minecraft/commands/execution/ExecutionContext.html"
+}

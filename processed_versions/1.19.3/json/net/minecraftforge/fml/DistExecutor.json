@@ -1,0 +1,267 @@
+{
+  "type": "class",
+  "name": "DistExecutor",
+  "qualified_name": "net.minecraftforge.fml.DistExecutor",
+  "package": "net.minecraftforge.fml",
+  "modifiers": [
+    "public",
+    "final",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Use to execute code conditionally based on sidedness. When you want to call something on one side and return a result safeCallWhenOn(Dist, Supplier) When you want to call one thing on one side, another thing on the other and return a result safeRunForDist(Supplier, Supplier) When you want to run something on one side safeRunWhenOn(Dist, Supplier)",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "DistExecutor",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "callWhenOn",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "dist",
+          "type": "net.minecraftforge.api.distmarker.Dist",
+          "annotations": []
+        },
+        {
+          "name": "toRun",
+          "type": "Supplier < Callable <T>>",
+          "annotations": []
+        }
+      ],
+      "description": "Run the callable in the supplier only on the specified Dist . This method is NOT sided-safe and special care needs to be taken in code using this method that implicit class loading is not triggered by the Callable. This method can cause unexpected ClassNotFound exceptions. Use safeCallWhenOn(Dist, Supplier) where possible.",
+      "deprecated": false
+    },
+    {
+      "name": "unsafeCallWhenOn",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "dist",
+          "type": "net.minecraftforge.api.distmarker.Dist",
+          "annotations": []
+        },
+        {
+          "name": "toRun",
+          "type": "Supplier < Callable <T>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "safeCallWhenOn",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "dist",
+          "type": "net.minecraftforge.api.distmarker.Dist",
+          "annotations": []
+        },
+        {
+          "name": "toRun",
+          "type": "Supplier < DistExecutor.SafeCallable <T>>",
+          "annotations": []
+        }
+      ],
+      "description": "Call the SafeCallable when on the correct Dist . The lambda supplied here is required to be a method reference to a method defined in another class, otherwise an invalid SafeReferent error will be thrown",
+      "deprecated": false
+    },
+    {
+      "name": "runWhenOn",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "dist",
+          "type": "net.minecraftforge.api.distmarker.Dist",
+          "annotations": []
+        },
+        {
+          "name": "toRun",
+          "type": "Supplier < Runnable >",
+          "annotations": []
+        }
+      ],
+      "description": "Runs the supplied Runnable on the speicified side. Same warnings apply as callWhenOn(Dist, Supplier) . This method can cause unexpected ClassNotFound exceptions.",
+      "deprecated": false
+    },
+    {
+      "name": "unsafeRunWhenOn",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "dist",
+          "type": "net.minecraftforge.api.distmarker.Dist",
+          "annotations": []
+        },
+        {
+          "name": "toRun",
+          "type": "Supplier < Runnable >",
+          "annotations": []
+        }
+      ],
+      "description": "Runs the supplied Runnable on the speicified side. Same warnings apply as unsafeCallWhenOn(Dist, Supplier) . This method can cause unexpected ClassNotFoundException problems in common scenarios. Understand the pitfalls of the way the class verifier works to load classes before using this. Use safeRunWhenOn(Dist, Supplier) if you can.",
+      "deprecated": false
+    },
+    {
+      "name": "safeRunWhenOn",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "dist",
+          "type": "net.minecraftforge.api.distmarker.Dist",
+          "annotations": []
+        },
+        {
+          "name": "toRun",
+          "type": "Supplier < DistExecutor.SafeRunnable >",
+          "annotations": []
+        }
+      ],
+      "description": "Call the supplied SafeRunnable when on the correct Dist.",
+      "deprecated": false
+    },
+    {
+      "name": "runForDist",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "clientTarget",
+          "type": "Supplier < Supplier <T>>",
+          "annotations": []
+        },
+        {
+          "name": "serverTarget",
+          "type": "Supplier < Supplier <T>>",
+          "annotations": []
+        }
+      ],
+      "description": "Executes one of the two suppliers, based on which side is active. Example (replacement for old SidedProxy): Proxy p = DistExecutor.runForDist(()->ClientProxy::new, ()->ServerProxy::new); NOTE: the double supplier is required to avoid classloading the secondary target.",
+      "deprecated": false
+    },
+    {
+      "name": "unsafeRunForDist",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "clientTarget",
+          "type": "Supplier < Supplier <T>>",
+          "annotations": []
+        },
+        {
+          "name": "serverTarget",
+          "type": "Supplier < Supplier <T>>",
+          "annotations": []
+        }
+      ],
+      "description": "Unsafe version of safeRunForDist(Supplier, Supplier) . Use only when you know what you're doing and understand why the verifier can cause unexpected ClassNotFoundException crashes even when code is apparently not sided. Ensure you test both sides fully to be confident in using this.",
+      "deprecated": false
+    },
+    {
+      "name": "safeRunForDist",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "clientTarget",
+          "type": "Supplier < DistExecutor.SafeSupplier <T>>",
+          "annotations": []
+        },
+        {
+          "name": "serverTarget",
+          "type": "Supplier < DistExecutor.SafeSupplier <T>>",
+          "annotations": []
+        }
+      ],
+      "description": "Executes one of the two suppliers, based on which side is active. Example (replacement for old SidedProxy): Proxy p = DistExecutor.safeRunForDist(()->ClientProxy::new, ()->ServerProxy::new); NOTE: the double supplier is required to avoid classloading the secondary target.",
+      "deprecated": false
+    },
+    {
+      "name": "validateSafeReferent",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "safeReferentSupplier",
+          "type": "Supplier <? extends DistExecutor.SafeReferent >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.19.3/net/minecraftforge/fml/DistExecutor.html"
+}

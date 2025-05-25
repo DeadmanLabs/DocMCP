@@ -1,0 +1,304 @@
+{
+  "type": "class",
+  "name": "AnimationStateMachine",
+  "qualified_name": "net.minecraftforge.common.model.animation.AnimationStateMachine",
+  "package": "net.minecraftforge.common.model.animation",
+  "modifiers": [
+    "public",
+    "final",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "parameters",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.google.common.collect.ImmutableMap< String ,​ ITimeValue >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clips",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.google.common.collect.ImmutableMap< String ,​ IClip >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "states",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.google.common.collect.ImmutableList< String >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "transitions",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.google.common.collect.ImmutableMultimap< String ,​ String >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "startState",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldHandleSpecialEvents",
+      "modifiers": [
+        "private",
+        "transient"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "currentStateName",
+      "modifiers": [
+        "private",
+        "transient"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "currentState",
+      "modifiers": [
+        "private",
+        "transient"
+      ],
+      "type": "IClip",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastPollTime",
+      "modifiers": [
+        "private",
+        "transient"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clipCache",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "com.google.common.cache.LoadingCache<org.apache.commons.lang3.tuple.Triple<? extends IClip ,​ Float ,​ Float >,​org.apache.commons.lang3.tuple.Pair< ModelState ,​ Iterable < Event >>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "missing",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "AnimationStateMachine",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "asmGson",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "com.google.gson.Gson",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "AnimationStateMachine",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "parameters",
+          "type": "com.google.common.collect.ImmutableMap< String ,​ ITimeValue >",
+          "annotations": []
+        },
+        {
+          "name": "clips",
+          "type": "com.google.common.collect.ImmutableMap< String ,​ IClip >",
+          "annotations": []
+        },
+        {
+          "name": "states",
+          "type": "com.google.common.collect.ImmutableList< String >",
+          "annotations": []
+        },
+        {
+          "name": "transitions",
+          "type": "com.google.common.collect.ImmutableMultimap< String ,​ String >",
+          "annotations": []
+        },
+        {
+          "name": "startState",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "initialize",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [],
+      "description": "post-loading initialization hook.",
+      "deprecated": false
+    },
+    {
+      "name": "apply",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "org.apache.commons.lang3.tuple.Pair< ModelState ,​ Iterable < Event >>",
+      "parameters": [
+        {
+          "name": "time",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "Description copied from interface: IAnimationStateMachine",
+      "deprecated": false
+    },
+    {
+      "name": "transition",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "newState",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "Description copied from interface: IAnimationStateMachine",
+      "deprecated": false
+    },
+    {
+      "name": "currentState",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "Description copied from interface: IAnimationStateMachine",
+      "deprecated": false
+    },
+    {
+      "name": "shouldHandleSpecialEvents",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "value",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Description copied from interface: IAnimationStateMachine",
+      "deprecated": false
+    },
+    {
+      "name": "load",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "IAnimationStateMachine",
+      "parameters": [
+        {
+          "name": "manager",
+          "type": "ResourceManager",
+          "annotations": []
+        },
+        {
+          "name": "location",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "customParameters",
+          "type": "com.google.common.collect.ImmutableMap< String ,​ ITimeValue >",
+          "annotations": []
+        }
+      ],
+      "description": "Load a new instance if AnimationStateMachine at specified location, with specified custom parameters.",
+      "deprecated": false
+    },
+    {
+      "name": "getMissing",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "AnimationStateMachine",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.17.1/net/minecraftforge/common/model/animation/AnimationStateMachine.html"
+}

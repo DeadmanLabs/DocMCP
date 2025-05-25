@@ -1,0 +1,823 @@
+{
+  "type": "class",
+  "name": "NoiseChunk",
+  "qualified_name": "net.minecraft.world.level.levelgen.NoiseChunk",
+  "package": "net.minecraft.world.level.levelgen",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "noiseSettings",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "NoiseSettings",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cellCountXZ",
+      "modifiers": [
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cellCountY",
+      "modifiers": [
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cellNoiseMinY",
+      "modifiers": [
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "firstCellX",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "firstCellZ",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "firstNoiseX",
+      "modifiers": [
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "firstNoiseZ",
+      "modifiers": [
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "interpolators",
+      "modifiers": [
+        "final"
+      ],
+      "type": "List < NoiseChunk.NoiseInterpolator >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cellCaches",
+      "modifiers": [
+        "final"
+      ],
+      "type": "List < NoiseChunk.CacheAllInCell >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "wrapped",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < DensityFunction , DensityFunction >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "preliminarySurfaceLevel",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.longs.Long2IntMap",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "aquifer",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Aquifer",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "initialDensityNoJaggedness",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "DensityFunction",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blockStateRule",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "NoiseChunk.BlockStateFiller",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blender",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Blender",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blendAlpha",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "NoiseChunk.FlatCache",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blendOffset",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "NoiseChunk.FlatCache",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "beardifier",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "DensityFunctions.BeardifierOrMarker",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastBlendingDataPos",
+      "modifiers": [
+        "private"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastBlendingOutput",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Blender.BlendingOutput",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "noiseSizeXZ",
+      "modifiers": [
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cellWidth",
+      "modifiers": [
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cellHeight",
+      "modifiers": [
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "interpolating",
+      "modifiers": [],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fillingCell",
+      "modifiers": [],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cellStartBlockX",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cellStartBlockY",
+      "modifiers": [],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cellStartBlockZ",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "inCellX",
+      "modifiers": [],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "inCellY",
+      "modifiers": [],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "inCellZ",
+      "modifiers": [],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "interpolationCounter",
+      "modifiers": [],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "arrayInterpolationCounter",
+      "modifiers": [],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "arrayIndex",
+      "modifiers": [],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sliceFillingContextProvider",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "DensityFunction.ContextProvider",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "NoiseChunk",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_224343_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_224344_",
+          "type": "RandomState",
+          "annotations": []
+        },
+        {
+          "name": "p_224345_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_224346_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_224347_",
+          "type": "NoiseSettings",
+          "annotations": []
+        },
+        {
+          "name": "p_224348_",
+          "type": "DensityFunctions.BeardifierOrMarker",
+          "annotations": []
+        },
+        {
+          "name": "p_224349_",
+          "type": "NoiseGeneratorSettings",
+          "annotations": []
+        },
+        {
+          "name": "p_224350_",
+          "type": "Aquifer.FluidPicker",
+          "annotations": []
+        },
+        {
+          "name": "p_224351_",
+          "type": "Blender",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "forChunk",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "NoiseChunk",
+      "parameters": [
+        {
+          "name": "p_224353_",
+          "type": "ChunkAccess",
+          "annotations": []
+        },
+        {
+          "name": "p_224354_",
+          "type": "RandomState",
+          "annotations": []
+        },
+        {
+          "name": "p_224355_",
+          "type": "DensityFunctions.BeardifierOrMarker",
+          "annotations": []
+        },
+        {
+          "name": "p_224356_",
+          "type": "NoiseGeneratorSettings",
+          "annotations": []
+        },
+        {
+          "name": "p_224357_",
+          "type": "Aquifer.FluidPicker",
+          "annotations": []
+        },
+        {
+          "name": "p_224358_",
+          "type": "Blender",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cachedClimateSampler",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "Climate.Sampler",
+      "parameters": [
+        {
+          "name": "p_224360_",
+          "type": "NoiseRouter",
+          "annotations": []
+        },
+        {
+          "name": "p_224361_",
+          "type": "List < Climate.ParameterPoint >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getInterpolatedState",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "BlockState",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blockX",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blockY",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blockZ",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "preliminarySurfaceLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_198257_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_198258_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "computePreliminarySurfaceLevel",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_198250_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBlender",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Blender",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fillSlice",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_209221_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_209222_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "initializeForFirstCellX",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "advanceCellX",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_188750_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "forIndex",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "NoiseChunk",
+      "parameters": [
+        {
+          "name": "p_209240_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fillAllDirectly",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_209224_",
+          "type": "double[]",
+          "annotations": []
+        },
+        {
+          "name": "p_209225_",
+          "type": "DensityFunction",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "selectCellYZ",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_188811_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_188812_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateForY",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_209192_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_209193_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateForX",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_209231_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_209232_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateForZ",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_209242_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_209243_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stopInterpolation",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "swapSlices",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "aquifer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Aquifer",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cellWidth",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cellHeight",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getOrComputeBlendingOutput",
+      "modifiers": [],
+      "return_type": "Blender.BlendingOutput",
+      "parameters": [
+        {
+          "name": "p_209245_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_209246_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "wrap",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "DensityFunction",
+      "parameters": [
+        {
+          "name": "p_209214_",
+          "type": "DensityFunction",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "wrapNew",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "DensityFunction",
+      "parameters": [
+        {
+          "name": "p_209234_",
+          "type": "DensityFunction",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.19.4/net/minecraft/world/level/levelgen/NoiseChunk.html"
+}

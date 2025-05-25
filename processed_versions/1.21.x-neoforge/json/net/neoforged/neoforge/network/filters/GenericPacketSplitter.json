@@ -1,0 +1,291 @@
+{
+  "type": "class",
+  "name": "GenericPacketSplitter",
+  "qualified_name": "net.neoforged.neoforge.network.filters.GenericPacketSplitter",
+  "package": "net.neoforged.neoforge.network.filters",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "A generic packet splitter that can be used to split packets that are too large to be sent in one go.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "Packet"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "compressedSizeLimits",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "GenericPacketSplitter.SizeLimits",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "uncompressedSizeLimits",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "GenericPacketSplitter.SizeLimits",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "STATE_FIRST",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "byte",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "STATE_LAST",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "byte",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CHANNEL_HANDLER_NAME",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "receivedBuffers",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "List <byte[]>",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "GenericPacketSplitter",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "register",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "event",
+          "type": "RegisterPayloadHandlersEvent",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handle",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "payload",
+          "type": "SplitPacketPayload",
+          "annotations": []
+        },
+        {
+          "name": "context",
+          "type": "IPayloadContext",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "encode",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "ctx",
+          "type": "io.netty.channel.ChannelHandlerContext",
+          "annotations": []
+        },
+        {
+          "name": "packet",
+          "type": "Packet <?>",
+          "annotations": []
+        },
+        {
+          "name": "out",
+          "type": "List < Object >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "receivedPacket",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "payload",
+          "type": "SplitPacketPayload",
+          "annotations": []
+        },
+        {
+          "name": "context",
+          "type": "IPayloadContext",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createPacket",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "Packet <?>",
+      "parameters": [
+        {
+          "name": "flow",
+          "type": "PacketFlow",
+          "annotations": []
+        },
+        {
+          "name": "payload",
+          "type": "byte[]",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isNecessary",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "manager",
+          "type": "Connection",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRemoteCompatibility",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "GenericPacketSplitter.RemoteCompatibility",
+      "parameters": [
+        {
+          "name": "manager",
+          "type": "Connection",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isRemoteCompatible",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "manager",
+          "type": "Connection",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "determineMaxPayloadSize",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "maxPacketSize",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21.x-neoforge/net/neoforged/neoforge/network/filters/GenericPacketSplitter.html"
+}

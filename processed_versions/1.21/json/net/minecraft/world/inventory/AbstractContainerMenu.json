@@ -1,0 +1,1363 @@
+{
+  "type": "class",
+  "name": "AbstractContainerMenu",
+  "qualified_name": "net.minecraft.world.inventory.AbstractContainerMenu",
+  "package": "net.minecraft.world.inventory",
+  "modifiers": [
+    "public",
+    "abstract",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SLOT_CLICKED_OUTSIDE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "QUICKCRAFT_TYPE_CHARITABLE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "QUICKCRAFT_TYPE_GREEDY",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "QUICKCRAFT_TYPE_CLONE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "QUICKCRAFT_HEADER_START",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "QUICKCRAFT_HEADER_CONTINUE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "QUICKCRAFT_HEADER_END",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CARRIED_SLOT_SIZE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastSlots",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "NonNullList < ItemStack >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "slots",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "type": "NonNullList < Slot >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dataSlots",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "List < DataSlot >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "carried",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ItemStack",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "remoteSlots",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "NonNullList < ItemStack >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "remoteDataSlots",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.ints.IntList",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "remoteCarried",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ItemStack",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stateId",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "menuType",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "MenuType <?>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "containerId",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "quickcraftType",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "quickcraftStatus",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "quickcraftSlots",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Set < Slot >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "containerListeners",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "List < ContainerListener >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "synchronizer",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ContainerSynchronizer",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suppressRemoteUpdates",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "AbstractContainerMenu",
+      "modifiers": [
+        "protected"
+      ],
+      "parameters": [
+        {
+          "name": "p_38851_",
+          "type": "MenuType <?>",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_38852_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "stillValid",
+      "modifiers": [
+        "protected",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_38890_",
+          "type": "ContainerLevelAccess",
+          "annotations": []
+        },
+        {
+          "name": "p_38891_",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "p_38892_",
+          "type": "Block",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getType",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "MenuType <?>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "checkContainerSize",
+      "modifiers": [
+        "protected",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_38870_",
+          "type": "Container",
+          "annotations": []
+        },
+        {
+          "name": "p_38871_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "checkContainerDataCount",
+      "modifiers": [
+        "protected",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_38887_",
+          "type": "ContainerData",
+          "annotations": []
+        },
+        {
+          "name": "p_38888_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isValidSlotIndex",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_207776_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addSlot",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "Slot",
+      "parameters": [
+        {
+          "name": "p_38898_",
+          "type": "Slot",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addDataSlot",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "DataSlot",
+      "parameters": [
+        {
+          "name": "p_38896_",
+          "type": "DataSlot",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addDataSlots",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_38885_",
+          "type": "ContainerData",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addSlotListener",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_38894_",
+          "type": "ContainerListener",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setSynchronizer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_150417_",
+          "type": "ContainerSynchronizer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sendAllDataToRemote",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removeSlotListener",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_38944_",
+          "type": "ContainerListener",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getItems",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "NonNullList < ItemStack >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "broadcastChanges",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "broadcastFullState",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateDataSlotListeners",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_182421_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_182422_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "triggerSlotListeners",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_150408_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_150409_",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "p_150410_",
+          "type": "Supplier < ItemStack >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "synchronizeSlotToRemote",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_150436_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_150437_",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "p_150438_",
+          "type": "Supplier < ItemStack >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "synchronizeDataSlotToRemote",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_150441_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_150442_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "synchronizeCarriedToRemote",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setRemoteSlot",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_150405_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_150406_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setRemoteSlotNoCopy",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_182415_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_182416_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setRemoteCarried",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_150423_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clickMenuButton",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_38875_",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "p_38876_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSlot",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Slot",
+      "parameters": [
+        {
+          "name": "p_38854_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "quickMoveStack",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "ItemStack",
+      "parameters": [
+        {
+          "name": "p_38941_",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "p_38942_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clicked",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_150400_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_150401_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_150402_",
+          "type": "ClickType",
+          "annotations": []
+        },
+        {
+          "name": "p_150403_",
+          "type": "Player",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "doClick",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_150431_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_150432_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_150433_",
+          "type": "ClickType",
+          "annotations": []
+        },
+        {
+          "name": "p_150434_",
+          "type": "Player",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tryItemClickBehaviourOverride",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_249615_",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "p_250300_",
+          "type": "ClickAction",
+          "annotations": []
+        },
+        {
+          "name": "p_249384_",
+          "type": "Slot",
+          "annotations": []
+        },
+        {
+          "name": "p_251073_",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "p_252026_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createCarriedSlotAccess",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "SlotAccess",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canTakeItemForPickAll",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_38908_",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "p_38909_",
+          "type": "Slot",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removed",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_38940_",
+          "type": "Player",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clearContainer",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_150412_",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "p_150413_",
+          "type": "Container",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "slotsChanged",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_38868_",
+          "type": "Container",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setItem",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_182407_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_182408_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_182409_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "initializeContents",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_182411_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_182412_",
+          "type": "List < ItemStack >",
+          "annotations": []
+        },
+        {
+          "name": "p_182413_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_38855_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_38856_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stillValid",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_38874_",
+          "type": "Player",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "moveItemStackTo",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_38904_",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "p_38905_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_38906_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_38907_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getQuickcraftType",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_38929_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getQuickcraftHeader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_38948_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getQuickcraftMask",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_38931_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_38932_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isValidQuickcraftType",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_38863_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_38864_",
+          "type": "Player",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "resetQuickCraft",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canItemQuickReplace",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_38900_",
+          "type": "Slot",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_38901_",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "p_38902_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getQuickCraftPlaceCount",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_279393_",
+          "type": "Set < Slot >",
+          "annotations": []
+        },
+        {
+          "name": "p_279288_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_279172_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canDragTo",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_38945_",
+          "type": "Slot",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRedstoneSignalFromBlockEntity",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_38919_",
+          "type": "BlockEntity",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRedstoneSignalFromContainer",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_38939_",
+          "type": "Container",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setCarried",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_150439_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getCarried",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ItemStack",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suppressRemoteUpdates",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "resumeRemoteUpdates",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "transferState",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_150415_",
+          "type": "AbstractContainerMenu",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "findSlot",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "OptionalInt",
+      "parameters": [
+        {
+          "name": "p_182418_",
+          "type": "Container",
+          "annotations": []
+        },
+        {
+          "name": "p_182419_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getStateId",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "incrementStateId",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21/net/minecraft/world/inventory/AbstractContainerMenu.html"
+}

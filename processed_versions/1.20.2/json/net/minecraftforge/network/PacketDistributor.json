@@ -1,0 +1,424 @@
+{
+  "type": "record",
+  "name": "PacketDistributor<T>",
+  "qualified_name": "net.minecraftforge.network.PacketDistributor<T>",
+  "package": "net.minecraftforge.network",
+  "modifiers": [
+    "public",
+    "record"
+  ],
+  "annotations": [],
+  "description": "Means to distribute packets in various ways",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "java.lang.Record"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "functor",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "BiFunction < PacketDistributor < T >, T , Consumer < Packet <?>>>",
+      "description": "The field for the functor record component.",
+      "deprecated": false
+    },
+    {
+      "name": "direction",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "NetworkDirection",
+      "description": "The field for the direction record component.",
+      "deprecated": false
+    },
+    {
+      "name": "PLAYER",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "PacketDistributor < ServerPlayer >",
+      "description": "Send to the player specified in the Supplier with(T) Player",
+      "deprecated": false
+    },
+    {
+      "name": "DIMENSION",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "PacketDistributor < ResourceKey < Level >>",
+      "description": "Send to everyone in the dimension specified in the Supplier with(T) DimensionType",
+      "deprecated": false
+    },
+    {
+      "name": "NEAR",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "PacketDistributor < PacketDistributor.TargetPoint >",
+      "description": "Send to everyone near the PacketDistributor.TargetPoint specified in the Supplier with(T) TargetPoint",
+      "deprecated": false
+    },
+    {
+      "name": "ALL",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "PacketDistributor < Void >",
+      "description": "Send to everyone noArg()",
+      "deprecated": false
+    },
+    {
+      "name": "SERVER",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "PacketDistributor < Void >",
+      "description": "Send to the server (CLIENT to SERVER) noArg()",
+      "deprecated": false
+    },
+    {
+      "name": "TRACKING_ENTITY",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "PacketDistributor < Entity >",
+      "description": "Send to all tracking the Entity in the Supplier with(T) Entity",
+      "deprecated": false
+    },
+    {
+      "name": "TRACKING_ENTITY_AND_SELF",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "PacketDistributor < Entity >",
+      "description": "Send to all tracking the Entity and Player in the Supplier with(T) Entity",
+      "deprecated": false
+    },
+    {
+      "name": "TRACKING_CHUNK",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "PacketDistributor < LevelChunk >",
+      "description": "Send to all tracking the Chunk in the Supplier with(T) Chunk",
+      "deprecated": false
+    },
+    {
+      "name": "NMLIST",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "PacketDistributor < List < Connection >>",
+      "description": "Send to the supplied list of NetworkManager instances in the Supplier with(T) List of NetworkManager",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "PacketDistributor",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "functor",
+          "type": "BiFunction < PacketDistributor < T >, T , Consumer < Packet <?>>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PacketDistributor",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "functor",
+          "type": "BiFunction < PacketDistributor < T >, T , Consumer < Packet <?>>>",
+          "annotations": []
+        },
+        {
+          "name": "direction",
+          "type": "NetworkDirection",
+          "annotations": []
+        }
+      ],
+      "description": "Creates an instance of a PacketDistributor record class.",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "with",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "PacketDistributor.PacketTarget",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "Apply the supplied value to the specific distributor to generate an instance for sending packets to.",
+      "deprecated": false
+    },
+    {
+      "name": "noArg",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "PacketDistributor.PacketTarget",
+      "parameters": [],
+      "description": "Apply a no argument value to a distributor to generate an instance for sending packets to.",
+      "deprecated": false
+    },
+    {
+      "name": "playerConsumer",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Consumer < Packet <?>>",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "ServerPlayer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playerListDimConsumer",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Consumer < Packet <?>>",
+      "parameters": [
+        {
+          "name": "dimension",
+          "type": "ResourceKey < Level >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playerListAll",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Consumer < Packet <?>>",
+      "parameters": [
+        {
+          "name": "ignored",
+          "type": "Void",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clientToServer",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Consumer < Packet <?>>",
+      "parameters": [
+        {
+          "name": "ignored",
+          "type": "Void",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playerListPointConsumer",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Consumer < Packet <?>>",
+      "parameters": [
+        {
+          "name": "tp",
+          "type": "PacketDistributor.TargetPoint",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "trackingEntity",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Consumer < Packet <?>>",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "trackingEntityAndSelf",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Consumer < Packet <?>>",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "trackingChunk",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Consumer < Packet <?>>",
+      "parameters": [
+        {
+          "name": "chunk",
+          "type": "LevelChunk",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "networkManagerList",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Consumer < Packet <?>>",
+      "parameters": [
+        {
+          "name": "connections",
+          "type": "List < Connection >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getServer",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "MinecraftServer",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "toString",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "Returns a string representation of this record class. The representation contains the name of the class, followed by the name and value of each of the record components.",
+      "deprecated": false
+    },
+    {
+      "name": "hashCode",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "Returns a hash code value for this object. The value is derived from the hash code of each of the record components.",
+      "deprecated": false
+    },
+    {
+      "name": "equals",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Object",
+          "annotations": []
+        }
+      ],
+      "description": "Indicates whether some other object is \"equal to\" this one. The objects are equal if the other object is of the same class and if all the record components are equal. All components in this record class are compared with Objects::equals(Object,Object) .",
+      "deprecated": false
+    },
+    {
+      "name": "functor",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BiFunction < PacketDistributor < T >, T , Consumer < Packet <?>>>",
+      "parameters": [],
+      "description": "Returns the value of the functor record component.",
+      "deprecated": false
+    },
+    {
+      "name": "direction",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "NetworkDirection",
+      "parameters": [],
+      "description": "Returns the value of the direction record component.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.2/net/minecraftforge/network/PacketDistributor.html"
+}

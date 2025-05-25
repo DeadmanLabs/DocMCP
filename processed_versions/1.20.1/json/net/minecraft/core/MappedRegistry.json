@@ -1,0 +1,853 @@
+{
+  "type": "class",
+  "name": "MappedRegistry<T>",
+  "qualified_name": "net.minecraft.core.MappedRegistry<T>",
+  "package": "net.minecraft.core",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "key",
+      "modifiers": [
+        "final"
+      ],
+      "type": "ResourceKey <? extends Registry < T >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "byId",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.objects.ObjectList< Holder.Reference < T >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "toId",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.objects.Object2IntMap< T >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "byLocation",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < ResourceLocation , Holder.Reference < T >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "byKey",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < ResourceKey < T >, Holder.Reference < T >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "byValue",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < T , Holder.Reference < T >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lifecycles",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < T , com.mojang.serialization.Lifecycle>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registryLifecycle",
+      "modifiers": [
+        "private"
+      ],
+      "type": "com.mojang.serialization.Lifecycle",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tags",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "type": "Map < TagKey < T >, HolderSet.Named < T >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "frozen",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "unregisteredIntrusiveHolders",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "Map < T , Holder.Reference < T >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "holdersInOrder",
+      "modifiers": [
+        "private"
+      ],
+      "type": "List < Holder.Reference < T >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "nextId",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lookup",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "HolderLookup.RegistryLookup < T >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "KNOWN",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Set < ResourceLocation >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "MappedRegistry",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_249899_",
+          "type": "ResourceKey <? extends Registry < T >>",
+          "annotations": []
+        },
+        {
+          "name": "p_252249_",
+          "type": "com.mojang.serialization.Lifecycle",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MappedRegistry",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_252132_",
+          "type": "ResourceKey <? extends Registry < T >>",
+          "annotations": []
+        },
+        {
+          "name": "p_249215_",
+          "type": "com.mojang.serialization.Lifecycle",
+          "annotations": []
+        },
+        {
+          "name": "p_251014_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "key",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ResourceKey <? extends Registry < T >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "toString",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "holdersInOrder",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "List < Holder.Reference < T >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "validateWrite",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "validateWrite",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_205922_",
+          "type": "ResourceKey < T >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getKnownRegistries",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "Set < ResourceLocation >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "markKnown",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registerMapping",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Holder.Reference < T >",
+      "parameters": [
+        {
+          "name": "p_256563_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_256594_",
+          "type": "ResourceKey < T >",
+          "annotations": []
+        },
+        {
+          "name": "p_256374_",
+          "type": "T",
+          "annotations": []
+        },
+        {
+          "name": "p_256469_",
+          "type": "com.mojang.serialization.Lifecycle",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "register",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Holder.Reference < T >",
+      "parameters": [
+        {
+          "name": "p_256252_",
+          "type": "ResourceKey < T >",
+          "annotations": []
+        },
+        {
+          "name": "p_256591_",
+          "type": "T",
+          "annotations": []
+        },
+        {
+          "name": "p_256255_",
+          "type": "com.mojang.serialization.Lifecycle",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getKey",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [
+        {
+          "name": "p_122746_",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getResourceKey",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < ResourceKey < T >>",
+      "parameters": [
+        {
+          "name": "p_122755_",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getId",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_122706_",
+          "type": "T",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "get",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "p_122714_",
+          "type": "ResourceKey < T >",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "byId",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "p_122684_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getHolder",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < Holder.Reference < T >>",
+      "parameters": [
+        {
+          "name": "p_205907_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getHolder",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < Holder.Reference < T >>",
+      "parameters": [
+        {
+          "name": "p_205905_",
+          "type": "ResourceKey < T >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "wrapAsHolder",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Holder < T >",
+      "parameters": [
+        {
+          "name": "p_263356_",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getOrCreateHolderOrThrow",
+      "modifiers": [],
+      "return_type": "Holder.Reference < T >",
+      "parameters": [
+        {
+          "name": "p_248831_",
+          "type": "ResourceKey < T >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "size",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lifecycle",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "com.mojang.serialization.Lifecycle",
+      "parameters": [
+        {
+          "name": "p_122764_",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registryLifecycle",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "com.mojang.serialization.Lifecycle",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "iterator",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Iterator < T >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "get",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "p_122739_",
+          "type": "ResourceLocation",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getValueFromNullable",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "p_205866_",
+          "type": "Holder.Reference <T>",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "keySet",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Set < ResourceLocation >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registryKeySet",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Set < ResourceKey < T >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "entrySet",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Set < Map.Entry < ResourceKey < T >, T >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "holders",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Stream < Holder.Reference < T >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTags",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Stream <com.mojang.datafixers.util.Pair< TagKey < T >, HolderSet.Named < T >>>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getOrCreateTag",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "HolderSet.Named < T >",
+      "parameters": [
+        {
+          "name": "p_205895_",
+          "type": "TagKey < T >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createTag",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "HolderSet.Named < T >",
+      "parameters": [
+        {
+          "name": "p_211068_",
+          "type": "TagKey < T >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTagNames",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Stream < TagKey < T >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isEmpty",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRandom",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < Holder.Reference < T >>",
+      "parameters": [
+        {
+          "name": "p_235716_",
+          "type": "RandomSource",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "containsKey",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_122761_",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "containsKey",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_175392_",
+          "type": "ResourceKey < T >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "unfreeze",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "freeze",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Registry < T >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createIntrusiveHolder",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Holder.Reference < T >",
+      "parameters": [
+        {
+          "name": "p_205915_",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTag",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < HolderSet.Named < T >>",
+      "parameters": [
+        {
+          "name": "p_205909_",
+          "type": "TagKey < T >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "bindTags",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_205875_",
+          "type": "Map < TagKey < T >, List < Holder < T >>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "resetTags",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createRegistrationLookup",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "HolderGetter < T >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "holderOwner",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "HolderOwner < T >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "asLookup",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "HolderLookup.RegistryLookup < T >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.1/net/minecraft/core/MappedRegistry.html"
+}

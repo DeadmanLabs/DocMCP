@@ -1,0 +1,109 @@
+{
+  "type": "class",
+  "name": "NetworkComponentNegotiator",
+  "qualified_name": "net.neoforged.neoforge.network.negotiation.NetworkComponentNegotiator",
+  "package": "net.neoforged.neoforge.network.negotiation",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Negotiates the network components between the server and client.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "NetworkComponentNegotiator",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "negotiate",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "NegotiationResult",
+      "parameters": [
+        {
+          "name": "server",
+          "type": "List < NegotiableNetworkComponent >",
+          "annotations": []
+        },
+        {
+          "name": "client",
+          "type": "List < NegotiableNetworkComponent >",
+          "annotations": []
+        }
+      ],
+      "description": "Negotiates the network components between the server and client. The following rules are followed: Any component that is optional on the client but is not present on the server is removed from the client's list. Any component that is optional on the server but is not present on the client is removed from the server's list. If the client has none optional components that are not present on the server, then negotiation fails If the server has none optional components that are not present on the client, then negotiation fails For each of the matching channels the following is executed: Check if packet flow directions are set, and if at least one is set match it to the other, by missing or wrong value fail the negotiation. Check if both sides have the same version, or none set. At this point the channels are considered compatible, pick the servers version. It does not matter what side is picked since either both have the same version, or no version at all. If negotiation succeeds then a list of agreed upon channels and their versions is returned. If negotiation fails then a Component is returned with the reason for failure.",
+      "deprecated": false
+    },
+    {
+      "name": "buildDisabledOptionalComponents",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "List < NegotiableNetworkComponent >",
+      "parameters": [
+        {
+          "name": "currentSide",
+          "type": "List < NegotiableNetworkComponent >",
+          "annotations": []
+        },
+        {
+          "name": "otherSide",
+          "type": "List < NegotiableNetworkComponent >",
+          "annotations": []
+        }
+      ],
+      "description": "Builds a list of disabled optional components.",
+      "deprecated": false
+    },
+    {
+      "name": "validateComponent",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "Optional < NetworkComponentNegotiator.ComponentNegotiationResult >",
+      "parameters": [
+        {
+          "name": "left",
+          "type": "NegotiableNetworkComponent",
+          "annotations": []
+        },
+        {
+          "name": "right",
+          "type": "NegotiableNetworkComponent",
+          "annotations": []
+        },
+        {
+          "name": "requestingSide",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "Checks if two components are compatible. The following rules are followed: Check if packet flow directions are set, and if at least one is set match it to the other, by missing or wrong value fail the negotiation. Check if both sides have the same version, or none set. If negotiation succeeds then an empty Optional is returned. If negotiation fails then a NegotiationResult is returned with the reason for failure.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21.x-neoforge/net/neoforged/neoforge/network/negotiation/NetworkComponentNegotiator.html"
+}

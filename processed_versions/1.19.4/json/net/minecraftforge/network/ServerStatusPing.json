@@ -1,0 +1,352 @@
+{
+  "type": "record",
+  "name": "ServerStatusPing",
+  "qualified_name": "net.minecraftforge.network.ServerStatusPing",
+  "package": "net.minecraftforge.network",
+  "modifiers": [
+    "public",
+    "record"
+  ],
+  "annotations": [],
+  "description": "Represents additional data sent by FML when a server is pinged. Previous versions used the following format: { \"fmlNetworkVersion\" : FMLNETVERSION, \"channels\": [ { \"res\": \"fml:handshake\", \"version\": \"1.2.3.4\", \"required\": true } ], \"mods\": [ { \"modid\": \"modid\", \"modmarker\": \"{@literal <somestring>}\" } ] } Due to size of the ping packet (32767 UTF-16 code points of JSON data) this could exceed this limit and cause issues. To work around this, a truncation mechanism was introduced, to heuristically truncate the size of the data, at the expense of making the compatibility info on the server screen inaccurate. Modern versions will send binary data, which is encoded in a custom format optimized for UTF-16 code point count. See encodeOptimized(ByteBuf) and decodeOptimized(String) . Essentially 15 bits of binary data are encoded into every UTF-16 code point. The resulting string is then stored in the \"d\" property of the resulting JSON. The \"channels\" and \"mods\" properties are retained for backwards compatibility, but left empty. A client that cannot read the old format would not be able to connect anyways, but the properties must exist to not cause exceptions. { \"fmlNetworkVersion\": FMLNETVERSION, \"channels\": [], \"mods\": [], \"d\": \"&lt;binary data&gt;\" }",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "java.lang.Record"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "channels",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < ResourceLocation , ServerStatusPing.ChannelData >",
+      "description": "The field for the channels record component.",
+      "deprecated": false
+    },
+    {
+      "name": "mods",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < String , String >",
+      "description": "The field for the mods record component.",
+      "deprecated": false
+    },
+    {
+      "name": "fmlNetworkVer",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "The field for the fmlNetworkVer record component.",
+      "deprecated": false
+    },
+    {
+      "name": "truncated",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "boolean",
+      "description": "The field for the truncated record component.",
+      "deprecated": false
+    },
+    {
+      "name": "BYTE_BUF_CODEC",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.serialization.Codec<io.netty.buffer.ByteBuf>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CODEC",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.serialization.Codec< ServerStatusPing >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "VERSION_FLAG_IGNORESERVERONLY",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ServerStatusPing",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ServerStatusPing",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "channels",
+          "type": "Map < ResourceLocation , ServerStatusPing.ChannelData >",
+          "annotations": []
+        },
+        {
+          "name": "mods",
+          "type": "Map < String , String >",
+          "annotations": []
+        },
+        {
+          "name": "fmlNetworkVer",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "truncated",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Creates an instance of a ServerStatusPing record class.",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "equals",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Object",
+          "annotations": []
+        }
+      ],
+      "description": "Indicates whether some other object is \"equal to\" this one. The objects are equal if the other object is of the same class and if all the record components are equal. Reference components are compared with Objects::equals(Object,Object) ; primitive components are compared with '=='.",
+      "deprecated": false
+    },
+    {
+      "name": "hashCode",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "Returns a hash code value for this object. The value is derived from the hash code of each of the record components.",
+      "deprecated": false
+    },
+    {
+      "name": "getChannelsForMod",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "List < Map.Entry < ResourceLocation , ServerStatusPing.ChannelData >>",
+      "parameters": [
+        {
+          "name": "modId",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getNonModChannels",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "List < Map.Entry < ResourceLocation , ServerStatusPing.ChannelData >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "toBuf",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "io.netty.buffer.ByteBuf",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "deserializeOptimized",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "ServerStatusPing",
+      "parameters": [
+        {
+          "name": "fmlNetworkVersion",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "bbuf",
+          "type": "io.netty.buffer.ByteBuf",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "encodeOptimized",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "String",
+      "parameters": [
+        {
+          "name": "buf",
+          "type": "io.netty.buffer.ByteBuf",
+          "annotations": []
+        }
+      ],
+      "description": "Encode given ByteBuf to a String. This is optimized for UTF-16 Code-Point count. Supports at most 2^30 bytes in length",
+      "deprecated": false
+    },
+    {
+      "name": "decodeOptimized",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "io.netty.buffer.ByteBuf",
+      "parameters": [
+        {
+          "name": "s",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "Decode binary data encoded by encodeOptimized(io.netty.buffer.ByteBuf)",
+      "deprecated": false
+    },
+    {
+      "name": "getRemoteChannels",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Map < ResourceLocation , ServerStatusPing.ChannelData >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRemoteModData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Map < String , String >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFMLNetworkVersion",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isTruncated",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "toString",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "Returns a string representation of this record class. The representation contains the name of the class, followed by the name and value of each of the record components.",
+      "deprecated": false
+    },
+    {
+      "name": "channels",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Map < ResourceLocation , ServerStatusPing.ChannelData >",
+      "parameters": [],
+      "description": "Returns the value of the channels record component.",
+      "deprecated": false
+    },
+    {
+      "name": "mods",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Map < String , String >",
+      "parameters": [],
+      "description": "Returns the value of the mods record component.",
+      "deprecated": false
+    },
+    {
+      "name": "fmlNetworkVer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "Returns the value of the fmlNetworkVer record component.",
+      "deprecated": false
+    },
+    {
+      "name": "truncated",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "Returns the value of the truncated record component.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.19.4/net/minecraftforge/network/ServerStatusPing.html"
+}

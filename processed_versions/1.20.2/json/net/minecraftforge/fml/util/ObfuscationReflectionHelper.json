@@ -1,0 +1,244 @@
+{
+  "type": "class",
+  "name": "ObfuscationReflectionHelper",
+  "qualified_name": "net.minecraftforge.fml.util.ObfuscationReflectionHelper",
+  "package": "net.minecraftforge.fml.util",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Some reflection helper code. This may not work properly in Java 9 with its new, more restrictive, reflection management. As such, if issues are encountered, please report them and we can see what we can do to expand the compatibility. In other cases, AccessTransformers may be used. All field and method names should be passed in as SRG names, and this will automatically resolve if MCP mappings are detected.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "REFLECTION",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Marker",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ObfuscationReflectionHelper",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "remapName",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "@NotNull String",
+      "parameters": [
+        {
+          "name": "domain",
+          "type": "cpw.mods.modlauncher.api.INameMappingService.Domain",
+          "annotations": []
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "Remaps a name using the SRG naming function",
+      "deprecated": false
+    },
+    {
+      "name": "getPrivateValue",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "classToAccess",
+          "type": "Class <? super E>",
+          "annotations": []
+        },
+        {
+          "name": "instance",
+          "type": "E",
+          "annotations": []
+        },
+        {
+          "name": "fieldName",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "Gets the value a field with the specified name in the given class. Note: For performance, use findField(Class, String) if you are getting the value more than once. Throws an exception if the field is not found or the value of the field cannot be gotten.",
+      "deprecated": false
+    },
+    {
+      "name": "setPrivateValue",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "classToAccess",
+          "type": "Class <? super T>",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "instance",
+          "type": "T",
+          "annotations": [
+            "NotNull"
+          ]
+        },
+        {
+          "name": "value",
+          "type": "E",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "fieldName",
+          "type": "String",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        }
+      ],
+      "description": "Sets the value a field with the specified name in the given class. Note: For performance, use findField(Class, String) if you are setting the value more than once. Throws an exception if the field is not found or the value of the field cannot be set.",
+      "deprecated": false
+    },
+    {
+      "name": "findMethod",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "@NotNull Method",
+      "parameters": [
+        {
+          "name": "clazz",
+          "type": "Class <?>",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "methodName",
+          "type": "String",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "parameterTypes",
+          "type": "Class <?>...",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        }
+      ],
+      "description": "Finds a method with the specified name and parameters in the given class and makes it accessible. Note: For performance, store the returned value and avoid calling this repeatedly. Throws an exception if the method is not found.",
+      "deprecated": false
+    },
+    {
+      "name": "findConstructor",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "@NotNull Constructor <T>",
+      "parameters": [
+        {
+          "name": "clazz",
+          "type": "Class <T>",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "parameterTypes",
+          "type": "Class <?>...",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        }
+      ],
+      "description": "Finds a constructor with the specified parameter types in the given class and makes it accessible. Note: For performance, store the returned value and avoid calling this repeatedly. Throws an exception if the constructor is not found.",
+      "deprecated": false
+    },
+    {
+      "name": "findField",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "@NotNull Field",
+      "parameters": [
+        {
+          "name": "clazz",
+          "type": "Class <? super T>",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "fieldName",
+          "type": "String",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        }
+      ],
+      "description": "Finds a field with the specified name in the given class and makes it accessible. Note: For performance, store the returned value and avoid calling this repeatedly. Throws an exception if the field is not found.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.2/net/minecraftforge/fml/util/ObfuscationReflectionHelper.html"
+}

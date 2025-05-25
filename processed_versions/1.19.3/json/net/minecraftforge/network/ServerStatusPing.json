@@ -1,0 +1,226 @@
+{
+  "type": "class",
+  "name": "ServerStatusPing",
+  "qualified_name": "net.minecraftforge.network.ServerStatusPing",
+  "package": "net.minecraftforge.network",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Represents additional data sent by FML when a server is pinged. Previous versions used the following format: { \"fmlNetworkVersion\" : FMLNETVERSION, \"channels\": [ { \"res\": \"fml:handshake\", \"version\": \"1.2.3.4\", \"required\": true } ], \"mods\": [ { \"modid\": \"modid\", \"modmarker\": \"{@literal <somestring>}\" } ] } Due to size of the ping packet (32767 UTF-16 code points of JSON data) this could exceed this limit and cause issues. To work around this, a truncation mechanism was introduced, to heuristically truncate the size of the data, at the expense of making the compatibility info on the server screen inaccurate. Modern versions will send binary data, which is encoded in a custom format optimized for UTF-16 code point count. See ServerStatusPing.Serializer.encodeOptimized(ByteBuf) and ServerStatusPing.Serializer.decodeOptimized(String) . Essentially 15 bits of binary data are encoded into every UTF-16 code point. The resulting string is then stored in the \"d\" property of the resulting JSON. For the format of the binary data see ServerStatusPing.Serializer.serialize(ServerStatusPing) . The \"channels\" and \"mods\" properties are retained for backwards compatibility, but left empty. A client that cannot read the old format would not be able to connect anyways, but the properties must exist to not cause exceptions. { \"fmlNetworkVersion\": FMLNETVERSION, \"channels\": [], \"mods\": [], \"d\": \"&lt;binary data&gt;\" }",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "channels",
+      "modifiers": [
+        "private",
+        "final",
+        "transient"
+      ],
+      "type": "Map < ResourceLocation , org.apache.commons.lang3.tuple.Pair< String , Boolean >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mods",
+      "modifiers": [
+        "private",
+        "final",
+        "transient"
+      ],
+      "type": "Map < String , String >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fmlNetworkVer",
+      "modifiers": [
+        "private",
+        "final",
+        "transient"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "truncated",
+      "modifiers": [
+        "private",
+        "final",
+        "transient"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ServerStatusPing",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ServerStatusPing",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [
+        {
+          "name": "deserialized",
+          "type": "Map < ResourceLocation , org.apache.commons.lang3.tuple.Pair< String , Boolean >>",
+          "annotations": []
+        },
+        {
+          "name": "modMarkers",
+          "type": "Map < String , String >",
+          "annotations": []
+        },
+        {
+          "name": "fmlNetVer",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "truncated",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "toString",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "equals",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Object",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hashCode",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getChannelsForMod",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "List < Map.Entry < ResourceLocation , org.apache.commons.lang3.tuple.Pair< String , Boolean >>>",
+      "parameters": [
+        {
+          "name": "modId",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getNonModChannels",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "List < Map.Entry < ResourceLocation , org.apache.commons.lang3.tuple.Pair< String , Boolean >>>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRemoteChannels",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Map < ResourceLocation , org.apache.commons.lang3.tuple.Pair< String , Boolean >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRemoteModData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Map < String , String >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFMLNetworkVersion",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isTruncated",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.19.3/net/minecraftforge/network/ServerStatusPing.html"
+}

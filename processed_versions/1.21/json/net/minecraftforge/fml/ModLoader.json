@@ -1,0 +1,551 @@
+{
+  "type": "class",
+  "name": "ModLoader",
+  "qualified_name": "net.minecraftforge.fml.ModLoader",
+  "package": "net.minecraftforge.fml",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Loads mods. Dispatch cycle is seen in #loadMods() and #finishMods() Overall sequence for loadMods is: CONSTRUCT Constructs the mod instance. Mods can typically setup basic environment such as Event listeners and Configuration specifications here. Automated dispatches Dispatches automated elements : net.minecraftforge.fml.common.Mod.EventBusSubscriber , net.minecraftforge.event.RegistryEvent , net.minecraftforge.common.capabilities.CapabilityInject and others CONFIG_LOAD Dispatches ConfigLoadEvent to mods COMMON_SETUP Dispatches net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent to mods SIDED_SETUP Dispatches net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent or net.minecraftforge.fml.event.lifecycle.FMLDedicatedServerSetupEvent to mods Overall sequence for finishMods is: ENQUEUE_IMC Dispatches net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent to mods, for enqueuing InterModComms messages for other mods to receive subsequently PROCESS_IMC Dispatches net.minecraftforge.fml.event.lifecycle.InterModProcessEvent to mods, for processing InterModComms messages received from other mods prior to this event COMPLETE Dispatches net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent to mods, and completes the mod loading sequence.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "INSTANCE",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ModLoader",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loadingModList",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "LoadingModList",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loadingExceptions",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "List < ModLoadingException >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loadingWarnings",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "List < ModLoadingWarning >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stateManager",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ModStateManager",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loadingStateValid",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "statusConsumer",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Optional < Consumer < String >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "completedStates",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Set < IModLoadingState >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "modList",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ModList",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "runningDataGen",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ModLoader",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "computeLanguageList",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "computeModLauncherServiceList",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "get",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ModLoader",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "gatherAndInitializeMods",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "syncExecutor",
+          "type": "ModWorkManager.DrivenExecutor",
+          "annotations": []
+        },
+        {
+          "name": "parallelExecutor",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "periodicTask",
+          "type": "Runnable",
+          "annotations": []
+        }
+      ],
+      "description": "Run on the primary starting thread by ClientModLoader and ServerModLoader",
+      "deprecated": false
+    },
+    {
+      "name": "loadMods",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "syncExecutor",
+          "type": "ModWorkManager.DrivenExecutor",
+          "annotations": []
+        },
+        {
+          "name": "parallelExecutor",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "periodicTask",
+          "type": "Runnable",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "finishMods",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "syncExecutor",
+          "type": "ModWorkManager.DrivenExecutor",
+          "annotations": []
+        },
+        {
+          "name": "parallelExecutor",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "periodicTask",
+          "type": "Runnable",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dispatchAndHandleError",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "IModLoadingState",
+          "annotations": []
+        },
+        {
+          "name": "syncExecutor",
+          "type": "ModWorkManager.DrivenExecutor",
+          "annotations": []
+        },
+        {
+          "name": "parallelExecutor",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "ticker",
+          "type": "Runnable",
+          "annotations": []
+        },
+        {
+          "name": "progressBar",
+          "type": "ProgressMeter",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleInlineTransition",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "transition",
+          "type": "Consumer < ModList >",
+          "annotations": []
+        },
+        {
+          "name": "state",
+          "type": "IModLoadingState",
+          "annotations": []
+        },
+        {
+          "name": "syncExecutor",
+          "type": "ModWorkManager.DrivenExecutor",
+          "annotations": []
+        },
+        {
+          "name": "ticker",
+          "type": "Runnable",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "waitForTransition",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "IModLoadingState",
+          "annotations": []
+        },
+        {
+          "name": "syncExecutor",
+          "type": "ModWorkManager.DrivenExecutor",
+          "annotations": []
+        },
+        {
+          "name": "ticker",
+          "type": "Runnable",
+          "annotations": []
+        },
+        {
+          "name": "transition",
+          "type": "CompletableFuture < Void >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "buildMods",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "List < ModContainer >",
+      "parameters": [
+        {
+          "name": "modFile",
+          "type": "net.minecraftforge.forgespi.locating.IModFile",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "buildModContainerFromTOML",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "ModContainer",
+      "parameters": [
+        {
+          "name": "modFile",
+          "type": "net.minecraftforge.forgespi.locating.IModFile",
+          "annotations": []
+        },
+        {
+          "name": "modInfoMap",
+          "type": "Map < String , net.minecraftforge.forgespi.language.IModInfo>",
+          "annotations": []
+        },
+        {
+          "name": "idToProviderEntry",
+          "type": "Map.Entry < String , ? extends net.minecraftforge.forgespi.language.IModLanguageProvider.IModLanguageLoader>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isLoadingStateValid",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasCompletedState",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "stateName",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "runEventGenerator",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "generator",
+          "type": "Function < ModContainer , T>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "postEvent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "e",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "postEventWithReturn",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "e",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "postEventWrapContainerInModOrder",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "event",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "postEventWithWrapInModOrder",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "e",
+          "type": "T",
+          "annotations": []
+        },
+        {
+          "name": "pre",
+          "type": "BiConsumer < ModContainer , T>",
+          "annotations": []
+        },
+        {
+          "name": "post",
+          "type": "BiConsumer < ModContainer , T>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getWarnings",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "List < ModLoadingWarning >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addWarning",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "warning",
+          "type": "ModLoadingWarning",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isDataGenRunning",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21/net/minecraftforge/fml/ModLoader.html"
+}

@@ -1,0 +1,1144 @@
+{
+  "type": "class",
+  "name": "EnderDragon",
+  "qualified_name": "net.minecraft.world.entity.boss.enderdragon.EnderDragon",
+  "package": "net.minecraft.world.entity.boss.enderdragon",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraftforge.common.capabilities.CapabilityProvider",
+      "Entity",
+      "net.minecraft.world.entity.Entity",
+      "net.minecraft.world.entity.LivingEntity",
+      "net.minecraft.world.entity.Mob"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_PHASE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "EntityDataAccessor < Integer >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CRYSTAL_DESTROY_TARGETING",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "TargetingConditions",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "GROWL_INTERVAL_MIN",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "GROWL_INTERVAL_MAX",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SITTING_ALLOWED_DAMAGE_PERCENTAGE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DRAGON_DEATH_TIME_KEY",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DRAGON_PHASE_KEY",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "positions",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "type": "double[][]",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "posPointer",
+      "modifiers": [
+        "public"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "subEntities",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "EnderDragonPart []",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "head",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "type": "EnderDragonPart",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "neck",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "EnderDragonPart",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "body",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "EnderDragonPart",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tail1",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "EnderDragonPart",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tail2",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "EnderDragonPart",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tail3",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "EnderDragonPart",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "wing1",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "EnderDragonPart",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "wing2",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "EnderDragonPart",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "oFlapTime",
+      "modifiers": [
+        "public"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "flapTime",
+      "modifiers": [
+        "public"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "inWall",
+      "modifiers": [
+        "public"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dragonDeathTime",
+      "modifiers": [
+        "public"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "yRotA",
+      "modifiers": [
+        "public"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "nearestCrystal",
+      "modifiers": [
+        "public"
+      ],
+      "type": "EndCrystal",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dragonFight",
+      "modifiers": [
+        "private"
+      ],
+      "type": "EndDragonFight",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fightOrigin",
+      "modifiers": [
+        "private"
+      ],
+      "type": "BlockPos",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "phaseManager",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "EnderDragonPhaseManager",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "growlTime",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sittingDamageReceived",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "nodes",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Node []",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "nodeAdjacency",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int[]",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "openSet",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "BinaryHeap",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "unlimitedLastHurtByPlayer",
+      "modifiers": [
+        "private"
+      ],
+      "type": "@Nullable Player",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "EnderDragon",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_31096_",
+          "type": "EntityType <? extends EnderDragon >",
+          "annotations": []
+        },
+        {
+          "name": "p_31097_",
+          "type": "Level",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "setId",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_20235_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setDragonFight",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_287736_",
+          "type": "EndDragonFight",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setFightOrigin",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_287665_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFightOrigin",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BlockPos",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createAttributes",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "AttributeSupplier.Builder",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isFlapping",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onFlap",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "defineSynchedData",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_330342_",
+          "type": "SynchedEntityData.Builder",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLatencyPos",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "double[]",
+      "parameters": [
+        {
+          "name": "p_31102_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_31103_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "aiStep",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickPart",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_31116_",
+          "type": "EnderDragonPart",
+          "annotations": []
+        },
+        {
+          "name": "p_31117_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_31118_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_31119_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getHeadYOffset",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "checkCrystals",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "knockBack",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_31132_",
+          "type": "List < Entity >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hurt",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_31142_",
+          "type": "List < Entity >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rotWrap",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_31165_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "checkWalls",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_31140_",
+          "type": "AABB",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hurt",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_31121_",
+          "type": "EnderDragonPart",
+          "annotations": []
+        },
+        {
+          "name": "p_31122_",
+          "type": "DamageSource",
+          "annotations": []
+        },
+        {
+          "name": "p_31123_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hurt",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_31113_",
+          "type": "DamageSource",
+          "annotations": []
+        },
+        {
+          "name": "p_31114_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "reallyHurt",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_31162_",
+          "type": "DamageSource",
+          "annotations": []
+        },
+        {
+          "name": "p_31163_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "kill",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickDeath",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "findClosestNode",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "findClosestNode",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_31171_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_31172_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_31173_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "findPath",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Path",
+      "parameters": [
+        {
+          "name": "p_31105_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_31106_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_31107_",
+          "type": "Node",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "reconstructPath",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Path",
+      "parameters": [
+        {
+          "name": "p_31129_",
+          "type": "Node",
+          "annotations": []
+        },
+        {
+          "name": "p_31130_",
+          "type": "Node",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addAdditionalSaveData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_31144_",
+          "type": "CompoundTag",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "readAdditionalSaveData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_31134_",
+          "type": "CompoundTag",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "checkDespawn",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSubEntities",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "EnderDragonPart []",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isPickable",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSoundSource",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SoundSource",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAmbientSound",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "SoundEvent",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getHurtSound",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "SoundEvent",
+      "parameters": [
+        {
+          "name": "p_31154_",
+          "type": "DamageSource",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSoundVolume",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getHeadPartYOffset",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_31109_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_31110_",
+          "type": "double[]",
+          "annotations": []
+        },
+        {
+          "name": "p_31111_",
+          "type": "double[]",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getHeadLookVector",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Vec3",
+      "parameters": [
+        {
+          "name": "p_31175_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onCrystalDestroyed",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_31125_",
+          "type": "EndCrystal",
+          "annotations": []
+        },
+        {
+          "name": "p_31126_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_31127_",
+          "type": "DamageSource",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onSyncedDataUpdated",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_31136_",
+          "type": "EntityDataAccessor <?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPhaseManager",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "EnderDragonPhaseManager",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDragonFight",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "EndDragonFight",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addEffect",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_182394_",
+          "type": "MobEffectInstance",
+          "annotations": []
+        },
+        {
+          "name": "p_182395_",
+          "type": "Entity",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canRide",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_31169_",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canChangeDimensions",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "recreateFromPacket",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_218825_",
+          "type": "ClientboundAddEntityPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canAttack",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_149576_",
+          "type": "LivingEntity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sanitizeScale",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_333905_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isMultipartEntity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "Description copied from interface: IForgeEntity",
+      "deprecated": false
+    },
+    {
+      "name": "getParts",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "PartEntity <?>[]",
+      "parameters": [],
+      "description": "Description copied from interface: IForgeEntity",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.6/net/minecraft/world/entity/boss/enderdragon/EnderDragon.html"
+}

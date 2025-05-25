@@ -1,0 +1,743 @@
+{
+  "type": "class",
+  "name": "ParticleEngine",
+  "qualified_name": "net.minecraft.client.particle.ParticleEngine",
+  "package": "net.minecraft.client.particle",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PARTICLE_LISTER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "FileToIdConverter",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PARTICLES_ATLAS_INFO",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "ResourceLocation",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MAX_PARTICLES_PER_LAYER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "RENDER_ORDER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "List < ParticleRenderType >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "level",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "ClientLevel",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "particles",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < ParticleRenderType , Queue < Particle >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "trackingEmitters",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Queue < TrackingEmitter >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "textureManager",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "TextureManager",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "random",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "RandomSource",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "providers",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < ResourceLocation , ParticleProvider <?>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "particlesToAdd",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Queue < Particle >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "spriteSets",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < ResourceLocation , ParticleEngine.MutableSpriteSet >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "textureAtlas",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "TextureAtlas",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "trackedParticleCounts",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap< ParticleGroup >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ParticleEngine",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_107299_",
+          "type": "ClientLevel",
+          "annotations": []
+        },
+        {
+          "name": "p_107300_",
+          "type": "TextureManager",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "registerProviders",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "register",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_107382_",
+          "type": "ParticleType <T>",
+          "annotations": []
+        },
+        {
+          "name": "p_107383_",
+          "type": "ParticleProvider <T>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "register",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_273423_",
+          "type": "ParticleType <T>",
+          "annotations": []
+        },
+        {
+          "name": "p_273134_",
+          "type": "ParticleProvider.Sprite <T>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "register",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_107379_",
+          "type": "ParticleType <T>",
+          "annotations": []
+        },
+        {
+          "name": "p_107380_",
+          "type": "ParticleEngine.SpriteParticleRegistration <T>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "reload",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture < Void >",
+      "parameters": [
+        {
+          "name": "p_107305_",
+          "type": "PreparableReloadListener.PreparationBarrier",
+          "annotations": []
+        },
+        {
+          "name": "p_107306_",
+          "type": "ResourceManager",
+          "annotations": []
+        },
+        {
+          "name": "p_107307_",
+          "type": "ProfilerFiller",
+          "annotations": []
+        },
+        {
+          "name": "p_107308_",
+          "type": "ProfilerFiller",
+          "annotations": []
+        },
+        {
+          "name": "p_107309_",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "p_107310_",
+          "type": "Executor",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "close",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loadParticleDescription",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Optional < List < ResourceLocation >>",
+      "parameters": [
+        {
+          "name": "p_250648_",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "p_248793_",
+          "type": "Resource",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createTrackingEmitter",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_107330_",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "p_107331_",
+          "type": "ParticleOptions",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createTrackingEmitter",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_107333_",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "p_107334_",
+          "type": "ParticleOptions",
+          "annotations": []
+        },
+        {
+          "name": "p_107335_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createParticle",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Particle",
+      "parameters": [
+        {
+          "name": "p_107371_",
+          "type": "ParticleOptions",
+          "annotations": []
+        },
+        {
+          "name": "p_107372_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_107373_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_107374_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_107375_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_107376_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_107377_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "makeParticle",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Particle",
+      "parameters": [
+        {
+          "name": "p_107396_",
+          "type": "T",
+          "annotations": []
+        },
+        {
+          "name": "p_107397_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_107398_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_107399_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_107400_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_107401_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_107402_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "add",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_107345_",
+          "type": "Particle",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickParticleList",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_107385_",
+          "type": "Collection < Particle >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateCount",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_172282_",
+          "type": "ParticleGroup",
+          "annotations": []
+        },
+        {
+          "name": "p_172283_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickParticle",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_107394_",
+          "type": "Particle",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "render",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_107339_",
+          "type": "LightTexture",
+          "annotations": []
+        },
+        {
+          "name": "p_107340_",
+          "type": "Camera",
+          "annotations": []
+        },
+        {
+          "name": "p_107341_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "render",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_107339_",
+          "type": "LightTexture",
+          "annotations": []
+        },
+        {
+          "name": "p_107340_",
+          "type": "Camera",
+          "annotations": []
+        },
+        {
+          "name": "p_107341_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "frustum",
+          "type": "Frustum",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_107343_",
+          "type": "ClientLevel",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "destroy",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_107356_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_107357_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addBlockHitEffects",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "target",
+          "type": "BlockHitResult",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "crack",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_107368_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_107369_",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "countParticles",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasSpaceInParticleLimit",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_172280_",
+          "type": "ParticleGroup",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clearParticles",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21/net/minecraft/client/particle/ParticleEngine.html"
+}

@@ -1,0 +1,419 @@
+{
+  "type": "record",
+  "name": "ModLoadingState",
+  "qualified_name": "net.minecraftforge.fml.ModLoadingState",
+  "package": "net.minecraftforge.fml",
+  "modifiers": [
+    "public",
+    "record"
+  ],
+  "annotations": [],
+  "description": "Implementation of the IModLoadingState interface.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "java.lang.Record"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "name",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "String",
+      "description": "The field for the name record component.",
+      "deprecated": false
+    },
+    {
+      "name": "previous",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "String",
+      "description": "The field for the previous record component.",
+      "deprecated": false
+    },
+    {
+      "name": "message",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Function < ModList , String >",
+      "description": "The field for the message record component.",
+      "deprecated": false
+    },
+    {
+      "name": "size",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ToIntFunction < ModList >",
+      "description": "The field for the size record component.",
+      "deprecated": false
+    },
+    {
+      "name": "phase",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ModLoadingPhase",
+      "description": "The field for the phase record component.",
+      "deprecated": false
+    },
+    {
+      "name": "inlineRunnable",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Optional < Consumer < ModList >>",
+      "description": "The field for the inlineRunnable record component.",
+      "deprecated": false
+    },
+    {
+      "name": "transition",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Optional < IModStateTransition >",
+      "description": "The field for the transition record component.",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ModLoadingState",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "name",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "previous",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "message",
+          "type": "Function < ModList , String >",
+          "annotations": []
+        },
+        {
+          "name": "size",
+          "type": "ToIntFunction < ModList >",
+          "annotations": []
+        },
+        {
+          "name": "phase",
+          "type": "ModLoadingPhase",
+          "annotations": []
+        },
+        {
+          "name": "inlineRunnable",
+          "type": "Optional < Consumer < ModList >>",
+          "annotations": []
+        },
+        {
+          "name": "transition",
+          "type": "Optional < IModStateTransition >",
+          "annotations": []
+        }
+      ],
+      "description": "Creates an instance of a ModLoadingState record class.",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "buildTransition",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < CompletableFuture < Void >>",
+      "parameters": [
+        {
+          "name": "syncExecutor",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "parallelExecutor",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "progressBar",
+          "type": "ProgressMeter",
+          "annotations": []
+        },
+        {
+          "name": "preSyncTask",
+          "type": "Function < Executor , CompletableFuture < Void >>",
+          "annotations": []
+        },
+        {
+          "name": "postSyncTask",
+          "type": "Function < Executor , CompletableFuture < Void >>",
+          "annotations": []
+        }
+      ],
+      "description": "Description copied from interface: IModLoadingState",
+      "deprecated": false
+    },
+    {
+      "name": "empty",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ModLoadingState",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "previous",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "phase",
+          "type": "ModLoadingPhase",
+          "annotations": []
+        }
+      ],
+      "description": "Returns an empty mod loading state. The mod loading state has a blank human-readable message, no inline runnable, and no state transition information.",
+      "deprecated": false
+    },
+    {
+      "name": "withTransition",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ModLoadingState",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "previous",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "phase",
+          "type": "ModLoadingPhase",
+          "annotations": []
+        },
+        {
+          "name": "transition",
+          "type": "IModStateTransition",
+          "annotations": []
+        }
+      ],
+      "description": "Returns a mod loading state with state transition information and a default human-friendly message of Processing transition [name] .",
+      "deprecated": false
+    },
+    {
+      "name": "withTransition",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ModLoadingState",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "previous",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "message",
+          "type": "Function < ModList , String >",
+          "annotations": []
+        },
+        {
+          "name": "phase",
+          "type": "ModLoadingPhase",
+          "annotations": []
+        },
+        {
+          "name": "transition",
+          "type": "IModStateTransition",
+          "annotations": []
+        }
+      ],
+      "description": "Returns a mod loading state with state transition information and a custom human-friendly message function.",
+      "deprecated": false
+    },
+    {
+      "name": "withInline",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ModLoadingState",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "previous",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "phase",
+          "type": "ModLoadingPhase",
+          "annotations": []
+        },
+        {
+          "name": "inline",
+          "type": "Consumer < ModList >",
+          "annotations": []
+        }
+      ],
+      "description": "Returns a mod loading state with an inline runnable and a default human-friendly message of Processing work [name] .",
+      "deprecated": false
+    },
+    {
+      "name": "toString",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "Returns a string representation of this record class. The representation contains the name of the class, followed by the name and value of each of the record components.",
+      "deprecated": false
+    },
+    {
+      "name": "hashCode",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "Returns a hash code value for this object. The value is derived from the hash code of each of the record components.",
+      "deprecated": false
+    },
+    {
+      "name": "equals",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Object",
+          "annotations": []
+        }
+      ],
+      "description": "Indicates whether some other object is \"equal to\" this one. The objects are equal if the other object is of the same class and if all the record components are equal. All components in this record class are compared with Objects::equals(Object,Object) .",
+      "deprecated": false
+    },
+    {
+      "name": "name",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "Returns the value of the name record component.",
+      "deprecated": false
+    },
+    {
+      "name": "previous",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "Returns the value of the previous record component.",
+      "deprecated": false
+    },
+    {
+      "name": "message",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Function < ModList , String >",
+      "parameters": [],
+      "description": "Returns the value of the message record component.",
+      "deprecated": false
+    },
+    {
+      "name": "size",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ToIntFunction < ModList >",
+      "parameters": [],
+      "description": "Returns the value of the size record component.",
+      "deprecated": false
+    },
+    {
+      "name": "phase",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ModLoadingPhase",
+      "parameters": [],
+      "description": "Returns the value of the phase record component.",
+      "deprecated": false
+    },
+    {
+      "name": "inlineRunnable",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < Consumer < ModList >>",
+      "parameters": [],
+      "description": "Returns the value of the inlineRunnable record component.",
+      "deprecated": false
+    },
+    {
+      "name": "transition",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < IModStateTransition >",
+      "parameters": [],
+      "description": "Returns the value of the transition record component.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.1/net/minecraftforge/fml/ModLoadingState.html"
+}

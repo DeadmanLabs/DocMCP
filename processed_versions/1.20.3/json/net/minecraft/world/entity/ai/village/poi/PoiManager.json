@@ -1,0 +1,837 @@
+{
+  "type": "class",
+  "name": "PoiManager",
+  "qualified_name": "net.minecraft.world.entity.ai.village.poi.PoiManager",
+  "package": "net.minecraft.world.entity.ai.village.poi",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraft.world.level.chunk.storage.SectionStorage",
+      "PoiSection"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "MAX_VILLAGE_DISTANCE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "VILLAGE_SECTION_SIZE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "distanceTracker",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "PoiManager.DistanceTracker",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loadedChunks",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.longs.LongSet",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "PoiManager",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_217869_",
+          "type": "Path",
+          "annotations": []
+        },
+        {
+          "name": "p_217870_",
+          "type": "com.mojang.datafixers.DataFixer",
+          "annotations": []
+        },
+        {
+          "name": "p_217871_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_217872_",
+          "type": "RegistryAccess",
+          "annotations": []
+        },
+        {
+          "name": "p_217873_",
+          "type": "LevelHeightAccessor",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "add",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_217920_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_217921_",
+          "type": "Holder < PoiType >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "remove",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_27080_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getCountInRange",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "long",
+      "parameters": [
+        {
+          "name": "p_27122_",
+          "type": "Predicate < Holder < PoiType >>",
+          "annotations": []
+        },
+        {
+          "name": "p_27123_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_27124_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_27125_",
+          "type": "PoiManager.Occupancy",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "existsAtPosition",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_217875_",
+          "type": "ResourceKey < PoiType >",
+          "annotations": []
+        },
+        {
+          "name": "p_217876_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getInSquare",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Stream < PoiRecord >",
+      "parameters": [
+        {
+          "name": "p_27167_",
+          "type": "Predicate < Holder < PoiType >>",
+          "annotations": []
+        },
+        {
+          "name": "p_27168_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_27169_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_27170_",
+          "type": "PoiManager.Occupancy",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getInRange",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Stream < PoiRecord >",
+      "parameters": [
+        {
+          "name": "p_27182_",
+          "type": "Predicate < Holder < PoiType >>",
+          "annotations": []
+        },
+        {
+          "name": "p_27183_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_27184_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_27185_",
+          "type": "PoiManager.Occupancy",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getInChunk",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Stream < PoiRecord >",
+      "parameters": [
+        {
+          "name": "p_27118_",
+          "type": "Predicate < Holder < PoiType >>",
+          "annotations": []
+        },
+        {
+          "name": "p_27119_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_27120_",
+          "type": "PoiManager.Occupancy",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "findAll",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Stream < BlockPos >",
+      "parameters": [
+        {
+          "name": "p_27139_",
+          "type": "Predicate < Holder < PoiType >>",
+          "annotations": []
+        },
+        {
+          "name": "p_27140_",
+          "type": "Predicate < BlockPos >",
+          "annotations": []
+        },
+        {
+          "name": "p_27141_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_27142_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_27143_",
+          "type": "PoiManager.Occupancy",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "findAllWithType",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Stream <com.mojang.datafixers.util.Pair< Holder < PoiType >, BlockPos >>",
+      "parameters": [
+        {
+          "name": "p_217984_",
+          "type": "Predicate < Holder < PoiType >>",
+          "annotations": []
+        },
+        {
+          "name": "p_217985_",
+          "type": "Predicate < BlockPos >",
+          "annotations": []
+        },
+        {
+          "name": "p_217986_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_217987_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_217988_",
+          "type": "PoiManager.Occupancy",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "findAllClosestFirstWithType",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Stream <com.mojang.datafixers.util.Pair< Holder < PoiType >, BlockPos >>",
+      "parameters": [
+        {
+          "name": "p_217995_",
+          "type": "Predicate < Holder < PoiType >>",
+          "annotations": []
+        },
+        {
+          "name": "p_217996_",
+          "type": "Predicate < BlockPos >",
+          "annotations": []
+        },
+        {
+          "name": "p_217997_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_217998_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_217999_",
+          "type": "PoiManager.Occupancy",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "find",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < BlockPos >",
+      "parameters": [
+        {
+          "name": "p_27187_",
+          "type": "Predicate < Holder < PoiType >>",
+          "annotations": []
+        },
+        {
+          "name": "p_27188_",
+          "type": "Predicate < BlockPos >",
+          "annotations": []
+        },
+        {
+          "name": "p_27189_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_27190_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_27191_",
+          "type": "PoiManager.Occupancy",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "findClosest",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < BlockPos >",
+      "parameters": [
+        {
+          "name": "p_27193_",
+          "type": "Predicate < Holder < PoiType >>",
+          "annotations": []
+        },
+        {
+          "name": "p_27194_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_27195_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_27196_",
+          "type": "PoiManager.Occupancy",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "findClosestWithType",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional <com.mojang.datafixers.util.Pair< Holder < PoiType >, BlockPos >>",
+      "parameters": [
+        {
+          "name": "p_218003_",
+          "type": "Predicate < Holder < PoiType >>",
+          "annotations": []
+        },
+        {
+          "name": "p_218004_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_218005_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_218006_",
+          "type": "PoiManager.Occupancy",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "findClosest",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < BlockPos >",
+      "parameters": [
+        {
+          "name": "p_148659_",
+          "type": "Predicate < Holder < PoiType >>",
+          "annotations": []
+        },
+        {
+          "name": "p_148660_",
+          "type": "Predicate < BlockPos >",
+          "annotations": []
+        },
+        {
+          "name": "p_148661_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_148662_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_148663_",
+          "type": "PoiManager.Occupancy",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "take",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < BlockPos >",
+      "parameters": [
+        {
+          "name": "p_217947_",
+          "type": "Predicate < Holder < PoiType >>",
+          "annotations": []
+        },
+        {
+          "name": "p_217948_",
+          "type": "BiPredicate < Holder < PoiType >, BlockPos >",
+          "annotations": []
+        },
+        {
+          "name": "p_217949_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_217950_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRandom",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < BlockPos >",
+      "parameters": [
+        {
+          "name": "p_217952_",
+          "type": "Predicate < Holder < PoiType >>",
+          "annotations": []
+        },
+        {
+          "name": "p_217953_",
+          "type": "Predicate < BlockPos >",
+          "annotations": []
+        },
+        {
+          "name": "p_217954_",
+          "type": "PoiManager.Occupancy",
+          "annotations": []
+        },
+        {
+          "name": "p_217955_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_217956_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_217957_",
+          "type": "RandomSource",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "release",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_27155_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "exists",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_27092_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_27093_",
+          "type": "Predicate < Holder < PoiType >>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getType",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < Holder < PoiType >>",
+      "parameters": [
+        {
+          "name": "p_27178_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFreeTickets",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_148654_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sectionsToVillage",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_27099_",
+          "type": "SectionPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isVillageCenter",
+      "modifiers": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_27198_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_27105_",
+          "type": "BooleanSupplier",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setDirty",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_27036_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onSectionLoad",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_27145_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "checkConsistencyWithBlocks",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_281731_",
+          "type": "SectionPos",
+          "annotations": []
+        },
+        {
+          "name": "p_281893_",
+          "type": "LevelChunkSection",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mayHavePoi",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_27061_",
+          "type": "LevelChunkSection",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateFromSection",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_27070_",
+          "type": "LevelChunkSection",
+          "annotations": []
+        },
+        {
+          "name": "p_27071_",
+          "type": "SectionPos",
+          "annotations": []
+        },
+        {
+          "name": "p_27072_",
+          "type": "BiConsumer < BlockPos , Holder < PoiType >>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ensureLoadedAndValid",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_27057_",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "p_27058_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_27059_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.3/net/minecraft/world/entity/ai/village/poi/PoiManager.html"
+}

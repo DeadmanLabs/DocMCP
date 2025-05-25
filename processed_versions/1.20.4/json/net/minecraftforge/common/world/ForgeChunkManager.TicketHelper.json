@@ -1,0 +1,257 @@
+{
+  "type": "class",
+  "name": "ForgeChunkManager.TicketHelper",
+  "qualified_name": "net.minecraftforge.common.world.ForgeChunkManager.TicketHelper",
+  "package": "net.minecraftforge.common.world",
+  "modifiers": [
+    "public",
+    "static",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Class to help mods remove no longer valid tickets.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "blockTickets",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < BlockPos , com.mojang.datafixers.util.Pair<it.unimi.dsi.fastutil.longs.LongSet, it.unimi.dsi.fastutil.longs.LongSet>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "entityTickets",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < UUID , com.mojang.datafixers.util.Pair<it.unimi.dsi.fastutil.longs.LongSet, it.unimi.dsi.fastutil.longs.LongSet>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "saveData",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ForcedChunksSavedData",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "modId",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "TicketHelper",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [
+        {
+          "name": "saveData",
+          "type": "ForcedChunksSavedData",
+          "annotations": []
+        },
+        {
+          "name": "modId",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "blockTickets",
+          "type": "Map < BlockPos , com.mojang.datafixers.util.Pair<it.unimi.dsi.fastutil.longs.LongSet, it.unimi.dsi.fastutil.longs.LongSet>>",
+          "annotations": []
+        },
+        {
+          "name": "entityTickets",
+          "type": "Map < UUID , com.mojang.datafixers.util.Pair<it.unimi.dsi.fastutil.longs.LongSet, it.unimi.dsi.fastutil.longs.LongSet>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getBlockTickets",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Map < BlockPos , com.mojang.datafixers.util.Pair<it.unimi.dsi.fastutil.longs.LongSet, it.unimi.dsi.fastutil.longs.LongSet>>",
+      "parameters": [],
+      "description": "Gets all \"BLOCK\" tickets this mod had registered and which block positions are forcing which chunks. First element of the pair is the non-fully ticking tickets, second element is the fully ticking tickets.",
+      "deprecated": false
+    },
+    {
+      "name": "getEntityTickets",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Map < UUID , com.mojang.datafixers.util.Pair<it.unimi.dsi.fastutil.longs.LongSet, it.unimi.dsi.fastutil.longs.LongSet>>",
+      "parameters": [],
+      "description": "Gets all \"ENTITY\" tickets this mod had registered and which entity (UUID) is forcing which chunks. First element of the pair is the non-fully ticking tickets, second element is the fully ticking tickets.",
+      "deprecated": false
+    },
+    {
+      "name": "removeAllTickets",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "owner",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Removes all tickets that a given block was responsible for; both ticking and not ticking.",
+      "deprecated": false
+    },
+    {
+      "name": "removeAllTickets",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "owner",
+          "type": "UUID",
+          "annotations": []
+        }
+      ],
+      "description": "Removes all tickets that a given entity (UUID) was responsible for; both ticking and not ticking.",
+      "deprecated": false
+    },
+    {
+      "name": "removeAllTickets",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "tickets",
+          "type": "ForgeChunkManager.TicketTracker <T>",
+          "annotations": []
+        },
+        {
+          "name": "owner",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "Removes all tickets that a given owner was responsible for; both ticking and not ticking.",
+      "deprecated": false
+    },
+    {
+      "name": "removeTicket",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "owner",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "chunk",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "ticking",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Removes the ticket for the given chunk that a given block was responsible for.",
+      "deprecated": false
+    },
+    {
+      "name": "removeTicket",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "owner",
+          "type": "UUID",
+          "annotations": []
+        },
+        {
+          "name": "chunk",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "ticking",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Removes the ticket for the given chunk that a given entity (UUID) was responsible for.",
+      "deprecated": false
+    },
+    {
+      "name": "removeTicket",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "tickets",
+          "type": "ForgeChunkManager.TicketTracker <T>",
+          "annotations": []
+        },
+        {
+          "name": "owner",
+          "type": "T",
+          "annotations": []
+        },
+        {
+          "name": "chunk",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "ticking",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.4/net/minecraftforge/common/world/ForgeChunkManager.TicketHelper.html"
+}

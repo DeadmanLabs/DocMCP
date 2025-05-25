@@ -1,0 +1,2919 @@
+{
+  "type": "class",
+  "name": "MinecraftServer",
+  "qualified_name": "net.minecraft.server.MinecraftServer",
+  "package": "net.minecraft.server",
+  "modifiers": [
+    "public",
+    "abstract",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraft.util.concurrent.ThreadTaskExecutor",
+      "net.minecraft.util.concurrent.RecursiveEventLoop",
+      "TickDelayedTask"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "USERID_CACHE_FILE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "File",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DEMO_SETTINGS",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "WorldSettings",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "storageSource",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "SaveFormat.LevelSave",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playerDataStorage",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "PlayerData",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "snooper",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Snooper",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickables",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "List < Runnable >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "continousProfiler",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "TimeTracker",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "profiler",
+      "modifiers": [
+        "private"
+      ],
+      "type": "IProfiler",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "connection",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "NetworkSystem",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "progressListenerFactory",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "IChunkStatusListenerFactory",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "status",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ServerStatusResponse",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "random",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Random",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fixerUpper",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.mojang.datafixers.DataFixer",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "localIp",
+      "modifiers": [
+        "private"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "port",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registryHolder",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "DynamicRegistries.Impl",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "levels",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < RegistryKey < World >, ServerWorld >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playerList",
+      "modifiers": [
+        "private"
+      ],
+      "type": "PlayerList",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "running",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stopped",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickCount",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "proxy",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "Proxy",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onlineMode",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "preventProxyConnections",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pvp",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "allowFlight",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "motd",
+      "modifiers": [
+        "private"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "maxBuildHeight",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playerIdleTimeout",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickTimes",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "type": "long[]",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "keyPair",
+      "modifiers": [
+        "private"
+      ],
+      "type": "KeyPair",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "singleplayerName",
+      "modifiers": [
+        "private"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isDemo",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "resourcePack",
+      "modifiers": [
+        "private"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "resourcePackHash",
+      "modifiers": [
+        "private"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isReady",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastOverloadWarning",
+      "modifiers": [
+        "private"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "delayProfilerStart",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "forceGameType",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sessionService",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.mojang.authlib.minecraft.MinecraftSessionService",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "profileRepository",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.mojang.authlib.GameProfileRepository",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "profileCache",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "PlayerProfileCache",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastServerStatus",
+      "modifiers": [
+        "private"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "serverThread",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Thread",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "nextTickTime",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "delayedTasksMaxNextTickTime",
+      "modifiers": [
+        "private"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mayHaveDelayedTasks",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasWorldScreenshot",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "packRepository",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ResourcePackList",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "scoreboard",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ServerScoreboard",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "commandStorage",
+      "modifiers": [
+        "private"
+      ],
+      "type": "CommandStorage",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "customBossEvents",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "CustomServerBossInfoManager",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "functionManager",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "FunctionManager",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "frameTimer",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "FrameTimer",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "enforceWhitelist",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "averageTickTime",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "executor",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Executor",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "serverId",
+      "modifiers": [
+        "private"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "resources",
+      "modifiers": [
+        "private"
+      ],
+      "type": "DataPackRegistries",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "structureManager",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "TemplateManager",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "worldData",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "IServerConfiguration",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "perWorldTickTimes",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Map < RegistryKey < World >, long[]>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "worldArrayMarker",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "worldArrayLast",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "worldArray",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ServerWorld []",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "MinecraftServer",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_i232576_1_",
+          "type": "Thread",
+          "annotations": []
+        },
+        {
+          "name": "p_i232576_2_",
+          "type": "DynamicRegistries.Impl",
+          "annotations": []
+        },
+        {
+          "name": "p_i232576_3_",
+          "type": "SaveFormat.LevelSave",
+          "annotations": []
+        },
+        {
+          "name": "p_i232576_4_",
+          "type": "IServerConfiguration",
+          "annotations": []
+        },
+        {
+          "name": "p_i232576_5_",
+          "type": "ResourcePackList",
+          "annotations": []
+        },
+        {
+          "name": "p_i232576_6_",
+          "type": "Proxy",
+          "annotations": []
+        },
+        {
+          "name": "p_i232576_7_",
+          "type": "com.mojang.datafixers.DataFixer",
+          "annotations": []
+        },
+        {
+          "name": "p_i232576_8_",
+          "type": "DataPackRegistries",
+          "annotations": []
+        },
+        {
+          "name": "p_i232576_9_",
+          "type": "com.mojang.authlib.minecraft.MinecraftSessionService",
+          "annotations": []
+        },
+        {
+          "name": "p_i232576_10_",
+          "type": "com.mojang.authlib.GameProfileRepository",
+          "annotations": []
+        },
+        {
+          "name": "p_i232576_11_",
+          "type": "PlayerProfileCache",
+          "annotations": []
+        },
+        {
+          "name": "p_i232576_12_",
+          "type": "IChunkStatusListenerFactory",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "spin",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "S",
+      "parameters": [
+        {
+          "name": "p_240784_0_",
+          "type": "Function < Thread , S>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "readScoreboard",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_213204_1_",
+          "type": "DimensionSavedDataManager",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "initServer",
+      "modifiers": [
+        "protected",
+        "abstract"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "convertFromRegionFormatIfNeeded",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_240777_0_",
+          "type": "SaveFormat.LevelSave",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loadLevel",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "forceDifficulty",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createLevels",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_240787_1_",
+          "type": "IChunkStatusListener",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setInitialSpawn",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_240786_0_",
+          "type": "ServerWorld",
+          "annotations": []
+        },
+        {
+          "name": "p_240786_1_",
+          "type": "IServerWorldInfo",
+          "annotations": []
+        },
+        {
+          "name": "p_240786_2_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_240786_3_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_240786_4_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setupDebugLevel",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_240778_1_",
+          "type": "IServerConfiguration",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "prepareLevels",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_213186_1_",
+          "type": "IChunkStatusListener",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "detectBundledResources",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDefaultGameType",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "GameType",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isHardcore",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getOperatorUserPermissionLevel",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFunctionCompilationLevel",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldRconBroadcast",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "saveAllChunks",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_213211_1_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_213211_2_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_213211_3_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "close",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stopServer",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLocalIp",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setLocalIp",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_71189_1_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isRunning",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "halt",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_71263_1_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "runServer",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "haveTime",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "waitUntilNextTick",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "wrapRunnable",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "TickDelayedTask",
+      "parameters": [
+        {
+          "name": "p_212875_1_",
+          "type": "Runnable",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldRun",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_212874_1_",
+          "type": "TickDelayedTask",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pollTask",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pollTaskInternal",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "doRunTask",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_213166_1_",
+          "type": "TickDelayedTask",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateStatusIcon",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_184107_1_",
+          "type": "ServerStatusResponse",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasWorldScreenshot",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getWorldScreenshotFile",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "File",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getServerDirectory",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "File",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onServerCrash",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_71228_1_",
+          "type": "CrashReport",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onServerExit",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickServer",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_71217_1_",
+          "type": "BooleanSupplier",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickChildren",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_71190_1_",
+          "type": "BooleanSupplier",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isNetherEnabled",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addTickable",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_82010_1_",
+          "type": "Runnable",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setId",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_213208_1_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isShutdown",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFile",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "File",
+      "parameters": [
+        {
+          "name": "p_71209_1_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "overworld",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "ServerWorld",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ServerWorld",
+      "parameters": [
+        {
+          "name": "p_71218_1_",
+          "type": "RegistryKey < World >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "levelKeys",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Set < RegistryKey < World >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAllLevels",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Iterable < ServerWorld >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getServerVersion",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPlayerCount",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMaxPlayers",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPlayerNames",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String []",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getServerModName",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fillReport",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CrashReport",
+      "parameters": [
+        {
+          "name": "p_71230_1_",
+          "type": "CrashReport",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getModdedStatus",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "Optional < String >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sendMessage",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_145747_1_",
+          "type": "ITextComponent",
+          "annotations": []
+        },
+        {
+          "name": "p_145747_2_",
+          "type": "UUID",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getKeyPair",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "KeyPair",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPort",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setPort",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_71208_1_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSingleplayerName",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setSingleplayerName",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_71224_1_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isSingleplayer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "initializeKeyPair",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setDifficulty",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_147139_1_",
+          "type": "Difficulty",
+          "annotations": []
+        },
+        {
+          "name": "p_147139_2_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getScaledTrackingDistance",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_230512_1_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateMobSpawningFlags",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setDifficultyLocked",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_213209_1_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sendDifficultyUpdate",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_213189_1_",
+          "type": "ServerPlayerEntity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isSpawningMonsters",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isDemo",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setDemo",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_71204_1_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getResourcePack",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getResourcePackHash",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setResourcePack",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_180507_1_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_180507_2_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "populateSnooper",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_70000_1_",
+          "type": "Snooper",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isDedicatedServer",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRateLimitPacketsPerSecond",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "usesAuthentication",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setUsesAuthentication",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_71229_1_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPreventProxyConnections",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setPreventProxyConnections",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_190517_1_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isSpawningAnimals",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "areNpcsEnabled",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isEpollEnabled",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isPvpAllowed",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setPvpAllowed",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_71188_1_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isFlightAllowed",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setFlightAllowed",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_71245_1_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isCommandBlockEnabled",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMotd",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setMotd",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_71205_1_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMaxBuildHeight",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setMaxBuildHeight",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_71191_1_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isStopped",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPlayerList",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "PlayerList",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setPlayerList",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_184105_1_",
+          "type": "PlayerList",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isPublished",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setDefaultGameType",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_71235_1_",
+          "type": "GameType",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getConnection",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "NetworkSystem",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isReady",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasGui",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "publishServer",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_195565_1_",
+          "type": "GameType",
+          "annotations": []
+        },
+        {
+          "name": "p_195565_2_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_195565_3_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTickCount",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSnooper",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Snooper",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSpawnProtectionRadius",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isUnderSpawnProtection",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_175579_1_",
+          "type": "ServerWorld",
+          "annotations": []
+        },
+        {
+          "name": "p_175579_2_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_175579_3_",
+          "type": "PlayerEntity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setForceGameType",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_104055_1_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getForceGameType",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "repliesToStatus",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPlayerIdleTimeout",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setPlayerIdleTimeout",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_143006_1_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSessionService",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "com.mojang.authlib.minecraft.MinecraftSessionService",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getProfileRepository",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "com.mojang.authlib.GameProfileRepository",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getProfileCache",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "PlayerProfileCache",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getStatus",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ServerStatusResponse",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "invalidateStatus",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAbsoluteMaxWorldSize",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "scheduleExecutables",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRunningThread",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Thread",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getCompressionThreshold",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getNextTickTime",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "long",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFixerUpper",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "com.mojang.datafixers.DataFixer",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSpawnRadius",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_184108_1_",
+          "type": "ServerWorld",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAdvancements",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "AdvancementManager",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFunctions",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "FunctionManager",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "reloadResources",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture < Void >",
+      "parameters": [
+        {
+          "name": "p_240780_1_",
+          "type": "Collection < String >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "configurePackRepository",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "DatapackCodec",
+      "parameters": [
+        {
+          "name": "p_240772_0_",
+          "type": "ResourcePackList",
+          "annotations": []
+        },
+        {
+          "name": "p_240772_1_",
+          "type": "DatapackCodec",
+          "annotations": []
+        },
+        {
+          "name": "p_240772_2_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSelectedPacks",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "DatapackCodec",
+      "parameters": [
+        {
+          "name": "p_240771_0_",
+          "type": "ResourcePackList",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "kickUnlistedPlayers",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_205743_1_",
+          "type": "CommandSource",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPackRepository",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ResourcePackList",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getCommands",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Commands",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createCommandSourceStack",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CommandSource",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "acceptsSuccess",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "acceptsFailure",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRecipeManager",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "RecipeManager",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTags",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ITagCollectionSupplier",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getScoreboard",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ServerScoreboard",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getCommandStorage",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CommandStorage",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLootTables",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "LootTableManager",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPredicateManager",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "LootPredicateManager",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getGameRules",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "GameRules",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getCustomBossEvents",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CustomServerBossInfoManager",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isEnforceWhitelist",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setEnforceWhitelist",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_205741_1_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAverageTickTime",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getProfilePermissions",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_211833_1_",
+          "type": "com.mojang.authlib.GameProfile",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFrameTimer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "FrameTimer",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getProfiler",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "IProfiler",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isSingleplayerOwner",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_213199_1_",
+          "type": "com.mojang.authlib.GameProfile",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTickTime",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "long[]",
+      "parameters": [
+        {
+          "name": "dim",
+          "type": "RegistryKey < World >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "forgeGetWorldMap",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Map < RegistryKey < World >, ServerWorld >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "markWorldsDirty",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getWorldArray",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "ServerWorld []",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "saveDebugReport",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_223711_1_",
+          "type": "Path",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dumpMiscStats",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_223710_1_",
+          "type": "Path",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dumpCrashCategory",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_223709_1_",
+          "type": "Path",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dumpGameRules",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_223708_1_",
+          "type": "Path",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dumpClasspath",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_223706_1_",
+          "type": "Path",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dumpThreads",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_223712_1_",
+          "type": "Path",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "startProfilerTick",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_240773_1_",
+          "type": "LongTickDetector",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "endProfilerTick",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_240795_1_",
+          "type": "LongTickDetector",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isProfiling",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "startProfiling",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "finishProfiling",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "IProfileResult",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getWorldPath",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Path",
+      "parameters": [
+        {
+          "name": "p_240776_1_",
+          "type": "FolderName",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "forceSynchronousWrites",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getStructureManager",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "TemplateManager",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getWorldData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "IServerConfiguration",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDataPackRegistries",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "DataPackRegistries",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registryAccess",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "DynamicRegistries",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createTextFilterForPlayer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "IChatFilter",
+      "parameters": [
+        {
+          "name": "p_244435_1_",
+          "type": "ServerPlayerEntity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.16.5/net/minecraft/server/MinecraftServer.html"
+}

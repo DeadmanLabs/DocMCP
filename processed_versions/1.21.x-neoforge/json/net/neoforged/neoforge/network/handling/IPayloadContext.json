@@ -1,0 +1,184 @@
+{
+  "type": "interface",
+  "name": "IPayloadContext",
+  "qualified_name": "net.neoforged.neoforge.network.handling.IPayloadContext",
+  "package": "net.neoforged.neoforge.network.handling",
+  "modifiers": [
+    "public",
+    "interface"
+  ],
+  "annotations": [],
+  "description": "Common context interface for payload handlers.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": []
+  },
+  "nested_classes": [],
+  "fields": [],
+  "constructors": [],
+  "methods": [
+    {
+      "name": "listener",
+      "modifiers": [],
+      "return_type": "ICommonPacketListener",
+      "parameters": [],
+      "description": "Retrieves the packet listener associated with this context. For usability, this is typed to ICommonPacketListener , but can be downcast to the vanilla packet listeners if necessary.",
+      "deprecated": false
+    },
+    {
+      "name": "connection",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "Connection",
+      "parameters": [],
+      "description": "Returns the connection.",
+      "deprecated": false
+    },
+    {
+      "name": "player",
+      "modifiers": [],
+      "return_type": "Player",
+      "parameters": [],
+      "description": "Retrieves the player relevant to this payload. Players are only available in the ConnectionProtocol.PLAY phase. For server-bound payloads, retrieves the sending ServerPlayer . For client-bound payloads, retrieves the receiving LocalPlayer .",
+      "deprecated": false
+    },
+    {
+      "name": "reply",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "payload",
+          "type": "CustomPacketPayload",
+          "annotations": []
+        }
+      ],
+      "description": "Sends the given payload back to the sender.",
+      "deprecated": false
+    },
+    {
+      "name": "disconnect",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "reason",
+          "type": "Component",
+          "annotations": []
+        }
+      ],
+      "description": "Disconnects the player from the network.",
+      "deprecated": false
+    },
+    {
+      "name": "enqueueWork",
+      "modifiers": [],
+      "return_type": "CompletableFuture < Void >",
+      "parameters": [
+        {
+          "name": "task",
+          "type": "Runnable",
+          "annotations": []
+        }
+      ],
+      "description": "For handlers running on the network thread, submits the given task to be run on the main thread of the game. For handlers running on the main thread, immediately executes the task. On the network thread, the future will be automatically guarded against exceptions using CompletableFuture.exceptionally(java.util.function.Function<java.lang.Throwable, ? extends T>) . If you need to catch your own exceptions, use a try/catch block within your task.",
+      "deprecated": false
+    },
+    {
+      "name": "enqueueWork",
+      "modifiers": [],
+      "return_type": "CompletableFuture <T>",
+      "parameters": [
+        {
+          "name": "task",
+          "type": "Supplier <T>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "flow",
+      "modifiers": [],
+      "return_type": "PacketFlow",
+      "parameters": [],
+      "description": "Returns the flow of the received payload.",
+      "deprecated": false
+    },
+    {
+      "name": "protocol",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "ConnectionProtocol",
+      "parameters": [],
+      "description": "Returns the protocol of the connection.",
+      "deprecated": false
+    },
+    {
+      "name": "handle",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "packet",
+          "type": "Packet <?>",
+          "annotations": []
+        }
+      ],
+      "description": "Handles a packet using the current context. Used to trigger vanilla handling when custom payloads may be transformed into a vanilla packet.",
+      "deprecated": false
+    },
+    {
+      "name": "handle",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "payload",
+          "type": "CustomPacketPayload",
+          "annotations": []
+        }
+      ],
+      "description": "Handles a payload using the current context. Used to handle sub-payloads if necessary.",
+      "deprecated": false
+    },
+    {
+      "name": "finishCurrentTask",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "type",
+          "type": "ConfigurationTask.Type",
+          "annotations": []
+        }
+      ],
+      "description": "Marks a ConfigurationTask as completed.",
+      "deprecated": false
+    },
+    {
+      "name": "channelHandlerContext",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "io.netty.channel.ChannelHandlerContext",
+      "parameters": [],
+      "description": "Returns the channel handler context.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21.x-neoforge/net/neoforged/neoforge/network/handling/IPayloadContext.html"
+}

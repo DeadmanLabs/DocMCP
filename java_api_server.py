@@ -304,21 +304,41 @@ class JavaAPIServer:
     
     def _find_class(self, class_name: str, exact_match: bool = False) -> Optional[Dict[str, Any]]:
         """Find a class by name, supporting both simple and qualified names."""
-        # Try exact match first
-        if class_name in self.indexes['classes_by_name']:
-            return self.indexes['classes_by_name'][class_name]
-        
+        # Try exact match on qualified names first
         if class_name in self.indexes['classes_by_qualified_name']:
             return self.indexes['classes_by_qualified_name'][class_name]
         
         if exact_match:
             return None
         
-        # Try fuzzy matching on simple names
-        simple_names = list(self.indexes['classes_by_name'].keys())
-        matches = get_close_matches(class_name, simple_names, n=1, cutoff=0.6)
+        # Try exact match on simple class names within qualified names
+        # Prefer main minecraft classes over nested/accessor classes
+        exact_matches = []
+        for qualified_name, class_info in self.indexes['classes_by_qualified_name'].items():
+            simple_name = class_info.get('name', '')
+            if simple_name == class_name:
+                exact_matches.append((qualified_name, class_info))
+        
+        if exact_matches:
+            # Sort by preference: prefer shorter qualified names and main packages
+            exact_matches.sort(key=lambda x: (
+                len(x[0].split('.')),  # Prefer shorter package names
+                'Accessor' in x[0],     # Prefer non-accessor classes
+                'Data' in x[0],         # Prefer non-data classes
+                x[0]                    # Alphabetical as tiebreaker
+            ))
+            return exact_matches[0][1]
+        
+        # Try fuzzy matching on simple names extracted from qualified names
+        simple_names_map = {}
+        for qualified_name, class_info in self.indexes['classes_by_qualified_name'].items():
+            simple_name = class_info.get('name', '')
+            if simple_name:
+                simple_names_map[simple_name] = class_info
+        
+        matches = get_close_matches(class_name, list(simple_names_map.keys()), n=1, cutoff=0.6)
         if matches:
-            return self.indexes['classes_by_name'][matches[0]]
+            return simple_names_map[matches[0]]
         
         # Try partial matching on qualified names
         for qualified_name, class_info in self.indexes['classes_by_qualified_name'].items():
@@ -332,8 +352,12 @@ class JavaAPIServer:
         class_info = self._find_class(class_name, exact_match)
         
         if not class_info:
-            # Suggest similar classes
-            simple_names = list(self.indexes['classes_by_name'].keys())
+            # Suggest similar classes based on simple names
+            simple_names = []
+            for qualified_name, info in self.indexes['classes_by_qualified_name'].items():
+                simple_name = info.get('name', '')
+                if simple_name:
+                    simple_names.append(simple_name)
             suggestions = get_close_matches(class_name, simple_names, n=5, cutoff=0.4)
             
             return {
@@ -373,12 +397,14 @@ class JavaAPIServer:
                 "message": f"Class '{class_name}' not found"
             }
         
+        # Use qualified name for index lookup, simple name for display
+        index_key = class_info.get("qualified_name", class_info["name"])
         actual_class_name = class_info["name"]
         methods = []
         
         # Get methods from the class
-        if actual_class_name in self.indexes['methods_by_class']:
-            class_methods = self.indexes['methods_by_class'][actual_class_name]
+        if index_key in self.indexes['methods_by_class']:
+            class_methods = self.indexes['methods_by_class'][index_key]
             if method_name in class_methods:
                 methods.extend(class_methods[method_name])
         
@@ -408,11 +434,13 @@ class JavaAPIServer:
                 "message": f"Class '{class_name}' not found"
             }
         
+        # Use qualified name for index lookup, simple name for display
+        index_key = class_info.get("qualified_name", class_info["name"])
         actual_class_name = class_info["name"]
         
         # Get field from the class
-        if actual_class_name in self.indexes['fields_by_class']:
-            class_fields = self.indexes['fields_by_class'][actual_class_name]
+        if index_key in self.indexes['fields_by_class']:
+            class_fields = self.indexes['fields_by_class'][index_key]
             if field_name in class_fields:
                 return {
                     "found": True,
@@ -474,11 +502,13 @@ class JavaAPIServer:
                 "message": f"Class '{class_name}' not found"
             }
         
+        # Use qualified name for index lookup, simple name for display
+        index_key = class_info.get("qualified_name", class_info["name"])
         actual_class_name = class_info["name"]
         constructors = []
         
-        if actual_class_name in self.indexes['constructors_by_class']:
-            constructors = self.indexes['constructors_by_class'][actual_class_name]
+        if index_key in self.indexes['constructors_by_class']:
+            constructors = self.indexes['constructors_by_class'][index_key]
         
         return {
             "found": True,
@@ -609,11 +639,13 @@ class JavaAPIServer:
                 "message": f"'{enum_name}' is not an enum (it's a {class_info.get('type', 'unknown')})"
             }
         
+        # Use qualified name for index lookup, simple name for display
+        index_key = class_info.get("qualified_name", class_info["name"])
         actual_class_name = class_info["name"]
         constants = {}
         
-        if actual_class_name in self.indexes['enum_constants_by_class']:
-            constants = self.indexes['enum_constants_by_class'][actual_class_name]
+        if index_key in self.indexes['enum_constants_by_class']:
+            constants = self.indexes['enum_constants_by_class'][index_key]
         
         return {
             "found": True,

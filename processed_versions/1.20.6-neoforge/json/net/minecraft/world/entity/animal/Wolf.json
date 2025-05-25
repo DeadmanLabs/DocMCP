@@ -1,0 +1,985 @@
+{
+  "type": "class",
+  "name": "Wolf",
+  "qualified_name": "net.minecraft.world.entity.animal.Wolf",
+  "package": "net.minecraft.world.entity.animal",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.neoforged.neoforge.attachment.AttachmentHolder",
+      "net.minecraft.world.entity.Entity",
+      "net.minecraft.world.entity.LivingEntity",
+      "net.minecraft.world.entity.Mob",
+      "net.minecraft.world.entity.PathfinderMob",
+      "net.minecraft.world.entity.AgeableMob",
+      "net.minecraft.world.entity.animal.Animal",
+      "net.minecraft.world.entity.TamableAnimal"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "DATA_INTERESTED_ID",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "EntityDataAccessor < Boolean >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_COLLAR_COLOR",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "EntityDataAccessor < Integer >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_REMAINING_ANGER_TIME",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "EntityDataAccessor < Integer >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_VARIANT_ID",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "EntityDataAccessor < Holder < WolfVariant >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PREY_SELECTOR",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "Predicate < LivingEntity >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "START_HEALTH",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "TAME_HEALTH",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ARMOR_REPAIR_UNIT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "interestedAngle",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "interestedAngleO",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isWet",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isShaking",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shakeAnim",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shakeAnimO",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PERSISTENT_ANGER_TIME",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "UniformInt",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "persistentAngerTarget",
+      "modifiers": [
+        "private"
+      ],
+      "type": "UUID",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "Wolf",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_30369_",
+          "type": "EntityType <? extends Wolf >",
+          "annotations": []
+        },
+        {
+          "name": "p_30370_",
+          "type": "Level",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "registerGoals",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTexture",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getVariant",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Holder < WolfVariant >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setVariant",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_332777_",
+          "type": "Holder < WolfVariant >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createAttributes",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "AttributeSupplier.Builder",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "defineSynchedData",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_326027_",
+          "type": "SynchedEntityData.Builder",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playStepSound",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_30415_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_30416_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addAdditionalSaveData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_30418_",
+          "type": "CompoundTag",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "readAdditionalSaveData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_30402_",
+          "type": "CompoundTag",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "finalizeSpawn",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SpawnGroupData",
+      "parameters": [
+        {
+          "name": "p_332775_",
+          "type": "ServerLevelAccessor",
+          "annotations": []
+        },
+        {
+          "name": "p_332793_",
+          "type": "DifficultyInstance",
+          "annotations": []
+        },
+        {
+          "name": "p_332761_",
+          "type": "MobSpawnType",
+          "annotations": []
+        },
+        {
+          "name": "p_332782_",
+          "type": "SpawnGroupData",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAmbientSound",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "SoundEvent",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getHurtSound",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "SoundEvent",
+      "parameters": [
+        {
+          "name": "p_30424_",
+          "type": "DamageSource",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDeathSound",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "SoundEvent",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSoundVolume",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "aiStep",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cancelShake",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "die",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_30384_",
+          "type": "DamageSource",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isWet",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getWetShade",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_30447_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBodyRollAngle",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_30433_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_30434_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getHeadRollAngle",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_30449_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMaxHeadXRot",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hurt",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_30386_",
+          "type": "DamageSource",
+          "annotations": []
+        },
+        {
+          "name": "p_30387_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "actuallyHurt",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_331935_",
+          "type": "DamageSource",
+          "annotations": []
+        },
+        {
+          "name": "p_330695_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canArmorAbsorb",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_331524_",
+          "type": "DamageSource",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "doHurtTarget",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_30372_",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "applyTamingSideEffects",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hurtArmor",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_332118_",
+          "type": "DamageSource",
+          "annotations": []
+        },
+        {
+          "name": "p_330593_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mobInteract",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "InteractionResult",
+      "parameters": [
+        {
+          "name": "p_30412_",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "p_30413_",
+          "type": "InteractionHand",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tryToTame",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_333736_",
+          "type": "Player",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleEntityEvent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_30379_",
+          "type": "byte",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTailAngle",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isFood",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_30440_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMaxSpawnClusterSize",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRemainingPersistentAngerTime",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setRemainingPersistentAngerTime",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_30404_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "startPersistentAngerTimer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPersistentAngerTarget",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "UUID",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setPersistentAngerTarget",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_30400_",
+          "type": "UUID",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getCollarColor",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "DyeColor",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasArmor",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setCollarColor",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_30398_",
+          "type": "DyeColor",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBreedOffspring",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Wolf",
+      "parameters": [
+        {
+          "name": "p_149088_",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "p_149089_",
+          "type": "AgeableMob",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setIsInterested",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_30445_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canMate",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_30392_",
+          "type": "Animal",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isInterested",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "wantsToAttack",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_30389_",
+          "type": "LivingEntity",
+          "annotations": []
+        },
+        {
+          "name": "p_30390_",
+          "type": "LivingEntity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canBeLeashed",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_30396_",
+          "type": "Player",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLeashOffset",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Vec3",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "checkWolfSpawnRules",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_218292_",
+          "type": "EntityType < Wolf >",
+          "annotations": []
+        },
+        {
+          "name": "p_218293_",
+          "type": "LevelAccessor",
+          "annotations": []
+        },
+        {
+          "name": "p_218294_",
+          "type": "MobSpawnType",
+          "annotations": []
+        },
+        {
+          "name": "p_218295_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_218296_",
+          "type": "RandomSource",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.6-neoforge/net/minecraft/world/entity/animal/Wolf.html"
+}

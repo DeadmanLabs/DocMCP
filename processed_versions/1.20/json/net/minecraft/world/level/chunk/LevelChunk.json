@@ -1,0 +1,994 @@
+{
+  "type": "class",
+  "name": "LevelChunk",
+  "qualified_name": "net.minecraft.world.level.chunk.LevelChunk",
+  "package": "net.minecraft.world.level.chunk",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraft.world.level.chunk.ChunkAccess"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NULL_TICKER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "TickingBlockEntity",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickersInLevel",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < BlockPos , LevelChunk.RebindableTickingBlockEntityWrapper >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loaded",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "level",
+      "modifiers": [
+        "final"
+      ],
+      "type": "Level",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fullStatus",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Supplier < FullChunkStatus >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "postLoad",
+      "modifiers": [
+        "private"
+      ],
+      "type": "LevelChunk.PostLoadProcessor",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "gameEventListenerRegistrySections",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.ints.Int2ObjectMap< GameEventListenerRegistry >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blockTicks",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "LevelChunkTicks < Block >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fluidTicks",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "LevelChunkTicks < Fluid >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "capProvider",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "CapabilityProvider.AsField < LevelChunk >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "LevelChunk",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_187945_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_187946_",
+          "type": "ChunkPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LevelChunk",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_196854_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_196855_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_196856_",
+          "type": "UpgradeData",
+          "annotations": []
+        },
+        {
+          "name": "p_196857_",
+          "type": "LevelChunkTicks < Block >",
+          "annotations": []
+        },
+        {
+          "name": "p_196858_",
+          "type": "LevelChunkTicks < Fluid >",
+          "annotations": []
+        },
+        {
+          "name": "p_196859_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_196860_",
+          "type": "LevelChunkSection []",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_196861_",
+          "type": "LevelChunk.PostLoadProcessor",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_196862_",
+          "type": "BlendingData",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LevelChunk",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_196850_",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "p_196851_",
+          "type": "ProtoChunk",
+          "annotations": []
+        },
+        {
+          "name": "p_196852_",
+          "type": "LevelChunk.PostLoadProcessor",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getBlockTicks",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "TickContainerAccess < Block >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFluidTicks",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "TickContainerAccess < Fluid >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTicksForSerialization",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChunkAccess.TicksToSave",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getListenerRegistry",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "GameEventListenerRegistry",
+      "parameters": [
+        {
+          "name": "p_251193_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockState",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "p_62923_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFluidState",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "FluidState",
+      "parameters": [
+        {
+          "name": "p_62895_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFluidState",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "FluidState",
+      "parameters": [
+        {
+          "name": "p_62815_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_62816_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_62817_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setBlockState",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "p_62865_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_62866_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_62867_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addEntity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_62826_",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createBlockEntity",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "BlockEntity",
+      "parameters": [
+        {
+          "name": "p_62935_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockEntity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BlockEntity",
+      "parameters": [
+        {
+          "name": "p_62912_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockEntity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BlockEntity",
+      "parameters": [
+        {
+          "name": "p_62868_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_62869_",
+          "type": "LevelChunk.EntityCreationType",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addAndRegisterBlockEntity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_156391_",
+          "type": "BlockEntity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isInLevel",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isTicking",
+      "modifiers": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_156411_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setBlockEntity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_156374_",
+          "type": "BlockEntity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockEntityNbtForSaving",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompoundTag",
+      "parameters": [
+        {
+          "name": "p_62932_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removeBlockEntity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_62919_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removeGameEventListener",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_223413_",
+          "type": "T",
+          "annotations": []
+        },
+        {
+          "name": "p_223414_",
+          "type": "ServerLevel",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removeGameEventListenerRegistry",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_283355_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removeBlockEntityTicker",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_156413_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "runPostLoad",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isEmpty",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "replaceWithPacketData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_187972_",
+          "type": "FriendlyByteBuf",
+          "annotations": []
+        },
+        {
+          "name": "p_187973_",
+          "type": "CompoundTag",
+          "annotations": []
+        },
+        {
+          "name": "p_187974_",
+          "type": "Consumer < ClientboundLevelChunkPacketData.BlockEntityTagOutput >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "replaceBiomes",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_275574_",
+          "type": "FriendlyByteBuf",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setLoaded",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_62914_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Level",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockEntities",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Map < BlockPos , BlockEntity >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "postProcessGeneration",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "promotePendingBlockEntity",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "BlockEntity",
+      "parameters": [
+        {
+          "name": "p_62871_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_62872_",
+          "type": "CompoundTag",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "unpackTicks",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_187986_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registerTickContainerInLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_187959_",
+          "type": "ServerLevel",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "unregisterTickContainerFromLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_187980_",
+          "type": "ServerLevel",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getStatus",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChunkStatus",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFullStatus",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "FullChunkStatus",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setFullStatus",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_62880_",
+          "type": "Supplier < FullChunkStatus >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clearAllBlockEntities",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registerAllBlockEntitiesAfterLevelLoad",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addGameEventListener",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_223416_",
+          "type": "T",
+          "annotations": []
+        },
+        {
+          "name": "p_223417_",
+          "type": "ServerLevel",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateBlockEntityTicker",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_156407_",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createTicker",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "TickingBlockEntity",
+      "parameters": [
+        {
+          "name": "p_156376_",
+          "type": "T",
+          "annotations": []
+        },
+        {
+          "name": "p_156377_",
+          "type": "BlockEntityTicker <T>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getCapability",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "LazyOptional <T>",
+      "parameters": [
+        {
+          "name": "cap",
+          "type": "Capability <T>",
+          "annotations": [
+            "NotNull"
+          ]
+        },
+        {
+          "name": "side",
+          "type": "Direction",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "Description copied from interface: ICapabilityProvider",
+      "deprecated": false
+    },
+    {
+      "name": "areCapsCompatible",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "other",
+          "type": "CapabilityProvider < LevelChunk >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "areCapsCompatible",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "other",
+          "type": "CapabilityDispatcher",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "invalidateCaps",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "reviveCaps",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "writeCapsToNBT",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "@Nullable CompoundTag",
+      "parameters": [],
+      "description": "FOR INTERNAL USE ONLY Only public for use in ChunkSerializer .",
+      "deprecated": false
+    },
+    {
+      "name": "readCapsFromNBT",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "tag",
+          "type": "CompoundTag",
+          "annotations": []
+        }
+      ],
+      "description": "FOR INTERNAL USE ONLY Only public for use in ChunkSerializer .",
+      "deprecated": false
+    },
+    {
+      "name": "getWorldForge",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Level",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20/net/minecraft/world/level/chunk/LevelChunk.html"
+}

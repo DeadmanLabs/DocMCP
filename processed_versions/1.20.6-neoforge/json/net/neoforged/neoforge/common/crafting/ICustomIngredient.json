@@ -1,0 +1,74 @@
+{
+  "type": "interface",
+  "name": "ICustomIngredient",
+  "qualified_name": "net.neoforged.neoforge.common.crafting.ICustomIngredient",
+  "package": "net.neoforged.neoforge.common.crafting",
+  "modifiers": [
+    "public",
+    "interface"
+  ],
+  "annotations": [],
+  "description": "Interface that modders can implement to create new behaviors for Ingredient s. This is not directly implemented on vanilla Ingredient s, but conversions are possible: toVanilla() converts a custom ingredient to a vanilla Ingredient . Ingredient.getCustomIngredient() retrieves the custom ingredient inside a vanilla Ingredient . Implementations of this interface must implement Object.equals(java.lang.Object) and Object.hashCode() to ensure that the ingredient also supports them.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": []
+  },
+  "nested_classes": [],
+  "fields": [],
+  "constructors": [],
+  "methods": [
+    {
+      "name": "test",
+      "modifiers": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "Checks if a stack matches this ingredient. The stack must not be modified in any way.",
+      "deprecated": false
+    },
+    {
+      "name": "getItems",
+      "modifiers": [],
+      "return_type": "Stream < ItemStack >",
+      "parameters": [],
+      "description": "Returns the list of stacks that this ingredient accepts. The following guidelines should be followed for good compatibility: These stacks are generally used for display purposes, and need not be exhaustive or perfectly accurate. An exception is ingredients that are simple , for which it is important that the returned stacks correspond exactly to all the accepted Item s. At least one stack must be returned for the ingredient not to be considered accidentally empty . The ingredient should try to return at least one stack with each accepted Item . This allows mods that inspect the ingredient to figure out which stacks it might accept. Note: no caching needs to be done by the implementation, this is already handled by the ingredient itself.",
+      "deprecated": false
+    },
+    {
+      "name": "isSimple",
+      "modifiers": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "Returns whether this ingredient always requires direct stack testing .",
+      "deprecated": false
+    },
+    {
+      "name": "getType",
+      "modifiers": [],
+      "return_type": "IngredientType <?>",
+      "parameters": [],
+      "description": "Returns the type of this ingredient. The type must be registered to NeoForgeRegistries.INGREDIENT_TYPES .",
+      "deprecated": false
+    },
+    {
+      "name": "toVanilla",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "Ingredient",
+      "parameters": [],
+      "description": "Returns a new Ingredient behaving as defined by this custom ingredient.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.6-neoforge/net/neoforged/neoforge/common/crafting/ICustomIngredient.html"
+}

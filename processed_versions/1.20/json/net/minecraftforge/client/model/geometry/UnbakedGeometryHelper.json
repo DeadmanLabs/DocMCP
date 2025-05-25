@@ -1,0 +1,403 @@
+{
+  "type": "class",
+  "name": "UnbakedGeometryHelper",
+  "qualified_name": "net.minecraftforge.client.model.geometry.UnbakedGeometryHelper",
+  "package": "net.minecraftforge.client.model.geometry",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Helper for dealing with unbaked models and geometries.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "ITEM_MODEL_GENERATOR",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "ItemModelGenerator",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "FACE_BAKERY",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "FaceBakery",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "FILESYSTEM_PATH_TO_RESLOC",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Pattern",
+      "description": "Explanation: This takes anything that looks like a valid resourcepack texture location, and tries to extract a resourcelocation out of it. 1. it will ignore anything up to and including an /assets/ folder, 2. it will take the next path component as a namespace, 3. it will match but skip the /textures/ part of the path, 4. it will take the rest of the path up to but excluding the .png extension as the resource path It's a best-effort situation, to allow model files exported by modelling software to be used without post-processing. Example: C:\\Something\\Or Other\\src\\main\\resources\\assets\\mymodid\\textures\\item\\my_thing.png ........................................--------_______----------_____________---- Result after replacing '\\' to '/': mymodid:item/my_thing",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "UnbakedGeometryHelper",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "resolveDirtyMaterial",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "Material",
+      "parameters": [
+        {
+          "name": "tex",
+          "type": "String",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        },
+        {
+          "name": "owner",
+          "type": "IGeometryBakingContext",
+          "annotations": []
+        }
+      ],
+      "description": "Resolves a material that may have been defined with a filesystem path instead of a proper ResourceLocation . The target atlas will always be TextureAtlas.LOCATION_BLOCKS .",
+      "deprecated": false
+    },
+    {
+      "name": "bake",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "BakedModel",
+      "parameters": [
+        {
+          "name": "blockModel",
+          "type": "BlockModel",
+          "annotations": []
+        },
+        {
+          "name": "modelBaker",
+          "type": "ModelBaker",
+          "annotations": []
+        },
+        {
+          "name": "owner",
+          "type": "BlockModel",
+          "annotations": []
+        },
+        {
+          "name": "spriteGetter",
+          "type": "Function < Material , TextureAtlasSprite >",
+          "annotations": []
+        },
+        {
+          "name": "modelState",
+          "type": "ModelState",
+          "annotations": []
+        },
+        {
+          "name": "modelLocation",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "guiLight3d",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Helper for baking BlockModel instances. Handles baking custom geometries and deferring item model baking.",
+      "deprecated": false
+    },
+    {
+      "name": "createUnbakedItemElements",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "List < BlockElement >",
+      "parameters": [
+        {
+          "name": "layerIndex",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "spriteContents",
+          "type": "SpriteContents",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createUnbakedItemElements",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "List < BlockElement >",
+      "parameters": [
+        {
+          "name": "layerIndex",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "spriteContents",
+          "type": "SpriteContents",
+          "annotations": []
+        },
+        {
+          "name": "faceData",
+          "type": "ForgeFaceData",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "Creates a list of block elements in the shape of the specified sprite contents. These can later be baked using the same, or another texture. The Direction.NORTH and Direction.SOUTH faces take up the whole surface.",
+      "deprecated": false
+    },
+    {
+      "name": "createUnbakedItemMaskElements",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "List < BlockElement >",
+      "parameters": [
+        {
+          "name": "layerIndex",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "spriteContents",
+          "type": "SpriteContents",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createUnbakedItemMaskElements",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "List < BlockElement >",
+      "parameters": [
+        {
+          "name": "layerIndex",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "spriteContents",
+          "type": "SpriteContents",
+          "annotations": []
+        },
+        {
+          "name": "faceData",
+          "type": "ForgeFaceData",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "Creates a list of block elements in the shape of the specified sprite contents. These can later be baked using the same, or another texture. The Direction.NORTH and Direction.SOUTH faces take up only the pixels the texture uses.",
+      "deprecated": false
+    },
+    {
+      "name": "bakeElements",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "builder",
+          "type": "IModelBuilder <?>",
+          "annotations": []
+        },
+        {
+          "name": "elements",
+          "type": "List < BlockElement >",
+          "annotations": []
+        },
+        {
+          "name": "spriteGetter",
+          "type": "Function < Material , TextureAtlasSprite >",
+          "annotations": []
+        },
+        {
+          "name": "modelState",
+          "type": "ModelState",
+          "annotations": []
+        },
+        {
+          "name": "modelLocation",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "Bakes a list of block elements and feeds the baked quads to a model builder .",
+      "deprecated": false
+    },
+    {
+      "name": "bakeElements",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "List < BakedQuad >",
+      "parameters": [
+        {
+          "name": "elements",
+          "type": "List < BlockElement >",
+          "annotations": []
+        },
+        {
+          "name": "spriteGetter",
+          "type": "Function < Material , TextureAtlasSprite >",
+          "annotations": []
+        },
+        {
+          "name": "modelState",
+          "type": "ModelState",
+          "annotations": []
+        },
+        {
+          "name": "modelLocation",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "Bakes a list of block elements and returns the list of baked quads.",
+      "deprecated": false
+    },
+    {
+      "name": "bakeElementFace",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "BakedQuad",
+      "parameters": [
+        {
+          "name": "element",
+          "type": "BlockElement",
+          "annotations": []
+        },
+        {
+          "name": "face",
+          "type": "BlockElementFace",
+          "annotations": []
+        },
+        {
+          "name": "sprite",
+          "type": "TextureAtlasSprite",
+          "annotations": []
+        },
+        {
+          "name": "direction",
+          "type": "Direction",
+          "annotations": []
+        },
+        {
+          "name": "state",
+          "type": "ModelState",
+          "annotations": []
+        },
+        {
+          "name": "modelLocation",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "Turns a single BlockElementFace into a BakedQuad .",
+      "deprecated": false
+    },
+    {
+      "name": "applyRootTransform",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "IQuadTransformer",
+      "parameters": [
+        {
+          "name": "modelState",
+          "type": "ModelState",
+          "annotations": []
+        },
+        {
+          "name": "rootTransform",
+          "type": "Transformation",
+          "annotations": []
+        }
+      ],
+      "description": "Create an IQuadTransformer to apply a Transformation that undoes the ModelState transform (blockstate transform), applies the given root transform and then re-applies the blockstate transform.",
+      "deprecated": false
+    },
+    {
+      "name": "composeRootTransformIntoModelState",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ModelState",
+      "parameters": [
+        {
+          "name": "modelState",
+          "type": "ModelState",
+          "annotations": []
+        },
+        {
+          "name": "rootTransform",
+          "type": "Transformation",
+          "annotations": []
+        }
+      ],
+      "description": "Returns a ModelState that combines the existing model state and the root transform .",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20/net/minecraftforge/client/model/geometry/UnbakedGeometryHelper.html"
+}

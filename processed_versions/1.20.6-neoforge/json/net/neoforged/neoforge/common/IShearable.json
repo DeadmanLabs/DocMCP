@@ -1,0 +1,120 @@
+{
+  "type": "interface",
+  "name": "IShearable",
+  "qualified_name": "net.neoforged.neoforge.common.IShearable",
+  "package": "net.neoforged.neoforge.common",
+  "modifiers": [
+    "public",
+    "interface"
+  ],
+  "annotations": [],
+  "description": "This allows for mods to create there own Shear-like items and have them interact with Blocks/Entities without extra work. Also, if your block/entity supports the Shears, this allows you to support mod-shears as well. TODO: reconsider this system, currently it is implemented but not checked for, for blocks.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": []
+  },
+  "nested_classes": [],
+  "fields": [],
+  "constructors": [],
+  "methods": [
+    {
+      "name": "isShearable",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        },
+        {
+          "name": "item",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Checks if the object is currently shearable Example: Sheep return false when they have no wool",
+      "deprecated": false
+    },
+    {
+      "name": "onSheared",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "List < ItemStack >",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        },
+        {
+          "name": "item",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Performs the shear function on this object. This is called for both client, and server. The object should perform all actions related to being sheared, except for dropping of the items, and removal of the block. As those are handled by ItemShears itself. For entities, they should trust their internal location information over the values passed into this function.",
+      "deprecated": false
+    },
+    {
+      "name": "spawnShearedDrop",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "drop",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "Performs the logic used to drop a shear result into the world at the correct position and with the proper movement. For entities, they should trust their internal location information over the values passed into this function.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.6-neoforge/net/neoforged/neoforge/common/IShearable.html"
+}

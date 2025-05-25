@@ -1,0 +1,383 @@
+{
+  "type": "class",
+  "name": "FontManager",
+  "qualified_name": "net.minecraft.client.gui.font.FontManager",
+  "package": "net.minecraft.client.gui.font",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "FONTS_PATH",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MISSING_FONT",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "ResourceLocation",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "FONT_DEFINITIONS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "FileToIdConverter",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "GSON",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "com.google.gson.Gson",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "missingFontSet",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "FontSet",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "providersToClose",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "List < GlyphProvider >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fontSets",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < ResourceLocation , FontSet >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "textureManager",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "TextureManager",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renames",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Map < ResourceLocation , ResourceLocation >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "FontManager",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_95005_",
+          "type": "TextureManager",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "reload",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture < Void >",
+      "parameters": [
+        {
+          "name": "p_285160_",
+          "type": "PreparableReloadListener.PreparationBarrier",
+          "annotations": []
+        },
+        {
+          "name": "p_285231_",
+          "type": "ResourceManager",
+          "annotations": []
+        },
+        {
+          "name": "p_285232_",
+          "type": "ProfilerFiller",
+          "annotations": []
+        },
+        {
+          "name": "p_285262_",
+          "type": "ProfilerFiller",
+          "annotations": []
+        },
+        {
+          "name": "p_284975_",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "p_285218_",
+          "type": "Executor",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "prepare",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture < FontManager.Preparation >",
+      "parameters": [
+        {
+          "name": "p_285252_",
+          "type": "ResourceManager",
+          "annotations": []
+        },
+        {
+          "name": "p_284969_",
+          "type": "Executor",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "safeLoad",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture < Optional < GlyphProvider >>",
+      "parameters": [
+        {
+          "name": "p_285113_",
+          "type": "FontManager.BuilderId",
+          "annotations": []
+        },
+        {
+          "name": "p_286561_",
+          "type": "GlyphProviderDefinition.Loader",
+          "annotations": []
+        },
+        {
+          "name": "p_285424_",
+          "type": "ResourceManager",
+          "annotations": []
+        },
+        {
+          "name": "p_285371_",
+          "type": "Executor",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "resolveProviders",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Map < ResourceLocation , List < GlyphProvider >>",
+      "parameters": [
+        {
+          "name": "p_285282_",
+          "type": "List < FontManager.UnresolvedBuilderBundle >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "finalizeProviderLoading",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_285520_",
+          "type": "List < GlyphProvider >",
+          "annotations": []
+        },
+        {
+          "name": "p_285397_",
+          "type": "GlyphProvider",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "apply",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_284939_",
+          "type": "FontManager.Preparation",
+          "annotations": []
+        },
+        {
+          "name": "p_285407_",
+          "type": "ProfilerFiller",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loadResourceStack",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "List <com.mojang.datafixers.util.Pair< FontManager.BuilderId , GlyphProviderDefinition >>",
+      "parameters": [
+        {
+          "name": "p_284976_",
+          "type": "List < Resource >",
+          "annotations": []
+        },
+        {
+          "name": "p_285272_",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setRenames",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_95012_",
+          "type": "Map < ResourceLocation , ResourceLocation >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getActualId",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [
+        {
+          "name": "p_285141_",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createFont",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Font",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createFontFilterFishy",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Font",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "close",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20/net/minecraft/client/gui/font/FontManager.html"
+}

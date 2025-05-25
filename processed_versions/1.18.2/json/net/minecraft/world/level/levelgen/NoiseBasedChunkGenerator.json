@@ -1,0 +1,728 @@
+{
+  "type": "class",
+  "name": "NoiseBasedChunkGenerator",
+  "qualified_name": "net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator",
+  "package": "net.minecraft.world.level.levelgen",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraft.world.level.chunk.ChunkGenerator"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "CODEC",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.serialization.Codec< NoiseBasedChunkGenerator >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "AIR",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "BlockState",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "EMPTY_COLUMN",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "BlockState []",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "defaultBlock",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "BlockState",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "noises",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Registry < NormalNoise.NoiseParameters >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "seed",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "settings",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "Holder < NoiseGeneratorSettings >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "router",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "NoiseRouter",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sampler",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "Climate.Sampler",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "surfaceSystem",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "SurfaceSystem",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "globalFluidPicker",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Aquifer.FluidPicker",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "NoiseBasedChunkGenerator",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_209106_",
+          "type": "Registry < StructureSet >",
+          "annotations": []
+        },
+        {
+          "name": "p_209107_",
+          "type": "Registry < NormalNoise.NoiseParameters >",
+          "annotations": []
+        },
+        {
+          "name": "p_209108_",
+          "type": "BiomeSource",
+          "annotations": []
+        },
+        {
+          "name": "p_209109_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_209110_",
+          "type": "Holder < NoiseGeneratorSettings >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NoiseBasedChunkGenerator",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [
+        {
+          "name": "p_209112_",
+          "type": "Registry < StructureSet >",
+          "annotations": []
+        },
+        {
+          "name": "p_209113_",
+          "type": "Registry < NormalNoise.NoiseParameters >",
+          "annotations": []
+        },
+        {
+          "name": "p_209114_",
+          "type": "BiomeSource",
+          "annotations": []
+        },
+        {
+          "name": "p_209115_",
+          "type": "BiomeSource",
+          "annotations": []
+        },
+        {
+          "name": "p_209116_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_209117_",
+          "type": "Holder < NoiseGeneratorSettings >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "createBiomes",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture < ChunkAccess >",
+      "parameters": [
+        {
+          "name": "p_197005_",
+          "type": "Registry < Biome >",
+          "annotations": []
+        },
+        {
+          "name": "p_197006_",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "p_197007_",
+          "type": "Blender",
+          "annotations": []
+        },
+        {
+          "name": "p_197008_",
+          "type": "StructureFeatureManager",
+          "annotations": []
+        },
+        {
+          "name": "p_197009_",
+          "type": "ChunkAccess",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "doCreateBiomes",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_204587_",
+          "type": "Blender",
+          "annotations": []
+        },
+        {
+          "name": "p_204588_",
+          "type": "StructureFeatureManager",
+          "annotations": []
+        },
+        {
+          "name": "p_204589_",
+          "type": "ChunkAccess",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "router",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "NoiseRouter",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "climateSampler",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Climate.Sampler",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "codec",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "com.mojang.serialization.Codec<? extends ChunkGenerator >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "withSeed",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChunkGenerator",
+      "parameters": [
+        {
+          "name": "p_64374_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stable",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_64376_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_64377_",
+          "type": "ResourceKey < NoiseGeneratorSettings >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBaseHeight",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_158405_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158406_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158407_",
+          "type": "Heightmap.Types",
+          "annotations": []
+        },
+        {
+          "name": "p_158408_",
+          "type": "LevelHeightAccessor",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBaseColumn",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "NoiseColumn",
+      "parameters": [
+        {
+          "name": "p_158401_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158402_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158403_",
+          "type": "LevelHeightAccessor",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addDebugScreenInfo",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_209128_",
+          "type": "List < String >",
+          "annotations": []
+        },
+        {
+          "name": "p_209129_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "iterateNoiseColumn",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "OptionalInt",
+      "parameters": [
+        {
+          "name": "p_158414_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158415_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158416_",
+          "type": "BlockState []",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_158417_",
+          "type": "Predicate < BlockState >",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_158418_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158419_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "buildSurface",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_188636_",
+          "type": "WorldGenRegion",
+          "annotations": []
+        },
+        {
+          "name": "p_188637_",
+          "type": "StructureFeatureManager",
+          "annotations": []
+        },
+        {
+          "name": "p_188638_",
+          "type": "ChunkAccess",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "applyCarvers",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_188629_",
+          "type": "WorldGenRegion",
+          "annotations": []
+        },
+        {
+          "name": "p_188630_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_188631_",
+          "type": "BiomeManager",
+          "annotations": []
+        },
+        {
+          "name": "p_188632_",
+          "type": "StructureFeatureManager",
+          "annotations": []
+        },
+        {
+          "name": "p_188633_",
+          "type": "ChunkAccess",
+          "annotations": []
+        },
+        {
+          "name": "p_188634_",
+          "type": "GenerationStep.Carving",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fillFromNoise",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture < ChunkAccess >",
+      "parameters": [
+        {
+          "name": "p_188702_",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "p_188703_",
+          "type": "Blender",
+          "annotations": []
+        },
+        {
+          "name": "p_188704_",
+          "type": "StructureFeatureManager",
+          "annotations": []
+        },
+        {
+          "name": "p_188705_",
+          "type": "ChunkAccess",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "doFill",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "ChunkAccess",
+      "parameters": [
+        {
+          "name": "p_188663_",
+          "type": "Blender",
+          "annotations": []
+        },
+        {
+          "name": "p_188664_",
+          "type": "StructureFeatureManager",
+          "annotations": []
+        },
+        {
+          "name": "p_188665_",
+          "type": "ChunkAccess",
+          "annotations": []
+        },
+        {
+          "name": "p_188666_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_188667_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "debugPreliminarySurfaceLevel",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "p_198232_",
+          "type": "NoiseChunk",
+          "annotations": []
+        },
+        {
+          "name": "p_198233_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_198234_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_198235_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_198236_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getGenDepth",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSeaLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMinY",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "spawnOriginalMobs",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_64379_",
+          "type": "WorldGenRegion",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "topMaterial",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < BlockState >",
+      "parameters": [
+        {
+          "name": "p_188669_",
+          "type": "CarvingContext",
+          "annotations": []
+        },
+        {
+          "name": "p_188670_",
+          "type": "Function < BlockPos , Holder < Biome >>",
+          "annotations": []
+        },
+        {
+          "name": "p_188671_",
+          "type": "ChunkAccess",
+          "annotations": []
+        },
+        {
+          "name": "p_188672_",
+          "type": "NoiseChunk",
+          "annotations": []
+        },
+        {
+          "name": "p_188673_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_188674_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.18.2/net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator.html"
+}

@@ -1,0 +1,429 @@
+{
+  "type": "class",
+  "name": "GameProfileCache",
+  "qualified_name": "net.minecraft.server.players.GameProfileCache",
+  "package": "net.minecraft.server.players",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "GAMEPROFILES_MRU_LIMIT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "GAMEPROFILES_EXPIRATION_MONTHS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "usesAuthentication",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "profilesByName",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < String , GameProfileCache.GameProfileInfo >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "profilesByUUID",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < UUID , GameProfileCache.GameProfileInfo >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "requests",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < String , CompletableFuture < Optional <com.mojang.authlib.GameProfile>>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "profileRepository",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.mojang.authlib.GameProfileRepository",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "gson",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.google.gson.Gson",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "file",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "File",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "operationCount",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "AtomicLong",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "executor",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Executor",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "GameProfileCache",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_10974_",
+          "type": "com.mojang.authlib.GameProfileRepository",
+          "annotations": []
+        },
+        {
+          "name": "p_10975_",
+          "type": "File",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "safeAdd",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_10980_",
+          "type": "GameProfileCache.GameProfileInfo",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lookupGameProfile",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "Optional <com.mojang.authlib.GameProfile>",
+      "parameters": [
+        {
+          "name": "p_10994_",
+          "type": "com.mojang.authlib.GameProfileRepository",
+          "annotations": []
+        },
+        {
+          "name": "p_10995_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setUsesAuthentication",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_11005_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "usesAuthentication",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "add",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_10992_",
+          "type": "com.mojang.authlib.GameProfile",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getNextOperation",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "long",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "get",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional <com.mojang.authlib.GameProfile>",
+      "parameters": [
+        {
+          "name": "p_10997_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAsync",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture < Optional <com.mojang.authlib.GameProfile>>",
+      "parameters": [
+        {
+          "name": "p_143968_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "get",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional <com.mojang.authlib.GameProfile>",
+      "parameters": [
+        {
+          "name": "p_11003_",
+          "type": "UUID",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setExecutor",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_143975_",
+          "type": "Executor",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clearExecutor",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createDateFormat",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "DateFormat",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "load",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "List < GameProfileCache.GameProfileInfo >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "save",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTopMRUProfiles",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Stream < GameProfileCache.GameProfileInfo >",
+      "parameters": [
+        {
+          "name": "p_10978_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "writeGameProfile",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "com.google.gson.JsonElement",
+      "parameters": [
+        {
+          "name": "p_10982_",
+          "type": "GameProfileCache.GameProfileInfo",
+          "annotations": []
+        },
+        {
+          "name": "p_10983_",
+          "type": "DateFormat",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "readGameProfile",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "Optional < GameProfileCache.GameProfileInfo >",
+      "parameters": [
+        {
+          "name": "p_10989_",
+          "type": "com.google.gson.JsonElement",
+          "annotations": []
+        },
+        {
+          "name": "p_10990_",
+          "type": "DateFormat",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.2/net/minecraft/server/players/GameProfileCache.html"
+}

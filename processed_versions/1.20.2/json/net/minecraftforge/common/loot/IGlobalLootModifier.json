@@ -1,0 +1,90 @@
+{
+  "type": "interface",
+  "name": "IGlobalLootModifier",
+  "qualified_name": "net.minecraftforge.common.loot.IGlobalLootModifier",
+  "package": "net.minecraftforge.common.loot",
+  "modifiers": [
+    "public",
+    "interface"
+  ],
+  "annotations": [],
+  "description": "Implementation that defines what a global loot modifier must implement in order to be functional. LootModifier Supplies base functionality; most modders should only need to extend that. Requires a Codec to be registered: ForgeRegistries.GLOBAL_LOOT_MODIFIER_SERIALIZERS , and returned in codec() Individual instances of modifiers must be registered via json, see forge:loot_modifiers/global_loot_modifiers",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": []
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "DIRECT_CODEC",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.serialization.Codec< IGlobalLootModifier >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOOT_CONDITIONS_CODEC",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.serialization.Codec< LootItemCondition []>",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [],
+  "methods": [
+    {
+      "name": "getJson",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "com.google.gson.JsonElement",
+      "parameters": [
+        {
+          "name": "dynamic",
+          "type": "com.mojang.serialization.Dynamic<?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "apply",
+      "modifiers": [],
+      "return_type": "@NotNull it.unimi.dsi.fastutil.objects.ObjectArrayList< ItemStack >",
+      "parameters": [
+        {
+          "name": "generatedLoot",
+          "type": "it.unimi.dsi.fastutil.objects.ObjectArrayList< ItemStack >",
+          "annotations": []
+        },
+        {
+          "name": "context",
+          "type": "LootContext",
+          "annotations": []
+        }
+      ],
+      "description": "Applies the modifier to the list of generated loot. This function needs to be responsible for checking ILootConditions as well.",
+      "deprecated": false
+    },
+    {
+      "name": "codec",
+      "modifiers": [],
+      "return_type": "com.mojang.serialization.Codec<? extends IGlobalLootModifier >",
+      "parameters": [],
+      "description": "Returns the registered codec for this modifier",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.2/net/minecraftforge/common/loot/IGlobalLootModifier.html"
+}

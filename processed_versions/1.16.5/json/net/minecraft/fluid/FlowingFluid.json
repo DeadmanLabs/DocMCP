@@ -1,0 +1,940 @@
+{
+  "type": "class",
+  "name": "FlowingFluid",
+  "qualified_name": "net.minecraft.fluid.FlowingFluid",
+  "package": "net.minecraft.fluid",
+  "modifiers": [
+    "public",
+    "abstract",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraftforge.registries.ForgeRegistryEntry",
+      "Fluid",
+      "net.minecraft.fluid.Fluid"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "FALLING",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "BooleanProperty",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LEVEL",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "IntegerProperty",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "OCCLUSION_CACHE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "ThreadLocal <it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap< Block.RenderSideCacheKey >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shapes",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < FluidState , VoxelShape >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "FlowingFluid",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "createFluidStateDefinition",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_207184_1_",
+          "type": "StateContainer.Builder < Fluid , FluidState >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFlow",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Vector3d",
+      "parameters": [
+        {
+          "name": "p_215663_1_",
+          "type": "IBlockReader",
+          "annotations": []
+        },
+        {
+          "name": "p_215663_2_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_215663_3_",
+          "type": "FluidState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "affectsFlow",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_212189_1_",
+          "type": "FluidState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isSolidFace",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_205573_1_",
+          "type": "IBlockReader",
+          "annotations": []
+        },
+        {
+          "name": "p_205573_2_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_205573_3_",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "spread",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_205575_1_",
+          "type": "IWorld",
+          "annotations": []
+        },
+        {
+          "name": "p_205575_2_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_205575_3_",
+          "type": "FluidState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "spreadToSides",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_207937_1_",
+          "type": "IWorld",
+          "annotations": []
+        },
+        {
+          "name": "p_207937_2_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_207937_3_",
+          "type": "FluidState",
+          "annotations": []
+        },
+        {
+          "name": "p_207937_4_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getNewLiquid",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "FluidState",
+      "parameters": [
+        {
+          "name": "p_205576_1_",
+          "type": "IWorldReader",
+          "annotations": []
+        },
+        {
+          "name": "p_205576_2_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_205576_3_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canPassThroughWall",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_212751_1_",
+          "type": "Direction",
+          "annotations": []
+        },
+        {
+          "name": "p_212751_2_",
+          "type": "IBlockReader",
+          "annotations": []
+        },
+        {
+          "name": "p_212751_3_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_212751_4_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_212751_5_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_212751_6_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFlowing",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "Fluid",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFlowing",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "FluidState",
+      "parameters": [
+        {
+          "name": "p_207207_1_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_207207_2_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSource",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "Fluid",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSource",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "FluidState",
+      "parameters": [
+        {
+          "name": "p_207204_1_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canConvertToSource",
+      "modifiers": [
+        "protected",
+        "abstract"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "spreadTo",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_205574_1_",
+          "type": "IWorld",
+          "annotations": []
+        },
+        {
+          "name": "p_205574_2_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_205574_3_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_205574_4_",
+          "type": "Direction",
+          "annotations": []
+        },
+        {
+          "name": "p_205574_5_",
+          "type": "FluidState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "beforeDestroyingBlock",
+      "modifiers": [
+        "protected",
+        "abstract"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_205580_1_",
+          "type": "IWorld",
+          "annotations": []
+        },
+        {
+          "name": "p_205580_2_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_205580_3_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getCacheKey",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "short",
+      "parameters": [
+        {
+          "name": "p_212752_0_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_212752_1_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSlopeDistance",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_205571_1_",
+          "type": "IWorldReader",
+          "annotations": []
+        },
+        {
+          "name": "p_205571_2_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_205571_3_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_205571_4_",
+          "type": "Direction",
+          "annotations": []
+        },
+        {
+          "name": "p_205571_5_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_205571_6_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_205571_7_",
+          "type": "it.unimi.dsi.fastutil.shorts.Short2ObjectMap<com.mojang.datafixers.util.Pair< BlockState , FluidState >>",
+          "annotations": []
+        },
+        {
+          "name": "p_205571_8_",
+          "type": "it.unimi.dsi.fastutil.shorts.Short2BooleanMap",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isWaterHole",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_211759_1_",
+          "type": "IBlockReader",
+          "annotations": []
+        },
+        {
+          "name": "p_211759_2_",
+          "type": "Fluid",
+          "annotations": []
+        },
+        {
+          "name": "p_211759_3_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_211759_4_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_211759_5_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_211759_6_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canPassThrough",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_211760_1_",
+          "type": "IBlockReader",
+          "annotations": []
+        },
+        {
+          "name": "p_211760_2_",
+          "type": "Fluid",
+          "annotations": []
+        },
+        {
+          "name": "p_211760_3_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_211760_4_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_211760_5_",
+          "type": "Direction",
+          "annotations": []
+        },
+        {
+          "name": "p_211760_6_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_211760_7_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_211760_8_",
+          "type": "FluidState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isSourceBlockOfThisType",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_211758_1_",
+          "type": "FluidState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSlopeFindDistance",
+      "modifiers": [
+        "protected",
+        "abstract"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_185698_1_",
+          "type": "IWorldReader",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sourceNeighborCount",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_207936_1_",
+          "type": "IWorldReader",
+          "annotations": []
+        },
+        {
+          "name": "p_207936_2_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSpread",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "Map < Direction , FluidState >",
+      "parameters": [
+        {
+          "name": "p_205572_1_",
+          "type": "IWorldReader",
+          "annotations": []
+        },
+        {
+          "name": "p_205572_2_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_205572_3_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canHoldFluid",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_211761_1_",
+          "type": "IBlockReader",
+          "annotations": []
+        },
+        {
+          "name": "p_211761_2_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_211761_3_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_211761_4_",
+          "type": "Fluid",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canSpreadTo",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_205570_1_",
+          "type": "IBlockReader",
+          "annotations": []
+        },
+        {
+          "name": "p_205570_2_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_205570_3_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_205570_4_",
+          "type": "Direction",
+          "annotations": []
+        },
+        {
+          "name": "p_205570_5_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_205570_6_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_205570_7_",
+          "type": "FluidState",
+          "annotations": []
+        },
+        {
+          "name": "p_205570_8_",
+          "type": "Fluid",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDropOff",
+      "modifiers": [
+        "protected",
+        "abstract"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_204528_1_",
+          "type": "IWorldReader",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSpreadDelay",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_215667_1_",
+          "type": "World",
+          "annotations": []
+        },
+        {
+          "name": "p_215667_2_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_215667_3_",
+          "type": "FluidState",
+          "annotations": []
+        },
+        {
+          "name": "p_215667_4_",
+          "type": "FluidState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_207191_1_",
+          "type": "World",
+          "annotations": []
+        },
+        {
+          "name": "p_207191_2_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_207191_3_",
+          "type": "FluidState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLegacyLevel",
+      "modifiers": [
+        "protected",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_207205_0_",
+          "type": "FluidState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasSameAbove",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_215666_0_",
+          "type": "FluidState",
+          "annotations": []
+        },
+        {
+          "name": "p_215666_1_",
+          "type": "IBlockReader",
+          "annotations": []
+        },
+        {
+          "name": "p_215666_2_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getHeight",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_215662_1_",
+          "type": "FluidState",
+          "annotations": []
+        },
+        {
+          "name": "p_215662_2_",
+          "type": "IBlockReader",
+          "annotations": []
+        },
+        {
+          "name": "p_215662_3_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getOwnHeight",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_223407_1_",
+          "type": "FluidState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getShape",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "VoxelShape",
+      "parameters": [
+        {
+          "name": "p_215664_1_",
+          "type": "FluidState",
+          "annotations": []
+        },
+        {
+          "name": "p_215664_2_",
+          "type": "IBlockReader",
+          "annotations": []
+        },
+        {
+          "name": "p_215664_3_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.16.5/net/minecraft/fluid/FlowingFluid.html"
+}

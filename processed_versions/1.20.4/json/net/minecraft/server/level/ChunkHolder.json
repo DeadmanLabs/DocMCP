@@ -1,0 +1,877 @@
+{
+  "type": "class",
+  "name": "ChunkHolder",
+  "qualified_name": "net.minecraft.server.level.ChunkHolder",
+  "package": "net.minecraft.server.level",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "UNLOADED_CHUNK",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.datafixers.util.Either< ChunkAccess , ChunkHolder.ChunkLoadingFailure >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UNLOADED_CHUNK_FUTURE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "CompletableFuture <com.mojang.datafixers.util.Either< ChunkAccess , ChunkHolder.ChunkLoadingFailure >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UNLOADED_LEVEL_CHUNK",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.datafixers.util.Either< LevelChunk , ChunkHolder.ChunkLoadingFailure >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NOT_DONE_YET",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.datafixers.util.Either< ChunkAccess , ChunkHolder.ChunkLoadingFailure >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UNLOADED_LEVEL_CHUNK_FUTURE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "CompletableFuture <com.mojang.datafixers.util.Either< LevelChunk , ChunkHolder.ChunkLoadingFailure >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CHUNK_STATUSES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "List < ChunkStatus >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "futures",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "AtomicReferenceArray < CompletableFuture <com.mojang.datafixers.util.Either< ChunkAccess , ChunkHolder.ChunkLoadingFailure >>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "levelHeightAccessor",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "LevelHeightAccessor",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fullChunkFuture",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "type": "CompletableFuture <com.mojang.datafixers.util.Either< LevelChunk , ChunkHolder.ChunkLoadingFailure >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickingChunkFuture",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "type": "CompletableFuture <com.mojang.datafixers.util.Either< LevelChunk , ChunkHolder.ChunkLoadingFailure >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "entityTickingChunkFuture",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "type": "CompletableFuture <com.mojang.datafixers.util.Either< LevelChunk , ChunkHolder.ChunkLoadingFailure >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "chunkToSave",
+      "modifiers": [
+        "private"
+      ],
+      "type": "CompletableFuture < ChunkAccess >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "chunkToSaveHistory",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "DebugBuffer < ChunkHolder.ChunkSaveDebug >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "oldTicketLevel",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ticketLevel",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "queueLevel",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pos",
+      "modifiers": [
+        "final"
+      ],
+      "type": "ChunkPos",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasChangedSections",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "changedBlocksPerSection",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.shorts.ShortSet[]",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blockChangedLightSectionFilter",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "BitSet",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "skyChangedLightSectionFilter",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "BitSet",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lightEngine",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "LevelLightEngine",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onLevelChange",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ChunkHolder.LevelChangeListener",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playerProvider",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ChunkHolder.PlayerProvider",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "wasAccessibleSinceLastSave",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "currentlyLoading",
+      "modifiers": [],
+      "type": "LevelChunk",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pendingFullStateConfirmation",
+      "modifiers": [
+        "private"
+      ],
+      "type": "CompletableFuture < Void >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sendSync",
+      "modifiers": [
+        "private"
+      ],
+      "type": "CompletableFuture <?>",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ChunkHolder",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_142986_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_142987_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_142988_",
+          "type": "LevelHeightAccessor",
+          "annotations": []
+        },
+        {
+          "name": "p_142989_",
+          "type": "LevelLightEngine",
+          "annotations": []
+        },
+        {
+          "name": "p_142990_",
+          "type": "ChunkHolder.LevelChangeListener",
+          "annotations": []
+        },
+        {
+          "name": "p_142991_",
+          "type": "ChunkHolder.PlayerProvider",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getFutureIfPresentUnchecked",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture <com.mojang.datafixers.util.Either< ChunkAccess , ChunkHolder.ChunkLoadingFailure >>",
+      "parameters": [
+        {
+          "name": "p_140048_",
+          "type": "ChunkStatus",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFutureIfPresent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture <com.mojang.datafixers.util.Either< ChunkAccess , ChunkHolder.ChunkLoadingFailure >>",
+      "parameters": [
+        {
+          "name": "p_140081_",
+          "type": "ChunkStatus",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTickingChunkFuture",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture <com.mojang.datafixers.util.Either< LevelChunk , ChunkHolder.ChunkLoadingFailure >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getEntityTickingChunkFuture",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture <com.mojang.datafixers.util.Either< LevelChunk , ChunkHolder.ChunkLoadingFailure >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFullChunkFuture",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture <com.mojang.datafixers.util.Either< LevelChunk , ChunkHolder.ChunkLoadingFailure >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTickingChunk",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "LevelChunk",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getChunkSendSyncFuture",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture <?>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getChunkToSend",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "LevelChunk",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFullChunk",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "LevelChunk",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLastAvailableStatus",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChunkStatus",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLastAvailable",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChunkAccess",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getChunkToSave",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture < ChunkAccess >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blockChanged",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_140057_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sectionLightChanged",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_140037_",
+          "type": "LightLayer",
+          "annotations": []
+        },
+        {
+          "name": "p_140038_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "broadcastChanges",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_140055_",
+          "type": "LevelChunk",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "broadcastBlockEntityIfNeeded",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_288982_",
+          "type": "List < ServerPlayer >",
+          "annotations": []
+        },
+        {
+          "name": "p_289011_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_288969_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_288973_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "broadcastBlockEntity",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_288988_",
+          "type": "List < ServerPlayer >",
+          "annotations": []
+        },
+        {
+          "name": "p_289005_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_288981_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "broadcast",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_288998_",
+          "type": "List < ServerPlayer >",
+          "annotations": []
+        },
+        {
+          "name": "p_289013_",
+          "type": "Packet <?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getOrScheduleFuture",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture <com.mojang.datafixers.util.Either< ChunkAccess , ChunkHolder.ChunkLoadingFailure >>",
+      "parameters": [
+        {
+          "name": "p_140050_",
+          "type": "ChunkStatus",
+          "annotations": []
+        },
+        {
+          "name": "p_140051_",
+          "type": "ChunkMap",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addSaveDependency",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_200417_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_200418_",
+          "type": "CompletableFuture <?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateChunkToSave",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_143018_",
+          "type": "CompletableFuture <? extends com.mojang.datafixers.util.Either<? extends ChunkAccess , ChunkHolder.ChunkLoadingFailure >>",
+          "annotations": []
+        },
+        {
+          "name": "p_143019_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addSendDependency",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_300440_",
+          "type": "CompletableFuture <?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFullStatus",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "FullChunkStatus",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPos",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChunkPos",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTicketLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getQueueLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setQueueLevel",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_140087_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setTicketLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_140028_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "scheduleFullChunkPromotion",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_142999_",
+          "type": "ChunkMap",
+          "annotations": []
+        },
+        {
+          "name": "p_143000_",
+          "type": "CompletableFuture <com.mojang.datafixers.util.Either< LevelChunk , ChunkHolder.ChunkLoadingFailure >>",
+          "annotations": []
+        },
+        {
+          "name": "p_143001_",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "p_287621_",
+          "type": "FullChunkStatus",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "demoteFullChunk",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_287599_",
+          "type": "ChunkMap",
+          "annotations": []
+        },
+        {
+          "name": "p_287649_",
+          "type": "FullChunkStatus",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateFutures",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_143004_",
+          "type": "ChunkMap",
+          "annotations": []
+        },
+        {
+          "name": "p_143005_",
+          "type": "Executor",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "wasAccessibleSinceLastSave",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "refreshAccessibility",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "replaceProtoChunk",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_140053_",
+          "type": "ImposterProtoChunk",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAllFutures",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "List <com.mojang.datafixers.util.Pair< ChunkStatus , CompletableFuture <com.mojang.datafixers.util.Either< ChunkAccess , ChunkHolder.ChunkLoadingFailure >>>>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.4/net/minecraft/server/level/ChunkHolder.html"
+}

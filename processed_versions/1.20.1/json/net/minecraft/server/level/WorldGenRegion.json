@@ -1,0 +1,1145 @@
+{
+  "type": "class",
+  "name": "WorldGenRegion",
+  "qualified_name": "net.minecraft.server.level.WorldGenRegion",
+  "package": "net.minecraft.server.level",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cache",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "List < ChunkAccess >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "center",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ChunkAccess",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "size",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "level",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ServerLevel",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "seed",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "levelData",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "LevelData",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "random",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "RandomSource",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dimensionType",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "DimensionType",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blockTicks",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "WorldGenTickAccess < Block >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fluidTicks",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "WorldGenTickAccess < Fluid >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "biomeManager",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "BiomeManager",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "firstPos",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ChunkPos",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastPos",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ChunkPos",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "structureManager",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "StructureManager",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "generatingStatus",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ChunkStatus",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "writeRadiusCutoff",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "currentlyGenerating",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Supplier < String >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "subTickCount",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "AtomicLong",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "WORLDGEN_REGION_RANDOM",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "ResourceLocation",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "WorldGenRegion",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_143484_",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "p_143485_",
+          "type": "List < ChunkAccess >",
+          "annotations": []
+        },
+        {
+          "name": "p_143486_",
+          "type": "ChunkStatus",
+          "annotations": []
+        },
+        {
+          "name": "p_143487_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "isOldChunkAround",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_215160_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_215161_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getCenter",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChunkPos",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setCurrentlyGenerating",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_143498_",
+          "type": "Supplier < String >",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getChunk",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChunkAccess",
+      "parameters": [
+        {
+          "name": "p_9507_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_9508_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getChunk",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChunkAccess",
+      "parameters": [
+        {
+          "name": "p_9514_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_9515_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_9516_",
+          "type": "ChunkStatus",
+          "annotations": []
+        },
+        {
+          "name": "p_9517_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasChunk",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_9574_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_9575_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockState",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "p_9587_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFluidState",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "FluidState",
+      "parameters": [
+        {
+          "name": "p_9577_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getNearestPlayer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Player",
+      "parameters": [
+        {
+          "name": "p_9501_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_9502_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_9503_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_9504_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_9505_",
+          "type": "Predicate < Entity >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSkyDarken",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBiomeManager",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BiomeManager",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getUncachedNoiseBiome",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Holder < Biome >",
+      "parameters": [
+        {
+          "name": "p_203787_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_203788_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_203789_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getShade",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_9555_",
+          "type": "Direction",
+          "annotations": []
+        },
+        {
+          "name": "p_9556_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLightEngine",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "LevelLightEngine",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "destroyBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_9550_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_9551_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_9552_",
+          "type": "Entity",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_9553_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockEntity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BlockEntity",
+      "parameters": [
+        {
+          "name": "p_9582_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ensureCanWrite",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_181031_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_9539_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_9540_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_9541_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_9542_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "markPosForPostprocessing",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_9592_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addFreshEntity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_9580_",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removeBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_9547_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_9548_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getWorldBorder",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "WorldBorder",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isClientSide",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ServerLevel",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registryAccess",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "RegistryAccess",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "enabledFeatures",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "FeatureFlagSet",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLevelData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "LevelData",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getCurrentDifficultyAt",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "DifficultyInstance",
+      "parameters": [
+        {
+          "name": "p_9585_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getServer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "MinecraftServer",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getChunkSource",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChunkSource",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSeed",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "long",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockTicks",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "LevelTickAccess < Block >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFluidTicks",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "LevelTickAccess < Fluid >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSeaLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRandom",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "RandomSource",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getHeight",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_9535_",
+          "type": "Heightmap.Types",
+          "annotations": []
+        },
+        {
+          "name": "p_9536_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_9537_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playSound",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_9528_",
+          "type": "Player",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_9529_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_9530_",
+          "type": "SoundEvent",
+          "annotations": []
+        },
+        {
+          "name": "p_9531_",
+          "type": "SoundSource",
+          "annotations": []
+        },
+        {
+          "name": "p_9532_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_9533_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addParticle",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_9561_",
+          "type": "ParticleOptions",
+          "annotations": []
+        },
+        {
+          "name": "p_9562_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_9563_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_9564_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_9565_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_9566_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_9567_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "levelEvent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_9523_",
+          "type": "Player",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_9524_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_9525_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_9526_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "gameEvent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_215163_",
+          "type": "GameEvent",
+          "annotations": []
+        },
+        {
+          "name": "p_215164_",
+          "type": "Vec3",
+          "annotations": []
+        },
+        {
+          "name": "p_215165_",
+          "type": "GameEvent.Context",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dimensionType",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "DimensionType",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isStateAtPosition",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_9544_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_9545_",
+          "type": "Predicate < BlockState >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isFluidAtPosition",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_143500_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_143501_",
+          "type": "Predicate < FluidState >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getEntities",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "List <T>",
+      "parameters": [
+        {
+          "name": "p_143494_",
+          "type": "EntityTypeTest < Entity , T>",
+          "annotations": []
+        },
+        {
+          "name": "p_143495_",
+          "type": "AABB",
+          "annotations": []
+        },
+        {
+          "name": "p_143496_",
+          "type": "Predicate <? super T>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getEntities",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "List < Entity >",
+      "parameters": [
+        {
+          "name": "p_9519_",
+          "type": "Entity",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_9520_",
+          "type": "AABB",
+          "annotations": []
+        },
+        {
+          "name": "p_9521_",
+          "type": "Predicate <? super Entity >",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "players",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "List < Player >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMinBuildHeight",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getHeight",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "nextSubTickCount",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "long",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.1/net/minecraft/server/level/WorldGenRegion.html"
+}

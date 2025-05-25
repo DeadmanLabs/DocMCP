@@ -1,0 +1,250 @@
+{
+  "type": "class",
+  "name": "AnvilUpdateEvent",
+  "qualified_name": "net.minecraftforge.event.AnvilUpdateEvent",
+  "package": "net.minecraftforge.event",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "AnvilUpdateEvent is fired whenever the input stacks (left or right) or the name in an anvil changed. It is called from AnvilMenu.createResult() . If the event is canceled, vanilla behavior will not run, and the output will be set to ItemStack.EMPTY . If the event is not canceled, but the output is not empty, it will set the output and not run vanilla behavior. if the output is empty, and the event is not canceled, vanilla behavior will execute.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "left",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ItemStack",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "right",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ItemStack",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "name",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "output",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ItemStack",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cost",
+      "modifiers": [
+        "private"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "materialCost",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "player",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Player",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "AnvilUpdateEvent",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "left",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "right",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "cost",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getLeft",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ItemStack",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRight",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ItemStack",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getName",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@Nullable String",
+      "parameters": [],
+      "description": "This is the name as sent by the client. It may be null if none has been sent. If empty, it indicates the user wishes to clear the custom name from the item.",
+      "deprecated": false
+    },
+    {
+      "name": "getOutput",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ItemStack",
+      "parameters": [],
+      "description": "This is the output as determined by the event, not by the vanilla behavior between these two items. If you are the first receiver of this event, it is guaranteed to be empty. It will only be non-empty if changed by an event handler. If this event is cancelled, this output stack is discarded.",
+      "deprecated": false
+    },
+    {
+      "name": "setOutput",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "output",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "Sets the output slot to a specific itemstack.",
+      "deprecated": false
+    },
+    {
+      "name": "getCost",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "long",
+      "parameters": [],
+      "description": "This is the level cost of this anvil operation. When unchanged, it is guaranteed to be left.getRepairCost() + right.getRepairCost().",
+      "deprecated": false
+    },
+    {
+      "name": "setCost",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "cost",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "Changes the level cost of this operation. The level cost does prevent the output from being available. That is, a player without enough experience may not take the output.",
+      "deprecated": false
+    },
+    {
+      "name": "getMaterialCost",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "The material cost is how many units of the right input stack are consumed.",
+      "deprecated": false
+    },
+    {
+      "name": "setMaterialCost",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "materialCost",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "Sets how many right inputs are consumed. A material cost of zero consumes the entire stack. A material cost higher than the count of the right stack consumes the entire stack. The material cost does not prevent the output from being available.",
+      "deprecated": false
+    },
+    {
+      "name": "getPlayer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Player",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21/net/minecraftforge/event/AnvilUpdateEvent.html"
+}

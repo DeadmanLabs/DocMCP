@@ -1,0 +1,318 @@
+{
+  "type": "record",
+  "name": "ConnectionData.ModMismatchData",
+  "qualified_name": "net.minecraftforge.network.ConnectionData.ModMismatchData",
+  "package": "net.minecraftforge.network",
+  "modifiers": [
+    "public",
+    "static",
+    "record"
+  ],
+  "annotations": [],
+  "description": "A class for holding the mod mismatch data of a failed handshake. Contains a list of mismatched channels, the channels present on the side the handshake failed on, the mods with mismatching registries (if available) and the information of whether the mismatching data's origin is the server.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "java.lang.Record"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "mismatchedModData",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < ResourceLocation , String >",
+      "description": "The field for the mismatchedModData record component.",
+      "deprecated": false
+    },
+    {
+      "name": "presentModData",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < ResourceLocation , org.apache.commons.lang3.tuple.Pair< String , String >>",
+      "description": "The field for the presentModData record component.",
+      "deprecated": false
+    },
+    {
+      "name": "mismatchedDataFromServer",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "boolean",
+      "description": "The field for the mismatchedDataFromServer record component.",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ModMismatchData",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "mismatchedModData",
+          "type": "Map < ResourceLocation , String >",
+          "annotations": []
+        },
+        {
+          "name": "presentModData",
+          "type": "Map < ResourceLocation , org.apache.commons.lang3.tuple.Pair< String , String >>",
+          "annotations": []
+        },
+        {
+          "name": "mismatchedDataFromServer",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Creates an instance of a ModMismatchData record class.",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "channel",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ConnectionData.ModMismatchData",
+      "parameters": [
+        {
+          "name": "mismatchedChannels",
+          "type": "Map < ResourceLocation , String >",
+          "annotations": []
+        },
+        {
+          "name": "connectionData",
+          "type": "ConnectionData",
+          "annotations": []
+        },
+        {
+          "name": "mismatchedDataFromServer",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Creates a ModMismatchData instance from given channel mismatch data, which is processed side-aware depending on the value of mismatchedDataFromServer",
+      "deprecated": false
+    },
+    {
+      "name": "registry",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ConnectionData.ModMismatchData",
+      "parameters": [
+        {
+          "name": "mismatchedRegistryData",
+          "type": "com.google.common.collect.Multimap< ResourceLocation , ResourceLocation >",
+          "annotations": []
+        },
+        {
+          "name": "connectionData",
+          "type": "ConnectionData",
+          "annotations": []
+        }
+      ],
+      "description": "Creates a ModMismatchData instance from given mismatched registry entries. In this case, the mismatched data is always treated as originating from the client because registry entries missing on the server never cause the handshake to fail.",
+      "deprecated": false
+    },
+    {
+      "name": "containsMismatches",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "enhanceWithModVersion",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "Map < ResourceLocation , String >",
+      "parameters": [
+        {
+          "name": "mismatchedChannels",
+          "type": "Map < ResourceLocation , String >",
+          "annotations": []
+        },
+        {
+          "name": "connectionData",
+          "type": "ConnectionData",
+          "annotations": []
+        },
+        {
+          "name": "mismatchedDataFromServer",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Enhances a map of mismatched channels with the corresponding mod version.",
+      "deprecated": false
+    },
+    {
+      "name": "getPresentChannelData",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "Map < ResourceLocation , org.apache.commons.lang3.tuple.Pair< String , String >>",
+      "parameters": [
+        {
+          "name": "mismatchedChannelsFilter",
+          "type": "Set < ResourceLocation >",
+          "annotations": []
+        },
+        {
+          "name": "connectionData",
+          "type": "ConnectionData",
+          "annotations": []
+        },
+        {
+          "name": "mismatchedDataFromServer",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Queries the channel data from the side the mismatched data isn't from, in order to provide a map of all the present channels for a proper comparison against the mismatched channel data.",
+      "deprecated": false
+    },
+    {
+      "name": "getPresentModDataFromChannel",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "org.apache.commons.lang3.tuple.Pair< ResourceLocation , org.apache.commons.lang3.tuple.Pair< String , String >>",
+      "parameters": [
+        {
+          "name": "channel",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "connectionData",
+          "type": "ConnectionData",
+          "annotations": []
+        },
+        {
+          "name": "mismatchedDataFromServer",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Queries the mod data from a given channel id from the side the mismatched data isn't from.",
+      "deprecated": false
+    },
+    {
+      "name": "getServerSidePresentModData",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "Map < ResourceLocation , org.apache.commons.lang3.tuple.Pair< String , String >>",
+      "parameters": [
+        {
+          "name": "mismatchedModsFilter",
+          "type": "Set < ResourceLocation >",
+          "annotations": []
+        },
+        {
+          "name": "connectionData",
+          "type": "ConnectionData",
+          "annotations": []
+        }
+      ],
+      "description": "Queries the mod data from the server side. Useful in case of a registry mismatch, which always gets detected on the client.",
+      "deprecated": false
+    },
+    {
+      "name": "toString",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "Returns a string representation of this record class. The representation contains the name of the class, followed by the name and value of each of the record components.",
+      "deprecated": false
+    },
+    {
+      "name": "hashCode",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "Returns a hash code value for this object. The value is derived from the hash code of each of the record components.",
+      "deprecated": false
+    },
+    {
+      "name": "equals",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Object",
+          "annotations": []
+        }
+      ],
+      "description": "Indicates whether some other object is \"equal to\" this one. The objects are equal if the other object is of the same class and if all the record components are equal. Reference components are compared with Objects::equals(Object,Object) ; primitive components are compared with '=='.",
+      "deprecated": false
+    },
+    {
+      "name": "mismatchedModData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Map < ResourceLocation , String >",
+      "parameters": [],
+      "description": "Returns the value of the mismatchedModData record component.",
+      "deprecated": false
+    },
+    {
+      "name": "presentModData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Map < ResourceLocation , org.apache.commons.lang3.tuple.Pair< String , String >>",
+      "parameters": [],
+      "description": "Returns the value of the presentModData record component.",
+      "deprecated": false
+    },
+    {
+      "name": "mismatchedDataFromServer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "Returns the value of the mismatchedDataFromServer record component.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20/net/minecraftforge/network/ConnectionData.ModMismatchData.html"
+}

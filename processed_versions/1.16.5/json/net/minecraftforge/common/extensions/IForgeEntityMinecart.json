@@ -1,0 +1,299 @@
+{
+  "type": "interface",
+  "name": "IForgeEntityMinecart",
+  "qualified_name": "net.minecraftforge.common.extensions.IForgeEntityMinecart",
+  "package": "net.minecraftforge.common.extensions",
+  "modifiers": [
+    "public",
+    "interface"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": []
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "DEFAULT_MAX_SPEED_AIR_LATERAL",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DEFAULT_MAX_SPEED_AIR_VERTICAL",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DEFAULT_AIR_DRAG",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "double",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "COLLISIONS",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "IMinecartCollisionHandler",
+      "description": "TODO: Remove 1.17",
+      "deprecated": false
+    }
+  ],
+  "constructors": [],
+  "methods": [
+    {
+      "name": "getMinecart",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "AbstractMinecartEntity",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getCollisionHandler",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "IMinecartCollisionHandler",
+      "parameters": [],
+      "description": "Gets the current global Minecart Collision handler if none is registered, returns null TODO: remove 1.17",
+      "deprecated": false
+    },
+    {
+      "name": "getCurrentRailPosition",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "BlockPos",
+      "parameters": [],
+      "description": "Internal, returns the current spot to look for the attached rail.",
+      "deprecated": false
+    },
+    {
+      "name": "getMaxSpeedWithRail",
+      "modifiers": [],
+      "return_type": "double",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "moveMinecartOnRail",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Moved to allow overrides. This code handles minecart movement and speed capping when on a rail.",
+      "deprecated": false
+    },
+    {
+      "name": "getCartItem",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "ItemStack",
+      "parameters": [],
+      "description": "This function returns an ItemStack that represents this cart. This should be an ItemStack that can be used by the player to place the cart, but is not necessary the item the cart drops when destroyed.",
+      "deprecated": false
+    },
+    {
+      "name": "canUseRail",
+      "modifiers": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "Returns true if this cart can currently use rails. This function is mainly used to gracefully detach a minecart from a rail.",
+      "deprecated": false
+    },
+    {
+      "name": "setCanUseRail",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "use",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Set whether the minecart can use rails. This function is mainly used to gracefully detach a minecart from a rail.",
+      "deprecated": false
+    },
+    {
+      "name": "shouldDoRailFunctions",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "Return false if this cart should not call onMinecartPass() and should ignore Powered Rails.",
+      "deprecated": false
+    },
+    {
+      "name": "isPoweredCart",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "Returns true if this cart is self propelled.",
+      "deprecated": false
+    },
+    {
+      "name": "canBeRidden",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "Returns true if this cart can be ridden by an Entity.",
+      "deprecated": false
+    },
+    {
+      "name": "getMaxCartSpeedOnRail",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "Returns the carts max speed when traveling on rails. Carts going faster than 1.1 cause issues with chunk loading. Carts cant traverse slopes or corners at greater than 0.5 - 0.6. This value is compared with the rails max speed and the carts current speed cap to determine the carts current max speed. A normal rail's max speed is 0.4.",
+      "deprecated": false
+    },
+    {
+      "name": "getCurrentCartSpeedCapOnRail",
+      "modifiers": [],
+      "return_type": "float",
+      "parameters": [],
+      "description": "Returns the current speed cap for the cart when traveling on rails. This functions differs from getMaxCartSpeedOnRail() in that it controls current movement and cannot be overridden. The value however can never be higher than getMaxCartSpeedOnRail().",
+      "deprecated": false
+    },
+    {
+      "name": "setCurrentCartSpeedCapOnRail",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "value",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMaxSpeedAirLateral",
+      "modifiers": [],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setMaxSpeedAirLateral",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "value",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMaxSpeedAirVertical",
+      "modifiers": [],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setMaxSpeedAirVertical",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "value",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDragAir",
+      "modifiers": [],
+      "return_type": "double",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setDragAir",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "value",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSlopeAdjustment",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "double",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getComparatorLevel",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "Called from Detector Rails to retrieve a redstone power level for comparators.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.16.5/net/minecraftforge/common/extensions/IForgeEntityMinecart.html"
+}

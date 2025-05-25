@@ -1,0 +1,413 @@
+{
+  "type": "class",
+  "name": "TextFilterClient",
+  "qualified_name": "net.minecraft.server.network.TextFilterClient",
+  "package": "net.minecraft.server.network",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "WORKER_COUNT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "AtomicInteger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "THREAD_FACTORY",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "ThreadFactory",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "chatEndpoint",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "URL",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "joinEndpoint",
+      "modifiers": [
+        "final"
+      ],
+      "type": "URL",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "leaveEndpoint",
+      "modifiers": [
+        "final"
+      ],
+      "type": "URL",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "authKey",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ruleId",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "serverId",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "roomId",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "chatIgnoreStrategy",
+      "modifiers": [
+        "final"
+      ],
+      "type": "TextFilterClient.IgnoreStrategy",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "workerPool",
+      "modifiers": [
+        "final"
+      ],
+      "type": "ExecutorService",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "TextFilterClient",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [
+        {
+          "name": "p_212236_",
+          "type": "URL",
+          "annotations": []
+        },
+        {
+          "name": "p_212237_",
+          "type": "URL",
+          "annotations": []
+        },
+        {
+          "name": "p_212238_",
+          "type": "URL",
+          "annotations": []
+        },
+        {
+          "name": "p_212239_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_212240_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_212241_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_212242_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_212243_",
+          "type": "TextFilterClient.IgnoreStrategy",
+          "annotations": []
+        },
+        {
+          "name": "p_212244_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getEndpoint",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "URL",
+      "parameters": [
+        {
+          "name": "p_212246_",
+          "type": "URI",
+          "annotations": []
+        },
+        {
+          "name": "p_212247_",
+          "type": "com.google.gson.JsonObject",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_212248_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_212249_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createFromConfig",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "TextFilterClient",
+      "parameters": [
+        {
+          "name": "p_143737_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "processJoinOrLeave",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_10142_",
+          "type": "com.mojang.authlib.GameProfile",
+          "annotations": []
+        },
+        {
+          "name": "p_10143_",
+          "type": "URL",
+          "annotations": []
+        },
+        {
+          "name": "p_10144_",
+          "type": "Executor",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "requestMessageProcessing",
+      "modifiers": [],
+      "return_type": "CompletableFuture < TextFilter.FilteredText >",
+      "parameters": [
+        {
+          "name": "p_10137_",
+          "type": "com.mojang.authlib.GameProfile",
+          "annotations": []
+        },
+        {
+          "name": "p_10138_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_10139_",
+          "type": "TextFilterClient.IgnoreStrategy",
+          "annotations": []
+        },
+        {
+          "name": "p_10140_",
+          "type": "Executor",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "close",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "drainStream",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_10146_",
+          "type": "InputStream",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "processRequestResponse",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "com.google.gson.JsonObject",
+      "parameters": [
+        {
+          "name": "p_10128_",
+          "type": "com.google.gson.JsonObject",
+          "annotations": []
+        },
+        {
+          "name": "p_10129_",
+          "type": "URL",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "processRequest",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_10152_",
+          "type": "com.google.gson.JsonObject",
+          "annotations": []
+        },
+        {
+          "name": "p_10153_",
+          "type": "URL",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "makeRequest",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "HttpURLConnection",
+      "parameters": [
+        {
+          "name": "p_10157_",
+          "type": "com.google.gson.JsonObject",
+          "annotations": []
+        },
+        {
+          "name": "p_10158_",
+          "type": "URL",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createContext",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "TextFilter",
+      "parameters": [
+        {
+          "name": "p_10135_",
+          "type": "com.mojang.authlib.GameProfile",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.18.2/net/minecraft/server/network/TextFilterClient.html"
+}

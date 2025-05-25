@@ -1,0 +1,769 @@
+{
+  "type": "class",
+  "name": "<M>>",
+  "qualified_name": "net.minecraft.world.level.lighting.<M>>",
+  "package": "net.minecraft.world.level.lighting",
+  "modifiers": [
+    "public",
+    "abstract",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "MAX_LEVEL",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MIN_OPACITY",
+      "modifiers": [
+        "protected",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PULL_LIGHT_IN_ENTRY",
+      "modifiers": [
+        "protected",
+        "static",
+        "final"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MIN_QUEUE_SIZE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PROPAGATION_DIRECTIONS",
+      "modifiers": [
+        "protected",
+        "static",
+        "final"
+      ],
+      "type": "Direction []",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "chunkSource",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "LightChunkGetter",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "storage",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "S extends LayerLightSectionStorage < M >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blockNodesToCheck",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.longs.LongOpenHashSet",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "decreaseQueue",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.longs.LongArrayFIFOQueue",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "increaseQueue",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.longs.LongArrayFIFOQueue",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mutablePos",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "BlockPos.MutableBlockPos",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CACHE_SIZE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastChunkPos",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "long[]",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastChunk",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "LightChunk []",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "LightEngine",
+      "modifiers": [
+        "protected"
+      ],
+      "parameters": [
+        {
+          "name": "p_285189_",
+          "type": "LightChunkGetter",
+          "annotations": []
+        },
+        {
+          "name": "p_284964_",
+          "type": "S",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "hasDifferentLightProperties",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_285159_",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "p_284985_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_285110_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_285372_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLightBlockInto",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_285330_",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "p_285453_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_285187_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_285318_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_285240_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_285196_",
+          "type": "Direction",
+          "annotations": []
+        },
+        {
+          "name": "p_285248_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getOcclusionShape",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "VoxelShape",
+      "parameters": [
+        {
+          "name": "p_285472_",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "p_285229_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_285020_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_285455_",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isEmptyShape",
+      "modifiers": [
+        "protected",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_285133_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getState",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "p_285338_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getOpacity",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_285084_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_285057_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shapeOccludes",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_285115_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_285154_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_284957_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_285155_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_285327_",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getOcclusionShape",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "VoxelShape",
+      "parameters": [
+        {
+          "name": "p_285136_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_285517_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_285376_",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getChunk",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "LightChunk",
+      "parameters": [
+        {
+          "name": "p_284967_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_285447_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clearChunkCache",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "checkBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_285352_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "queueSectionData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_285221_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_285427_",
+          "type": "DataLayer",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "retainData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_285314_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_284937_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateSectionStatus",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_285167_",
+          "type": "SectionPos",
+          "annotations": []
+        },
+        {
+          "name": "p_284934_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setLightEnabled",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_285116_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_285522_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "runLightUpdates",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "propagateIncreases",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "propagateDecreases",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "enqueueDecrease",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_285228_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_285464_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "enqueueIncrease",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_285223_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_285022_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasLightWork",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDataLayerData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "DataLayer",
+      "parameters": [
+        {
+          "name": "p_285093_",
+          "type": "SectionPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLightValue",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_285149_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDebugData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [
+        {
+          "name": "p_285363_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDebugSectionType",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "LayerLightSectionStorage.SectionType",
+      "parameters": [
+        {
+          "name": "p_285320_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "checkNode",
+      "modifiers": [
+        "protected",
+        "abstract"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_285507_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "propagateIncrease",
+      "modifiers": [
+        "protected",
+        "abstract"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_285325_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_285026_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_285197_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "propagateDecrease",
+      "modifiers": [
+        "protected",
+        "abstract"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_284941_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_285213_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20/net/minecraft/world/level/lighting/LightEngine.html"
+}

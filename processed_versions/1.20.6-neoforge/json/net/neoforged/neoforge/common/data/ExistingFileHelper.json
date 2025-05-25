@@ -1,0 +1,361 @@
+{
+  "type": "class",
+  "name": "ExistingFileHelper",
+  "qualified_name": "net.neoforged.neoforge.common.data.ExistingFileHelper",
+  "package": "net.neoforged.neoforge.common.data",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Enables data providers to check if other data files currently exist. The instance provided in the GatherDataEvent utilizes the standard resources (via VanillaPackResources ), forge's resources, as well as any extra resource packs passed in via the --existing argument, or mod resources via the --existing-mod argument.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "clientResources",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "MultiPackResourceManager",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "serverData",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "MultiPackResourceManager",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "enable",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "generated",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.google.common.collect.Multimap< PackType , ResourceLocation >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ExistingFileHelper",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "existingPacks",
+          "type": "Collection < Path >",
+          "annotations": []
+        },
+        {
+          "name": "existingMods",
+          "type": "Set < String >",
+          "annotations": []
+        },
+        {
+          "name": "enable",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "assetIndex",
+          "type": "String",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        },
+        {
+          "name": "assetsDir",
+          "type": "File",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "Create a new helper. This should probably NOT be used by mods, as the instance provided by forge is designed to be a central instance that tracks existence of generated data. Only create a new helper if you intentionally want to ignore the existence of other generated files.",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getManager",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "ResourceManager",
+      "parameters": [
+        {
+          "name": "packType",
+          "type": "PackType",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLocation",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [
+        {
+          "name": "base",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "suffix",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "prefix",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "exists",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "loc",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "packType",
+          "type": "PackType",
+          "annotations": []
+        }
+      ],
+      "description": "Check if a given resource exists in the known resource packs.",
+      "deprecated": false
+    },
+    {
+      "name": "exists",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "loc",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "type",
+          "type": "ExistingFileHelper.IResourceType",
+          "annotations": []
+        }
+      ],
+      "description": "Check if a given resource exists in the known resource packs. This is a convenience method to avoid repeating type/prefix/suffix and instead use the common definitions in ExistingFileHelper.ResourceType , or a custom ExistingFileHelper.IResourceType definition.",
+      "deprecated": false
+    },
+    {
+      "name": "exists",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "loc",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "packType",
+          "type": "PackType",
+          "annotations": []
+        },
+        {
+          "name": "pathSuffix",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "pathPrefix",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "Check if a given resource exists in the known resource packs.",
+      "deprecated": false
+    },
+    {
+      "name": "trackGenerated",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "loc",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "type",
+          "type": "ExistingFileHelper.IResourceType",
+          "annotations": []
+        }
+      ],
+      "description": "Track the existence of a generated file. This is a convenience method to avoid repeating type/prefix/suffix and instead use the common definitions in ExistingFileHelper.ResourceType , or a custom ExistingFileHelper.IResourceType definition. This should be called by data providers immediately when a new data object is created, i.e. not during run but instead when the \"builder\" (or whatever intermediate object) is created, such as a ModelBuilder . This represents a promise to generate the file later, since other datagen may rely on this file existing.",
+      "deprecated": false
+    },
+    {
+      "name": "trackGenerated",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "loc",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "packType",
+          "type": "PackType",
+          "annotations": []
+        },
+        {
+          "name": "pathSuffix",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "pathPrefix",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "Track the existence of a generated file. This should be called by data providers immediately when a new data object is created, i.e. not during run but instead when the \"builder\" (or whatever intermediate object) is created, such as a ModelBuilder . This represents a promise to generate the file later, since other datagen may rely on this file existing.",
+      "deprecated": false
+    },
+    {
+      "name": "getResource",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Resource",
+      "parameters": [
+        {
+          "name": "loc",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "packType",
+          "type": "PackType",
+          "annotations": []
+        },
+        {
+          "name": "pathSuffix",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "pathPrefix",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getResource",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Resource",
+      "parameters": [
+        {
+          "name": "loc",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "packType",
+          "type": "PackType",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getResourceStack",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "List < Resource >",
+      "parameters": [
+        {
+          "name": "loc",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "packType",
+          "type": "PackType",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isEnabled",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.6-neoforge/net/neoforged/neoforge/common/data/ExistingFileHelper.html"
+}

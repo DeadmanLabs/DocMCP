@@ -1,0 +1,680 @@
+{
+  "type": "class",
+  "name": "ClientCommonPacketListenerImpl",
+  "qualified_name": "net.minecraft.client.multiplayer.ClientCommonPacketListenerImpl",
+  "package": "net.minecraft.client.multiplayer",
+  "modifiers": [
+    "public",
+    "abstract",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "GENERIC_DISCONNECT_MESSAGE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Component",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "minecraft",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "Minecraft",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "connection",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "Connection",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "serverData",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "ServerData",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "serverBrand",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "telemetryManager",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "WorldSessionTelemetryManager",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "postDisconnectScreen",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "Screen",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isTransferring",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "strictErrorHandling",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "deferredPackets",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "List < ClientCommonPacketListenerImpl.DeferredPacket >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "serverCookies",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "Map < ResourceLocation , byte[]>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "customReportDetails",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "Map < String , String >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "serverLinks",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "ServerLinks",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "connectionType",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "ConnectionType",
+      "description": "Holds the current connection type, based on the types of payloads that have been received so far.",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ClientCommonPacketListenerImpl",
+      "modifiers": [
+        "protected"
+      ],
+      "parameters": [
+        {
+          "name": "p_295454_",
+          "type": "Minecraft",
+          "annotations": []
+        },
+        {
+          "name": "p_294773_",
+          "type": "Connection",
+          "annotations": []
+        },
+        {
+          "name": "p_294647_",
+          "type": "CommonListenerCookie",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "onPacketError",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_341624_",
+          "type": "Packet",
+          "annotations": []
+        },
+        {
+          "name": "p_341639_",
+          "type": "Exception",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createDisconnectionInfo",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "DisconnectionDetails",
+      "parameters": [
+        {
+          "name": "p_350683_",
+          "type": "Component",
+          "annotations": []
+        },
+        {
+          "name": "p_350813_",
+          "type": "Throwable",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "storeDisconnectionReport",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Optional < Path >",
+      "parameters": [
+        {
+          "name": "p_350430_",
+          "type": "Packet",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_350533_",
+          "type": "Throwable",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldHandleMessage",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_341905_",
+          "type": "Packet <?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleKeepAlive",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_295361_",
+          "type": "ClientboundKeepAlivePacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handlePing",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_295594_",
+          "type": "ClientboundPingPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleCustomPayload",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_295727_",
+          "type": "ClientboundCustomPayloadPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleCustomPayload",
+      "modifiers": [
+        "protected",
+        "abstract"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_295776_",
+          "type": "CustomPacketPayload",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleResourcePackPush",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_314606_",
+          "type": "ClientboundResourcePackPushPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleResourcePackPop",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_314537_",
+          "type": "ClientboundResourcePackPopPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "preparePackPrompt",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "Component",
+      "parameters": [
+        {
+          "name": "p_296200_",
+          "type": "Component",
+          "annotations": []
+        },
+        {
+          "name": "p_295584_",
+          "type": "Component",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "parseResourcePackUrl",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "URL",
+      "parameters": [
+        {
+          "name": "p_295495_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleRequestCookie",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_320212_",
+          "type": "ClientboundCookieRequestPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleStoreCookie",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_320008_",
+          "type": "ClientboundStoreCookiePacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleCustomReportDetails",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_350638_",
+          "type": "ClientboundCustomReportDetailsPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleServerLinks",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_350990_",
+          "type": "ClientboundServerLinksPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleTransfer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_320739_",
+          "type": "ClientboundTransferPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleDisconnect",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_296159_",
+          "type": "ClientboundDisconnectPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sendDeferredPackets",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "send",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_295097_",
+          "type": "Packet <?>",
+          "annotations": []
+        }
+      ],
+      "description": "Description copied from interface: ICommonPacketListener",
+      "deprecated": false
+    },
+    {
+      "name": "onDisconnect",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_350760_",
+          "type": "DisconnectionDetails",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fillListenerSpecificCrashDetails",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_350364_",
+          "type": "CrashReport",
+          "annotations": []
+        },
+        {
+          "name": "p_315011_",
+          "type": "CrashReportCategory",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createDisconnectScreen",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "Screen",
+      "parameters": [
+        {
+          "name": "p_350769_",
+          "type": "DisconnectionDetails",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "serverBrand",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sendWhen",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_296259_",
+          "type": "Packet <? extends ServerboundPacketListener >",
+          "annotations": []
+        },
+        {
+          "name": "p_296086_",
+          "type": "BooleanSupplier",
+          "annotations": []
+        },
+        {
+          "name": "p_294812_",
+          "type": "Duration",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addOrUpdatePackPrompt",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Screen",
+      "parameters": [
+        {
+          "name": "p_314948_",
+          "type": "UUID",
+          "annotations": []
+        },
+        {
+          "name": "p_315012_",
+          "type": "URL",
+          "annotations": []
+        },
+        {
+          "name": "p_314981_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_315013_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_314960_",
+          "type": "Component",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getConnection",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Connection",
+      "parameters": [],
+      "description": "Description copied from interface: ICommonPacketListener",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21.x-neoforge/net/minecraft/client/multiplayer/ClientCommonPacketListenerImpl.html"
+}

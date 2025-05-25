@@ -1,0 +1,1232 @@
+{
+  "type": "class",
+  "name": "AbstractMinecartEntity",
+  "qualified_name": "net.minecraft.entity.item.minecart.AbstractMinecartEntity",
+  "package": "net.minecraft.entity.item.minecart",
+  "modifiers": [
+    "public",
+    "abstract",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraftforge.common.capabilities.CapabilityProvider",
+      "Entity",
+      "net.minecraft.entity.Entity"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "DATA_ID_HURT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DataParameter < Integer >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_ID_HURTDIR",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DataParameter < Integer >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_ID_DAMAGE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DataParameter < Float >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_ID_DISPLAY_BLOCK",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DataParameter < Integer >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_ID_DISPLAY_OFFSET",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DataParameter < Integer >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_ID_CUSTOM_DISPLAY",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DataParameter < Boolean >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "POSE_DISMOUNT_HEIGHTS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "com.google.common.collect.ImmutableMap< Pose , com.google.common.collect.ImmutableList< Integer >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "flipped",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "EXITS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Map < RailShape , com.mojang.datafixers.util.Pair< Vector3i , Vector3i >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "COLLISIONS",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "IMinecartCollisionHandler",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lSteps",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lx",
+      "modifiers": [
+        "private"
+      ],
+      "type": "double",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ly",
+      "modifiers": [
+        "private"
+      ],
+      "type": "double",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lz",
+      "modifiers": [
+        "private"
+      ],
+      "type": "double",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lyr",
+      "modifiers": [
+        "private"
+      ],
+      "type": "double",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lxr",
+      "modifiers": [
+        "private"
+      ],
+      "type": "double",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lxd",
+      "modifiers": [
+        "private"
+      ],
+      "type": "double",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lyd",
+      "modifiers": [
+        "private"
+      ],
+      "type": "double",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lzd",
+      "modifiers": [
+        "private"
+      ],
+      "type": "double",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canBePushed",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canUseRail",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "currentSpeedCapOnRail",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "maxSpeedAirLateral",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "maxSpeedAirVertical",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dragAir",
+      "modifiers": [
+        "private"
+      ],
+      "type": "double",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "AbstractMinecartEntity",
+      "modifiers": [
+        "protected"
+      ],
+      "parameters": [
+        {
+          "name": "p_i48538_1_",
+          "type": "EntityType <?>",
+          "annotations": []
+        },
+        {
+          "name": "p_i48538_2_",
+          "type": "World",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "AbstractMinecartEntity",
+      "modifiers": [
+        "protected"
+      ],
+      "parameters": [
+        {
+          "name": "p_i48539_1_",
+          "type": "EntityType <?>",
+          "annotations": []
+        },
+        {
+          "name": "p_i48539_2_",
+          "type": "World",
+          "annotations": []
+        },
+        {
+          "name": "p_i48539_3_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_i48539_5_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_i48539_7_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getCollisionHandler",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "IMinecartCollisionHandler",
+      "parameters": [],
+      "description": "Description copied from interface: IForgeEntityMinecart",
+      "deprecated": false
+    },
+    {
+      "name": "registerCollisionHandler",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "handler",
+          "type": "IMinecartCollisionHandler",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createMinecart",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "AbstractMinecartEntity",
+      "parameters": [
+        {
+          "name": "p_184263_0_",
+          "type": "World",
+          "annotations": []
+        },
+        {
+          "name": "p_184263_1_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_184263_3_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_184263_5_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_184263_7_",
+          "type": "AbstractMinecartEntity.Type",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isMovementNoisy",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "defineSynchedData",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canCollideWith",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_241849_1_",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isPushable",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRelativePortalPosition",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "Vector3d",
+      "parameters": [
+        {
+          "name": "p_241839_1_",
+          "type": "Direction.Axis",
+          "annotations": []
+        },
+        {
+          "name": "p_241839_2_",
+          "type": "TeleportationRepositioner.Result",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPassengersRidingOffset",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "double",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDismountLocationForPassenger",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Vector3d",
+      "parameters": [
+        {
+          "name": "p_230268_1_",
+          "type": "LivingEntity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hurt",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_70097_1_",
+          "type": "DamageSource",
+          "annotations": []
+        },
+        {
+          "name": "p_70097_2_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockSpeedFactor",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "destroy",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_94095_1_",
+          "type": "DamageSource",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "animateHurt",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isPickable",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "exits",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "com.mojang.datafixers.util.Pair< Vector3i , Vector3i >",
+      "parameters": [
+        {
+          "name": "p_226573_0_",
+          "type": "RailShape",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMotionDirection",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Direction",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMaxSpeed",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "double",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "activateMinecart",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_96095_1_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_96095_2_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_96095_3_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_96095_4_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "comeOffTrack",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "moveAlongTrack",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_180460_1_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_180460_2_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isRedstoneConductor",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_213900_1_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "applyNaturalSlowdown",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPosOffs",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Vector3d",
+      "parameters": [
+        {
+          "name": "p_70495_1_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_70495_3_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_70495_5_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_70495_7_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPos",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Vector3d",
+      "parameters": [
+        {
+          "name": "p_70489_1_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_70489_3_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_70489_5_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBoundingBoxForCulling",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "AxisAlignedBB",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "readAdditionalSaveData",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_70037_1_",
+          "type": "CompoundNBT",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addAdditionalSaveData",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_213281_1_",
+          "type": "CompoundNBT",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "push",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_70108_1_",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lerpTo",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_180426_1_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_180426_3_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_180426_5_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_180426_7_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_180426_8_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_180426_9_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_180426_10_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lerpMotion",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_70016_1_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_70016_3_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_70016_5_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setDamage",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_70492_1_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDamage",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setHurtTime",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_70497_1_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getHurtTime",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setHurtDir",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_70494_1_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getHurtDir",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMinecartType",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "AbstractMinecartEntity.Type",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDisplayBlockState",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BlockState",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDefaultDisplayBlockState",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BlockState",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDisplayOffset",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDefaultDisplayOffset",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setDisplayBlockState",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_174899_1_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setDisplayOffset",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_94086_1_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasCustomDisplay",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setCustomDisplay",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_94096_1_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAddEntityPacket",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "IPacket <?>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canUseRail",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "Description copied from interface: IForgeEntityMinecart",
+      "deprecated": false
+    },
+    {
+      "name": "setCanUseRail",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "value",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Description copied from interface: IForgeEntityMinecart",
+      "deprecated": false
+    },
+    {
+      "name": "getCurrentCartSpeedCapOnRail",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "Description copied from interface: IForgeEntityMinecart",
+      "deprecated": false
+    },
+    {
+      "name": "setCurrentCartSpeedCapOnRail",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "value",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMaxSpeedAirLateral",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setMaxSpeedAirLateral",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "value",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMaxSpeedAirVertical",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setMaxSpeedAirVertical",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "value",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDragAir",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "double",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setDragAir",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "value",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMaxSpeedWithRail",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "double",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "moveMinecartOnRail",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Description copied from interface: IForgeEntityMinecart",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.16.5/net/minecraft/entity/item/minecart/AbstractMinecartEntity.html"
+}

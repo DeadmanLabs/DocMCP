@@ -1,0 +1,152 @@
+{
+  "type": "class",
+  "name": "VanillaConnectionNetworkFilter",
+  "qualified_name": "net.neoforged.neoforge.network.filters.VanillaConnectionNetworkFilter",
+  "package": "net.neoforged.neoforge.network.filters",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "A filter for impl packets, used to filter/modify parts of vanilla impl messages that will cause errors or warnings on vanilla clients, for example entity attributes that are added by Forge or mods.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "Packet",
+      "net.neoforged.neoforge.network.filters.VanillaPacketFilter"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "connectionType",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ConnectionType",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "VanillaConnectionNetworkFilter",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "connectionType",
+          "type": "ConnectionType",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "isNecessary",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "manager",
+          "type": "Connection",
+          "annotations": []
+        }
+      ],
+      "description": "Description copied from class: VanillaPacketFilter",
+      "deprecated": false
+    },
+    {
+      "name": "filterEntityProperties",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "ClientboundUpdateAttributesPacket",
+      "parameters": [
+        {
+          "name": "msg",
+          "type": "ClientboundUpdateAttributesPacket",
+          "annotations": []
+        }
+      ],
+      "description": "Filter for SEntityPropertiesPacket. Filters out any entity attributes that are not in the \"minecraft\" namespace. A vanilla client would ignore these with an error log.",
+      "deprecated": false
+    },
+    {
+      "name": "filterCommandList",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "ClientboundCommandsPacket",
+      "parameters": [
+        {
+          "name": "packet",
+          "type": "ClientboundCommandsPacket",
+          "annotations": []
+        }
+      ],
+      "description": "Filter for SCommandListPacket. Uses CommandTreeCleaner to filter out any ArgumentTypes that are not in the \"minecraft\" or \"brigadier\" namespace. A vanilla client would fail to deserialize the packet and disconnect with an error message if these were sent.",
+      "deprecated": false
+    },
+    {
+      "name": "filterCustomTagTypes",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "ClientboundUpdateTagsPacket",
+      "parameters": [
+        {
+          "name": "packet",
+          "type": "ClientboundUpdateTagsPacket",
+          "annotations": []
+        }
+      ],
+      "description": "Filters out custom tag types that the vanilla client won't recognize. It prevents a rare error from logging and reduces the packet size",
+      "deprecated": false
+    },
+    {
+      "name": "isVanillaRegistry",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "location",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21.x-neoforge/net/neoforged/neoforge/network/filters/VanillaConnectionNetworkFilter.html"
+}

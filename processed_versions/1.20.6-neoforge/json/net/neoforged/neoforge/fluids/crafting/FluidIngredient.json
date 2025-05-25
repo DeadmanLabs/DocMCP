@@ -1,0 +1,428 @@
+{
+  "type": "class",
+  "name": "FluidIngredient",
+  "qualified_name": "net.neoforged.neoforge.fluids.crafting.FluidIngredient",
+  "package": "net.neoforged.neoforge.fluids.crafting",
+  "modifiers": [
+    "public",
+    "abstract",
+    "class"
+  ],
+  "annotations": [],
+  "description": "This class serves as the fluid analogue of an item Ingredient , that is, a representation of both a predicate to test FluidStack s against, and a list of matching stacks for e.g. display purposes. The most common use for fluid ingredients is found in modded recipe inputs, for example crafting mechanics accepting a list of different fluids; since those mechanics even rely on a certain amount of a fluid being present, and fluid ingredients inherently do not hold any information with respect to fluid amount; you may also want to take a look at SizedFluidIngredient !",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "SINGLE_OR_TAG_CODEC",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.serialization.MapCodec< FluidIngredient >",
+      "description": "This is a codec that is used to represent basic \"single fluid\" or \"tag\" fluid ingredients directly, similar to Ingredient.Value.CODEC , except not using value subclasses and instead directly providing the corresponding FluidIngredient .",
+      "deprecated": false
+    },
+    {
+      "name": "MAP_CODEC_NONEMPTY",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.serialization.MapCodec< FluidIngredient >",
+      "description": "This is a codec that represents a single FluidIngredient in map form; either dispatched by type or falling back to SINGLE_OR_TAG_CODEC if no type is specified.",
+      "deprecated": false
+    },
+    {
+      "name": "MAP_CODEC_CODEC",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.serialization.Codec< FluidIngredient >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LIST_CODEC",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.serialization.Codec< List < FluidIngredient >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LIST_CODEC_NON_EMPTY",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.serialization.Codec< List < FluidIngredient >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CODEC",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.serialization.Codec< FluidIngredient >",
+      "description": "Full codec representing a fluid ingredient in all possible forms. Allows for arrays of fluid ingredients to be read as a CompoundFluidIngredient , as well as for the type field to be left out in case of a single fluid or tag ingredient.",
+      "deprecated": false
+    },
+    {
+      "name": "CODEC_NON_EMPTY",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.serialization.Codec< FluidIngredient >",
+      "description": "Same as CODEC , except not allowing for empty ingredients ( [] ) to be specified.",
+      "deprecated": false
+    },
+    {
+      "name": "STREAM_CODEC",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "StreamCodec < RegistryFriendlyByteBuf , FluidIngredient >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stacks",
+      "modifiers": [
+        "private"
+      ],
+      "type": "@Nullable FluidStack []",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "FluidIngredient",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getStacks",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "FluidStack []",
+      "parameters": [],
+      "description": "Returns an array of fluid stacks that this ingredient accepts. The fluid stacks within the returned array must not be modified by the caller! Returns an array of fluid stacks this ingredient accepts.",
+      "deprecated": false
+    },
+    {
+      "name": "test",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "fluidStack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Checks if a given fluid stack matches this ingredient. The stack must not be modified in any way.",
+      "deprecated": false
+    },
+    {
+      "name": "generateStacks",
+      "modifiers": [
+        "protected",
+        "abstract"
+      ],
+      "return_type": "Stream < FluidStack >",
+      "parameters": [],
+      "description": "Generates a stream of all fluid stacks this ingredient matches against. For compatibility reasons, implementations should follow the same guidelines as for custom item ingredients, i.e.: These stacks are generally used for display purposes, and need not be exhaustive or perfectly accurate. An exception is ingredients that are simple , for which it is important that the returned stacks correspond exactly to all the accepted Fluid s. At least one stack should always be returned, otherwise the ingredient may be considered accidentally empty . The ingredient should try to return at least one stack with each accepted Fluid . This allows mods that inspect the ingredient to figure out which stacks it might accept.",
+      "deprecated": false
+    },
+    {
+      "name": "isSimple",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "Returns whether this fluid ingredient always requires direct stack testing .",
+      "deprecated": false
+    },
+    {
+      "name": "getType",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "FluidIngredientType <?>",
+      "parameters": [],
+      "description": "Returns The type of this fluid ingredient.. The type must be registered to NeoForgeRegistries.FLUID_INGREDIENT_TYPES .",
+      "deprecated": false
+    },
+    {
+      "name": "isEmpty",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "Checks if this ingredient is explicitly empty , i.e. equal to EmptyFluidIngredient.INSTANCE . Note: This does not return true for \"accidentally empty\" ingredients, including compound ingredients that are explicitly constructed with no children or intersection / difference ingredients that resolve to an empty set.",
+      "deprecated": false
+    },
+    {
+      "name": "hasNoFluids",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "Checks if this ingredient matches no fluids, i.e. if its list of matching fluids is empty. Note that this method explicitly resolves the ingredient; if this is not desired, you will need to check for emptiness another way!",
+      "deprecated": false
+    },
+    {
+      "name": "hashCode",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "equals",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "obj",
+          "type": "Object",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "empty",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "FluidIngredient",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "of",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "FluidIngredient",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "of",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "FluidIngredient",
+      "parameters": [
+        {
+          "name": "fluids",
+          "type": "FluidStack ...",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "of",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "FluidIngredient",
+      "parameters": [
+        {
+          "name": "fluids",
+          "type": "Fluid ...",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "of",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "FluidIngredient",
+      "parameters": [
+        {
+          "name": "fluids",
+          "type": "Stream < Fluid >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "single",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "FluidIngredient",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "single",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "FluidIngredient",
+      "parameters": [
+        {
+          "name": "fluid",
+          "type": "Fluid",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "single",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "FluidIngredient",
+      "parameters": [
+        {
+          "name": "holder",
+          "type": "Holder < Fluid >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tag",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "FluidIngredient",
+      "parameters": [
+        {
+          "name": "tag",
+          "type": "TagKey < Fluid >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "singleOrTagCodec",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "com.mojang.serialization.MapCodec< FluidIngredient >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "makeMapCodec",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "com.mojang.serialization.MapCodec< FluidIngredient >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "codec",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "com.mojang.serialization.Codec< FluidIngredient >",
+      "parameters": [
+        {
+          "name": "allowEmpty",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.6-neoforge/net/neoforged/neoforge/fluids/crafting/FluidIngredient.html"
+}

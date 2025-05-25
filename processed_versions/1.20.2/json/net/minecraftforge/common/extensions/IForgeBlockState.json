@@ -1,0 +1,1421 @@
+{
+  "type": "interface",
+  "name": "IForgeBlockState",
+  "qualified_name": "net.minecraftforge.common.extensions.IForgeBlockState",
+  "package": "net.minecraftforge.common.extensions",
+  "modifiers": [
+    "public",
+    "interface"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": []
+  },
+  "nested_classes": [],
+  "fields": [],
+  "constructors": [],
+  "methods": [
+    {
+      "name": "self",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "BlockState",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFriction",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "entity",
+          "type": "Entity",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "Gets the slipperiness at the given location at the given state. Normally between 0 and 1. Note that entities may reduce slipperiness by a certain factor of their own; for LivingEntity , this is .91 . ItemEntity uses .98 , and FishingHook uses .92 .",
+      "deprecated": false
+    },
+    {
+      "name": "getLightEmission",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Get a light value for this block, taking into account the given state and coordinates, normal ranges are between 0 and 15",
+      "deprecated": false
+    },
+    {
+      "name": "isLadder",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "entity",
+          "type": "LivingEntity",
+          "annotations": []
+        }
+      ],
+      "description": "Checks if a player or entity can use this block to 'climb' like a ladder.",
+      "deprecated": false
+    },
+    {
+      "name": "canHarvestBlock",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        }
+      ],
+      "description": "Determines if the player can harvest this block, obtaining it's drops when the block is destroyed.",
+      "deprecated": false
+    },
+    {
+      "name": "onDestroyedByPlayer",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "willHarvest",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "fluid",
+          "type": "FluidState",
+          "annotations": []
+        }
+      ],
+      "description": "Called when a player removes a block. This is responsible for actually destroying the block, and the block is intact at time of call. This is called regardless of whether the player can harvest the block or not. Return true if the block is actually destroyed. Note: When used in multiplayer, this is called on both client and server sides!",
+      "deprecated": false
+    },
+    {
+      "name": "isBed",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "sleeper",
+          "type": "LivingEntity",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "Determines if this block is classified as a Bed, Allowing players to sleep in it, though the block has to specifically perform the sleeping functionality in it's activated event.",
+      "deprecated": false
+    },
+    {
+      "name": "isValidSpawn",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "type",
+          "type": "SpawnPlacements.Type",
+          "annotations": []
+        },
+        {
+          "name": "entityType",
+          "type": "EntityType <?>",
+          "annotations": []
+        }
+      ],
+      "description": "Determines if a specified mob type can spawn on this block, returning false will prevent any mob from spawning on the block.",
+      "deprecated": false
+    },
+    {
+      "name": "getRespawnPosition",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "Optional < Vec3 >",
+      "parameters": [
+        {
+          "name": "type",
+          "type": "EntityType <?>",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "orientation",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "entity",
+          "type": "LivingEntity",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "Returns the position that the entity is moved to upon respawning at this block.",
+      "deprecated": false
+    },
+    {
+      "name": "setBedOccupied",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "sleeper",
+          "type": "LivingEntity",
+          "annotations": []
+        },
+        {
+          "name": "occupied",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Called when a user either starts or stops sleeping in the bed.",
+      "deprecated": false
+    },
+    {
+      "name": "getBedDirection",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "Direction",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the direction of the block. Same values that are returned by BlockDirectional",
+      "deprecated": false
+    },
+    {
+      "name": "getExplosionResistance",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "explosion",
+          "type": "Explosion",
+          "annotations": []
+        }
+      ],
+      "description": "Location sensitive version of getExplosionResistance",
+      "deprecated": false
+    },
+    {
+      "name": "getCloneItemStack",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "ItemStack",
+      "parameters": [
+        {
+          "name": "target",
+          "type": "HitResult",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        }
+      ],
+      "description": "Called when A user uses the creative pick block button on this block",
+      "deprecated": false
+    },
+    {
+      "name": "addLandingEffects",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "state2",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "entity",
+          "type": "LivingEntity",
+          "annotations": []
+        },
+        {
+          "name": "numberOfParticles",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "Allows a block to override the standard EntityLivingBase.updateFallState particles, this is a server side method that spawns particles with WorldServer.spawnParticle.",
+      "deprecated": false
+    },
+    {
+      "name": "addRunningEffects",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "entity",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "Allows a block to override the standard vanilla running particles. This is called from Entity#spawnSprintParticle() and is called both, Client and server side, it's up to the implementor to client check / server check. By default vanilla spawns particles only on the client and the server methods no-op.",
+      "deprecated": false
+    },
+    {
+      "name": "canSustainPlant",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "facing",
+          "type": "Direction",
+          "annotations": []
+        },
+        {
+          "name": "plantable",
+          "type": "IPlantable",
+          "annotations": []
+        }
+      ],
+      "description": "Determines if this block can support the passed in plant, allowing it to be planted and grow. Some examples: Reeds check if its a reed, or if its sand/dirt/grass and adjacent to water Cacti checks if its a cacti, or if its sand Nether types check for soul sand Crops check for tilled soil Caves check if it's a solid surface Plains check if its grass or dirt Water check if its still water",
+      "deprecated": false
+    },
+    {
+      "name": "onTreeGrow",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "placeFunction",
+          "type": "BiConsumer < BlockPos , BlockState >",
+          "annotations": []
+        },
+        {
+          "name": "randomSource",
+          "type": "RandomSource",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "config",
+          "type": "TreeConfiguration",
+          "annotations": []
+        }
+      ],
+      "description": "Called when a tree grows on top of this block and tries to set it to dirt by the trunk placer. An override that returns true is responsible for using the place function to set blocks in the world properly during generation. A modded grass block might override this method to ensure it turns into the corresponding modded dirt instead of regular dirt when a tree grows on it. For modded grass blocks, returning true from this method is NOT a substitute for adding your block to the #minecraft:dirt tag, rather for changing the behaviour to something other than setting to dirt. NOTE: This happens DURING world generation, the generation may be incomplete when this is called. Use the placeFunction when modifying the level.",
+      "deprecated": false
+    },
+    {
+      "name": "isFertile",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Checks if this soil is fertile, typically this means that growth rates of plants on this soil will be slightly sped up. Only vanilla case is tilledField when it is within range of water.",
+      "deprecated": false
+    },
+    {
+      "name": "isConduitFrame",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "conduit",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Determines if this block can be used as the frame of a conduit.",
+      "deprecated": false
+    },
+    {
+      "name": "isPortalFrame",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Determines if this block can be used as part of a frame of a nether portal.",
+      "deprecated": false
+    },
+    {
+      "name": "getExpDrop",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "randomSource",
+          "type": "RandomSource",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "fortuneLevel",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "silkTouchLevel",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "Gathers how much experience this block drops when broken.",
+      "deprecated": false
+    },
+    {
+      "name": "rotate",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "LevelAccessor",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "direction",
+          "type": "Rotation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getEnchantPowerBonus",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Determines the amount of enchanting power this block can provide to an enchanting table.",
+      "deprecated": false
+    },
+    {
+      "name": "onNeighborChange",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "neighbor",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Called when a tile entity on a side of this block changes is created or is destroyed.",
+      "deprecated": false
+    },
+    {
+      "name": "shouldCheckWeakPower",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "SignalGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "side",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "description": "Called to determine whether to allow the block to handle its own indirect power rather than using the default rules.",
+      "deprecated": false
+    },
+    {
+      "name": "getWeakChanges",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "If this block should be notified of weak changes. Weak changes are changes 1 block away through a solid block. Similar to comparators.",
+      "deprecated": false
+    },
+    {
+      "name": "getSoundType",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "SoundType",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "entity",
+          "type": "Entity",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "Sensitive version of getSoundType",
+      "deprecated": false
+    },
+    {
+      "name": "getBeaconColorMultiplier",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "@org.jetbrains.annotations.Nullable float[]",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "beacon",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getStateAtViewpoint",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "viewpoint",
+          "type": "Vec3",
+          "annotations": []
+        }
+      ],
+      "description": "Used to determine the state 'viewed' by an entity (see Camera.getBlockAtCamera() ). Can be used by fluid blocks to determine if the viewpoint is within the fluid or not.",
+      "deprecated": false
+    },
+    {
+      "name": "isSlimeBlock",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isStickyBlock",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canStickTo",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "other",
+          "type": "BlockState",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        }
+      ],
+      "description": "Determines if this block can stick to another block when pushed by a piston.",
+      "deprecated": false
+    },
+    {
+      "name": "getFlammability",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "face",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "description": "Chance that fire will spread and consume this block. 300 being a 100% chance, 0, being a 0% chance.",
+      "deprecated": false
+    },
+    {
+      "name": "isFlammable",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "face",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "description": "Called when fire is updating, checks if a block face can catch fire.",
+      "deprecated": false
+    },
+    {
+      "name": "onCaughtFire",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "face",
+          "type": "Direction",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        },
+        {
+          "name": "igniter",
+          "type": "LivingEntity",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "If the block is flammable, this is called when it gets lit on fire.",
+      "deprecated": false
+    },
+    {
+      "name": "getFireSpreadSpeed",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "face",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "description": "Called when fire is updating on a neighbor block. The higher the number returned, the faster fire will spread around this block.",
+      "deprecated": false
+    },
+    {
+      "name": "isFireSource",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "side",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "description": "Currently only called by fire when it is on top of this block. Returning true will prevent the fire from naturally dying during updating. Also prevents firing from dying from rain.",
+      "deprecated": false
+    },
+    {
+      "name": "canEntityDestroy",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "entity",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "Determines if this block is can be destroyed by the specified entities normal behavior.",
+      "deprecated": false
+    },
+    {
+      "name": "isBurning",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Determines if this block should set fire and deal fire damage to entities coming into contact with it.",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockPathType",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "@Nullable BlockPathTypes",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "mob",
+          "type": "Mob",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "Gets the path type of this block when an entity is pathfinding. When null , uses vanilla behavior.",
+      "deprecated": false
+    },
+    {
+      "name": "getAdjacentBlockPathType",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "@Nullable BlockPathTypes",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "mob",
+          "type": "Mob",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        },
+        {
+          "name": "originalType",
+          "type": "BlockPathTypes",
+          "annotations": []
+        }
+      ],
+      "description": "Gets the path type of the adjacent block to a pathfinding entity. Path types with a negative malus are not traversable for the entity. Pathfinding entities will favor paths consisting of a lower malus. When null , uses vanilla behavior.",
+      "deprecated": false
+    },
+    {
+      "name": "canDropFromExplosion",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "explosion",
+          "type": "Explosion",
+          "annotations": []
+        }
+      ],
+      "description": "Determines if this block should drop loot when exploded.",
+      "deprecated": false
+    },
+    {
+      "name": "onBlockExploded",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "explosion",
+          "type": "Explosion",
+          "annotations": []
+        }
+      ],
+      "description": "Called when the block is destroyed by an explosion. Useful for allowing the block to take into account tile entities, state, etc. when exploded, before it is removed.",
+      "deprecated": false
+    },
+    {
+      "name": "collisionExtendsVertically",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "collidingEntity",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "Determines if this block's collision box should be treated as though it can extend above its block space. This can be used to replicate fence and wall behavior.",
+      "deprecated": false
+    },
+    {
+      "name": "shouldDisplayFluidOverlay",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "BlockAndTintGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "fluidState",
+          "type": "FluidState",
+          "annotations": []
+        }
+      ],
+      "description": "Called to determine whether this block should use the fluid overlay texture or flowing texture when it is placed under the fluid.",
+      "deprecated": false
+    },
+    {
+      "name": "getToolModifiedState",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "@Nullable BlockState",
+      "parameters": [
+        {
+          "name": "context",
+          "type": "UseOnContext",
+          "annotations": []
+        },
+        {
+          "name": "toolAction",
+          "type": "ToolAction",
+          "annotations": []
+        },
+        {
+          "name": "simulate",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the state that this block should transform into when right-clicked by a tool. For example: Used to determine if an axe can strip , a shovel can path , or a hoe can till . Returns null if nothing should happen.",
+      "deprecated": false
+    },
+    {
+      "name": "isScaffolding",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "LivingEntity",
+          "annotations": []
+        }
+      ],
+      "description": "Checks if a player or entity handles movement on this block like scaffolding.",
+      "deprecated": false
+    },
+    {
+      "name": "canRedstoneConnectTo",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "direction",
+          "type": "Direction",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "Whether redstone dust should visually connect to this block on a side. Modded redstone wire blocks should call this function to determine visual connections.",
+      "deprecated": false
+    },
+    {
+      "name": "hidesNeighborFace",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "neighborState",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "dir",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "description": "Whether this block hides the neighbors face pointed towards by the given direction. This method should only be used for blocks you don't control, for your own blocks override BlockBehaviour.skipRendering(BlockState, BlockState, Direction) on the respective block instead",
+      "deprecated": false
+    },
+    {
+      "name": "supportsExternalFaceHiding",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "Whether this block allows a neighboring block to hide the face of this block it touches. If this returns true, hidesNeighborFace(BlockGetter, BlockPos, BlockState, Direction) will be called on the neighboring block.",
+      "deprecated": false
+    },
+    {
+      "name": "onBlockStateChange",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "oldState",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "Called after the BlockState at the given BlockPos was changed and neighbors were updated. This method is called on the server and client side. Modifying the level is disallowed in this method. Useful for calculating additional data based on the new state and the neighbor's reactions to the state change.",
+      "deprecated": false
+    },
+    {
+      "name": "canBeHydrated",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "getter",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "fluid",
+          "type": "FluidState",
+          "annotations": []
+        },
+        {
+          "name": "fluidPos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Returns whether the block can be hydrated by a fluid. Hydration is an arbitrary word which depends on the block. A farmland has moisture A sponge can soak up the liquid A coral can live",
+      "deprecated": false
+    },
+    {
+      "name": "getAppearance",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "BlockAndTintGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "side",
+          "type": "Direction",
+          "annotations": []
+        },
+        {
+          "name": "queryState",
+          "type": "BlockState",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        },
+        {
+          "name": "queryPos",
+          "type": "BlockPos",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "Returns the BlockState that this state reports to look like on the given side for querying by other mods.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.2/net/minecraftforge/common/extensions/IForgeBlockState.html"
+}

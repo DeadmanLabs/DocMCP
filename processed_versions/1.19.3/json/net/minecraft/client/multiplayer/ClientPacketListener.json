@@ -1,0 +1,2803 @@
+{
+  "type": "class",
+  "name": "ClientPacketListener",
+  "qualified_name": "net.minecraft.client.multiplayer.ClientPacketListener",
+  "package": "net.minecraft.client.multiplayer",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "GENERIC_DISCONNECT_MESSAGE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Component",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UNSECURE_SERVER_TOAST_TITLE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Component",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UNSERURE_SERVER_TOAST",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Component",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "INVALID_PACKET",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Component",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CHAT_VALIDATION_FAILED_ERROR",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Component",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PENDING_OFFSET_THRESHOLD",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "connection",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Connection",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "serverData",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ServerData",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "localGameProfile",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.mojang.authlib.GameProfile",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "callbackScreen",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Screen",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "minecraft",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Minecraft",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "level",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ClientLevel",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "levelData",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ClientLevel.ClientLevelData",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playerInfoMap",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < UUID , PlayerInfo >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "listedPlayers",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Set < PlayerInfo >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "advancements",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ClientAdvancements",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suggestionsProvider",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ClientSuggestionProvider",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "debugQueryHandler",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "DebugQueryHandler",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "serverChunkRadius",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "serverSimulationDistance",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "random",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "RandomSource",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "commands",
+      "modifiers": [
+        "public"
+      ],
+      "type": "com.mojang.brigadier.CommandDispatcher< SharedSuggestionProvider >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "recipeManager",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "RecipeManager",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "id",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "UUID",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "levels",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Set < ResourceKey < Level >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registryAccess",
+      "modifiers": [
+        "private"
+      ],
+      "type": "LayeredRegistryAccess < ClientRegistryLayer >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "enabledFeatures",
+      "modifiers": [
+        "private"
+      ],
+      "type": "FeatureFlagSet",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "telemetryManager",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "WorldSessionTelemetryManager",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "chatSession",
+      "modifiers": [
+        "private"
+      ],
+      "type": "LocalChatSession",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "signedMessageEncoder",
+      "modifiers": [
+        "private"
+      ],
+      "type": "SignedMessageChain.Encoder",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastSeenMessages",
+      "modifiers": [
+        "private"
+      ],
+      "type": "LastSeenMessagesTracker",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "messageSignatureCache",
+      "modifiers": [
+        "private"
+      ],
+      "type": "MessageSignatureCache",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ClientPacketListener",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_253924_",
+          "type": "Minecraft",
+          "annotations": []
+        },
+        {
+          "name": "p_254239_",
+          "type": "Screen",
+          "annotations": []
+        },
+        {
+          "name": "p_253614_",
+          "type": "Connection",
+          "annotations": []
+        },
+        {
+          "name": "p_254072_",
+          "type": "ServerData",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_254079_",
+          "type": "com.mojang.authlib.GameProfile",
+          "annotations": []
+        },
+        {
+          "name": "p_262115_",
+          "type": "WorldSessionTelemetryManager",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getSuggestionsProvider",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ClientSuggestionProvider",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "close",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRecipeManager",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "RecipeManager",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleLogin",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105030_",
+          "type": "ClientboundLoginPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleAddEntity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_104958_",
+          "type": "ClientboundAddEntityPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "postAddEntitySoundInstance",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_233664_",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleAddExperienceOrb",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_104960_",
+          "type": "ClientboundAddExperienceOrbPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleSetEntityMotion",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105092_",
+          "type": "ClientboundSetEntityMotionPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleSetEntityData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105088_",
+          "type": "ClientboundSetEntityDataPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleAddPlayer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_104966_",
+          "type": "ClientboundAddPlayerPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleTeleportEntity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105124_",
+          "type": "ClientboundTeleportEntityPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleSetCarriedItem",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105078_",
+          "type": "ClientboundSetCarriedItemPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleMoveEntity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105036_",
+          "type": "ClientboundMoveEntityPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleRotateMob",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105068_",
+          "type": "ClientboundRotateHeadPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleRemoveEntities",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_182633_",
+          "type": "ClientboundRemoveEntitiesPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleMovePlayer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105056_",
+          "type": "ClientboundPlayerPositionPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleChunkBlocksUpdate",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105070_",
+          "type": "ClientboundSectionBlocksUpdatePacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleLevelChunkWithLight",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_194241_",
+          "type": "ClientboundLevelChunkWithLightPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateLevelChunk",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_194199_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_194200_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_194201_",
+          "type": "ClientboundLevelChunkPacketData",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "queueLightUpdate",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_194203_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_194204_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_194205_",
+          "type": "ClientboundLightUpdatePacketData",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "enableChunkLight",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_194213_",
+          "type": "LevelChunk",
+          "annotations": []
+        },
+        {
+          "name": "p_194214_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_194215_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleForgetLevelChunk",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105014_",
+          "type": "ClientboundForgetLevelChunkPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "queueLightUpdate",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_194253_",
+          "type": "ClientboundForgetLevelChunkPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleBlockUpdate",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_104980_",
+          "type": "ClientboundBlockUpdatePacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleDisconnect",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105008_",
+          "type": "ClientboundDisconnectPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onDisconnect",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_104954_",
+          "type": "Component",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "send",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_104956_",
+          "type": "Packet <?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleTakeItemEntity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105122_",
+          "type": "ClientboundTakeItemEntityPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleSystemChat",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_233708_",
+          "type": "ClientboundSystemChatPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handlePlayerChat",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_233702_",
+          "type": "ClientboundPlayerChatPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleDisguisedChat",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_251920_",
+          "type": "ClientboundDisguisedChatPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleDeleteChat",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_241325_",
+          "type": "ClientboundDeleteChatPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleAnimate",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_104968_",
+          "type": "ClientboundAnimatePacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleSetTime",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105108_",
+          "type": "ClientboundSetTimePacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleSetSpawn",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105084_",
+          "type": "ClientboundSetDefaultSpawnPositionPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleSetEntityPassengersPacket",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105102_",
+          "type": "ClientboundSetPassengersPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleEntityLinkPacket",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105090_",
+          "type": "ClientboundSetEntityLinkPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "findTotem",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "ItemStack",
+      "parameters": [
+        {
+          "name": "p_104928_",
+          "type": "Player",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleEntityEvent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105010_",
+          "type": "ClientboundEntityEventPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleSetHealth",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105098_",
+          "type": "ClientboundSetHealthPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleSetExperience",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105096_",
+          "type": "ClientboundSetExperiencePacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleRespawn",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105066_",
+          "type": "ClientboundRespawnPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleExplosion",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105012_",
+          "type": "ClientboundExplodePacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleHorseScreenOpen",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105018_",
+          "type": "ClientboundHorseScreenOpenPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleOpenScreen",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105042_",
+          "type": "ClientboundOpenScreenPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleContainerSetSlot",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105000_",
+          "type": "ClientboundContainerSetSlotPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleContainerContent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_104996_",
+          "type": "ClientboundContainerSetContentPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleOpenSignEditor",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105044_",
+          "type": "ClientboundOpenSignEditorPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleBlockEntityData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_104976_",
+          "type": "ClientboundBlockEntityDataPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleContainerSetData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_104998_",
+          "type": "ClientboundContainerSetDataPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleSetEquipment",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105094_",
+          "type": "ClientboundSetEquipmentPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleContainerClose",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_104994_",
+          "type": "ClientboundContainerClosePacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleBlockEvent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_104978_",
+          "type": "ClientboundBlockEventPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleBlockDestruction",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_104974_",
+          "type": "ClientboundBlockDestructionPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleGameEvent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105016_",
+          "type": "ClientboundGameEventPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleMapItemData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105032_",
+          "type": "ClientboundMapItemDataPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleLevelEvent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105024_",
+          "type": "ClientboundLevelEventPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleUpdateAdvancementsPacket",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105126_",
+          "type": "ClientboundUpdateAdvancementsPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleSelectAdvancementsTab",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105072_",
+          "type": "ClientboundSelectAdvancementsTabPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleCommands",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_104990_",
+          "type": "ClientboundCommandsPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleStopSoundEvent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105116_",
+          "type": "ClientboundStopSoundPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleCommandSuggestions",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_104988_",
+          "type": "ClientboundCommandSuggestionsPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleUpdateRecipes",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105132_",
+          "type": "ClientboundUpdateRecipesPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleLookAt",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105054_",
+          "type": "ClientboundPlayerLookAtPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleTagQueryPacket",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105120_",
+          "type": "ClientboundTagQueryPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleAwardStats",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_104970_",
+          "type": "ClientboundAwardStatsPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleAddOrRemoveRecipes",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105058_",
+          "type": "ClientboundRecipePacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleUpdateMobEffect",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105130_",
+          "type": "ClientboundUpdateMobEffectPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleUpdateTags",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105134_",
+          "type": "ClientboundUpdateTagsPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleEnabledFeatures",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_251591_",
+          "type": "ClientboundUpdateEnabledFeaturesPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateTagsForRegistry",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_205561_",
+          "type": "ResourceKey <? extends Registry <? extends T>>",
+          "annotations": []
+        },
+        {
+          "name": "p_205562_",
+          "type": "TagNetworkSerialization.NetworkPayload",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handlePlayerCombatEnd",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_171771_",
+          "type": "ClientboundPlayerCombatEndPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handlePlayerCombatEnter",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_171773_",
+          "type": "ClientboundPlayerCombatEnterPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handlePlayerCombatKill",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_171775_",
+          "type": "ClientboundPlayerCombatKillPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleChangeDifficulty",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_104984_",
+          "type": "ClientboundChangeDifficultyPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleSetCamera",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105076_",
+          "type": "ClientboundSetCameraPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleInitializeBorder",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_171767_",
+          "type": "ClientboundInitializeBorderPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleSetBorderCenter",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_171781_",
+          "type": "ClientboundSetBorderCenterPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleSetBorderLerpSize",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_171783_",
+          "type": "ClientboundSetBorderLerpSizePacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleSetBorderSize",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_171785_",
+          "type": "ClientboundSetBorderSizePacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleSetBorderWarningDistance",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_171789_",
+          "type": "ClientboundSetBorderWarningDistancePacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleSetBorderWarningDelay",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_171787_",
+          "type": "ClientboundSetBorderWarningDelayPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleTitlesClear",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_171765_",
+          "type": "ClientboundClearTitlesPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleServerData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_233704_",
+          "type": "ClientboundServerDataPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleCustomChatCompletions",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_240832_",
+          "type": "ClientboundCustomChatCompletionsPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setActionBarText",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_171779_",
+          "type": "ClientboundSetActionBarTextPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setTitleText",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_171793_",
+          "type": "ClientboundSetTitleTextPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setSubtitleText",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_171791_",
+          "type": "ClientboundSetSubtitleTextPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setTitlesAnimation",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_171795_",
+          "type": "ClientboundSetTitlesAnimationPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleTabListCustomisation",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105118_",
+          "type": "ClientboundTabListPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleRemoveMobEffect",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105062_",
+          "type": "ClientboundRemoveMobEffectPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handlePlayerInfoRemove",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_248731_",
+          "type": "ClientboundPlayerInfoRemovePacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handlePlayerInfoUpdate",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_250115_",
+          "type": "ClientboundPlayerInfoUpdatePacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "applyPlayerInfoUpdate",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_248954_",
+          "type": "ClientboundPlayerInfoUpdatePacket.Action",
+          "annotations": []
+        },
+        {
+          "name": "p_251310_",
+          "type": "ClientboundPlayerInfoUpdatePacket.Entry",
+          "annotations": []
+        },
+        {
+          "name": "p_251146_",
+          "type": "PlayerInfo",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "initializeChatSession",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_248806_",
+          "type": "ClientboundPlayerInfoUpdatePacket.Entry",
+          "annotations": []
+        },
+        {
+          "name": "p_251136_",
+          "type": "PlayerInfo",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "enforcesSecureChat",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleKeepAlive",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105020_",
+          "type": "ClientboundKeepAlivePacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handlePlayerAbilities",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105048_",
+          "type": "ClientboundPlayerAbilitiesPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleSoundEvent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105114_",
+          "type": "ClientboundSoundPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleSoundEntityEvent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105112_",
+          "type": "ClientboundSoundEntityPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleResourcePack",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105064_",
+          "type": "ClientboundResourcePackPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "preparePackPrompt",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "Component",
+      "parameters": [
+        {
+          "name": "p_171760_",
+          "type": "Component",
+          "annotations": []
+        },
+        {
+          "name": "p_171761_",
+          "type": "Component",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "parseResourcePackUrl",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "URL",
+      "parameters": [
+        {
+          "name": "p_233710_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "downloadCallback",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_104952_",
+          "type": "CompletableFuture <?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "send",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105136_",
+          "type": "ServerboundResourcePackPacket.Action",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleBossUpdate",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_104982_",
+          "type": "ClientboundBossEventPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleItemCooldown",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105002_",
+          "type": "ClientboundCooldownPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleMoveVehicle",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105038_",
+          "type": "ClientboundMoveVehiclePacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleOpenBook",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105040_",
+          "type": "ClientboundOpenBookPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleCustomPayload",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105004_",
+          "type": "ClientboundCustomPayloadPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleAddObjective",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105100_",
+          "type": "ClientboundSetObjectivePacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleSetScore",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105106_",
+          "type": "ClientboundSetScorePacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleSetDisplayObjective",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105086_",
+          "type": "ClientboundSetDisplayObjectivePacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleSetPlayerTeamPacket",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105104_",
+          "type": "ClientboundSetPlayerTeamPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleParticleEvent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105026_",
+          "type": "ClientboundLevelParticlesPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handlePing",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_171769_",
+          "type": "ClientboundPingPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleUpdateAttributes",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105128_",
+          "type": "ClientboundUpdateAttributesPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handlePlaceRecipe",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105046_",
+          "type": "ClientboundPlaceGhostRecipePacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleLightUpdatePacket",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_194243_",
+          "type": "ClientboundLightUpdatePacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "applyLightData",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_194249_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_194250_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_194251_",
+          "type": "ClientboundLightUpdatePacketData",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleMerchantOffers",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105034_",
+          "type": "ClientboundMerchantOffersPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleSetChunkCacheRadius",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105082_",
+          "type": "ClientboundSetChunkCacheRadiusPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleSetSimulationDistance",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_194245_",
+          "type": "ClientboundSetSimulationDistancePacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleSetChunkCacheCenter",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_105080_",
+          "type": "ClientboundSetChunkCacheCenterPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleBlockChangedAck",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_233698_",
+          "type": "ClientboundBlockChangedAckPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "readSectionList",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_171735_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_171736_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_171737_",
+          "type": "LevelLightEngine",
+          "annotations": []
+        },
+        {
+          "name": "p_171738_",
+          "type": "LightLayer",
+          "annotations": []
+        },
+        {
+          "name": "p_171739_",
+          "type": "BitSet",
+          "annotations": []
+        },
+        {
+          "name": "p_171740_",
+          "type": "BitSet",
+          "annotations": []
+        },
+        {
+          "name": "p_171741_",
+          "type": "Iterator <byte[]>",
+          "annotations": []
+        },
+        {
+          "name": "p_171742_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getConnection",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Connection",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getListedOnlinePlayers",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Collection < PlayerInfo >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getOnlinePlayers",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Collection < PlayerInfo >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getOnlinePlayerIds",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Collection < UUID >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPlayerInfo",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "PlayerInfo",
+      "parameters": [
+        {
+          "name": "p_104950_",
+          "type": "UUID",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPlayerInfo",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "PlayerInfo",
+      "parameters": [
+        {
+          "name": "p_104939_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLocalGameProfile",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "com.mojang.authlib.GameProfile",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAdvancements",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ClientAdvancements",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getCommands",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "com.mojang.brigadier.CommandDispatcher< SharedSuggestionProvider >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ClientLevel",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDebugQueryHandler",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "DebugQueryHandler",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getId",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "UUID",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "levels",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Set < ResourceKey < Level >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registryAccess",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "RegistryAccess",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "markMessageAsProcessed",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_242356_",
+          "type": "PlayerChatMessage",
+          "annotations": []
+        },
+        {
+          "name": "p_242455_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sendChatAcknowledgement",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sendChat",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_249888_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sendCommand",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_250092_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sendUnsignedCommand",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_251509_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "parseCommand",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "com.mojang.brigadier.ParseResults< SharedSuggestionProvider >",
+      "parameters": [
+        {
+          "name": "p_249982_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setKeyPair",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_261475_",
+          "type": "ProfileKeyPair",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getServerData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ServerData",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "enabledFeatures",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "FeatureFlagSet",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isFeatureEnabled",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_250605_",
+          "type": "FeatureFlagSet",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.19.3/net/minecraft/client/multiplayer/ClientPacketListener.html"
+}

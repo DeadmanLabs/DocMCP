@@ -1,0 +1,814 @@
+{
+  "type": "class",
+  "name": "PathNavigator",
+  "qualified_name": "net.minecraft.pathfinding.PathNavigator",
+  "package": "net.minecraft.pathfinding",
+  "modifiers": [
+    "public",
+    "abstract",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "mob",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "MobEntity",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "level",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "World",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "path",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "Path",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "speedModifier",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "double",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastStuckCheck",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastStuckCheckPos",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "Vector3d",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "timeoutCachedNode",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "Vector3i",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "timeoutTimer",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastTimeoutCheck",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "timeoutLimit",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "double",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "maxDistanceToWaypoint",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasDelayedRecomputation",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "timeLastRecompute",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "nodeEvaluator",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "NodeProcessor",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "targetPos",
+      "modifiers": [
+        "private"
+      ],
+      "type": "BlockPos",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "reachRange",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "maxVisitedNodesMultiplier",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pathFinder",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "PathFinder",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isStuck",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "PathNavigator",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_i1671_1_",
+          "type": "MobEntity",
+          "annotations": []
+        },
+        {
+          "name": "p_i1671_2_",
+          "type": "World",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "resetMaxVisitedNodesMultiplier",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setMaxVisitedNodesMultiplier",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_226335_1_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTargetPos",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BlockPos",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createPathFinder",
+      "modifiers": [
+        "protected",
+        "abstract"
+      ],
+      "return_type": "PathFinder",
+      "parameters": [
+        {
+          "name": "p_179679_1_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setSpeedModifier",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_75489_1_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasDelayedRecomputation",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "recomputePath",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createPath",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "Path",
+      "parameters": [
+        {
+          "name": "p_225466_1_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_225466_3_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_225466_5_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_225466_7_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createPath",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Path",
+      "parameters": [
+        {
+          "name": "p_225463_1_",
+          "type": "Stream < BlockPos >",
+          "annotations": []
+        },
+        {
+          "name": "p_225463_2_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createPath",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Path",
+      "parameters": [
+        {
+          "name": "p_241390_1_",
+          "type": "Set < BlockPos >",
+          "annotations": []
+        },
+        {
+          "name": "p_241390_2_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createPath",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Path",
+      "parameters": [
+        {
+          "name": "p_179680_1_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_179680_2_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createPath",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Path",
+      "parameters": [
+        {
+          "name": "p_75494_1_",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "p_75494_2_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createPath",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "Path",
+      "parameters": [
+        {
+          "name": "p_225464_1_",
+          "type": "Set < BlockPos >",
+          "annotations": []
+        },
+        {
+          "name": "p_225464_2_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_225464_3_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_225464_4_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "moveTo",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_75492_1_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_75492_3_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_75492_5_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_75492_7_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "moveTo",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_75497_1_",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "p_75497_2_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "moveTo",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_75484_1_",
+          "type": "Path",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_75484_2_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPath",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Path",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "followThePath",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldTargetNextNodeInDirection",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_234112_1_",
+          "type": "Vector3d",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "doStuckDetection",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_179677_1_",
+          "type": "Vector3d",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "timeoutPath",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "resetStuckTimeout",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isDone",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isInProgress",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stop",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTempMobPos",
+      "modifiers": [
+        "protected",
+        "abstract"
+      ],
+      "return_type": "Vector3d",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canUpdatePath",
+      "modifiers": [
+        "protected",
+        "abstract"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isInLiquid",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "trimPath",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canMoveDirectly",
+      "modifiers": [
+        "protected",
+        "abstract"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_75493_1_",
+          "type": "Vector3d",
+          "annotations": []
+        },
+        {
+          "name": "p_75493_2_",
+          "type": "Vector3d",
+          "annotations": []
+        },
+        {
+          "name": "p_75493_3_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_75493_4_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_75493_5_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isStableDestination",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_188555_1_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getNodeEvaluator",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "NodeProcessor",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setCanFloat",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_212239_1_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canFloat",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "recomputePath",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_220970_1_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isStuck",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.16.5/net/minecraft/pathfinding/PathNavigator.html"
+}

@@ -1,0 +1,707 @@
+{
+  "type": "class",
+  "name": "NetworkRegistry",
+  "qualified_name": "net.neoforged.neoforge.network.registration.NetworkRegistry",
+  "package": "net.neoforged.neoforge.network.registration",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Core registry for all modded networking. This registry is responsible for storing all known modded payloads, and for handling the negotiation of modded network channels between the client and the server. Additionally, this registry is responsible for handling all packets that are not natively known once they arrive at the receiving end. To prevent payloads from being send to a client that has no idea what to do with them, the registry provides endpoints for the vanilla code base to check if a packet can be send to a client.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ATTRIBUTE_PAYLOAD_SETUP",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "io.netty.util.AttributeKey< NetworkPayloadSetup >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ATTRIBUTE_ADHOC_CHANNELS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "io.netty.util.AttributeKey< Set < ResourceLocation >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ATTRIBUTE_CONNECTION_TYPE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "io.netty.util.AttributeKey< ConnectionType >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ATTRIBUTE_FLOW",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "io.netty.util.AttributeKey< PacketFlow >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BUILTIN_PAYLOADS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Map < ResourceLocation , StreamCodec < FriendlyByteBuf , ? extends CustomPacketPayload >>",
+      "description": "Map of NeoForge payloads that may be sent before channel negotiation. TODO: Separate by protocol + flow.",
+      "deprecated": false
+    },
+    {
+      "name": "PAYLOAD_REGISTRATIONS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Map < ConnectionProtocol , Map < ResourceLocation , PayloadRegistration <?>>>",
+      "description": "Registry of all custom payload handlers. The initial state of this map should reflect the protocols which support custom payloads. TODO: Change key type to a combination of protocol + flow.",
+      "deprecated": false
+    },
+    {
+      "name": "setup",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "NetworkRegistry",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "setup",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "Sets up the network registry by firing RegisterPayloadHandlersEvent , storing the resulting payload registrations in PAYLOAD_REGISTRATIONS .",
+      "deprecated": false
+    },
+    {
+      "name": "register",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "type",
+          "type": "CustomPacketPayload.Type <T>",
+          "annotations": []
+        },
+        {
+          "name": "codec",
+          "type": "StreamCodec <? super B, T>",
+          "annotations": []
+        },
+        {
+          "name": "handler",
+          "type": "IPayloadHandler <T>",
+          "annotations": []
+        },
+        {
+          "name": "protocols",
+          "type": "List < ConnectionProtocol >",
+          "annotations": []
+        },
+        {
+          "name": "flow",
+          "type": "Optional < PacketFlow >",
+          "annotations": []
+        },
+        {
+          "name": "version",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "optional",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Registers a new payload.",
+      "deprecated": false
+    },
+    {
+      "name": "getCodec",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "@Nullable StreamCodec <? super FriendlyByteBuf , ? extends CustomPacketPayload >",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "protocol",
+          "type": "ConnectionProtocol",
+          "annotations": []
+        },
+        {
+          "name": "flow",
+          "type": "PacketFlow",
+          "annotations": []
+        }
+      ],
+      "description": "Attempts to retrieve the StreamCodec for a non-vanilla payload. This method hardcodes NeoForge custom packets, stored in BUILTIN_PAYLOADS , which may be sent before negotiation. If none of the hardcoded matches succeed, we instead query the registered handlers. The only validation this method performs is that the PacketFlow is correct. Other checks should be done externally.",
+      "deprecated": false
+    },
+    {
+      "name": "isModdedPayload",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "payload",
+          "type": "CustomPacketPayload",
+          "annotations": []
+        }
+      ],
+      "description": "Checks if a payload is a modded payload. A modded payload is any payload that does not have `minecraft` as the domain, and is not a discarded payload. The special handling for DiscardedPayload is because it falsely reports its type as the type that failed to decode.",
+      "deprecated": false
+    },
+    {
+      "name": "handleModdedPayload",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "listener",
+          "type": "ServerCommonPacketListener",
+          "annotations": []
+        },
+        {
+          "name": "packet",
+          "type": "ServerboundCustomPayloadPacket",
+          "annotations": []
+        }
+      ],
+      "description": "Handles modded payloads on the server. Invoked after built-in handling. Called on the network thread.",
+      "deprecated": false
+    },
+    {
+      "name": "handleModdedPayload",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "listener",
+          "type": "ClientCommonPacketListener",
+          "annotations": []
+        },
+        {
+          "name": "packet",
+          "type": "ClientboundCustomPayloadPacket",
+          "annotations": []
+        }
+      ],
+      "description": "Handles modded payloads on the client. Invoked after built-in handling. Called on the network thread.",
+      "deprecated": false
+    },
+    {
+      "name": "initializeNeoForgeConnection",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "listener",
+          "type": "ServerConfigurationPacketListener",
+          "annotations": []
+        },
+        {
+          "name": "clientChannels",
+          "type": "Map < ConnectionProtocol , Set < ModdedNetworkQueryComponent >>",
+          "annotations": []
+        }
+      ],
+      "description": "Invoked by the server when it completes the negotiation with the client during the configuration phase. This method determines what the versions of each of the channels are, and checks if the client and server have a compatible set of network channels. If the negotiation fails, a custom packet is sent to the client to inform it of the failure, and which will allow the client to disconnect gracefully with an indicative error screen. This method should only be invoked for modded connections. Use initializeOtherConnection(ServerConfigurationPacketListener) to indicate that during the configuration phase of the network handshake between a client and the server, a vanilla connection was detected. Invoked on the network thread.",
+      "deprecated": false
+    },
+    {
+      "name": "initializeOtherConnection",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "listener",
+          "type": "ServerConfigurationPacketListener",
+          "annotations": []
+        }
+      ],
+      "description": "Invoked by the ServerConfigurationPacketListenerImpl when a vanilla or other connection is detected.",
+      "deprecated": false
+    },
+    {
+      "name": "checkPacket",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "packet",
+          "type": "Packet <?>",
+          "annotations": []
+        },
+        {
+          "name": "listener",
+          "type": "ServerCommonPacketListener",
+          "annotations": []
+        }
+      ],
+      "description": "Validates that a ClientboundCustomPayloadPacket may be sent to the client.",
+      "deprecated": false
+    },
+    {
+      "name": "checkPacket",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "packet",
+          "type": "Packet <?>",
+          "annotations": []
+        },
+        {
+          "name": "listener",
+          "type": "ClientCommonPacketListener",
+          "annotations": []
+        }
+      ],
+      "description": "Validates that a ServerboundCustomPayloadPacket may be sent to the server.",
+      "deprecated": false
+    },
+    {
+      "name": "getKnownAdHocChannelsOfOtherEnd",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "Set < ResourceLocation >",
+      "parameters": [
+        {
+          "name": "connection",
+          "type": "Connection",
+          "annotations": []
+        }
+      ],
+      "description": "Returns a mutable map of the currently known ad-hoc channels.",
+      "deprecated": false
+    },
+    {
+      "name": "hasAdhocChannel",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "protocol",
+          "type": "ConnectionProtocol",
+          "annotations": []
+        },
+        {
+          "name": "id",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "flow",
+          "type": "PacketFlow",
+          "annotations": []
+        }
+      ],
+      "description": "Checks if a given payload is ad-hoc readable, that is, may be read without a negotiated channel being present. This is possible when an optional registration exists for the payload.",
+      "deprecated": false
+    },
+    {
+      "name": "onNetworkQuery",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "listener",
+          "type": "ClientConfigurationPacketListener",
+          "annotations": []
+        }
+      ],
+      "description": "Invoked by the client when a modded server queries it for its available channels. The negotiation happens solely on the server side, and the result is later transmitted to the client. Invoked on the network thread.",
+      "deprecated": false
+    },
+    {
+      "name": "initializeNeoForgeConnection",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "listener",
+          "type": "ClientConfigurationPacketListener",
+          "annotations": []
+        },
+        {
+          "name": "setup",
+          "type": "NetworkPayloadSetup",
+          "annotations": []
+        }
+      ],
+      "description": "Invoked by the client to indicate that it detect a connection to a modded server, by receiving a ModdedNetworkPayload . This will configure the active connection to the server to use the channels that were negotiated. Once this method completes a NetworkPayloadSetup will be present on the connection. Invoked on the network thread.",
+      "deprecated": false
+    },
+    {
+      "name": "initializeOtherConnection",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "listener",
+          "type": "ClientConfigurationPacketListener",
+          "annotations": []
+        }
+      ],
+      "description": "Invoked by the client when no ModdedNetworkQueryPayload has been received, but instead a BrandPayload has been received as the first packet during negotiation in the configuration phase. If this happens then the client will do a negotiation of its own internal channel configuration, to check if any mods are installed that require a modded connection to the server. If those are found then the connection is aborted and the client disconnects from the server. This method should never be invoked on a connection where the server is ConnectionType.NEOFORGE . Invoked on the network thread.",
+      "deprecated": false
+    },
+    {
+      "name": "hasChannel",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "listener",
+          "type": "ICommonPacketListener",
+          "annotations": []
+        },
+        {
+          "name": "payloadId",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "Checks if the packet listener's connection can send/receive the given payload.",
+      "deprecated": false
+    },
+    {
+      "name": "hasChannel",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "connection",
+          "type": "Connection",
+          "annotations": []
+        },
+        {
+          "name": "protocol",
+          "type": "ConnectionProtocol",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        },
+        {
+          "name": "payloadId",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "Indicates whether the given connection has a connection setup that can transmit the given payload id.",
+      "deprecated": false
+    },
+    {
+      "name": "filterGameBundlePackets",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "List < Packet <?>>",
+      "parameters": [
+        {
+          "name": "context",
+          "type": "io.netty.channel.ChannelHandlerContext",
+          "annotations": []
+        },
+        {
+          "name": "packets",
+          "type": "Iterable < Packet <? super T>>",
+          "annotations": []
+        }
+      ],
+      "description": "Filters the given packets for a bundle packet in the game phase of the connection.",
+      "deprecated": false
+    },
+    {
+      "name": "configureMockConnection",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "connection",
+          "type": "Connection",
+          "annotations": []
+        }
+      ],
+      "description": "Configures a mock connection for use in game tests. The mock connection will act as if the server and client are fully compatible and both NeoForge.",
+      "deprecated": false
+    },
+    {
+      "name": "onMinecraftRegister",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "connection",
+          "type": "Connection",
+          "annotations": []
+        },
+        {
+          "name": "resourceLocations",
+          "type": "Set < ResourceLocation >",
+          "annotations": []
+        }
+      ],
+      "description": "Invoked to add to the known ad-hoc channels on a connection. Invoked on the network thread.",
+      "deprecated": false
+    },
+    {
+      "name": "onMinecraftUnregister",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "connection",
+          "type": "Connection",
+          "annotations": []
+        },
+        {
+          "name": "resourceLocations",
+          "type": "Set < ResourceLocation >",
+          "annotations": []
+        }
+      ],
+      "description": "Invoked to remove from the known ad-hoc channels on a connection. Invoked on the network thread.",
+      "deprecated": false
+    },
+    {
+      "name": "getInitialListeningChannels",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "Set < ResourceLocation >",
+      "parameters": [
+        {
+          "name": "flow",
+          "type": "PacketFlow",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the initial channels for the configuration phase..",
+      "deprecated": false
+    },
+    {
+      "name": "getInitialServerUnregisterChannels",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "Set < ResourceLocation >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onConfigurationFinished",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "listener",
+          "type": "ICommonPacketListener",
+          "annotations": []
+        }
+      ],
+      "description": "Invoked when the configuration phase of a connection is completed. Updates the ad-hoc channels to prepare for the game phase by removing the initial channels and building a new list based on the connection type.",
+      "deprecated": false
+    },
+    {
+      "name": "getConnectionType",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ConnectionType",
+      "parameters": [
+        {
+          "name": "connection",
+          "type": "Connection",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "guard",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "CompletableFuture <T>",
+      "parameters": [
+        {
+          "name": "future",
+          "type": "CompletableFuture <T>",
+          "annotations": []
+        },
+        {
+          "name": "payloadId",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "Helper to guard futures generated by IPayloadContext against exceptions.",
+      "deprecated": false
+    },
+    {
+      "name": "handlePacketUnchecked",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "packet",
+          "type": "Packet <T>",
+          "annotations": []
+        },
+        {
+          "name": "listener",
+          "type": "PacketListener",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dumpStackToLog",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "Used in place of Thread.dumpStack() as that logs to System.err .",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21.x-neoforge/net/neoforged/neoforge/network/registration/NetworkRegistry.html"
+}

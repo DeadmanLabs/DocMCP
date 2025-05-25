@@ -1,0 +1,80 @@
+{
+  "type": "class",
+  "name": "TopologicalSort",
+  "qualified_name": "net.minecraftforge.fml.loading.toposort.TopologicalSort",
+  "package": "net.minecraftforge.fml.loading.toposort",
+  "modifiers": [
+    "public",
+    "final",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Provides a topological sort algorithm. While this algorithm is used for mod loading in forge, it can be utilized in other fashions, e.g. topology-based registry loading, prioritization for renderers, and even mod module loading.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "TopologicalSort",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "topologicalSort",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "List <T>",
+      "parameters": [
+        {
+          "name": "graph",
+          "type": "com.google.common.graph.Graph<T>",
+          "annotations": []
+        },
+        {
+          "name": "comparator",
+          "type": "Comparator <? super T>",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "A breath-first-search based topological sort. Compared to the depth-first-search version, it does not reverse the graph and supports custom secondary ordering specified by a comparator. It also utilizes the recently introduced Guava Graph API, which is more straightforward than the old directed graph. The graph to sort must be directed, must not allow self loops, and must not contain cycles. IllegalArgumentException will be thrown otherwise. When null is used for the comparator and multiple nodes have no prerequisites, the order depends on the iteration order of the set returned by the Graph.successors(Object) call, which is random by default. Given the number of edges E and the number of vertexes V , the time complexity of a sort without a secondary comparator is O(E + V) . With a secondary comparator of time complexity O(T) , the overall time complexity would be O(E + TV log(V)) . As a result, the comparator should be as efficient as possible. Examples of topological sort usage can be found in Forge test code.",
+      "deprecated": false
+    },
+    {
+      "name": "throwCyclePresentException",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "components",
+          "type": "Set < Set <T>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.16.5/net/minecraftforge/fml/loading/toposort/TopologicalSort.html"
+}

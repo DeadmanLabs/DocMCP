@@ -1,0 +1,927 @@
+{
+  "type": "class",
+  "name": "EditBookScreen",
+  "qualified_name": "net.minecraft.client.gui.screen.EditBookScreen",
+  "package": "net.minecraft.client.gui.screen",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraft.client.gui.AbstractGui",
+      "net.minecraft.client.gui.FocusableGui",
+      "net.minecraft.client.gui.screen.Screen"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "EDIT_TITLE_LABEL",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "ITextComponent",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "FINALIZE_WARNING_LABEL",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "ITextComponent",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BLACK_CURSOR",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "IReorderingProcessor",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "GRAY_CURSOR",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "IReorderingProcessor",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "owner",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "PlayerEntity",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "book",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ItemStack",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isModified",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isSigning",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "frameTick",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "currentPage",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pages",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "List < String >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "title",
+      "modifiers": [
+        "private"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pageEdit",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "TextInputUtil",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "titleEdit",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "TextInputUtil",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastClickTime",
+      "modifiers": [
+        "private"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastIndex",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "forwardButton",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ChangePageButton",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "backButton",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ChangePageButton",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "doneButton",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Button",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "signButton",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Button",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "finalizeButton",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Button",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cancelButton",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Button",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hand",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Hand",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "displayCache",
+      "modifiers": [
+        "private"
+      ],
+      "type": "EditBookScreen.BookPage",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pageMsg",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ITextComponent",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ownerText",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ITextComponent",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "EditBookScreen",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_i51100_1_",
+          "type": "PlayerEntity",
+          "annotations": []
+        },
+        {
+          "name": "p_i51100_2_",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "p_i51100_3_",
+          "type": "Hand",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "setClipboard",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_238760_1_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getClipboard",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getNumPages",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "init",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pageBack",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pageForward",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removed",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateButtonVisibility",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "eraseEmptyTrailingPages",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "saveChanges",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_214198_1_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "appendPageToBook",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "keyPressed",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_231046_1_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_231046_2_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_231046_3_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "charTyped",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_231042_1_",
+          "type": "char",
+          "annotations": []
+        },
+        {
+          "name": "p_231042_2_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "bookKeyPressed",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_214230_1_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_214230_2_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_214230_3_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "keyUp",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "keyDown",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "changeLine",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_238755_1_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "keyHome",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "keyEnd",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "titleKeyPressed",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_214196_1_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_214196_2_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_214196_3_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getCurrentPageText",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setCurrentPageText",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_214217_1_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "render",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_230430_1_",
+          "type": "MatrixStack",
+          "annotations": []
+        },
+        {
+          "name": "p_230430_2_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_230430_3_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_230430_4_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderCursor",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_238756_1_",
+          "type": "MatrixStack",
+          "annotations": []
+        },
+        {
+          "name": "p_238756_2_",
+          "type": "EditBookScreen.Point",
+          "annotations": []
+        },
+        {
+          "name": "p_238756_3_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderHighlight",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_238764_1_",
+          "type": "Rectangle2d []",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "convertScreenToLocal",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "EditBookScreen.Point",
+      "parameters": [
+        {
+          "name": "p_238758_1_",
+          "type": "EditBookScreen.Point",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "convertLocalToScreen",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "EditBookScreen.Point",
+      "parameters": [
+        {
+          "name": "p_238767_1_",
+          "type": "EditBookScreen.Point",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mouseClicked",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_231044_1_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_231044_3_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_231044_5_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "selectWord",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_238765_1_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mouseDragged",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_231045_1_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_231045_3_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_231045_5_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_231045_6_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_231045_8_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDisplayCache",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "EditBookScreen.BookPage",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clearDisplayCache",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clearDisplayCacheAfterPageChange",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rebuildDisplayCache",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "EditBookScreen.BookPage",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "findLineFromPos",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_238768_0_",
+          "type": "int[]",
+          "annotations": []
+        },
+        {
+          "name": "p_238768_1_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createPartialLineSelection",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Rectangle2d",
+      "parameters": [
+        {
+          "name": "p_238761_1_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_238761_2_",
+          "type": "CharacterManager",
+          "annotations": []
+        },
+        {
+          "name": "p_238761_3_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_238761_4_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_238761_5_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_238761_6_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createSelection",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Rectangle2d",
+      "parameters": [
+        {
+          "name": "p_238759_1_",
+          "type": "EditBookScreen.Point",
+          "annotations": []
+        },
+        {
+          "name": "p_238759_2_",
+          "type": "EditBookScreen.Point",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.16.5/net/minecraft/client/gui/screen/EditBookScreen.html"
+}

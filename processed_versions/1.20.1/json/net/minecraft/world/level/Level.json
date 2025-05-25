@@ -1,0 +1,3380 @@
+{
+  "type": "class",
+  "name": "Level",
+  "qualified_name": "net.minecraft.world.level.Level",
+  "package": "net.minecraft.world.level",
+  "modifiers": [
+    "public",
+    "abstract",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraftforge.common.capabilities.CapabilityProvider",
+      "Level"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "RESOURCE_KEY_CODEC",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.serialization.Codec< ResourceKey < Level >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "OVERWORLD",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "ResourceKey < Level >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NETHER",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "ResourceKey < Level >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "END",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "ResourceKey < Level >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MAX_LEVEL_SIZE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LONG_PARTICLE_CLIP_RANGE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SHORT_PARTICLE_CLIP_RANGE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MAX_BRIGHTNESS",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "TICKS_PER_DAY",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MAX_ENTITY_SPAWN_Y",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MIN_ENTITY_SPAWN_Y",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blockEntityTickers",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "List < TickingBlockEntity >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "neighborUpdater",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "NeighborUpdater",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pendingBlockEntityTickers",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "List < TickingBlockEntity >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickingBlockEntities",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "thread",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Thread",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isDebug",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "skyDarken",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "randValue",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addend",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "oRainLevel",
+      "modifiers": [
+        "public"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rainLevel",
+      "modifiers": [
+        "public"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "oThunderLevel",
+      "modifiers": [
+        "public"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "thunderLevel",
+      "modifiers": [
+        "public"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "random",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "type": "RandomSource",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "threadSafeRandom",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "RandomSource",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dimensionTypeId",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ResourceKey < DimensionType >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dimensionTypeRegistration",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Holder < DimensionType >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "levelData",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "WritableLevelData",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "profiler",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Supplier < ProfilerFiller >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isClientSide",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "worldBorder",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "WorldBorder",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "biomeManager",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "BiomeManager",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dimension",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ResourceKey < Level >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registryAccess",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "RegistryAccess",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "damageSources",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "DamageSources",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "subTickCount",
+      "modifiers": [
+        "private"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "restoringBlockSnapshots",
+      "modifiers": [
+        "public"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "captureBlockSnapshots",
+      "modifiers": [
+        "public"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "capturedBlockSnapshots",
+      "modifiers": [
+        "public"
+      ],
+      "type": "ArrayList < BlockSnapshot >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "freshBlockEntities",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ArrayList < BlockEntity >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pendingFreshBlockEntities",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ArrayList < BlockEntity >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "maxEntityRadius",
+      "modifiers": [
+        "private"
+      ],
+      "type": "double",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "Level",
+      "modifiers": [
+        "protected"
+      ],
+      "parameters": [
+        {
+          "name": "p_270739_",
+          "type": "WritableLevelData",
+          "annotations": []
+        },
+        {
+          "name": "p_270683_",
+          "type": "ResourceKey < Level >",
+          "annotations": []
+        },
+        {
+          "name": "p_270200_",
+          "type": "RegistryAccess",
+          "annotations": []
+        },
+        {
+          "name": "p_270240_",
+          "type": "Holder < DimensionType >",
+          "annotations": []
+        },
+        {
+          "name": "p_270692_",
+          "type": "Supplier < ProfilerFiller >",
+          "annotations": []
+        },
+        {
+          "name": "p_270904_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_270470_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_270248_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_270466_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "isClientSide",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getServer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "MinecraftServer",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isInWorldBounds",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_46740_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isInSpawnableBounds",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_46742_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isInWorldBoundsHorizontal",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_46458_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isOutsideSpawnableHeight",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_46725_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getChunkAt",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "LevelChunk",
+      "parameters": [
+        {
+          "name": "p_46746_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getChunk",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "LevelChunk",
+      "parameters": [
+        {
+          "name": "p_46727_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_46728_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getChunk",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChunkAccess",
+      "parameters": [
+        {
+          "name": "p_46502_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_46503_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_46504_",
+          "type": "ChunkStatus",
+          "annotations": []
+        },
+        {
+          "name": "p_46505_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_46601_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_46602_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_46603_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_46605_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_46606_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_46607_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_46608_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "markAndNotifyBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_46605_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "levelchunk",
+          "type": "LevelChunk",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "blockstate",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_46606_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_46607_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_46608_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onBlockStateChange",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_46609_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_46610_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_46611_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removeBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_46623_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_46624_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "destroyBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_46626_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_46627_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_46628_",
+          "type": "Entity",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_46629_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addDestroyBlockEffect",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_151531_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_151532_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setBlockAndUpdate",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_46598_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_46599_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sendBlockUpdated",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_46612_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_46613_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_46614_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_46615_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setBlocksDirty",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_46678_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_46679_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_46680_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateNeighborsAt",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_46673_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_46674_",
+          "type": "Block",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateNeighborsAtExceptFromFacing",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_46591_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_46592_",
+          "type": "Block",
+          "annotations": []
+        },
+        {
+          "name": "p_46593_",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "neighborChanged",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_46587_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_46588_",
+          "type": "Block",
+          "annotations": []
+        },
+        {
+          "name": "p_46589_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "neighborChanged",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_220379_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_220380_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_220381_",
+          "type": "Block",
+          "annotations": []
+        },
+        {
+          "name": "p_220382_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_220383_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "neighborShapeChanged",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_220385_",
+          "type": "Direction",
+          "annotations": []
+        },
+        {
+          "name": "p_220386_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_220387_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_220388_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_220389_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_220390_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getHeight",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_46571_",
+          "type": "Heightmap.Types",
+          "annotations": []
+        },
+        {
+          "name": "p_46572_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_46573_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLightEngine",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "LevelLightEngine",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockState",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "p_46732_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFluidState",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "FluidState",
+      "parameters": [
+        {
+          "name": "p_46671_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isDay",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isNight",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playSound",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_252137_",
+          "type": "Entity",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_251749_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_248842_",
+          "type": "SoundEvent",
+          "annotations": []
+        },
+        {
+          "name": "p_251104_",
+          "type": "SoundSource",
+          "annotations": []
+        },
+        {
+          "name": "p_249531_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_250763_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playSound",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_46560_",
+          "type": "Player",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_46561_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_46562_",
+          "type": "SoundEvent",
+          "annotations": []
+        },
+        {
+          "name": "p_46563_",
+          "type": "SoundSource",
+          "annotations": []
+        },
+        {
+          "name": "p_46564_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_46565_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playSeededSound",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_262953_",
+          "type": "Player",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_263004_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_263398_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_263376_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_263359_",
+          "type": "Holder < SoundEvent >",
+          "annotations": []
+        },
+        {
+          "name": "p_263020_",
+          "type": "SoundSource",
+          "annotations": []
+        },
+        {
+          "name": "p_263055_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_262914_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_262991_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playSeededSound",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_220363_",
+          "type": "Player",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_220364_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_220365_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_220366_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_220367_",
+          "type": "SoundEvent",
+          "annotations": []
+        },
+        {
+          "name": "p_220368_",
+          "type": "SoundSource",
+          "annotations": []
+        },
+        {
+          "name": "p_220369_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_220370_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_220371_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playSeededSound",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_220372_",
+          "type": "Player",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_220373_",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "p_263500_",
+          "type": "Holder < SoundEvent >",
+          "annotations": []
+        },
+        {
+          "name": "p_220375_",
+          "type": "SoundSource",
+          "annotations": []
+        },
+        {
+          "name": "p_220376_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_220377_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_220378_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playSound",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_46543_",
+          "type": "Player",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_46544_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46545_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46546_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46547_",
+          "type": "SoundEvent",
+          "annotations": []
+        },
+        {
+          "name": "p_46548_",
+          "type": "SoundSource",
+          "annotations": []
+        },
+        {
+          "name": "p_46549_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_46550_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playSound",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_46551_",
+          "type": "Player",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_46552_",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "p_46553_",
+          "type": "SoundEvent",
+          "annotations": []
+        },
+        {
+          "name": "p_46554_",
+          "type": "SoundSource",
+          "annotations": []
+        },
+        {
+          "name": "p_46555_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_46556_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playLocalSound",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_250938_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_252209_",
+          "type": "SoundEvent",
+          "annotations": []
+        },
+        {
+          "name": "p_249161_",
+          "type": "SoundSource",
+          "annotations": []
+        },
+        {
+          "name": "p_249980_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_250277_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_250151_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playLocalSound",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_46482_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46483_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46484_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46485_",
+          "type": "SoundEvent",
+          "annotations": []
+        },
+        {
+          "name": "p_46486_",
+          "type": "SoundSource",
+          "annotations": []
+        },
+        {
+          "name": "p_46487_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_46488_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_46489_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addParticle",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_46631_",
+          "type": "ParticleOptions",
+          "annotations": []
+        },
+        {
+          "name": "p_46632_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46633_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46634_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46635_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46636_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46637_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addParticle",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_46638_",
+          "type": "ParticleOptions",
+          "annotations": []
+        },
+        {
+          "name": "p_46639_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_46640_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46641_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46642_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46643_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46644_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46645_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addAlwaysVisibleParticle",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_46684_",
+          "type": "ParticleOptions",
+          "annotations": []
+        },
+        {
+          "name": "p_46685_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46686_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46687_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46688_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46689_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46690_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addAlwaysVisibleParticle",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_46691_",
+          "type": "ParticleOptions",
+          "annotations": []
+        },
+        {
+          "name": "p_46692_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_46693_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46694_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46695_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46696_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46697_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46698_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSunAngle",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_46491_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addBlockEntityTicker",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_151526_",
+          "type": "TickingBlockEntity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addFreshBlockEntities",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "beList",
+          "type": "Collection < BlockEntity >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickBlockEntities",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "guardEntityTick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_46654_",
+          "type": "Consumer <T>",
+          "annotations": []
+        },
+        {
+          "name": "p_46655_",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldTickDeath",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_186458_",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldTickBlocksAt",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_186456_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldTickBlocksAt",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_220394_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "explode",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Explosion",
+      "parameters": [
+        {
+          "name": "p_256599_",
+          "type": "Entity",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_255914_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_255684_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_255843_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_256310_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_256178_",
+          "type": "Level.ExplosionInteraction",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "explode",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Explosion",
+      "parameters": [
+        {
+          "name": "p_255682_",
+          "type": "Entity",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_255803_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_256403_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_256538_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_255674_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_256634_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_256111_",
+          "type": "Level.ExplosionInteraction",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "explode",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Explosion",
+      "parameters": [
+        {
+          "name": "p_255653_",
+          "type": "Entity",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_256558_",
+          "type": "DamageSource",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_255929_",
+          "type": "ExplosionDamageCalculator",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_256001_",
+          "type": "Vec3",
+          "annotations": []
+        },
+        {
+          "name": "p_255963_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_256099_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_256371_",
+          "type": "Level.ExplosionInteraction",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "explode",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Explosion",
+      "parameters": [
+        {
+          "name": "p_256145_",
+          "type": "Entity",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_256004_",
+          "type": "DamageSource",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_255696_",
+          "type": "ExplosionDamageCalculator",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_256208_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_256036_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_255746_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_256647_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_256098_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_256104_",
+          "type": "Level.ExplosionInteraction",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "explode",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Explosion",
+      "parameters": [
+        {
+          "name": "p_256233_",
+          "type": "Entity",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_255861_",
+          "type": "DamageSource",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_255867_",
+          "type": "ExplosionDamageCalculator",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_256447_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_255732_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_255717_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_256013_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_256228_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_255784_",
+          "type": "Level.ExplosionInteraction",
+          "annotations": []
+        },
+        {
+          "name": "p_256377_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDestroyType",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Explosion.BlockInteraction",
+      "parameters": [
+        {
+          "name": "p_256250_",
+          "type": "GameRules.Key < GameRules.BooleanValue >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "gatherChunkSourceStats",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockEntity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BlockEntity",
+      "parameters": [
+        {
+          "name": "p_46716_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setBlockEntity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_151524_",
+          "type": "BlockEntity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removeBlockEntity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_46748_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isLoaded",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_46750_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loadedAndEntityCanStandOnFace",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_46579_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_46580_",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "p_46581_",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loadedAndEntityCanStandOn",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_46576_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_46577_",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateSkyBrightness",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setSpawnSettings",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_46704_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_46705_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSharedSpawnPos",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BlockPos",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSharedSpawnAngle",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "prepareWeather",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "close",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getChunkForCollisions",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BlockGetter",
+      "parameters": [
+        {
+          "name": "p_46711_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_46712_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getEntities",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "List < Entity >",
+      "parameters": [
+        {
+          "name": "p_46536_",
+          "type": "Entity",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_46537_",
+          "type": "AABB",
+          "annotations": []
+        },
+        {
+          "name": "p_46538_",
+          "type": "Predicate <? super Entity >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getEntities",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "List <T>",
+      "parameters": [
+        {
+          "name": "p_151528_",
+          "type": "EntityTypeTest < Entity , T>",
+          "annotations": []
+        },
+        {
+          "name": "p_151529_",
+          "type": "AABB",
+          "annotations": []
+        },
+        {
+          "name": "p_151530_",
+          "type": "Predicate <? super T>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getEntities",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_261899_",
+          "type": "EntityTypeTest < Entity , T>",
+          "annotations": []
+        },
+        {
+          "name": "p_261837_",
+          "type": "AABB",
+          "annotations": []
+        },
+        {
+          "name": "p_261519_",
+          "type": "Predicate <? super T>",
+          "annotations": []
+        },
+        {
+          "name": "p_262046_",
+          "type": "List <? super T>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getEntities",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_261885_",
+          "type": "EntityTypeTest < Entity , T>",
+          "annotations": []
+        },
+        {
+          "name": "p_262086_",
+          "type": "AABB",
+          "annotations": []
+        },
+        {
+          "name": "p_261688_",
+          "type": "Predicate <? super T>",
+          "annotations": []
+        },
+        {
+          "name": "p_262071_",
+          "type": "List <? super T>",
+          "annotations": []
+        },
+        {
+          "name": "p_261858_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getEntity",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "Entity",
+      "parameters": [
+        {
+          "name": "p_46492_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blockEntityChanged",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_151544_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSeaLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "disconnect",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getGameTime",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "long",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDayTime",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "long",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mayInteract",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_46557_",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "p_46558_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "broadcastEntityEvent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_46509_",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "p_46510_",
+          "type": "byte",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "broadcastDamageEvent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_270831_",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "p_270361_",
+          "type": "DamageSource",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blockEvent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_46582_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_46583_",
+          "type": "Block",
+          "annotations": []
+        },
+        {
+          "name": "p_46584_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_46585_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLevelData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "LevelData",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getGameRules",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "GameRules",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getThunderLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_46662_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setThunderLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_46708_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRainLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_46723_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setRainLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_46735_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isThundering",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isRaining",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isRainingAt",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_46759_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMapData",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "MapItemSavedData",
+      "parameters": [
+        {
+          "name": "p_46650_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setMapData",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_151533_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_151534_",
+          "type": "MapItemSavedData",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFreeMapId",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "globalLevelEvent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_46665_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_46666_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_46667_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fillReportDetails",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CrashReportCategory",
+      "parameters": [
+        {
+          "name": "p_46656_",
+          "type": "CrashReport",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "destroyBlockProgress",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_46506_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_46507_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_46508_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createFireworks",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_46475_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46476_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46477_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46478_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46479_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46480_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_46481_",
+          "type": "CompoundTag",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getScoreboard",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "Scoreboard",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateNeighbourForOutputSignal",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_46718_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_46719_",
+          "type": "Block",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getCurrentDifficultyAt",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "DifficultyInstance",
+      "parameters": [
+        {
+          "name": "p_46730_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSkyDarken",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setSkyFlashTime",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_46709_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getWorldBorder",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "WorldBorder",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sendPacketToServer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_46657_",
+          "type": "Packet <?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dimensionType",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "DimensionType",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dimensionTypeId",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ResourceKey < DimensionType >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dimensionTypeRegistration",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Holder < DimensionType >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dimension",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ResourceKey < Level >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRandom",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "RandomSource",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isStateAtPosition",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_46620_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_46621_",
+          "type": "Predicate < BlockState >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isFluidAtPosition",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_151541_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_151542_",
+          "type": "Predicate < FluidState >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRecipeManager",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "RecipeManager",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockRandomPos",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BlockPos",
+      "parameters": [
+        {
+          "name": "p_46497_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_46498_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_46499_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_46500_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "noSave",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getProfiler",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ProfilerFiller",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getProfilerSupplier",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Supplier < ProfilerFiller >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBiomeManager",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BiomeManager",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMaxEntityRadius",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "double",
+      "parameters": [],
+      "description": "Description copied from interface: IForgeLevel",
+      "deprecated": false
+    },
+    {
+      "name": "increaseMaxEntityRadius",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "double",
+      "parameters": [
+        {
+          "name": "value",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "Description copied from interface: IForgeLevel",
+      "deprecated": false
+    },
+    {
+      "name": "isDebug",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getEntities",
+      "modifiers": [
+        "protected",
+        "abstract"
+      ],
+      "return_type": "LevelEntityGetter < Entity >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "nextSubTickCount",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "long",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registryAccess",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "RegistryAccess",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "damageSources",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "DamageSources",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.1/net/minecraft/world/level/Level.html"
+}

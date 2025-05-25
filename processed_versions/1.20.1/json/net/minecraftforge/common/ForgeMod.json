@@ -1,0 +1,654 @@
+{
+  "type": "class",
+  "name": "ForgeMod",
+  "qualified_name": "net.minecraftforge.common.ForgeMod",
+  "package": "net.minecraftforge.common",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "VERSION_CHECK_CAT",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "FORGEMOD",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Marker",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registries",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "List < DeferredRegister <?>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "COMMAND_ARGUMENT_TYPES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DeferredRegister < ArgumentTypeInfo <?, ?>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ATTRIBUTES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DeferredRegister < Attribute >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SWIM_SPEED",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "RegistryObject < Attribute >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NAMETAG_DISTANCE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "RegistryObject < Attribute >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ENTITY_GRAVITY",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "RegistryObject < Attribute >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BLOCK_REACH",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "RegistryObject < Attribute >",
+      "description": "Reach Distance represents the distance at which a player may interact with the world. The default is 4.5 blocks. Players in creative mode have an additional 0.5 blocks of block reach.",
+      "deprecated": false
+    },
+    {
+      "name": "ENTITY_REACH",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "RegistryObject < Attribute >",
+      "description": "Attack Range represents the distance at which a player may attack an entity. The default is 3 blocks. Players in creative mode have an additional 3 blocks of entity reach. The default of 3.0 is technically considered a bug by Mojang - see MC-172289 and MC-92484. However, updating this value would allow for longer-range attacks on vanilla servers, which makes some people mad.",
+      "deprecated": false
+    },
+    {
+      "name": "STEP_HEIGHT_ADDITION",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "RegistryObject < Attribute >",
+      "description": "Step Height Addition modifies the amount of blocks an entity may walk up without jumping.",
+      "deprecated": false
+    },
+    {
+      "name": "BIOME_MODIFIER_SERIALIZERS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DeferredRegister <com.mojang.serialization.Codec<? extends BiomeModifier >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "STRUCTURE_MODIFIER_SERIALIZERS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DeferredRegister <com.mojang.serialization.Codec<? extends StructureModifier >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "HOLDER_SET_TYPES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DeferredRegister < HolderSetType >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ANY_HOLDER_SET",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "RegistryObject < HolderSetType >",
+      "description": "Stock holder set type that represents any/all values in a registry. Can be used in a holderset object with { \"type\": \"forge:any\" }",
+      "deprecated": false
+    },
+    {
+      "name": "AND_HOLDER_SET",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "RegistryObject < HolderSetType >",
+      "description": "Stock holder set type that represents an intersection of other holdersets. Can be used in a holderset object with { \"type\": \"forge:and\", \"values\": [list of holdersets] }",
+      "deprecated": false
+    },
+    {
+      "name": "OR_HOLDER_SET",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "RegistryObject < HolderSetType >",
+      "description": "Stock holder set type that represents a union of other holdersets. Can be used in a holderset object with { \"type\": \"forge:or\", \"values\": [list of holdersets] }",
+      "deprecated": false
+    },
+    {
+      "name": "NOT_HOLDER_SET",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "RegistryObject < HolderSetType >",
+      "description": "Stock holder set type that represents all values in a registry except those in another given set. Can be used in a holderset object with { \"type\": \"forge:not\", \"value\": holderset }",
+      "deprecated": false
+    },
+    {
+      "name": "VANILLA_FLUID_TYPES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DeferredRegister < FluidType >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "EMPTY_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "RegistryObject < FluidType >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "WATER_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "RegistryObject < FluidType >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LAVA_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "RegistryObject < FluidType >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOOT_CONDITION_TYPES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DeferredRegister < LootItemConditionType >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CONDITION_SERIALIZERS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DeferredRegister <com.mojang.serialization.Codec<? extends ICondition >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "RECIPE_SERIALIZERS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DeferredRegister < RecipeSerializer <?>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "INGREDIENT_SERIALIZERS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DeferredRegister < IIngredientSerializer <?>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "enableMilkFluid",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BUCKET_EMPTY_MILK",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "RegistryObject < SoundEvent >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BUCKET_FILL_MILK",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "RegistryObject < SoundEvent >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MILK_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "RegistryObject < FluidType >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MILK",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "RegistryObject < Fluid >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "FLOWING_MILK",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "RegistryObject < Fluid >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "INSTANCE",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ForgeMod",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "USE_SELECTORS_PERMISSION",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "PermissionNode < Boolean >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ForgeMod",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "deferred",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "DeferredRegister <T>",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "ResourceKey < Registry <T>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "deferred",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "DeferredRegister <T>",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "ResourceKey < Registry <T>>",
+          "annotations": []
+        },
+        {
+          "name": "modid",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getInstance",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ForgeMod",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "enableMilkFluid",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "Run this method during mod constructor to enable milk and add it to the Minecraft milk bucket",
+      "deprecated": false
+    },
+    {
+      "name": "preInit",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "evt",
+          "type": "FMLCommonSetupEvent",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loadComplete",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "event",
+          "type": "FMLLoadCompleteEvent",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "serverStopping",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "evt",
+          "type": "ServerStoppingEvent",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mappingChanged",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "evt",
+          "type": "IdMappingEvent",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tagsUpdated",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "evt",
+          "type": "TagsUpdatedEvent",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "gatherData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "event",
+          "type": "GatherDataEvent",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registerFluids",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "event",
+          "type": "RegisterEvent",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registerVanillaDisplayContexts",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "event",
+          "type": "RegisterEvent",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registerPermissionNodes",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "event",
+          "type": "PermissionGatherEvent.Nodes",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addAlias",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "registry",
+          "type": "IForgeRegistry <T>",
+          "annotations": []
+        },
+        {
+          "name": "from",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "to",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "TODO: Remove when ForgeRegistry.addAlias(ResourceLocation, ResourceLocation) is elevated to IForgeRegistry .",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.1/net/minecraftforge/common/ForgeMod.html"
+}

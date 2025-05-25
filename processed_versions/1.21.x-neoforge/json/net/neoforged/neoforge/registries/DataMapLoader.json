@@ -1,0 +1,306 @@
+{
+  "type": "class",
+  "name": "DataMapLoader",
+  "qualified_name": "net.neoforged.neoforge.registries.DataMapLoader",
+  "package": "net.neoforged.neoforge.registries",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PATH",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "results",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Map < ResourceKey <? extends Registry <?>>, DataMapLoader.LoadResult <?>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "conditionContext",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ICondition.IContext",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registryAccess",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "RegistryAccess",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "DataMapLoader",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "conditionContext",
+          "type": "ICondition.IContext",
+          "annotations": []
+        },
+        {
+          "name": "registryAccess",
+          "type": "RegistryAccess",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "reload",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture < Void >",
+      "parameters": [
+        {
+          "name": "preparationBarrier",
+          "type": "PreparableReloadListener.PreparationBarrier",
+          "annotations": []
+        },
+        {
+          "name": "resourceManager",
+          "type": "ResourceManager",
+          "annotations": []
+        },
+        {
+          "name": "preparationsProfiler",
+          "type": "ProfilerFiller",
+          "annotations": []
+        },
+        {
+          "name": "reloadProfiler",
+          "type": "ProfilerFiller",
+          "annotations": []
+        },
+        {
+          "name": "backgroundExecutor",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "gameExecutor",
+          "type": "Executor",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "apply",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "apply",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "registry",
+          "type": "BaseMappedRegistry <T>",
+          "annotations": []
+        },
+        {
+          "name": "result",
+          "type": "DataMapLoader.LoadResult <T>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "buildDataMap",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Map < ResourceKey <R>, T>",
+      "parameters": [
+        {
+          "name": "registry",
+          "type": "Registry <R>",
+          "annotations": []
+        },
+        {
+          "name": "attachment",
+          "type": "DataMapType <R, T>",
+          "annotations": []
+        },
+        {
+          "name": "entries",
+          "type": "List < DataMapFile <T, R>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "load",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture < Map < ResourceKey <? extends Registry <?>>, DataMapLoader.LoadResult <?>>>",
+      "parameters": [
+        {
+          "name": "manager",
+          "type": "ResourceManager",
+          "annotations": []
+        },
+        {
+          "name": "executor",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "profiler",
+          "type": "ProfilerFiller",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "load",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "Map < ResourceKey <? extends Registry <?>>, DataMapLoader.LoadResult <?>>",
+      "parameters": [
+        {
+          "name": "manager",
+          "type": "ResourceManager",
+          "annotations": []
+        },
+        {
+          "name": "profiler",
+          "type": "ProfilerFiller",
+          "annotations": []
+        },
+        {
+          "name": "access",
+          "type": "RegistryAccess",
+          "annotations": []
+        },
+        {
+          "name": "context",
+          "type": "ICondition.IContext",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFolderLocation",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "String",
+      "parameters": [
+        {
+          "name": "registryId",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "readData",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "List < DataMapFile <A, T>>",
+      "parameters": [
+        {
+          "name": "ops",
+          "type": "RegistryOps <com.google.gson.JsonElement>",
+          "annotations": []
+        },
+        {
+          "name": "attachmentType",
+          "type": "DataMapType <T, A>",
+          "annotations": []
+        },
+        {
+          "name": "registryKey",
+          "type": "ResourceKey < Registry <T>>",
+          "annotations": []
+        },
+        {
+          "name": "resources",
+          "type": "List < Resource >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21.x-neoforge/net/neoforged/neoforge/registries/DataMapLoader.html"
+}

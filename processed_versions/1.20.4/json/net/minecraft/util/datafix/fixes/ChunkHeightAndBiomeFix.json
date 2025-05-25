@@ -1,0 +1,603 @@
+{
+  "type": "class",
+  "name": "ChunkHeightAndBiomeFix",
+  "qualified_name": "net.minecraft.util.datafix.fixes.ChunkHeightAndBiomeFix",
+  "package": "net.minecraft.util.datafix.fixes",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "DATAFIXER_CONTEXT_TAG",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NAME",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "OLD_SECTION_COUNT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NEW_SECTION_COUNT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NEW_MIN_SECTION_Y",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BLOCKS_PER_SECTION",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LONGS_PER_SECTION",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "HEIGHTMAP_BITS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "HEIGHTMAP_MASK",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "HEIGHTMAP_OFFSET",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "HEIGHTMAP_TYPES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "String []",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "STATUS_IS_OR_AFTER_SURFACE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Set < String >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "STATUS_IS_OR_AFTER_NOISE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Set < String >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BLOCKS_BEFORE_FEATURE_STATUS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Set < String >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BIOME_CONTAINER_LAYER_SIZE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BIOME_CONTAINER_SIZE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BIOME_CONTAINER_TOP_LAYER_OFFSET",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DEFAULT_BIOME",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BIOMES_BY_ID",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.ints.Int2ObjectMap< String >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ChunkHeightAndBiomeFix",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_184863_",
+          "type": "com.mojang.datafixers.schemas.Schema",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "makeRule",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "com.mojang.datafixers.TypeRewriteRule",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "predictChunkStatusBeforeSurface",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "com.mojang.serialization.Dynamic<?>",
+      "parameters": [
+        {
+          "name": "p_184904_",
+          "type": "com.mojang.serialization.Dynamic<?>",
+          "annotations": []
+        },
+        {
+          "name": "p_184905_",
+          "type": "Set < String >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBiomeContainers",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "com.mojang.serialization.Dynamic<?>[]",
+      "parameters": [
+        {
+          "name": "p_184907_",
+          "type": "com.mojang.serialization.Dynamic<?>",
+          "annotations": []
+        },
+        {
+          "name": "p_184908_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_184909_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_184910_",
+          "type": "org.apache.commons.lang3.mutable.MutableBoolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getOldBiome",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_184949_",
+          "type": "int[]",
+          "annotations": []
+        },
+        {
+          "name": "p_184950_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateChunkTag",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "com.mojang.serialization.Dynamic<?>",
+      "parameters": [
+        {
+          "name": "p_184912_",
+          "type": "com.mojang.serialization.Dynamic<?>",
+          "annotations": []
+        },
+        {
+          "name": "p_184913_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_184914_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_184915_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_184916_",
+          "type": "Supplier < ChunkProtoTickListFix.PoorMansPalettedContainer >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shiftUpgradeData",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "com.mojang.serialization.Dynamic<T>",
+      "parameters": [
+        {
+          "name": "p_196591_",
+          "type": "com.mojang.serialization.Dynamic<T>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateCarvingMasks",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "com.mojang.serialization.Dynamic<?>",
+      "parameters": [
+        {
+          "name": "p_184888_",
+          "type": "com.mojang.serialization.Dynamic<?>",
+          "annotations": []
+        },
+        {
+          "name": "p_184889_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_184890_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addPaddingEntries",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "com.mojang.serialization.Dynamic<?>",
+      "parameters": [
+        {
+          "name": "p_184901_",
+          "type": "com.mojang.serialization.Dynamic<?>",
+          "annotations": []
+        },
+        {
+          "name": "p_184902_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateHeightmaps",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "com.mojang.serialization.Dynamic<?>",
+      "parameters": [
+        {
+          "name": "p_184886_",
+          "type": "com.mojang.serialization.Dynamic<?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFixedHeightmap",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "com.mojang.serialization.Dynamic<?>",
+      "parameters": [
+        {
+          "name": "p_184957_",
+          "type": "com.mojang.serialization.Dynamic<?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "makeBiomeContainer",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "com.mojang.serialization.Dynamic<?>",
+      "parameters": [
+        {
+          "name": "p_184895_",
+          "type": "com.mojang.serialization.Dynamic<?>",
+          "annotations": []
+        },
+        {
+          "name": "p_184896_",
+          "type": "it.unimi.dsi.fastutil.ints.Int2IntFunction",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "makePalettedContainer",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "com.mojang.serialization.Dynamic<?>",
+      "parameters": [
+        {
+          "name": "p_184970_",
+          "type": "com.mojang.serialization.Dynamic<?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "makePalettedContainer",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "com.mojang.serialization.Dynamic<?>",
+      "parameters": [
+        {
+          "name": "p_184892_",
+          "type": "com.mojang.serialization.Dynamic<?>",
+          "annotations": []
+        },
+        {
+          "name": "p_184893_",
+          "type": "com.mojang.serialization.Dynamic<?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "makeOptimizedPalettedContainer",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "com.mojang.serialization.Dynamic<?>",
+      "parameters": [
+        {
+          "name": "p_184959_",
+          "type": "com.mojang.serialization.Dynamic<?>",
+          "annotations": []
+        },
+        {
+          "name": "p_184960_",
+          "type": "com.mojang.serialization.Dynamic<?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "padPaletteEntries",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "com.mojang.serialization.Dynamic<?>",
+      "parameters": [
+        {
+          "name": "p_196593_",
+          "type": "com.mojang.serialization.Dynamic<?>",
+          "annotations": []
+        },
+        {
+          "name": "p_196594_",
+          "type": "com.mojang.serialization.Dynamic<?>",
+          "annotations": []
+        },
+        {
+          "name": "p_196595_",
+          "type": "List <com.mojang.serialization.Dynamic<?>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ceillog2",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_184866_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.4/net/minecraft/util/datafix/fixes/ChunkHeightAndBiomeFix.html"
+}

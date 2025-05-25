@@ -1,0 +1,178 @@
+{
+  "type": "interface",
+  "name": "ILevelExtension",
+  "qualified_name": "net.neoforged.neoforge.common.extensions.ILevelExtension",
+  "package": "net.neoforged.neoforge.common.extensions",
+  "modifiers": [
+    "public",
+    "interface"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": []
+  },
+  "nested_classes": [],
+  "fields": [],
+  "constructors": [],
+  "methods": [
+    {
+      "name": "self",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Level",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMaxEntityRadius",
+      "modifiers": [],
+      "return_type": "double",
+      "parameters": [],
+      "description": "The maximum radius to scan for entities when trying to check bounding boxes. Vanilla's default is 2.0D But mods that add larger entities may increase this.",
+      "deprecated": false
+    },
+    {
+      "name": "increaseMaxEntityRadius",
+      "modifiers": [],
+      "return_type": "double",
+      "parameters": [
+        {
+          "name": "value",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "Increases the max entity radius, this is safe to call with any value. The setter will verify the input value is larger then the current setting.",
+      "deprecated": false
+    },
+    {
+      "name": "getPartEntities",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "Collection < PartEntity <?>>",
+      "parameters": [],
+      "description": "All part entities in this world. Used when collecting entities in an AABB to fix parts being ignored whose parent entity is in a chunk that does not intersect with the AABB.",
+      "deprecated": false
+    },
+    {
+      "name": "getModelDataManager",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "@Nullable ModelDataManager",
+      "parameters": [],
+      "description": "Retrieves the model data manager for the given level. May be null on a server level. For model data retrieval, prefer calling IBlockGetterExtension.getModelData(BlockPos) rather than this method, as it works on more than just a level.",
+      "deprecated": false
+    },
+    {
+      "name": "getCapability",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "cap",
+          "type": "BlockCapability <T, C>",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "context",
+          "type": "C",
+          "annotations": []
+        }
+      ],
+      "description": "Retrieve a block capability. If the block state and/or the block entity is known, pass them via getCapability(BlockCapability, BlockPos, BlockState, BlockEntity, Object) instead.",
+      "deprecated": false
+    },
+    {
+      "name": "getCapability",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "cap",
+          "type": "BlockCapability <T, C>",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "state",
+          "type": "BlockState",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        },
+        {
+          "name": "blockEntity",
+          "type": "BlockEntity",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        },
+        {
+          "name": "context",
+          "type": "C",
+          "annotations": []
+        }
+      ],
+      "description": "Retrieve a block capability. Use this override if the block state and/or the block entity is known, otherwise prefer the shorter getCapability(BlockCapability, BlockPos, Object) . If either the block state or the block entity is unknown, simply pass null . This function will fetch null parameters from the level, with some extra checks to attempt to skip unnecessary fetches.",
+      "deprecated": false
+    },
+    {
+      "name": "invalidateCapabilities",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Notify all listeners that the capabilities at a specific position might have changed. This includes new capabilities becoming available. This method will only do something on ServerLevel s, but it is safe to call on any Level , without the need for an instanceof check. If you already have a block entity at that position, you can call IBlockEntityExtension.invalidateCapabilities() instead.",
+      "deprecated": false
+    },
+    {
+      "name": "invalidateCapabilities",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "pos",
+          "type": "ChunkPos",
+          "annotations": []
+        }
+      ],
+      "description": "Notify all listeners that the capabilities at all the positions in a chunk might have changed. This includes new capabilities becoming available. This method will only do something on ServerLevel s, but it is safe to call on any Level , without the need for an instanceof check.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21.x-neoforge/net/neoforged/neoforge/common/extensions/ILevelExtension.html"
+}

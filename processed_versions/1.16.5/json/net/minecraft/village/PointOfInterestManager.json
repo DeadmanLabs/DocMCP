@@ -1,0 +1,688 @@
+{
+  "type": "class",
+  "name": "PointOfInterestManager",
+  "qualified_name": "net.minecraft.village.PointOfInterestManager",
+  "package": "net.minecraft.village",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraft.world.chunk.storage.RegionSectionCache",
+      "PointOfInterestData"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "distanceTracker",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "PointOfInterestManager.DistanceGraph",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loadedChunks",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.longs.LongSet",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "PointOfInterestManager",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_i231554_1_",
+          "type": "File",
+          "annotations": []
+        },
+        {
+          "name": "p_i231554_2_",
+          "type": "com.mojang.datafixers.DataFixer",
+          "annotations": []
+        },
+        {
+          "name": "p_i231554_3_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "add",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_219135_1_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_219135_2_",
+          "type": "PointOfInterestType",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "remove",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_219140_1_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getCountInRange",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "long",
+      "parameters": [
+        {
+          "name": "p_219145_1_",
+          "type": "Predicate < PointOfInterestType >",
+          "annotations": []
+        },
+        {
+          "name": "p_219145_2_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_219145_3_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_219145_4_",
+          "type": "PointOfInterestManager.Status",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "existsAtPosition",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_234135_1_",
+          "type": "PointOfInterestType",
+          "annotations": []
+        },
+        {
+          "name": "p_234135_2_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getInSquare",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Stream < PointOfInterest >",
+      "parameters": [
+        {
+          "name": "p_226353_1_",
+          "type": "Predicate < PointOfInterestType >",
+          "annotations": []
+        },
+        {
+          "name": "p_226353_2_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_226353_3_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_226353_4_",
+          "type": "PointOfInterestManager.Status",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getInRange",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Stream < PointOfInterest >",
+      "parameters": [
+        {
+          "name": "p_219146_1_",
+          "type": "Predicate < PointOfInterestType >",
+          "annotations": []
+        },
+        {
+          "name": "p_219146_2_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_219146_3_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_219146_4_",
+          "type": "PointOfInterestManager.Status",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getInChunk",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Stream < PointOfInterest >",
+      "parameters": [
+        {
+          "name": "p_219137_1_",
+          "type": "Predicate < PointOfInterestType >",
+          "annotations": []
+        },
+        {
+          "name": "p_219137_2_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_219137_3_",
+          "type": "PointOfInterestManager.Status",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "findAll",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Stream < BlockPos >",
+      "parameters": [
+        {
+          "name": "p_225399_1_",
+          "type": "Predicate < PointOfInterestType >",
+          "annotations": []
+        },
+        {
+          "name": "p_225399_2_",
+          "type": "Predicate < BlockPos >",
+          "annotations": []
+        },
+        {
+          "name": "p_225399_3_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_225399_4_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_225399_5_",
+          "type": "PointOfInterestManager.Status",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "findAllClosestFirst",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Stream < BlockPos >",
+      "parameters": [
+        {
+          "name": "p_242324_1_",
+          "type": "Predicate < PointOfInterestType >",
+          "annotations": []
+        },
+        {
+          "name": "p_242324_2_",
+          "type": "Predicate < BlockPos >",
+          "annotations": []
+        },
+        {
+          "name": "p_242324_3_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_242324_4_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_242324_5_",
+          "type": "PointOfInterestManager.Status",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "find",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < BlockPos >",
+      "parameters": [
+        {
+          "name": "p_219127_1_",
+          "type": "Predicate < PointOfInterestType >",
+          "annotations": []
+        },
+        {
+          "name": "p_219127_2_",
+          "type": "Predicate < BlockPos >",
+          "annotations": []
+        },
+        {
+          "name": "p_219127_3_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_219127_4_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_219127_5_",
+          "type": "PointOfInterestManager.Status",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "findClosest",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < BlockPos >",
+      "parameters": [
+        {
+          "name": "p_234148_1_",
+          "type": "Predicate < PointOfInterestType >",
+          "annotations": []
+        },
+        {
+          "name": "p_234148_2_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_234148_3_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_234148_4_",
+          "type": "PointOfInterestManager.Status",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "take",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < BlockPos >",
+      "parameters": [
+        {
+          "name": "p_219157_1_",
+          "type": "Predicate < PointOfInterestType >",
+          "annotations": []
+        },
+        {
+          "name": "p_219157_2_",
+          "type": "Predicate < BlockPos >",
+          "annotations": []
+        },
+        {
+          "name": "p_219157_3_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_219157_4_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRandom",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < BlockPos >",
+      "parameters": [
+        {
+          "name": "p_219163_1_",
+          "type": "Predicate < PointOfInterestType >",
+          "annotations": []
+        },
+        {
+          "name": "p_219163_2_",
+          "type": "Predicate < BlockPos >",
+          "annotations": []
+        },
+        {
+          "name": "p_219163_3_",
+          "type": "PointOfInterestManager.Status",
+          "annotations": []
+        },
+        {
+          "name": "p_219163_4_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_219163_5_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_219163_6_",
+          "type": "Random",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "release",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_219142_1_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "exists",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_219138_1_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_219138_2_",
+          "type": "Predicate < PointOfInterestType >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getType",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < PointOfInterestType >",
+      "parameters": [
+        {
+          "name": "p_219148_1_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sectionsToVillage",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_219150_1_",
+          "type": "SectionPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isVillageCenter",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_219154_1_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_219115_1_",
+          "type": "BooleanSupplier",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setDirty",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_219116_1_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onSectionLoad",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_219111_1_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "checkConsistencyWithBlocks",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_219139_1_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_219139_2_",
+          "type": "ChunkSection",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mayHavePoi",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_219151_0_",
+          "type": "ChunkSection",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateFromSection",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_219132_1_",
+          "type": "ChunkSection",
+          "annotations": []
+        },
+        {
+          "name": "p_219132_2_",
+          "type": "SectionPos",
+          "annotations": []
+        },
+        {
+          "name": "p_219132_3_",
+          "type": "BiConsumer < BlockPos , PointOfInterestType >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ensureLoadedAndValid",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_226347_1_",
+          "type": "IWorldReader",
+          "annotations": []
+        },
+        {
+          "name": "p_226347_2_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_226347_3_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.16.5/net/minecraft/village/PointOfInterestManager.html"
+}

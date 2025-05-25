@@ -1,0 +1,1131 @@
+{
+  "type": "class",
+  "name": "ChunkGenerator",
+  "qualified_name": "net.minecraft.world.level.chunk.ChunkGenerator",
+  "package": "net.minecraft.world.level.chunk",
+  "modifiers": [
+    "public",
+    "abstract",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CODEC",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.serialization.Codec< ChunkGenerator >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "structureSets",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "Registry < StructureSet >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "biomeSource",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "BiomeSource",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "runtimeBiomeSource",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "BiomeSource",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "structureOverrides",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "Optional < HolderSet < StructureSet >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "placementsForFeature",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < ConfiguredStructureFeature <?, ?>, List < StructurePlacement >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ringPositions",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < ConcentricRingsStructurePlacement , CompletableFuture < List < ChunkPos >>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasGeneratedPositions",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ringPlacementSeed",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ChunkGenerator",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_207960_",
+          "type": "Registry < StructureSet >",
+          "annotations": []
+        },
+        {
+          "name": "p_207961_",
+          "type": "Optional < HolderSet < StructureSet >>",
+          "annotations": []
+        },
+        {
+          "name": "p_207962_",
+          "type": "BiomeSource",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ChunkGenerator",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_207964_",
+          "type": "Registry < StructureSet >",
+          "annotations": []
+        },
+        {
+          "name": "p_207965_",
+          "type": "Optional < HolderSet < StructureSet >>",
+          "annotations": []
+        },
+        {
+          "name": "p_207966_",
+          "type": "BiomeSource",
+          "annotations": []
+        },
+        {
+          "name": "p_207967_",
+          "type": "BiomeSource",
+          "annotations": []
+        },
+        {
+          "name": "p_207968_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "commonCodec",
+      "modifiers": [
+        "protected",
+        "static",
+        "final"
+      ],
+      "return_type": "com.mojang.datafixers.Products.P1<com.mojang.serialization.codecs.RecordCodecBuilder.Mu<T>, Registry < StructureSet >>",
+      "parameters": [
+        {
+          "name": "p_208006_",
+          "type": "com.mojang.serialization.codecs.RecordCodecBuilder.Instance<T>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "possibleStructureSets",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Stream < Holder < StructureSet >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "generatePositions",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "generateRingPositions",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture < List < ChunkPos >>",
+      "parameters": [
+        {
+          "name": "p_211668_",
+          "type": "Holder < StructureSet >",
+          "annotations": []
+        },
+        {
+          "name": "p_211669_",
+          "type": "ConcentricRingsStructurePlacement",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "codec",
+      "modifiers": [
+        "protected",
+        "abstract"
+      ],
+      "return_type": "com.mojang.serialization.Codec<? extends ChunkGenerator >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTypeNameForDataFixer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < ResourceKey <com.mojang.serialization.Codec<? extends ChunkGenerator >>>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "withSeed",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "ChunkGenerator",
+      "parameters": [
+        {
+          "name": "p_62156_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createBiomes",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture < ChunkAccess >",
+      "parameters": [
+        {
+          "name": "p_196743_",
+          "type": "Registry < Biome >",
+          "annotations": []
+        },
+        {
+          "name": "p_196744_",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "p_196745_",
+          "type": "Blender",
+          "annotations": []
+        },
+        {
+          "name": "p_196746_",
+          "type": "StructureFeatureManager",
+          "annotations": []
+        },
+        {
+          "name": "p_196747_",
+          "type": "ChunkAccess",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "climateSampler",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "Climate.Sampler",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getNoiseBiome",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Holder < Biome >",
+      "parameters": [
+        {
+          "name": "p_204416_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_204417_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_204418_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "applyCarvers",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_187691_",
+          "type": "WorldGenRegion",
+          "annotations": []
+        },
+        {
+          "name": "p_187692_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_187693_",
+          "type": "BiomeManager",
+          "annotations": []
+        },
+        {
+          "name": "p_187694_",
+          "type": "StructureFeatureManager",
+          "annotations": []
+        },
+        {
+          "name": "p_187695_",
+          "type": "ChunkAccess",
+          "annotations": []
+        },
+        {
+          "name": "p_187696_",
+          "type": "GenerationStep.Carving",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "findNearestMapFeature",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "com.mojang.datafixers.util.Pair< BlockPos , Holder < ConfiguredStructureFeature <?, ?>>>",
+      "parameters": [
+        {
+          "name": "p_207971_",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "p_207972_",
+          "type": "HolderSet < ConfiguredStructureFeature <?, ?>>",
+          "annotations": []
+        },
+        {
+          "name": "p_207973_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_207974_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_207975_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getNearestGeneratedStructure",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "BlockPos",
+      "parameters": [
+        {
+          "name": "p_204383_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_204384_",
+          "type": "ConcentricRingsStructurePlacement",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getNearestGeneratedStructure",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "com.mojang.datafixers.util.Pair< BlockPos , Holder < ConfiguredStructureFeature <?, ?>>>",
+      "parameters": [
+        {
+          "name": "p_208060_",
+          "type": "Set < Holder < ConfiguredStructureFeature <?, ?>>>",
+          "annotations": []
+        },
+        {
+          "name": "p_208061_",
+          "type": "LevelReader",
+          "annotations": []
+        },
+        {
+          "name": "p_208062_",
+          "type": "StructureFeatureManager",
+          "annotations": []
+        },
+        {
+          "name": "p_208063_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_208064_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_208065_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_208066_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_208067_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_208068_",
+          "type": "RandomSpreadStructurePlacement",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "applyBiomeDecoration",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_187712_",
+          "type": "WorldGenLevel",
+          "annotations": []
+        },
+        {
+          "name": "p_187713_",
+          "type": "ChunkAccess",
+          "annotations": []
+        },
+        {
+          "name": "p_187714_",
+          "type": "StructureFeatureManager",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasFeatureChunkInRange",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_212266_",
+          "type": "ResourceKey < StructureSet >",
+          "annotations": []
+        },
+        {
+          "name": "p_212267_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_212268_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_212269_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_212270_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getWritableArea",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "BoundingBox",
+      "parameters": [
+        {
+          "name": "p_187718_",
+          "type": "ChunkAccess",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "buildSurface",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_187697_",
+          "type": "WorldGenRegion",
+          "annotations": []
+        },
+        {
+          "name": "p_187698_",
+          "type": "StructureFeatureManager",
+          "annotations": []
+        },
+        {
+          "name": "p_187699_",
+          "type": "ChunkAccess",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "spawnOriginalMobs",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_62167_",
+          "type": "WorldGenRegion",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSpawnHeight",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_156157_",
+          "type": "LevelHeightAccessor",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBiomeSource",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BiomeSource",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getGenDepth",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMobsAt",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "WeightedRandomList < MobSpawnSettings.SpawnerData >",
+      "parameters": [
+        {
+          "name": "p_204386_",
+          "type": "Holder < Biome >",
+          "annotations": []
+        },
+        {
+          "name": "p_204387_",
+          "type": "StructureFeatureManager",
+          "annotations": []
+        },
+        {
+          "name": "p_204388_",
+          "type": "MobCategory",
+          "annotations": []
+        },
+        {
+          "name": "p_204389_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "allConfigurations",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "Stream < ConfiguredStructureFeature <?, ?>>",
+      "parameters": [
+        {
+          "name": "p_208045_",
+          "type": "Registry < ConfiguredStructureFeature <?, ?>>",
+          "annotations": []
+        },
+        {
+          "name": "p_208046_",
+          "type": "StructureFeature <?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createStructures",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_62200_",
+          "type": "RegistryAccess",
+          "annotations": []
+        },
+        {
+          "name": "p_62201_",
+          "type": "StructureFeatureManager",
+          "annotations": []
+        },
+        {
+          "name": "p_62202_",
+          "type": "ChunkAccess",
+          "annotations": []
+        },
+        {
+          "name": "p_62203_",
+          "type": "StructureManager",
+          "annotations": []
+        },
+        {
+          "name": "p_62204_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tryGenerateStructure",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_208017_",
+          "type": "StructureSet.StructureSelectionEntry",
+          "annotations": []
+        },
+        {
+          "name": "p_208018_",
+          "type": "StructureFeatureManager",
+          "annotations": []
+        },
+        {
+          "name": "p_208019_",
+          "type": "RegistryAccess",
+          "annotations": []
+        },
+        {
+          "name": "p_208020_",
+          "type": "StructureManager",
+          "annotations": []
+        },
+        {
+          "name": "p_208021_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_208022_",
+          "type": "ChunkAccess",
+          "annotations": []
+        },
+        {
+          "name": "p_208023_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_208024_",
+          "type": "SectionPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fetchReferences",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_207977_",
+          "type": "StructureFeatureManager",
+          "annotations": []
+        },
+        {
+          "name": "p_207978_",
+          "type": "ChunkAccess",
+          "annotations": []
+        },
+        {
+          "name": "p_207979_",
+          "type": "SectionPos",
+          "annotations": []
+        },
+        {
+          "name": "p_207980_",
+          "type": "ConfiguredStructureFeature <?, ?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "adjustBiome",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "Holder < Biome >",
+      "parameters": [
+        {
+          "name": "p_204385_",
+          "type": "Holder < Biome >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createReferences",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_62178_",
+          "type": "WorldGenLevel",
+          "annotations": []
+        },
+        {
+          "name": "p_62179_",
+          "type": "StructureFeatureManager",
+          "annotations": []
+        },
+        {
+          "name": "p_62180_",
+          "type": "ChunkAccess",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fillFromNoise",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "CompletableFuture < ChunkAccess >",
+      "parameters": [
+        {
+          "name": "p_187748_",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "p_187749_",
+          "type": "Blender",
+          "annotations": []
+        },
+        {
+          "name": "p_187750_",
+          "type": "StructureFeatureManager",
+          "annotations": []
+        },
+        {
+          "name": "p_187751_",
+          "type": "ChunkAccess",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSeaLevel",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMinY",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBaseHeight",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_156153_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_156154_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_156155_",
+          "type": "Heightmap.Types",
+          "annotations": []
+        },
+        {
+          "name": "p_156156_",
+          "type": "LevelHeightAccessor",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBaseColumn",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "NoiseColumn",
+      "parameters": [
+        {
+          "name": "p_156150_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_156151_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_156152_",
+          "type": "LevelHeightAccessor",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFirstFreeHeight",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_156175_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_156176_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_156177_",
+          "type": "Heightmap.Types",
+          "annotations": []
+        },
+        {
+          "name": "p_156178_",
+          "type": "LevelHeightAccessor",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFirstOccupiedHeight",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_156180_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_156181_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_156182_",
+          "type": "Heightmap.Types",
+          "annotations": []
+        },
+        {
+          "name": "p_156183_",
+          "type": "LevelHeightAccessor",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ensureStructuresGenerated",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRingPositionsFor",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "List < ChunkPos >",
+      "parameters": [
+        {
+          "name": "p_204381_",
+          "type": "ConcentricRingsStructurePlacement",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPlacementsForFeature",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "List < StructurePlacement >",
+      "parameters": [
+        {
+          "name": "p_208091_",
+          "type": "Holder < ConfiguredStructureFeature <?, ?>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addDebugScreenInfo",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_208054_",
+          "type": "List < String >",
+          "annotations": []
+        },
+        {
+          "name": "p_208055_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.18.2/net/minecraft/world/level/chunk/ChunkGenerator.html"
+}

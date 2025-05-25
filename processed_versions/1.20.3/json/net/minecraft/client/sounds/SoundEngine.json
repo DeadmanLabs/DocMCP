@@ -1,0 +1,827 @@
+{
+  "type": "class",
+  "name": "SoundEngine",
+  "qualified_name": "net.minecraft.client.sounds.SoundEngine",
+  "package": "net.minecraft.client.sounds",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "MARKER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Marker",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PITCH_MIN",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PITCH_MAX",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "VOLUME_MIN",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "VOLUME_MAX",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MIN_SOURCE_LIFETIME",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ONLY_WARN_ONCE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Set < ResourceLocation >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DEFAULT_DEVICE_CHECK_INTERVAL_MS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MISSING_SOUND",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "OPEN_AL_SOFT_PREFIX",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "OPEN_AL_SOFT_PREFIX_LENGTH",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "soundManager",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "type": "SoundManager",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "options",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Options",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loaded",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "library",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Library",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "listener",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Listener",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "soundBuffers",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "SoundBufferLibrary",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "executor",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "SoundEngineExecutor",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "channelAccess",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ChannelAccess",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickCount",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastDeviceCheckTime",
+      "modifiers": [
+        "private"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "devicePoolState",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "AtomicReference < SoundEngine.DeviceCheckState >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "instanceToChannel",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < SoundInstance , ChannelAccess.ChannelHandle >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "instanceBySource",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.google.common.collect.Multimap< SoundSource , SoundInstance >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickingSounds",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "List < TickableSoundInstance >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "queuedSounds",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < SoundInstance , Integer >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "soundDeleteTime",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < SoundInstance , Integer >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "listeners",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "List < SoundEventListener >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "queuedTickableSounds",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "List < TickableSoundInstance >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "preloadQueue",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "List < Sound >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "SoundEngine",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_120236_",
+          "type": "SoundManager",
+          "annotations": []
+        },
+        {
+          "name": "p_120237_",
+          "type": "Options",
+          "annotations": []
+        },
+        {
+          "name": "p_249332_",
+          "type": "ResourceProvider",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "reload",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loadLibrary",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getVolume",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_120259_",
+          "type": "SoundSource",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateCategoryVolume",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_120261_",
+          "type": "SoundSource",
+          "annotations": []
+        },
+        {
+          "name": "p_120262_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "destroy",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "emergencyShutdown",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stop",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_120275_",
+          "type": "SoundInstance",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stopAll",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addEventListener",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_120296_",
+          "type": "SoundEventListener",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removeEventListener",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_120308_",
+          "type": "SoundEventListener",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldChangeDevice",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_120303_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickNonPaused",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "requiresManualLooping",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_120316_",
+          "type": "SoundInstance",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldLoopManually",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_120319_",
+          "type": "SoundInstance",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldLoopAutomatically",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_120322_",
+          "type": "SoundInstance",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isActive",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_120306_",
+          "type": "SoundInstance",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "play",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_120313_",
+          "type": "SoundInstance",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "queueTickingSound",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_120283_",
+          "type": "TickableSoundInstance",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "requestPreload",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_120273_",
+          "type": "Sound",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "calculatePitch",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_120325_",
+          "type": "SoundInstance",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "calculateVolume",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_120328_",
+          "type": "SoundInstance",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "calculateVolume",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_235258_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_235259_",
+          "type": "SoundSource",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pause",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "resume",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playDelayed",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_120277_",
+          "type": "SoundInstance",
+          "annotations": []
+        },
+        {
+          "name": "p_120278_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateSource",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_120271_",
+          "type": "Camera",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stop",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_120300_",
+          "type": "ResourceLocation",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_120301_",
+          "type": "SoundSource",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDebugString",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAvailableSoundDevices",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "List < String >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getListenerTransform",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ListenerTransform",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.3/net/minecraft/client/sounds/SoundEngine.html"
+}

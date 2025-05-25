@@ -1,0 +1,679 @@
+{
+  "type": "class",
+  "name": "FluidUtil",
+  "qualified_name": "net.minecraftforge.fluids.FluidUtil",
+  "package": "net.minecraftforge.fluids",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "FluidUtil",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "interactWithFluidHandler",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "hand",
+          "type": "InteractionHand",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "side",
+          "type": "Direction",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "Used to handle the common case of a player holding a fluid item and right-clicking on a fluid handler block. First it tries to fill the item from the block, if that action fails then it tries to drain the item into the block. Automatically updates the item in the player's hand and stashes any extra items created.",
+      "deprecated": false
+    },
+    {
+      "name": "interactWithFluidHandler",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "hand",
+          "type": "InteractionHand",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "handler",
+          "type": "IFluidHandler",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        }
+      ],
+      "description": "Used to handle the common case of a player holding a fluid item and right-clicking on a fluid handler. First it tries to fill the item from the handler, if that action fails then it tries to drain the item into the handler. Automatically updates the item in the player's hand and stashes any extra items created.",
+      "deprecated": false
+    },
+    {
+      "name": "tryFillContainer",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "@NotNull FluidActionResult",
+      "parameters": [
+        {
+          "name": "container",
+          "type": "ItemStack",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "fluidSource",
+          "type": "IFluidHandler",
+          "annotations": []
+        },
+        {
+          "name": "maxAmount",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        },
+        {
+          "name": "doFill",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Fill a container from the given fluidSource.",
+      "deprecated": false
+    },
+    {
+      "name": "tryEmptyContainer",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "@NotNull FluidActionResult",
+      "parameters": [
+        {
+          "name": "container",
+          "type": "ItemStack",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "fluidDestination",
+          "type": "IFluidHandler",
+          "annotations": []
+        },
+        {
+          "name": "maxAmount",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        },
+        {
+          "name": "doDrain",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Takes a filled container and tries to empty it into the given tank.",
+      "deprecated": false
+    },
+    {
+      "name": "tryFillContainerAndStow",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "@NotNull FluidActionResult",
+      "parameters": [
+        {
+          "name": "container",
+          "type": "ItemStack",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "fluidSource",
+          "type": "IFluidHandler",
+          "annotations": []
+        },
+        {
+          "name": "inventory",
+          "type": "IItemHandler",
+          "annotations": []
+        },
+        {
+          "name": "maxAmount",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        },
+        {
+          "name": "doFill",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Takes an Fluid Container Item and tries to fill it from the given tank. If the player is in creative mode, the container will not be modified on success, and no additional items created. If the input itemstack has a stacksize > 1 it will stow the filled container in the given inventory. If the inventory does not accept it, it will be given to the player or dropped at the players feet. If player is null in this case, the action will be aborted.",
+      "deprecated": false
+    },
+    {
+      "name": "tryEmptyContainerAndStow",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "@NotNull FluidActionResult",
+      "parameters": [
+        {
+          "name": "container",
+          "type": "ItemStack",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "fluidDestination",
+          "type": "IFluidHandler",
+          "annotations": []
+        },
+        {
+          "name": "inventory",
+          "type": "IItemHandler",
+          "annotations": []
+        },
+        {
+          "name": "maxAmount",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        },
+        {
+          "name": "doDrain",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Takes an Fluid Container Item, tries to empty it into the fluid handler, and stows it in the given inventory. If the player is in creative mode, the container will not be modified on success, and no additional items created. If the input itemstack has a stacksize > 1 it will stow the emptied container in the given inventory. If the inventory does not accept the emptied container, it will be given to the player or dropped at the players feet. If player is null in this case, the action will be aborted.",
+      "deprecated": false
+    },
+    {
+      "name": "tryFluidTransfer",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "@NotNull FluidStack",
+      "parameters": [
+        {
+          "name": "fluidDestination",
+          "type": "IFluidHandler",
+          "annotations": []
+        },
+        {
+          "name": "fluidSource",
+          "type": "IFluidHandler",
+          "annotations": []
+        },
+        {
+          "name": "maxAmount",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "doTransfer",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Fill a destination fluid handler from a source fluid handler with a max amount. To specify a fluid to transfer instead of max amount, use tryFluidTransfer(IFluidHandler, IFluidHandler, FluidStack, boolean) To transfer as much as possible, use Integer.MAX_VALUE for maxAmount.",
+      "deprecated": false
+    },
+    {
+      "name": "tryFluidTransfer",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "@NotNull FluidStack",
+      "parameters": [
+        {
+          "name": "fluidDestination",
+          "type": "IFluidHandler",
+          "annotations": []
+        },
+        {
+          "name": "fluidSource",
+          "type": "IFluidHandler",
+          "annotations": []
+        },
+        {
+          "name": "resource",
+          "type": "FluidStack",
+          "annotations": []
+        },
+        {
+          "name": "doTransfer",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Fill a destination fluid handler from a source fluid handler using a specific fluid. To specify a max amount to transfer instead of specific fluid, use tryFluidTransfer(IFluidHandler, IFluidHandler, int, boolean) To transfer as much as possible, use Integer.MAX_VALUE for resource.amount.",
+      "deprecated": false
+    },
+    {
+      "name": "tryFluidTransfer_Internal",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "@NotNull FluidStack",
+      "parameters": [
+        {
+          "name": "fluidDestination",
+          "type": "IFluidHandler",
+          "annotations": []
+        },
+        {
+          "name": "fluidSource",
+          "type": "IFluidHandler",
+          "annotations": []
+        },
+        {
+          "name": "drainable",
+          "type": "FluidStack",
+          "annotations": []
+        },
+        {
+          "name": "doTransfer",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Internal method for filling a destination fluid handler from a source fluid handler using a specific fluid. Assumes that \"drainable\" can be drained from \"fluidSource\". Modders: Instead of this method, use tryFluidTransfer(IFluidHandler, IFluidHandler, FluidStack, boolean) or tryFluidTransfer(IFluidHandler, IFluidHandler, int, boolean) .",
+      "deprecated": false
+    },
+    {
+      "name": "getFluidHandler",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "LazyOptional < IFluidHandlerItem >",
+      "parameters": [
+        {
+          "name": "itemStack",
+          "type": "ItemStack",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        }
+      ],
+      "description": "Helper method to get an IFluidHandlerItem for an itemStack. The itemStack passed in here WILL be modified, the IFluidHandlerItem acts on it directly. Some IFluidHandlerItem will change the item entirely, always use IFluidHandlerItem.getContainer() after using the fluid handler to get the resulting item back. Note that the itemStack MUST have a stackSize of 1 if you want to fill or drain it. You can't fill or drain multiple items at once, if you do then liquid is multiplied or destroyed. Vanilla buckets will be converted to universal buckets if they are enabled.",
+      "deprecated": false
+    },
+    {
+      "name": "getFluidContained",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "Optional < FluidStack >",
+      "parameters": [
+        {
+          "name": "container",
+          "type": "ItemStack",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        }
+      ],
+      "description": "Helper method to get the fluid contained in an itemStack",
+      "deprecated": false
+    },
+    {
+      "name": "getFluidHandler",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "LazyOptional < IFluidHandler >",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "blockPos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "side",
+          "type": "Direction",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "Helper method to get an IFluidHandler for at a block position.",
+      "deprecated": false
+    },
+    {
+      "name": "tryPickUpFluid",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "@NotNull FluidActionResult",
+      "parameters": [
+        {
+          "name": "emptyContainer",
+          "type": "ItemStack",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "playerIn",
+          "type": "Player",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        },
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "side",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "description": "Attempts to pick up a fluid in the level and put it in an empty container item.",
+      "deprecated": false
+    },
+    {
+      "name": "tryPlaceFluid",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "@NotNull FluidActionResult",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        },
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "hand",
+          "type": "InteractionHand",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "container",
+          "type": "ItemStack",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "resource",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "ItemStack version of tryPlaceFluid(Player, Level, InteractionHand, BlockPos, IFluidHandler, FluidStack) . Use the returned FluidActionResult to update the container ItemStack.",
+      "deprecated": false
+    },
+    {
+      "name": "tryPlaceFluid",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        },
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "hand",
+          "type": "InteractionHand",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "fluidSource",
+          "type": "IFluidHandler",
+          "annotations": []
+        },
+        {
+          "name": "resource",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Tries to place a fluid resource into the level as a block and drains the fluidSource. Makes a fluid emptying or vaporization sound when successful. Honors the amount of fluid contained by the used container. Checks if water-like fluids should vaporize like in the nether. Modeled after BucketItem.emptyContents(Player, Level, BlockPos, BlockHitResult)",
+      "deprecated": false
+    },
+    {
+      "name": "getFluidBlockHandler",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "IFluidHandler",
+      "parameters": [
+        {
+          "name": "fluid",
+          "type": "Fluid",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Internal method for getting a fluid block handler for placing a fluid. Modders: Instead of this method, use tryPlaceFluid(Player, Level, InteractionHand, BlockPos, ItemStack, FluidStack) or tryPlaceFluid(Player, Level, InteractionHand, BlockPos, IFluidHandler, FluidStack)",
+      "deprecated": false
+    },
+    {
+      "name": "destroyBlockOnFluidPlacement",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Destroys a block when a fluid is placed in the same position. Modeled after BucketItem.emptyContents(Player, Level, BlockPos, BlockHitResult) This is a helper method for implementing IFluidBlock.place(Level, BlockPos, FluidStack, IFluidHandler.FluidAction) .",
+      "deprecated": false
+    },
+    {
+      "name": "getFilledBucket",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "@NotNull ItemStack",
+      "parameters": [
+        {
+          "name": "fluidStack",
+          "type": "FluidStack",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.19.3/net/minecraftforge/fluids/FluidUtil.html"
+}

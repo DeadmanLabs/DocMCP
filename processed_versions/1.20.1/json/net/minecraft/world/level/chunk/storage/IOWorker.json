@@ -1,0 +1,349 @@
+{
+  "type": "class",
+  "name": "IOWorker",
+  "qualified_name": "net.minecraft.world.level.chunk.storage.IOWorker",
+  "package": "net.minecraft.world.level.chunk.storage",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shutdownRequested",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "AtomicBoolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mailbox",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ProcessorMailbox < StrictQueue.IntRunnable >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "storage",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "RegionFileStorage",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pendingWrites",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < ChunkPos , IOWorker.PendingStore >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "regionCacheForBlender",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap< CompletableFuture < BitSet >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "REGION_CACHE_SIZE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "IOWorker",
+      "modifiers": [
+        "protected"
+      ],
+      "parameters": [
+        {
+          "name": "p_196930_",
+          "type": "Path",
+          "annotations": []
+        },
+        {
+          "name": "p_196931_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_196932_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "isOldChunkAround",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_223472_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_223473_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getOrCreateOldDataForRegion",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture < BitSet >",
+      "parameters": [
+        {
+          "name": "p_223464_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_223465_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createOldDataForRegion",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture < BitSet >",
+      "parameters": [
+        {
+          "name": "p_223490_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_223491_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isOldChunk",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_223485_",
+          "type": "CompoundTag",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "store",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture < Void >",
+      "parameters": [
+        {
+          "name": "p_63539_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_63540_",
+          "type": "CompoundTag",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loadAsync",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture < Optional < CompoundTag >>",
+      "parameters": [
+        {
+          "name": "p_156588_",
+          "type": "ChunkPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "synchronize",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture < Void >",
+      "parameters": [
+        {
+          "name": "p_182499_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "scanChunk",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture < Void >",
+      "parameters": [
+        {
+          "name": "p_196939_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_196940_",
+          "type": "StreamTagVisitor",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "submitTask",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture <T>",
+      "parameters": [
+        {
+          "name": "p_63546_",
+          "type": "Supplier <com.mojang.datafixers.util.Either<T, Exception >>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "storePendingChunk",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tellStorePending",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "runStore",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_63536_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_63537_",
+          "type": "IOWorker.PendingStore",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "close",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.1/net/minecraft/world/level/chunk/storage/IOWorker.html"
+}

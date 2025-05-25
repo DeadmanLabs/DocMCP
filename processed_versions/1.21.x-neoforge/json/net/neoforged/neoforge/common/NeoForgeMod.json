@@ -1,0 +1,1039 @@
+{
+  "type": "class",
+  "name": "NeoForgeMod",
+  "qualified_name": "net.neoforged.neoforge.common.NeoForgeMod",
+  "package": "net.neoforged.neoforge.common",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "VERSION_CHECK_CAT",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NEOFORGEMOD",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Marker",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isPRBuild",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ATTRIBUTES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DeferredRegister < Attribute >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "COMMAND_ARGUMENT_TYPES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DeferredRegister < ArgumentTypeInfo <?, ?>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "GLOBAL_LOOT_MODIFIER_SERIALIZERS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DeferredRegister <com.mojang.serialization.MapCodec<? extends IGlobalLootModifier >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BIOME_MODIFIER_SERIALIZERS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DeferredRegister <com.mojang.serialization.MapCodec<? extends BiomeModifier >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "STRUCTURE_MODIFIER_SERIALIZERS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DeferredRegister <com.mojang.serialization.MapCodec<? extends StructureModifier >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "HOLDER_SET_TYPES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DeferredRegister < HolderSetType >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ENUM_COMMAND_ARGUMENT_TYPE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Holder < ArgumentTypeInfo <?, ?>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MODID_COMMAND_ARGUMENT_TYPE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder < ArgumentTypeInfo <?, ?>, SingletonArgumentInfo < ModIdArgument >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SWIM_SPEED",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "Holder < Attribute >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NAMETAG_DISTANCE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "Holder < Attribute >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CREATIVE_FLIGHT",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "Holder < Attribute >",
+      "description": "Grants the player the ability to use creative flight when not in creative mode. Anything above zero allows flight. For this attribute, you should only use the following modifier values: A value of 1 with invalid reference net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation#ADDITION to enable the effect. A value of -1 with invalid reference net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation#MULTIPLY_TOTAL to forcibly disable the effect. This behavior allows for multiple enables to coexist, not removing the effect unless all enabling modifiers are removed. Additionally, it permits forcibly disabling the attribute through multiply total. To determine if a player has flight access via game mode or attribute, use IPlayerExtension.mayFly() Game mode flight cannot be disabled via this attribute.",
+      "deprecated": false
+    },
+    {
+      "name": "ADD_TABLE_LOOT_MODIFIER_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder <com.mojang.serialization.MapCodec<? extends IGlobalLootModifier >, com.mojang.serialization.MapCodec< AddTableLootModifier >>",
+      "description": "Stock loot modifier type that adds loot from a subtable to the final loot.",
+      "deprecated": false
+    },
+    {
+      "name": "NONE_BIOME_MODIFIER_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder <com.mojang.serialization.MapCodec<? extends BiomeModifier >, com.mojang.serialization.MapCodec< NoneBiomeModifier >>",
+      "description": "Noop biome modifier. Can be used in a biome modifier json with \"type\": \"neoforge:none\".",
+      "deprecated": false
+    },
+    {
+      "name": "ADD_FEATURES_BIOME_MODIFIER_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder <com.mojang.serialization.MapCodec<? extends BiomeModifier >, com.mojang.serialization.MapCodec< BiomeModifiers.AddFeaturesBiomeModifier >>",
+      "description": "Stock biome modifier for adding features to biomes.",
+      "deprecated": false
+    },
+    {
+      "name": "REMOVE_FEATURES_BIOME_MODIFIER_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder <com.mojang.serialization.MapCodec<? extends BiomeModifier >, com.mojang.serialization.MapCodec< BiomeModifiers.RemoveFeaturesBiomeModifier >>",
+      "description": "Stock biome modifier for removing features from biomes.",
+      "deprecated": false
+    },
+    {
+      "name": "ADD_SPAWNS_BIOME_MODIFIER_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder <com.mojang.serialization.MapCodec<? extends BiomeModifier >, com.mojang.serialization.MapCodec< BiomeModifiers.AddSpawnsBiomeModifier >>",
+      "description": "Stock biome modifier for adding mob spawns to biomes.",
+      "deprecated": false
+    },
+    {
+      "name": "REMOVE_SPAWNS_BIOME_MODIFIER_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder <com.mojang.serialization.MapCodec<? extends BiomeModifier >, com.mojang.serialization.MapCodec< BiomeModifiers.RemoveSpawnsBiomeModifier >>",
+      "description": "Stock biome modifier for removing mob spawns from biomes.",
+      "deprecated": false
+    },
+    {
+      "name": "ADD_CARVERS_BIOME_MODIFIER_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder <com.mojang.serialization.MapCodec<? extends BiomeModifier >, com.mojang.serialization.MapCodec< BiomeModifiers.AddCarversBiomeModifier >>",
+      "description": "Stock biome modifier for adding carvers to biomes.",
+      "deprecated": false
+    },
+    {
+      "name": "REMOVE_CARVERS_BIOME_MODIFIER_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder <com.mojang.serialization.MapCodec<? extends BiomeModifier >, com.mojang.serialization.MapCodec< BiomeModifiers.RemoveCarversBiomeModifier >>",
+      "description": "Stock biome modifier for removing carvers from biomes.",
+      "deprecated": false
+    },
+    {
+      "name": "ADD_SPAWN_COSTS_BIOME_MODIFIER_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder <com.mojang.serialization.MapCodec<? extends BiomeModifier >, com.mojang.serialization.MapCodec< BiomeModifiers.AddSpawnCostsBiomeModifier >>",
+      "description": "Stock biome modifier for adding mob spawn costs to biomes.",
+      "deprecated": false
+    },
+    {
+      "name": "REMOVE_SPAWN_COSTS_BIOME_MODIFIER_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder <com.mojang.serialization.MapCodec<? extends BiomeModifier >, com.mojang.serialization.MapCodec< BiomeModifiers.RemoveSpawnCostsBiomeModifier >>",
+      "description": "Stock biome modifier for removing mob spawn costs from biomes.",
+      "deprecated": false
+    },
+    {
+      "name": "NONE_STRUCTURE_MODIFIER_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder <com.mojang.serialization.MapCodec<? extends StructureModifier >, com.mojang.serialization.MapCodec< NoneStructureModifier >>",
+      "description": "Noop structure modifier. Can be used in a structure modifier json with \"type\": \"neoforge:none\".",
+      "deprecated": false
+    },
+    {
+      "name": "ADD_SPAWNS_STRUCTURE_MODIFIER_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder <com.mojang.serialization.MapCodec<? extends StructureModifier >, com.mojang.serialization.MapCodec< StructureModifiers.AddSpawnsStructureModifier >>",
+      "description": "Stock structure modifier for adding mob spawns to structures.",
+      "deprecated": false
+    },
+    {
+      "name": "REMOVE_SPAWNS_STRUCTURE_MODIFIER_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder <com.mojang.serialization.MapCodec<? extends StructureModifier >, com.mojang.serialization.MapCodec< StructureModifiers.RemoveSpawnsStructureModifier >>",
+      "description": "Stock structure modifier for removing mob spawns from structures.",
+      "deprecated": false
+    },
+    {
+      "name": "CLEAR_SPAWNS_STRUCTURE_MODIFIER_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder <com.mojang.serialization.MapCodec<? extends StructureModifier >, com.mojang.serialization.MapCodec< StructureModifiers.ClearSpawnsStructureModifier >>",
+      "description": "Stock structure modifier for removing spawn override lists from structures.",
+      "deprecated": false
+    },
+    {
+      "name": "ANY_HOLDER_SET",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "Holder < HolderSetType >",
+      "description": "Stock holder set type that represents any/all values in a registry. Can be used in a holderset object with { \"type\": \"neoforge:any\" }",
+      "deprecated": false
+    },
+    {
+      "name": "AND_HOLDER_SET",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "Holder < HolderSetType >",
+      "description": "Stock holder set type that represents an intersection of other holdersets. Can be used in a holderset object with { \"type\": \"neoforge:and\", \"values\": [list of holdersets] }",
+      "deprecated": false
+    },
+    {
+      "name": "OR_HOLDER_SET",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "Holder < HolderSetType >",
+      "description": "Stock holder set type that represents a union of other holdersets. Can be used in a holderset object with { \"type\": \"neoforge:or\", \"values\": [list of holdersets] }",
+      "deprecated": false
+    },
+    {
+      "name": "NOT_HOLDER_SET",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "Holder < HolderSetType >",
+      "description": "Stock holder set type that represents all values in a registry except those in another given set. Can be used in a holderset object with { \"type\": \"neoforge:not\", \"value\": holderset }",
+      "deprecated": false
+    },
+    {
+      "name": "INGREDIENT_TYPES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DeferredRegister < IngredientType <?>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "COMPOUND_INGREDIENT_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder < IngredientType <?>, IngredientType < CompoundIngredient >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_COMPONENT_INGREDIENT_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder < IngredientType <?>, IngredientType < DataComponentIngredient >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DIFFERENCE_INGREDIENT_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder < IngredientType <?>, IngredientType < DifferenceIngredient >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "INTERSECTION_INGREDIENT_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder < IngredientType <?>, IngredientType < IntersectionIngredient >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BLOCK_TAG_INGREDIENT",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder < IngredientType <?>, IngredientType < BlockTagIngredient >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "FLUID_INGREDIENT_TYPES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DeferredRegister < FluidIngredientType <?>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SINGLE_FLUID_INGREDIENT_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder < FluidIngredientType <?>, FluidIngredientType < SingleFluidIngredient >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "TAG_FLUID_INGREDIENT_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder < FluidIngredientType <?>, FluidIngredientType < TagFluidIngredient >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "EMPTY_FLUID_INGREDIENT_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder < FluidIngredientType <?>, FluidIngredientType < EmptyFluidIngredient >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "COMPOUND_FLUID_INGREDIENT_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder < FluidIngredientType <?>, FluidIngredientType < CompoundFluidIngredient >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_COMPONENT_FLUID_INGREDIENT_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder < FluidIngredientType <?>, FluidIngredientType < DataComponentFluidIngredient >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DIFFERENCE_FLUID_INGREDIENT_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder < FluidIngredientType <?>, FluidIngredientType < DifferenceFluidIngredient >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "INTERSECTION_FLUID_INGREDIENT_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder < FluidIngredientType <?>, FluidIngredientType < IntersectionFluidIngredient >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CONDITION_CODECS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DeferredRegister <com.mojang.serialization.MapCodec<? extends ICondition >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "AND_CONDITION",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder <com.mojang.serialization.MapCodec<? extends ICondition >, com.mojang.serialization.MapCodec< AndCondition >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "FALSE_CONDITION",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder <com.mojang.serialization.MapCodec<? extends ICondition >, com.mojang.serialization.MapCodec< FalseCondition >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ITEM_EXISTS_CONDITION",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder <com.mojang.serialization.MapCodec<? extends ICondition >, com.mojang.serialization.MapCodec< ItemExistsCondition >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MOD_LOADED_CONDITION",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder <com.mojang.serialization.MapCodec<? extends ICondition >, com.mojang.serialization.MapCodec< ModLoadedCondition >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NOT_CONDITION",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder <com.mojang.serialization.MapCodec<? extends ICondition >, com.mojang.serialization.MapCodec< NotCondition >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "OR_CONDITION",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder <com.mojang.serialization.MapCodec<? extends ICondition >, com.mojang.serialization.MapCodec< OrCondition >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "TAG_EMPTY_CONDITION",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder <com.mojang.serialization.MapCodec<? extends ICondition >, com.mojang.serialization.MapCodec< TagEmptyCondition >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "TRUE_CONDITION",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder <com.mojang.serialization.MapCodec<? extends ICondition >, com.mojang.serialization.MapCodec< TrueCondition >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ENTITY_PREDICATE_CODECS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DeferredRegister <com.mojang.serialization.MapCodec<? extends EntitySubPredicate >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PIGLIN_NEUTRAL_ARMOR_PREDICATE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder <com.mojang.serialization.MapCodec<? extends EntitySubPredicate >, com.mojang.serialization.MapCodec< PiglinNeutralArmorEntityPredicate >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ITEM_SUB_PREDICATES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DeferredRegister < ItemSubPredicate.Type <?>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "TOOL_ACTION_PREDICATE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder < ItemSubPredicate.Type <?>, ItemSubPredicate.Type < ToolActionItemPredicate >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PIGLIN_CURRENCY_PREDICATE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder < ItemSubPredicate.Type <?>, ItemSubPredicate.Type < PiglinCurrencyItemPredicate >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "VANILLA_FLUID_TYPES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DeferredRegister < FluidType >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "EMPTY_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "Holder < FluidType >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "WATER_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "Holder < FluidType >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LAVA_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "Holder < FluidType >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "enableProperFilenameValidation",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "enableMilkFluid",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BUCKET_EMPTY_MILK",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder < SoundEvent , SoundEvent >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BUCKET_FILL_MILK",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder < SoundEvent , SoundEvent >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MILK_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder < FluidType , FluidType >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MILK",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder < Fluid , Fluid >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "FLOWING_MILK",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "DeferredHolder < Fluid , Fluid >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "POISON_DAMAGE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "ResourceKey < DamageType >",
+      "description": "Used in place of DamageSources.magic() for damage dealt by MobEffects.POISON . May also be used by mods providing poison-like effects.",
+      "deprecated": false
+    },
+    {
+      "name": "USE_SELECTORS_PERMISSION",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "PermissionNode < Boolean >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "NeoForgeMod",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "modEventBus",
+          "type": "net.neoforged.bus.api.IEventBus",
+          "annotations": []
+        },
+        {
+          "name": "dist",
+          "type": "net.neoforged.api.distmarker.Dist",
+          "annotations": []
+        },
+        {
+          "name": "container",
+          "type": "net.neoforged.fml.ModContainer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "enableMilkFluid",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "Run this method during mod constructor to enable milk and add it to the Minecraft milk bucket",
+      "deprecated": false
+    },
+    {
+      "name": "enableProperFilenameValidation",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "Run this method during mod constructor to enable FileUtil.RESERVED_WINDOWS_FILENAMES_NEOFORGE regex being used for filepath validation. Fixes MC-268617 at cost of vanilla incompat edge cases with files generated with this activated and them migrated to vanilla instance - See PR #767",
+      "deprecated": false
+    },
+    {
+      "name": "getProperFilenameValidation",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "preInit",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "evt",
+          "type": "net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loadComplete",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "event",
+          "type": "net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "serverStopping",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "evt",
+          "type": "ServerStoppingEvent",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "gatherData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "event",
+          "type": "GatherDataEvent",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registerFluids",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "event",
+          "type": "RegisterEvent",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registerLootData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "event",
+          "type": "RegisterEvent",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registerPermissionNodes",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "event",
+          "type": "PermissionGatherEvent.Nodes",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isPRBuild",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "neoVersion",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isPRBuild",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21.x-neoforge/net/neoforged/neoforge/common/NeoForgeMod.html"
+}

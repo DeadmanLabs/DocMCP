@@ -1,0 +1,272 @@
+{
+  "type": "class",
+  "name": "JsonCodecProvider<T>",
+  "qualified_name": "net.neoforged.neoforge.common.data.JsonCodecProvider<T>",
+  "package": "net.neoforged.neoforge.common.data",
+  "modifiers": [
+    "public",
+    "abstract",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Dataprovider for using a Codec to generate jsons. Path names for jsons are derived from the given registry folder and each entry's namespaced id, in the format: <assets/data>/entryid/registryfolder/entrypath.json",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "resourceType",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "ExistingFileHelper.ResourceType",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pathProvider",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "PackOutput.PathProvider",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "existingFileHelper",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "ExistingFileHelper",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lookupProvider",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "CompletableFuture < HolderLookup.Provider >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "modid",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "directory",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "codec",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "com.mojang.serialization.Codec< T >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "conditions",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "Map < ResourceLocation , WithConditions < T >>",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "JsonCodecProvider",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "output",
+          "type": "PackOutput",
+          "annotations": []
+        },
+        {
+          "name": "target",
+          "type": "PackOutput.Target",
+          "annotations": []
+        },
+        {
+          "name": "directory",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "packType",
+          "type": "PackType",
+          "annotations": []
+        },
+        {
+          "name": "codec",
+          "type": "com.mojang.serialization.Codec< T >",
+          "annotations": []
+        },
+        {
+          "name": "lookupProvider",
+          "type": "CompletableFuture < HolderLookup.Provider >",
+          "annotations": []
+        },
+        {
+          "name": "modId",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "existingFileHelper",
+          "type": "ExistingFileHelper",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "run",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture <?>",
+      "parameters": [
+        {
+          "name": "cache",
+          "type": "CachedOutput",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "gather",
+      "modifiers": [
+        "protected",
+        "abstract"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getName",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "unconditional",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "value",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "conditionally",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "configurator",
+          "type": "Consumer < WithConditions.Builder < T >>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "process",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "withConditions",
+          "type": "WithConditions < T >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21.x-neoforge/net/neoforged/neoforge/common/data/JsonCodecProvider.html"
+}

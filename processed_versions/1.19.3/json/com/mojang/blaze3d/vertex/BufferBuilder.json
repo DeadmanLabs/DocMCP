@@ -1,0 +1,738 @@
+{
+  "type": "class",
+  "name": "BufferBuilder",
+  "qualified_name": "com.mojang.blaze3d.vertex.BufferBuilder",
+  "package": "com.mojang.blaze3d.vertex",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "com.mojang.blaze3d.vertex.DefaultedVertexConsumer"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "GROWTH_SIZE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "buffer",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ByteBuffer",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderedBufferCount",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderedBufferPointer",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "nextElementByte",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "vertices",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "currentElement",
+      "modifiers": [
+        "private"
+      ],
+      "type": "VertexFormatElement",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "elementIndex",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "format",
+      "modifiers": [
+        "private"
+      ],
+      "type": "VertexFormat",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mode",
+      "modifiers": [
+        "private"
+      ],
+      "type": "VertexFormat.Mode",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fastFormat",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fullFormat",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "building",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sortingPoints",
+      "modifiers": [
+        "private"
+      ],
+      "type": "org.joml.Vector3f[]",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sortX",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sortY",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sortZ",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "indexOnly",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "BufferBuilder",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_85664_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "ensureVertexCapacity",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ensureCapacity",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_85723_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "roundUp",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_85726_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setQuadSortOrigin",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_166772_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_166773_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_166774_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSortState",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BufferBuilder.SortState",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "restoreSortState",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_166776_",
+          "type": "BufferBuilder.SortState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "begin",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_166780_",
+          "type": "VertexFormat.Mode",
+          "annotations": []
+        },
+        {
+          "name": "p_166781_",
+          "type": "VertexFormat",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "switchFormat",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_85705_",
+          "type": "VertexFormat",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "intConsumer",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "it.unimi.dsi.fastutil.ints.IntConsumer",
+      "parameters": [
+        {
+          "name": "p_231159_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_231160_",
+          "type": "VertexFormat.IndexType",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "makeQuadSortingPoints",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "org.joml.Vector3f[]",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "putSortedQuadIndices",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_166787_",
+          "type": "VertexFormat.IndexType",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isCurrentBatchEmpty",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "endOrDiscardIfEmpty",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BufferBuilder.RenderedBuffer",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "end",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BufferBuilder.RenderedBuffer",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ensureDrawing",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "storeRenderedBuffer",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "BufferBuilder.RenderedBuffer",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "reset",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "putByte",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_85686_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_85687_",
+          "type": "byte",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "putShort",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_85700_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_85701_",
+          "type": "short",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "putFloat",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_85689_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_85690_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "endVertex",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "nextElement",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "color",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "VertexConsumer",
+      "parameters": [
+        {
+          "name": "p_85692_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_85693_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_85694_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_85695_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "vertex",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_85671_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_85672_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_85673_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_85674_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_85675_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_85676_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_85677_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_85678_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_85679_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_85680_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_85681_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_85682_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_85683_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_85684_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "releaseRenderedBuffer",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clear",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "discard",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "currentElement",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "VertexFormatElement",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "building",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "bufferSlice",
+      "modifiers": [],
+      "return_type": "ByteBuffer",
+      "parameters": [
+        {
+          "name": "p_231170_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_231171_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "putBulkData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "buffer",
+          "type": "ByteBuffer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.19.3/com/mojang/blaze3d/vertex/BufferBuilder.html"
+}

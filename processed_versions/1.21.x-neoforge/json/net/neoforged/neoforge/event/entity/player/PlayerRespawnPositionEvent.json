@@ -1,0 +1,184 @@
+{
+  "type": "class",
+  "name": "PlayerRespawnPositionEvent",
+  "qualified_name": "net.neoforged.neoforge.event.entity.player.PlayerRespawnPositionEvent",
+  "package": "net.neoforged.neoforge.event.entity.player",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Fired by invalid reference PlayerList#respawn(ServerPlayer, boolean) before the server respawns a player. This may be used to change the ServerLevel the player respawns in, as well as their respawn position. This event is fired after invalid reference BlockState#getRespawnPosition(EntityType, LevelReader, BlockPos, float, LivingEntity) is called. This event is only fired on the logical server.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.neoforged.neoforge.event.entity.EntityEvent",
+      "net.neoforged.neoforge.event.entity.living.LivingEvent",
+      "net.neoforged.neoforge.event.entity.player.PlayerEvent"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "dimensionTransition",
+      "modifiers": [
+        "private"
+      ],
+      "type": "DimensionTransition",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "originalDimensionTransition",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "DimensionTransition",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fromEndFight",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "copyOriginalSpawnPosition",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "PlayerRespawnPositionEvent",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "player",
+          "type": "ServerPlayer",
+          "annotations": []
+        },
+        {
+          "name": "dimensionTransition",
+          "type": "DimensionTransition",
+          "annotations": []
+        },
+        {
+          "name": "fromEndFight",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getDimensionTransition",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "DimensionTransition",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setDimensionTransition",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "dimensionTransition",
+          "type": "DimensionTransition",
+          "annotations": []
+        }
+      ],
+      "description": "Set the dimension transition for where the player will respawn",
+      "deprecated": false
+    },
+    {
+      "name": "setRespawnLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "respawnLevelResourceKey",
+          "type": "ResourceKey < Level >",
+          "annotations": []
+        }
+      ],
+      "description": "Set the level the player will respawn into using a ResourceKey .",
+      "deprecated": false
+    },
+    {
+      "name": "getOriginalDimensionTransition",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "DimensionTransition",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "copyOriginalSpawnPosition",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "If the respawn position of the original player will be copied to the fresh player via ServerPlayer.copyRespawnPosition(ServerPlayer) . This defaults to true if the original dimension transition was not missing a respawn block . This has no impact on the selected position for the current respawn, but controls if the player will (for example) retain their bed as their set respawn position.",
+      "deprecated": false
+    },
+    {
+      "name": "setCopyOriginalSpawnPosition",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "copyOriginalSpawnPosition",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Changes if the original player's respawn position will be copied to the fresh player via ServerPlayer.copyRespawnPosition(ServerPlayer) . If you wish to modify the set respawn position of the fresh player (for future respawns, not the current respawn), you can change the respawn position of the current player and set this value to true.",
+      "deprecated": false
+    },
+    {
+      "name": "isFromEndFight",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21.x-neoforge/net/neoforged/neoforge/event/entity/player/PlayerRespawnPositionEvent.html"
+}

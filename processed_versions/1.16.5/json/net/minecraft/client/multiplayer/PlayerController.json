@@ -1,0 +1,845 @@
+{
+  "type": "class",
+  "name": "PlayerController",
+  "qualified_name": "net.minecraft.client.multiplayer.PlayerController",
+  "package": "net.minecraft.client.multiplayer",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "minecraft",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Minecraft",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "connection",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ClientPlayNetHandler",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "destroyBlockPos",
+      "modifiers": [
+        "private"
+      ],
+      "type": "BlockPos",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "destroyingItem",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ItemStack",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "destroyProgress",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "destroyTicks",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "destroyDelay",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isDestroying",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "localPlayerMode",
+      "modifiers": [
+        "private"
+      ],
+      "type": "GameType",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "previousLocalPlayerMode",
+      "modifiers": [
+        "private"
+      ],
+      "type": "GameType",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "unAckedActions",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap<com.mojang.datafixers.util.Pair< BlockPos , CPlayerDiggingPacket.Action >, Vector3d >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "carriedIndex",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "PlayerController",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_i45062_1_",
+          "type": "Minecraft",
+          "annotations": []
+        },
+        {
+          "name": "p_i45062_2_",
+          "type": "ClientPlayNetHandler",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "adjustPlayer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_78748_1_",
+          "type": "PlayerEntity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setPreviousLocalMode",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_241675_1_",
+          "type": "GameType",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setLocalMode",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_78746_1_",
+          "type": "GameType",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canHurtPlayer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "destroyBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_187103_1_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "startDestroyBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_180511_1_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_180511_2_",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stopDestroyBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "continueDestroyBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_180512_1_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_180512_2_",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPickRange",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sameDestroyTarget",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_178893_1_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ensureHasSentCarriedItem",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "useItemOn",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ActionResultType",
+      "parameters": [
+        {
+          "name": "p_217292_1_",
+          "type": "ClientPlayerEntity",
+          "annotations": []
+        },
+        {
+          "name": "p_217292_2_",
+          "type": "ClientWorld",
+          "annotations": []
+        },
+        {
+          "name": "p_217292_3_",
+          "type": "Hand",
+          "annotations": []
+        },
+        {
+          "name": "p_217292_4_",
+          "type": "BlockRayTraceResult",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "useItem",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ActionResultType",
+      "parameters": [
+        {
+          "name": "p_187101_1_",
+          "type": "PlayerEntity",
+          "annotations": []
+        },
+        {
+          "name": "p_187101_2_",
+          "type": "World",
+          "annotations": []
+        },
+        {
+          "name": "p_187101_3_",
+          "type": "Hand",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createPlayer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ClientPlayerEntity",
+      "parameters": [
+        {
+          "name": "p_199681_1_",
+          "type": "ClientWorld",
+          "annotations": []
+        },
+        {
+          "name": "p_199681_2_",
+          "type": "StatisticsManager",
+          "annotations": []
+        },
+        {
+          "name": "p_199681_3_",
+          "type": "ClientRecipeBook",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createPlayer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ClientPlayerEntity",
+      "parameters": [
+        {
+          "name": "p_239167_1_",
+          "type": "ClientWorld",
+          "annotations": []
+        },
+        {
+          "name": "p_239167_2_",
+          "type": "StatisticsManager",
+          "annotations": []
+        },
+        {
+          "name": "p_239167_3_",
+          "type": "ClientRecipeBook",
+          "annotations": []
+        },
+        {
+          "name": "p_239167_4_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_239167_5_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "attack",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_78764_1_",
+          "type": "PlayerEntity",
+          "annotations": []
+        },
+        {
+          "name": "p_78764_2_",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "interact",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ActionResultType",
+      "parameters": [
+        {
+          "name": "p_187097_1_",
+          "type": "PlayerEntity",
+          "annotations": []
+        },
+        {
+          "name": "p_187097_2_",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "p_187097_3_",
+          "type": "Hand",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "interactAt",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ActionResultType",
+      "parameters": [
+        {
+          "name": "p_187102_1_",
+          "type": "PlayerEntity",
+          "annotations": []
+        },
+        {
+          "name": "p_187102_2_",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "p_187102_3_",
+          "type": "EntityRayTraceResult",
+          "annotations": []
+        },
+        {
+          "name": "p_187102_4_",
+          "type": "Hand",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleInventoryMouseClick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ItemStack",
+      "parameters": [
+        {
+          "name": "p_187098_1_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_187098_2_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_187098_3_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_187098_4_",
+          "type": "ClickType",
+          "annotations": []
+        },
+        {
+          "name": "p_187098_5_",
+          "type": "PlayerEntity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handlePlaceRecipe",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_203413_1_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_203413_2_",
+          "type": "IRecipe <?>",
+          "annotations": []
+        },
+        {
+          "name": "p_203413_3_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleInventoryButtonClick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_78756_1_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_78756_2_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleCreativeModeItemAdd",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_78761_1_",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "p_78761_2_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleCreativeModeItemDrop",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_78752_1_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "releaseUsingItem",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_78766_1_",
+          "type": "PlayerEntity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasExperience",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasMissTime",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasInfiniteItems",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasFarPickRange",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isServerControlledInventory",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isAlwaysFlying",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPreviousPlayerMode",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "GameType",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPlayerMode",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "GameType",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isDestroying",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handlePickItem",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_187100_1_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sendBlockAction",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_225324_1_",
+          "type": "CPlayerDiggingPacket.Action",
+          "annotations": []
+        },
+        {
+          "name": "p_225324_2_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_225324_3_",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleBlockBreakAck",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_225323_1_",
+          "type": "ClientWorld",
+          "annotations": []
+        },
+        {
+          "name": "p_225323_2_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_225323_3_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_225323_4_",
+          "type": "CPlayerDiggingPacket.Action",
+          "annotations": []
+        },
+        {
+          "name": "p_225323_5_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.16.5/net/minecraft/client/multiplayer/PlayerController.html"
+}

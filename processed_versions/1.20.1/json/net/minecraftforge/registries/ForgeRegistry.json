@@ -1,0 +1,1385 @@
+{
+  "type": "class",
+  "name": "ForgeRegistry<V>",
+  "qualified_name": "net.minecraftforge.registries.ForgeRegistry<V>",
+  "package": "net.minecraftforge.registries",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Internal - use the public IForgeRegistry and ForgeRegistries APIs to get the data",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "REGISTRIES",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Marker",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "REGISTRYDUMP",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Marker",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stage",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "RegistryManager",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ids",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.google.common.collect.BiMap< Integer , V >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "names",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.google.common.collect.BiMap< ResourceLocation , V >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "keys",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.google.common.collect.BiMap< ResourceKey < V >, V >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "aliases",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < ResourceLocation , ResourceLocation >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "slaves",
+      "modifiers": [
+        "final"
+      ],
+      "type": "Map < ResourceLocation , ?>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "defaultKey",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ResourceLocation",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "create",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "IForgeRegistry.CreateCallback < V >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "add",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "IForgeRegistry.AddCallback < V >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clear",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "IForgeRegistry.ClearCallback < V >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "validate",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "IForgeRegistry.ValidateCallback < V >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "bake",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "IForgeRegistry.BakeCallback < V >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "missing",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "IForgeRegistry.MissingFactory < V >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "availabilityMap",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "BitSet",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blocked",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.ints.IntSet",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "overrides",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.google.common.collect.Multimap< ResourceLocation , V >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "delegatesByName",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < ResourceLocation , Holder.Reference < V >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "delegatesByValue",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < V , Holder.Reference < V >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "owners",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.google.common.collect.BiMap< ForgeRegistry.OverrideOwner < V >, V >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tagManager",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ForgeRegistryTagManager < V >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "min",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "max",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "allowOverrides",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isModifiable",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasWrapper",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "defaultValue",
+      "modifiers": [
+        "private"
+      ],
+      "type": "V",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isFrozen",
+      "modifiers": [],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "name",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ResourceLocation",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "key",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ResourceKey < Registry < V >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "builder",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "RegistryBuilder < V >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "codec",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.mojang.serialization.Codec< V >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ForgeRegistry",
+      "modifiers": [],
+      "parameters": [
+        {
+          "name": "stage",
+          "type": "RegistryManager",
+          "annotations": []
+        },
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "builder",
+          "type": "RegistryBuilder < V >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "register",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "value",
+          "type": "V",
+          "annotations": []
+        }
+      ],
+      "description": "Description copied from interface: IForgeRegistry",
+      "deprecated": false
+    },
+    {
+      "name": "register",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "value",
+          "type": "V",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "iterator",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Iterator < V >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRegistryName",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRegistryKey",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ResourceKey < Registry < V >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getCodec",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@NotNull com.mojang.serialization.Codec< V >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "containsKey",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "containsValue",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "value",
+          "type": "V",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isEmpty",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "size",
+      "modifiers": [],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getValue",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "V",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getKey",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [
+        {
+          "name": "value",
+          "type": "V",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getResourceKey",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@NotNull Optional < ResourceKey < V >>",
+      "parameters": [
+        {
+          "name": "value",
+          "type": "V",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getWrapper",
+      "modifiers": [],
+      "return_type": "@Nullable NamespacedWrapper < V >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getWrapperOrThrow",
+      "modifiers": [],
+      "return_type": "@NotNull NamespacedWrapper < V >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onBindTags",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "tags",
+          "type": "Map < TagKey < V >, HolderSet.Named < V >>",
+          "annotations": []
+        },
+        {
+          "name": "defaultedTags",
+          "type": "Set < TagKey < V >>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getHolder",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@NotNull Optional < Holder < V >>",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "ResourceKey < V >",
+          "annotations": []
+        }
+      ],
+      "description": "Description copied from interface: IForgeRegistry",
+      "deprecated": false
+    },
+    {
+      "name": "getHolder",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@NotNull Optional < Holder < V >>",
+      "parameters": [
+        {
+          "name": "location",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "Description copied from interface: IForgeRegistry",
+      "deprecated": false
+    },
+    {
+      "name": "getHolder",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@NotNull Optional < Holder < V >>",
+      "parameters": [
+        {
+          "name": "value",
+          "type": "V",
+          "annotations": []
+        }
+      ],
+      "description": "Description copied from interface: IForgeRegistry",
+      "deprecated": false
+    },
+    {
+      "name": "tags",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@Nullable ITagManager < V >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getKeys",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@NotNull Set < ResourceLocation >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getResourceKeys",
+      "modifiers": [],
+      "return_type": "@NotNull Set < ResourceKey < V >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getValues",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@NotNull Collection < V >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getEntries",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@NotNull Set < Map.Entry < ResourceKey < V >, V >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSlaveMap",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "type",
+          "type": "Class <T>",
+          "annotations": []
+        }
+      ],
+      "description": "Description copied from interface: IForgeRegistry",
+      "deprecated": false
+    },
+    {
+      "name": "setSlaveMap",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "obj",
+          "type": "Object",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getID",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "value",
+          "type": "V",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getID",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getIDRaw",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "value",
+          "type": "V",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getIDRaw",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getValue",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "V",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getKey",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@Nullable ResourceKey < V >",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "validateKey",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDefaultKey",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@Nullable ResourceLocation",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "copy",
+      "modifiers": [],
+      "return_type": "ForgeRegistry < V >",
+      "parameters": [
+        {
+          "name": "stage",
+          "type": "RegistryManager",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "register",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "key",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "value",
+          "type": "V",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "add",
+      "modifiers": [],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "key",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "value",
+          "type": "V",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "add",
+      "modifiers": [],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "key",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "value",
+          "type": "V",
+          "annotations": []
+        },
+        {
+          "name": "owner",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRaw",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "V",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addAlias",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "src",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "dst",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "Adds an alias that maps from the name specified by src to the name specified by dst . Any registry lookups that target the first name will resolve as the second name, if the first name is not present.",
+      "deprecated": false
+    },
+    {
+      "name": "getDelegate",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@NotNull Optional < Holder.Reference < V >>",
+      "parameters": [
+        {
+          "name": "rkey",
+          "type": "ResourceKey < V >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDelegateOrThrow",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Holder.Reference < V >",
+      "parameters": [
+        {
+          "name": "rkey",
+          "type": "ResourceKey < V >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDelegate",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@NotNull Optional < Holder.Reference < V >>",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDelegateOrThrow",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Holder.Reference < V >",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDelegate",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@NotNull Optional < Holder.Reference < V >>",
+      "parameters": [
+        {
+          "name": "value",
+          "type": "V",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDelegateOrThrow",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Holder.Reference < V >",
+      "parameters": [
+        {
+          "name": "value",
+          "type": "V",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "bindDelegate",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Holder.Reference < V >",
+      "parameters": [
+        {
+          "name": "rkey",
+          "type": "ResourceKey < V >",
+          "annotations": []
+        },
+        {
+          "name": "value",
+          "type": "V",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "resetDelegates",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDefault",
+      "modifiers": [],
+      "return_type": "V",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "validateContent",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "registryName",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "bake",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sync",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "from",
+          "type": "ForgeRegistry < V >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clear",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "remove",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "V",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "block",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isLocked",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "freeze",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "Used to control the times where people can modify this registry. Users should only ever register things in the Register<?> events!",
+      "deprecated": false
+    },
+    {
+      "name": "unfreeze",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dump",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loadIds",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "ids",
+          "type": "it.unimi.dsi.fastutil.objects.Object2IntMap< ResourceLocation >",
+          "annotations": []
+        },
+        {
+          "name": "overrides",
+          "type": "Map < ResourceLocation , String >",
+          "annotations": []
+        },
+        {
+          "name": "missing",
+          "type": "it.unimi.dsi.fastutil.objects.Object2IntMap< ResourceLocation >",
+          "annotations": []
+        },
+        {
+          "name": "remapped",
+          "type": "Map < ResourceLocation , IdMappingEvent.IdRemapping >",
+          "annotations": []
+        },
+        {
+          "name": "old",
+          "type": "ForgeRegistry < V >",
+          "annotations": []
+        },
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "makeSnapshot",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ForgeRegistry.Snapshot",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getOverrideOwners",
+      "modifiers": [],
+      "return_type": "Map < ResourceLocation , String >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMissingEvent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "MissingMappingsEvent",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "map",
+          "type": "it.unimi.dsi.fastutil.objects.Object2IntMap< ResourceLocation >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "processMissingEvent",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "pool",
+          "type": "ForgeRegistry < V >",
+          "annotations": []
+        },
+        {
+          "name": "mappings",
+          "type": "List < MissingMappingsEvent.Mapping < V >>",
+          "annotations": []
+        },
+        {
+          "name": "missing",
+          "type": "it.unimi.dsi.fastutil.objects.Object2IntMap< ResourceLocation >",
+          "annotations": []
+        },
+        {
+          "name": "remaps",
+          "type": "Map < ResourceLocation , IdMappingEvent.IdRemapping >",
+          "annotations": []
+        },
+        {
+          "name": "defaulted",
+          "type": "Collection < ResourceLocation >",
+          "annotations": []
+        },
+        {
+          "name": "failed",
+          "type": "Collection < ResourceLocation >",
+          "annotations": []
+        },
+        {
+          "name": "injectNetworkDummies",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBuilder",
+      "modifiers": [],
+      "return_type": "RegistryBuilder < V >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.1/net/minecraftforge/registries/ForgeRegistry.html"
+}

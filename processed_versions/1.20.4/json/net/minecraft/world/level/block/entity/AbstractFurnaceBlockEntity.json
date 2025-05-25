@@ -1,0 +1,957 @@
+{
+  "type": "class",
+  "name": "AbstractFurnaceBlockEntity",
+  "qualified_name": "net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity",
+  "package": "net.minecraft.world.level.block.entity",
+  "modifiers": [
+    "public",
+    "abstract",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraftforge.common.capabilities.CapabilityProvider",
+      "BlockEntity",
+      "net.minecraft.world.level.block.entity.BlockEntity",
+      "net.minecraft.world.level.block.entity.BaseContainerBlockEntity"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "SLOT_INPUT",
+      "modifiers": [
+        "protected",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SLOT_FUEL",
+      "modifiers": [
+        "protected",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SLOT_RESULT",
+      "modifiers": [
+        "protected",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_LIT_TIME",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SLOTS_FOR_UP",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int[]",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SLOTS_FOR_DOWN",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int[]",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SLOTS_FOR_SIDES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int[]",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_LIT_DURATION",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_COOKING_PROGRESS",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_COOKING_TOTAL_TIME",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NUM_DATA_VALUES",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BURN_TIME_STANDARD",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BURN_COOL_SPEED",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "recipeType",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "RecipeType <? extends AbstractCookingRecipe >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "items",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "NonNullList < ItemStack >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "litTime",
+      "modifiers": [],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "litDuration",
+      "modifiers": [],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cookingProgress",
+      "modifiers": [],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cookingTotalTime",
+      "modifiers": [],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dataAccess",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "ContainerData",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "recipesUsed",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap< ResourceLocation >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "quickCheck",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "RecipeManager.CachedCheck < Container , ? extends AbstractCookingRecipe >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handlers",
+      "modifiers": [],
+      "type": "LazyOptional <? extends IItemHandler >[]",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "AbstractFurnaceBlockEntity",
+      "modifiers": [
+        "protected"
+      ],
+      "parameters": [
+        {
+          "name": "p_154991_",
+          "type": "BlockEntityType <?>",
+          "annotations": []
+        },
+        {
+          "name": "p_154992_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_154993_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_154994_",
+          "type": "RecipeType <? extends AbstractCookingRecipe >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getFuel",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "Map < Item , Integer >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isNeverAFurnaceFuel",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_58398_",
+          "type": "Item",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "add",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_204303_",
+          "type": "Map < Item , Integer >",
+          "annotations": []
+        },
+        {
+          "name": "p_204304_",
+          "type": "TagKey < Item >",
+          "annotations": []
+        },
+        {
+          "name": "p_204305_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "add",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_58375_",
+          "type": "Map < Item , Integer >",
+          "annotations": []
+        },
+        {
+          "name": "p_58376_",
+          "type": "ItemLike",
+          "annotations": []
+        },
+        {
+          "name": "p_58377_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isLit",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "load",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_155025_",
+          "type": "CompoundTag",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "saveAdditional",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_187452_",
+          "type": "CompoundTag",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "serverTick",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_155014_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_155015_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_155016_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_155017_",
+          "type": "AbstractFurnaceBlockEntity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canBurn",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_266924_",
+          "type": "RegistryAccess",
+          "annotations": []
+        },
+        {
+          "name": "p_299207_",
+          "type": "RecipeHolder <?>",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_155007_",
+          "type": "NonNullList < ItemStack >",
+          "annotations": []
+        },
+        {
+          "name": "p_155008_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "burn",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_266740_",
+          "type": "RegistryAccess",
+          "annotations": []
+        },
+        {
+          "name": "p_299450_",
+          "type": "RecipeHolder <?>",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_267073_",
+          "type": "NonNullList < ItemStack >",
+          "annotations": []
+        },
+        {
+          "name": "p_267157_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBurnDuration",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_58343_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTotalCookTime",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_222693_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_222694_",
+          "type": "AbstractFurnaceBlockEntity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isFuel",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_58400_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSlotsForFace",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int[]",
+      "parameters": [
+        {
+          "name": "p_58363_",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canPlaceItemThroughFace",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_58336_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_58337_",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "p_58338_",
+          "type": "Direction",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canTakeItemThroughFace",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_58392_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_58393_",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "p_58394_",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getContainerSize",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isEmpty",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getItem",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ItemStack",
+      "parameters": [
+        {
+          "name": "p_58328_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removeItem",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ItemStack",
+      "parameters": [
+        {
+          "name": "p_58330_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_58331_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removeItemNoUpdate",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ItemStack",
+      "parameters": [
+        {
+          "name": "p_58387_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setItem",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_58333_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_58334_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stillValid",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_58340_",
+          "type": "Player",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canPlaceItem",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_58389_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_58390_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clearContent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setRecipeUsed",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_297739_",
+          "type": "RecipeHolder <?>",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRecipeUsed",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "RecipeHolder <?>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "awardUsedRecipes",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_58396_",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "p_282202_",
+          "type": "List < ItemStack >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "awardUsedRecipesAndPopExperience",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_155004_",
+          "type": "ServerPlayer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRecipesToAwardAndPopExperience",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "List < RecipeHolder <?>>",
+      "parameters": [
+        {
+          "name": "p_154996_",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "p_154997_",
+          "type": "Vec3",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createExperience",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_154999_",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "p_155000_",
+          "type": "Vec3",
+          "annotations": []
+        },
+        {
+          "name": "p_155001_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_155002_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fillStackedContents",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_58342_",
+          "type": "StackedContents",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getCapability",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "LazyOptional <T>",
+      "parameters": [
+        {
+          "name": "capability",
+          "type": "Capability <T>",
+          "annotations": []
+        },
+        {
+          "name": "facing",
+          "type": "Direction",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "Description copied from interface: ICapabilityProvider",
+      "deprecated": false
+    },
+    {
+      "name": "invalidateCaps",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "reviveCaps",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.4/net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity.html"
+}

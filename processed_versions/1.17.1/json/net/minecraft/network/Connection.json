@@ -1,0 +1,781 @@
+{
+  "type": "class",
+  "name": "Connection",
+  "qualified_name": "net.minecraft.network.Connection",
+  "package": "net.minecraft.network",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "Packet"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "AVERAGE_PACKETS_SMOOTHING",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ROOT_MARKER",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Marker",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PACKET_MARKER",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Marker",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ATTRIBUTE_PROTOCOL",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "io.netty.util.AttributeKey< ConnectionProtocol >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NETWORK_WORKER_GROUP",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "LazyLoadedValue <io.netty.channel.nio.NioEventLoopGroup>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NETWORK_EPOLL_WORKER_GROUP",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "LazyLoadedValue <io.netty.channel.epoll.EpollEventLoopGroup>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOCAL_WORKER_GROUP",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "LazyLoadedValue <io.netty.channel.DefaultEventLoopGroup>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "receiving",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "PacketFlow",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "queue",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Queue < Connection.PacketHolder >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "channel",
+      "modifiers": [
+        "private"
+      ],
+      "type": "io.netty.channel.Channel",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "address",
+      "modifiers": [
+        "private"
+      ],
+      "type": "SocketAddress",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "packetListener",
+      "modifiers": [
+        "private"
+      ],
+      "type": "PacketListener",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "disconnectedReason",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Component",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "encrypted",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "disconnectionHandled",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "receivedPackets",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sentPackets",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "averageReceivedPackets",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "averageSentPackets",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickCount",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handlingFault",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "activationHandler",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Consumer < Connection >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "Connection",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_129482_",
+          "type": "PacketFlow",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "channelActive",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_129525_",
+          "type": "io.netty.channel.ChannelHandlerContext",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setProtocol",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_129499_",
+          "type": "ConnectionProtocol",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "channelInactive",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_129527_",
+          "type": "io.netty.channel.ChannelHandlerContext",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "exceptionCaught",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_129533_",
+          "type": "io.netty.channel.ChannelHandlerContext",
+          "annotations": []
+        },
+        {
+          "name": "p_129534_",
+          "type": "Throwable",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "channelRead0",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_129487_",
+          "type": "io.netty.channel.ChannelHandlerContext",
+          "annotations": []
+        },
+        {
+          "name": "p_129488_",
+          "type": "Packet <?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "genericsFtw",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_129518_",
+          "type": "Packet <T>",
+          "annotations": []
+        },
+        {
+          "name": "p_129519_",
+          "type": "PacketListener",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setListener",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_129506_",
+          "type": "PacketListener",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "send",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_129513_",
+          "type": "Packet <?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "send",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_129515_",
+          "type": "Packet <?>",
+          "annotations": []
+        },
+        {
+          "name": "p_129516_",
+          "type": "io.netty.util.concurrent.GenericFutureListener<? extends io.netty.util.concurrent.Future<? super Void >>",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sendPacket",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_129521_",
+          "type": "Packet <?>",
+          "annotations": []
+        },
+        {
+          "name": "p_129522_",
+          "type": "io.netty.util.concurrent.GenericFutureListener<? extends io.netty.util.concurrent.Future<? super Void >>",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "doSendPacket",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_178304_",
+          "type": "Packet <?>",
+          "annotations": []
+        },
+        {
+          "name": "p_178305_",
+          "type": "io.netty.util.concurrent.GenericFutureListener<? extends io.netty.util.concurrent.Future<? super Void >>",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_178306_",
+          "type": "ConnectionProtocol",
+          "annotations": []
+        },
+        {
+          "name": "p_178307_",
+          "type": "ConnectionProtocol",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getCurrentProtocol",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "ConnectionProtocol",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "flushQueue",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickSecond",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRemoteAddress",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SocketAddress",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "disconnect",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_129508_",
+          "type": "Component",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isMemoryConnection",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getReceiving",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "PacketFlow",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSending",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "PacketFlow",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "connectToServer",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "Connection",
+      "parameters": [
+        {
+          "name": "p_178301_",
+          "type": "InetSocketAddress",
+          "annotations": []
+        },
+        {
+          "name": "p_178302_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "connectToLocalServer",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "Connection",
+      "parameters": [
+        {
+          "name": "p_129494_",
+          "type": "SocketAddress",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setEncryptionKey",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_129496_",
+          "type": "Cipher",
+          "annotations": []
+        },
+        {
+          "name": "p_129497_",
+          "type": "Cipher",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isEncrypted",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isConnected",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isConnecting",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPacketListener",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "PacketListener",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDisconnectedReason",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Component",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setReadOnly",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setupCompression",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_129485_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_182682_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleDisconnection",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAverageReceivedPackets",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAverageSentPackets",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "channel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "io.netty.channel.Channel",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDirection",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "PacketFlow",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.17.1/net/minecraft/network/Connection.html"
+}

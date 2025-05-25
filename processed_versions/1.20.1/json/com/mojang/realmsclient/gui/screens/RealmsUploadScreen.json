@@ -1,0 +1,610 @@
+{
+  "type": "class",
+  "name": "RealmsUploadScreen",
+  "qualified_name": "com.mojang.realmsclient.gui.screens.RealmsUploadScreen",
+  "package": "com.mojang.realmsclient.gui.screens",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraft.client.gui.components.events.AbstractContainerEventHandler",
+      "net.minecraft.client.gui.screens.Screen",
+      "net.minecraft.realms.RealmsScreen"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UPLOAD_LOCK",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "ReentrantLock",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BAR_WIDTH",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BAR_TOP",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BAR_BOTTOM",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BAR_BORDER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DOTS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "String []",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "VERIFYING_TEXT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Component",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastScreen",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "RealmsResetWorldScreen",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "selectedLevel",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "LevelSummary",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "worldId",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "slotId",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "uploadStatus",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "UploadStatus",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "narrationRateLimiter",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.google.common.util.concurrent.RateLimiter",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "errorMessage",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "type": "Component []",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "status",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "type": "Component",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "progress",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cancelled",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "uploadFinished",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "showDots",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "uploadStarted",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "backButton",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Button",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cancelButton",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Button",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickCount",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "previousWrittenBytes",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "previousTimeSnapshot",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "bytesPersSecond",
+      "modifiers": [
+        "private"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "RealmsUploadScreen",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_90083_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_90084_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_90085_",
+          "type": "RealmsResetWorldScreen",
+          "annotations": []
+        },
+        {
+          "name": "p_90086_",
+          "type": "LevelSummary",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "init",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onBack",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onCancel",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "keyPressed",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_90089_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_90090_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_90091_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "render",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_282140_",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "p_90097_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_90098_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_90099_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "drawDots",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_283121_",
+          "type": "GuiGraphics",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "drawProgressBar",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_282575_",
+          "type": "GuiGraphics",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "drawUploadSpeed",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_281884_",
+          "type": "GuiGraphics",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "drawUploadSpeed0",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_282279_",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "p_282827_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createProgressNarrationMessage",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Component",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "upload",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setErrorMessage",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_90113_",
+          "type": "Component ...",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "uploadCancelled",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "verify",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_90106_",
+          "type": "File",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tarGzipArchive",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "File",
+      "parameters": [
+        {
+          "name": "p_90120_",
+          "type": "File",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addFileToTarGz",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_90108_",
+          "type": "org.apache.commons.compress.archivers.tar.TarArchiveOutputStream",
+          "annotations": []
+        },
+        {
+          "name": "p_90109_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_90110_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_90111_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.1/com/mojang/realmsclient/gui/screens/RealmsUploadScreen.html"
+}

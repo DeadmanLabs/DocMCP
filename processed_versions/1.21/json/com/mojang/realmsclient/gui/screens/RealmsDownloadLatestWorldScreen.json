@@ -1,0 +1,529 @@
+{
+  "type": "class",
+  "name": "RealmsDownloadLatestWorldScreen",
+  "qualified_name": "com.mojang.realmsclient.gui.screens.RealmsDownloadLatestWorldScreen",
+  "package": "com.mojang.realmsclient.gui.screens",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraft.client.gui.components.events.AbstractContainerEventHandler",
+      "net.minecraft.client.gui.screens.Screen",
+      "net.minecraft.realms.RealmsScreen"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DOWNLOAD_LOCK",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "ReentrantLock",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BAR_WIDTH",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BAR_TOP",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BAR_BOTTOM",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BAR_BORDER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastScreen",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Screen",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "worldDownload",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "WorldDownload",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "downloadTitle",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Component",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "narrationRateLimiter",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.google.common.util.concurrent.RateLimiter",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cancelButton",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Button",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "worldName",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "downloadStatus",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "RealmsDownloadLatestWorldScreen.DownloadStatus",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "errorMessage",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "type": "Component",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "status",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "type": "Component",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "progress",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cancelled",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "showDots",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "finished",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "extracting",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "previousWrittenBytes",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "previousTimeSnapshot",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "bytesPersSecond",
+      "modifiers": [
+        "private"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "animTick",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DOTS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "String []",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dotIndex",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "checked",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "callback",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.booleans.BooleanConsumer",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "RealmsDownloadLatestWorldScreen",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_88625_",
+          "type": "Screen",
+          "annotations": []
+        },
+        {
+          "name": "p_88626_",
+          "type": "WorldDownload",
+          "annotations": []
+        },
+        {
+          "name": "p_88627_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_88628_",
+          "type": "it.unimi.dsi.fastutil.booleans.BooleanConsumer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "init",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "checkDownloadSize",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getContentLength",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "long",
+      "parameters": [
+        {
+          "name": "p_88647_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createProgressNarrationMessage",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Component",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onClose",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "render",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_282124_",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "p_88635_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_88636_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_88637_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "drawDots",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_281948_",
+          "type": "GuiGraphics",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "drawProgressBar",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_281556_",
+          "type": "GuiGraphics",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "drawDownloadSpeed",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_282236_",
+          "type": "GuiGraphics",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "drawDownloadSpeed0",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_283338_",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "p_281931_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "downloadSave",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "downloadCancelled",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21/com/mojang/realmsclient/gui/screens/RealmsDownloadLatestWorldScreen.html"
+}

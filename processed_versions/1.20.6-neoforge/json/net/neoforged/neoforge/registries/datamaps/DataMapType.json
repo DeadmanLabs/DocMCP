@@ -1,0 +1,194 @@
+{
+  "type": "class",
+  "name": "T>",
+  "qualified_name": "net.neoforged.neoforge.registries.datamaps.T>",
+  "package": "net.neoforged.neoforge.registries.datamaps",
+  "modifiers": [
+    "public",
+    "sealed",
+    "class"
+  ],
+  "annotations": [],
+  "description": "A registry data map contains data-driven object that can be attached to a registry object. Data maps are registered to the RegisterDataMapTypesEvent . They are loaded from JSON files located at: <map namespace>/data_maps/<registry namespace>/<registry path>/<map path>.json The registry namespace is omitted if it is \"minecraft\" . The structure of the json file is as follows: { \"replace\": false // If true, all previous data will be cleared. // The values object is a map of registry entry ID / tag to data map values. \"values\": { \"someobject:someid\": {}, // The object being attached \"#somepath:sometag\": {} // Tags are also supported. All objects in the tag will then receieve the same value }, // Optional object. Entries specified here will be removed after the data of the current json file is attached \"remove\": [\"minecraft:carrot\", \"#minecraft:logs\"] } Data maps support conditions both JSON-level and attachment-level through the \"neoforge:value\" < T > object. Data maps may be synced by specifying a networkCodec() . If the map is mandatory , then vanilla clients (or any client that doesn't support this map) will not be able to connect. Both datapack registries and normal, built-in registries support data maps. You can access a data map using IRegistryExtension.getDataMap(DataMapType) and IWithData.getData(DataMapType) . You can usually go through IWithData.getData(DataMapType) Holder} implementations in order to get the data of an object directly.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "registryKey",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ResourceKey < Registry < R >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "id",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ResourceLocation",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "codec",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.mojang.serialization.Codec< T >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "networkCodec",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "@Nullable com.mojang.serialization.Codec< T >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mandatorySync",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "DataMapType",
+      "modifiers": [],
+      "parameters": [
+        {
+          "name": "registryKey",
+          "type": "ResourceKey < Registry < R >>",
+          "annotations": []
+        },
+        {
+          "name": "id",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "codec",
+          "type": "com.mojang.serialization.Codec< T >",
+          "annotations": []
+        },
+        {
+          "name": "networkCodec",
+          "type": "com.mojang.serialization.Codec< T >",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        },
+        {
+          "name": "mandatorySync",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "builder",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "DataMapType.Builder <T, R>",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "registry",
+          "type": "ResourceKey < Registry <R>>",
+          "annotations": []
+        },
+        {
+          "name": "codec",
+          "type": "com.mojang.serialization.Codec<T>",
+          "annotations": []
+        }
+      ],
+      "description": "Returns a data map type builder.",
+      "deprecated": false
+    },
+    {
+      "name": "registryKey",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ResourceKey < Registry < R >>",
+      "parameters": [],
+      "description": "Returns the key of the registry this data map is for.",
+      "deprecated": false
+    },
+    {
+      "name": "id",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [],
+      "description": "Returns the ID of this data map.",
+      "deprecated": false
+    },
+    {
+      "name": "codec",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "com.mojang.serialization.Codec< T >",
+      "parameters": [],
+      "description": "Returns the codec used to decode values.",
+      "deprecated": false
+    },
+    {
+      "name": "networkCodec",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@Nullable com.mojang.serialization.Codec< T >",
+      "parameters": [],
+      "description": "Returns the codec used to sync values.",
+      "deprecated": false
+    },
+    {
+      "name": "mandatorySync",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "Returns true if this data map must be present on the client, and false otherwise.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.6-neoforge/net/neoforged/neoforge/registries/datamaps/DataMapType.html"
+}

@@ -1,0 +1,170 @@
+{
+  "type": "class",
+  "name": "PlayerInteractEvent.RightClickBlock",
+  "qualified_name": "net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock",
+  "package": "net.minecraftforge.event.entity.player",
+  "modifiers": [
+    "public",
+    "static",
+    "class"
+  ],
+  "annotations": [],
+  "description": "This event is fired on both sides whenever the player right clicks while targeting a block. This event controls which of IForgeItem.onItemUseFirst(net.minecraft.world.item.ItemStack, net.minecraft.world.item.context.UseOnContext) , BlockBehaviour.use(BlockState, Level, BlockPos, Player, InteractionHand, BlockHitResult) , and Item.useOn(UseOnContext) will be called. Canceling the event will cause none of the above three to be called. Let result be the first non-pass return value of the above three methods, or pass, if they all pass. Or PlayerInteractEvent.cancellationResult if the event is cancelled. If result equals InteractionResult.PASS , we proceed to PlayerInteractEvent.RightClickItem . There are various results to this event, see the getters below. Note that handling things differently on the client vs server may cause desynchronizations!",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraftforge.event.entity.EntityEvent",
+      "net.minecraftforge.event.entity.living.LivingEvent",
+      "net.minecraftforge.event.entity.player.PlayerEvent",
+      "net.minecraftforge.event.entity.player.PlayerInteractEvent"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "useBlock",
+      "modifiers": [
+        "private"
+      ],
+      "type": "net.minecraftforge.eventbus.api.Event.Result",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "useItem",
+      "modifiers": [
+        "private"
+      ],
+      "type": "net.minecraftforge.eventbus.api.Event.Result",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hitVec",
+      "modifiers": [
+        "private"
+      ],
+      "type": "BlockHitResult",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "RightClickBlock",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "hand",
+          "type": "InteractionHand",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "hitVec",
+          "type": "BlockHitResult",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getUseBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "net.minecraftforge.eventbus.api.Event.Result",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getUseItem",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "net.minecraftforge.eventbus.api.Event.Result",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getHitVec",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BlockHitResult",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setUseBlock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "triggerBlock",
+          "type": "net.minecraftforge.eventbus.api.Event.Result",
+          "annotations": []
+        }
+      ],
+      "description": "DENY: BlockBehaviour.use(BlockState, Level, BlockPos, Player, InteractionHand, BlockHitResult) will never be called. DEFAULT: BlockBehaviour.use(BlockState, Level, BlockPos, Player, InteractionHand, BlockHitResult) will be called if IForgeItem.onItemUseFirst(net.minecraft.world.item.ItemStack, net.minecraft.world.item.context.UseOnContext) passes. Note that default activation can be blocked if the user is sneaking and holding an item that does not return true to IForgeItem.doesSneakBypassUse(net.minecraft.world.item.ItemStack, net.minecraft.world.level.LevelReader, net.minecraft.core.BlockPos, net.minecraft.world.entity.player.Player) . ALLOW: Block.updateOrDestroy(BlockState, BlockState, LevelAccessor, BlockPos, int, int) will always be called, unless IForgeItem.onItemUseFirst(net.minecraft.world.item.ItemStack, net.minecraft.world.item.context.UseOnContext) does not pass.",
+      "deprecated": false
+    },
+    {
+      "name": "setUseItem",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "triggerItem",
+          "type": "net.minecraftforge.eventbus.api.Event.Result",
+          "annotations": []
+        }
+      ],
+      "description": "DENY: Neither Item.useOn(UseOnContext) or IForgeItem.onItemUseFirst(net.minecraft.world.item.ItemStack, net.minecraft.world.item.context.UseOnContext) will be called. DEFAULT: IForgeItem.onItemUseFirst(net.minecraft.world.item.ItemStack, net.minecraft.world.item.context.UseOnContext) will always be called, and Item.useOn(UseOnContext) will be called if the block passes. ALLOW: IForgeItem.onItemUseFirst(net.minecraft.world.item.ItemStack, net.minecraft.world.item.context.UseOnContext) will always be called, and Item.useOn(UseOnContext) will be called if the block passes, regardless of cooldowns or emptiness.",
+      "deprecated": false
+    },
+    {
+      "name": "setCanceled",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "canceled",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.19.4/net/minecraftforge/event/entity/player/PlayerInteractEvent.RightClickBlock.html"
+}

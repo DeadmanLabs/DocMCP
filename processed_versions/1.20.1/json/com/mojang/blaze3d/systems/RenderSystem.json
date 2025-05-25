@@ -1,0 +1,2988 @@
+{
+  "type": "class",
+  "name": "RenderSystem",
+  "qualified_name": "com.mojang.blaze3d.systems.RenderSystem",
+  "package": "com.mojang.blaze3d.systems",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "recordingQueue",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "ConcurrentLinkedQueue < RenderCall >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "RENDER_THREAD_TESSELATOR",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Tesselator",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MINIMUM_ATLAS_TEXTURE_SIZE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isReplayingQueue",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "gameThread",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "Thread",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderThread",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "Thread",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MAX_SUPPORTED_TEXTURE_SIZE",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isInInit",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastDrawTime",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "double",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sharedSequential",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "RenderSystem.AutoStorageIndexBuffer",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sharedSequentialQuad",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "RenderSystem.AutoStorageIndexBuffer",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sharedSequentialLines",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "RenderSystem.AutoStorageIndexBuffer",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "inverseViewRotationMatrix",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "org.joml.Matrix3f",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "projectionMatrix",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "org.joml.Matrix4f",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "savedProjectionMatrix",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "org.joml.Matrix4f",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "vertexSorting",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "VertexSorting",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "savedVertexSorting",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "VertexSorting",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "modelViewStack",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "PoseStack",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "modelViewMatrix",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "org.joml.Matrix4f",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "textureMatrix",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "org.joml.Matrix4f",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shaderTextures",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int[]",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shaderColor",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "float[]",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shaderGlintAlpha",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shaderFogStart",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shaderFogEnd",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shaderFogColor",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "float[]",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shaderFogShape",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "FogShape",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shaderLightDirections",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.joml.Vector3f[]",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shaderGameTime",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shaderLineWidth",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "apiDescription",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pollEventsWaitStart",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "AtomicLong",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pollingEvents",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "AtomicBoolean",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "RenderSystem",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "initRenderThread",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isOnRenderThread",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isOnRenderThreadOrInit",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "initGameThread",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69578_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isOnGameThread",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "assertInInitPhase",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "assertOnGameThreadOrInit",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "assertOnRenderThreadOrInit",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "assertOnRenderThread",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "assertOnGameThread",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "constructThreadException",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "IllegalStateException",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isInInitPhase",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "recordRenderCall",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69880_",
+          "type": "RenderCall",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pollEvents",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isFrozenAtPollEvents",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "flipFrame",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69496_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "replayQueue",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "limitDisplayFPS",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69831_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "disableDepthTest",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "enableDepthTest",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "enableScissor",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69489_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69490_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69491_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69492_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "disableScissor",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "depthFunc",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69457_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "depthMask",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69459_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "enableBlend",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "disableBlend",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blendFunc",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69409_",
+          "type": "GlStateManager.SourceFactor",
+          "annotations": []
+        },
+        {
+          "name": "p_69410_",
+          "type": "GlStateManager.DestFactor",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blendFunc",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69406_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69407_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blendFuncSeparate",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69417_",
+          "type": "GlStateManager.SourceFactor",
+          "annotations": []
+        },
+        {
+          "name": "p_69418_",
+          "type": "GlStateManager.DestFactor",
+          "annotations": []
+        },
+        {
+          "name": "p_69419_",
+          "type": "GlStateManager.SourceFactor",
+          "annotations": []
+        },
+        {
+          "name": "p_69420_",
+          "type": "GlStateManager.DestFactor",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blendFuncSeparate",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69412_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69413_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69414_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69415_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blendEquation",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69404_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "enableCull",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "disableCull",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "polygonMode",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69861_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69862_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "enablePolygonOffset",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "disablePolygonOffset",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "polygonOffset",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69864_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_69865_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "enableColorLogicOp",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "disableColorLogicOp",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "logicOp",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69836_",
+          "type": "GlStateManager.LogicOp",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "activeTexture",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69389_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "texParameter",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69938_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69939_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69940_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "deleteTexture",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69455_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "bindTextureForSetup",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157185_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "bindTexture",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69397_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "viewport",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69950_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69951_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69952_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69953_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "colorMask",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69445_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_69446_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_69447_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_69448_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stencilFunc",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69926_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69927_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69928_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stencilMask",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69930_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stencilOp",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69932_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69933_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69934_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clearDepth",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69431_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clearColor",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69425_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_69426_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_69427_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_69428_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clearStencil",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69433_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clear",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69422_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69423_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setShaderFogStart",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157446_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "_setShaderFogStart",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157172_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getShaderFogStart",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setShaderGlintAlpha",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_268332_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setShaderGlintAlpha",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_268329_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "_setShaderGlintAlpha",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_268319_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getShaderGlintAlpha",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setShaderFogEnd",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157444_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "_setShaderFogEnd",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157170_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getShaderFogEnd",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setShaderFogColor",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157439_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_157440_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_157441_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_157442_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setShaderFogColor",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157435_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_157436_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_157437_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "_setShaderFogColor",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157165_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_157166_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_157167_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_157168_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getShaderFogColor",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "float[]",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setShaderFogShape",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_202161_",
+          "type": "FogShape",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "_setShaderFogShape",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_202040_",
+          "type": "FogShape",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getShaderFogShape",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "FogShape",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setShaderLights",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_254155_",
+          "type": "org.joml.Vector3f",
+          "annotations": []
+        },
+        {
+          "name": "p_254006_",
+          "type": "org.joml.Vector3f",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "_setShaderLights",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_253618_",
+          "type": "org.joml.Vector3f",
+          "annotations": []
+        },
+        {
+          "name": "p_253929_",
+          "type": "org.joml.Vector3f",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setupShaderLights",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157462_",
+          "type": "ShaderInstance",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setShaderColor",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157430_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_157431_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_157432_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_157433_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "_setShaderColor",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157160_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_157161_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_157162_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_157163_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getShaderColor",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "float[]",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "drawElements",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157187_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_157188_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_157189_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lineWidth",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69833_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getShaderLineWidth",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pixelStore",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69855_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69856_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "readPixels",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69872_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69873_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69874_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69875_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69876_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69877_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69878_",
+          "type": "ByteBuffer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getString",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69520_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69521_",
+          "type": "Consumer < String >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBackendDescription",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getApiDescription",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "initBackendSystem",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "TimeSource.NanoTimeSource",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "initRenderer",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69581_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69582_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setErrorCallback",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69901_",
+          "type": "org.lwjgl.glfw.GLFWErrorCallbackI",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderCrosshair",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69882_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getCapsString",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setupDefaultState",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69903_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69904_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69905_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69906_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "maxSupportedTextureSize",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "glBindBuffer",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157209_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_157210_",
+          "type": "IntSupplier",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "glBindVertexArray",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157212_",
+          "type": "Supplier < Integer >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "glBufferData",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69526_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69527_",
+          "type": "ByteBuffer",
+          "annotations": []
+        },
+        {
+          "name": "p_69528_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "glDeleteBuffers",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69530_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "glDeleteVertexArrays",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157214_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "glUniform1i",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69544_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69545_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "glUniform1",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69541_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69542_",
+          "type": "IntBuffer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "glUniform2",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69550_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69551_",
+          "type": "IntBuffer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "glUniform3",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69556_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69557_",
+          "type": "IntBuffer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "glUniform4",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69562_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69563_",
+          "type": "IntBuffer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "glUniform1",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69538_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69539_",
+          "type": "FloatBuffer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "glUniform2",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69547_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69548_",
+          "type": "FloatBuffer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "glUniform3",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69553_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69554_",
+          "type": "FloatBuffer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "glUniform4",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69559_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69560_",
+          "type": "FloatBuffer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "glUniformMatrix2",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69565_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69566_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_69567_",
+          "type": "FloatBuffer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "glUniformMatrix3",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69569_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69570_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_69571_",
+          "type": "FloatBuffer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "glUniformMatrix4",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69573_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_69574_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_69575_",
+          "type": "FloatBuffer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setupOverlayColor",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69921_",
+          "type": "IntSupplier",
+          "annotations": []
+        },
+        {
+          "name": "p_69922_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "teardownOverlayColor",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setupLevelDiffuseLighting",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_254489_",
+          "type": "org.joml.Vector3f",
+          "annotations": []
+        },
+        {
+          "name": "p_254541_",
+          "type": "org.joml.Vector3f",
+          "annotations": []
+        },
+        {
+          "name": "p_253812_",
+          "type": "org.joml.Matrix4f",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setupGuiFlatDiffuseLighting",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_254419_",
+          "type": "org.joml.Vector3f",
+          "annotations": []
+        },
+        {
+          "name": "p_254483_",
+          "type": "org.joml.Vector3f",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setupGui3DDiffuseLighting",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_253859_",
+          "type": "org.joml.Vector3f",
+          "annotations": []
+        },
+        {
+          "name": "p_253890_",
+          "type": "org.joml.Vector3f",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "beginInitialization",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "finishInitialization",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "glGenBuffers",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69532_",
+          "type": "Consumer < Integer >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "glGenVertexArrays",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157216_",
+          "type": "Consumer < Integer >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderThreadTesselator",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "Tesselator",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "defaultBlendFunc",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "runAsFancy",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_69891_",
+          "type": "Runnable",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157428_",
+          "type": "Supplier < ShaderInstance >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setShaderTexture",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157457_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_157458_",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "_setShaderTexture",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157180_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_157181_",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setShaderTexture",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157454_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_157455_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "_setShaderTexture",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157177_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_157178_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getShaderTexture",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_157204_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setProjectionMatrix",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_277884_",
+          "type": "org.joml.Matrix4f",
+          "annotations": []
+        },
+        {
+          "name": "p_277702_",
+          "type": "VertexSorting",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setInverseViewRotationMatrix",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_253989_",
+          "type": "org.joml.Matrix3f",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setTextureMatrix",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_254081_",
+          "type": "org.joml.Matrix4f",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "resetTextureMatrix",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "applyModelViewMatrix",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "backupProjectionMatrix",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "_backupProjectionMatrix",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "restoreProjectionMatrix",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "_restoreProjectionMatrix",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getProjectionMatrix",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "org.joml.Matrix4f",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getInverseViewRotationMatrix",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "org.joml.Matrix3f",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getModelViewMatrix",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "org.joml.Matrix4f",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getModelViewStack",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "PoseStack",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTextureMatrix",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "org.joml.Matrix4f",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSequentialBuffer",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "RenderSystem.AutoStorageIndexBuffer",
+      "parameters": [
+        {
+          "name": "p_221942_",
+          "type": "VertexFormat.Mode",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setShaderGameTime",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157448_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_157449_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getShaderGameTime",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getVertexSorting",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "VertexSorting",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.1/com/mojang/blaze3d/systems/RenderSystem.html"
+}

@@ -1,0 +1,178 @@
+{
+  "type": "class",
+  "name": "DeferredWorkQueue",
+  "qualified_name": "net.minecraftforge.fml.DeferredWorkQueue",
+  "package": "net.minecraftforge.fml",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Utility for running code on the main launch thread at the next available opportunity. There is no guaranteed order that work from various mods will be run, but your own work will be run sequentially. Use of this class after startup is not possible. At that point, ReentrantBlockableEventLoop should be used instead. Exceptions from tasks will be handled gracefully, causing a mod loading error. Tasks that take egregiously long times to run will be logged.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "workQueues",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Map < ModLoadingStage ,​ DeferredWorkQueue >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tasks",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ConcurrentLinkedDeque < DeferredWorkQueue.TaskInfo >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "modLoadingStage",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ModLoadingStage",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "DeferredWorkQueue",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "modLoadingStage",
+          "type": "ModLoadingStage",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "lookup",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "Optional < DeferredWorkQueue >",
+      "parameters": [
+        {
+          "name": "parallelClass",
+          "type": "Optional < ModLoadingStage >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "runTasks",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "makeRunnable",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "ti",
+          "type": "DeferredWorkQueue.TaskInfo",
+          "annotations": []
+        },
+        {
+          "name": "executor",
+          "type": "Executor",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "enqueueWork",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture < Void >",
+      "parameters": [
+        {
+          "name": "modInfo",
+          "type": "ModContainer",
+          "annotations": []
+        },
+        {
+          "name": "work",
+          "type": "Runnable",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "enqueueWork",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture <T>",
+      "parameters": [
+        {
+          "name": "modInfo",
+          "type": "ModContainer",
+          "annotations": []
+        },
+        {
+          "name": "work",
+          "type": "Supplier <T>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.17.1/net/minecraftforge/fml/DeferredWorkQueue.html"
+}

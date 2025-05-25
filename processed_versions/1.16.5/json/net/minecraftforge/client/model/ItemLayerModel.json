@@ -1,0 +1,611 @@
+{
+  "type": "class",
+  "name": "ItemLayerModel",
+  "qualified_name": "net.minecraftforge.client.model.ItemLayerModel",
+  "package": "net.minecraftforge.client.model",
+  "modifiers": [
+    "public",
+    "final",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Forge reimplementation of vanilla ItemModelGenerator , i.e. builtin/generated models, with the following changes: - Represented as a true IUnbakedModel so it can be baked as usual instead of using special-case logic like vanilla does. - Various fixes in the baking logic. - Not limited to 4 layers maximum.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "INSTANCE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "ItemLayerModel",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "HORIZONTALS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Direction []",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "VERTICALS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Direction []",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "textures",
+      "modifiers": [
+        "private"
+      ],
+      "type": "com.google.common.collect.ImmutableList< RenderMaterial >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fullbrightLayers",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.google.common.collect.ImmutableSet< Integer >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ItemLayerModel",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ItemLayerModel",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "textures",
+          "type": "com.google.common.collect.ImmutableList< RenderMaterial >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ItemLayerModel",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "textures",
+          "type": "com.google.common.collect.ImmutableList< RenderMaterial >",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "fullbrightLayers",
+          "type": "com.google.common.collect.ImmutableSet< Integer >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getTextures",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "com.google.common.collect.ImmutableList< RenderMaterial >",
+      "parameters": [
+        {
+          "name": "model",
+          "type": "IModelConfiguration",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "bake",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "IBakedModel",
+      "parameters": [
+        {
+          "name": "owner",
+          "type": "IModelConfiguration",
+          "annotations": []
+        },
+        {
+          "name": "bakery",
+          "type": "ModelBakery",
+          "annotations": []
+        },
+        {
+          "name": "spriteGetter",
+          "type": "Function < RenderMaterial , TextureAtlasSprite >",
+          "annotations": []
+        },
+        {
+          "name": "modelTransform",
+          "type": "IModelTransform",
+          "annotations": []
+        },
+        {
+          "name": "overrides",
+          "type": "ItemOverrideList",
+          "annotations": []
+        },
+        {
+          "name": "modelLocation",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLayerRenderType",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "RenderType",
+      "parameters": [
+        {
+          "name": "isFullbright",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getQuadsForSprites",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "com.google.common.collect.ImmutableList< BakedQuad >",
+      "parameters": [
+        {
+          "name": "textures",
+          "type": "List < RenderMaterial >",
+          "annotations": []
+        },
+        {
+          "name": "transform",
+          "type": "TransformationMatrix",
+          "annotations": []
+        },
+        {
+          "name": "spriteGetter",
+          "type": "Function < RenderMaterial , TextureAtlasSprite >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getQuadsForSprites",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "com.google.common.collect.ImmutableList< BakedQuad >",
+      "parameters": [
+        {
+          "name": "textures",
+          "type": "List < RenderMaterial >",
+          "annotations": []
+        },
+        {
+          "name": "transform",
+          "type": "TransformationMatrix",
+          "annotations": []
+        },
+        {
+          "name": "spriteGetter",
+          "type": "Function < RenderMaterial , TextureAtlasSprite >",
+          "annotations": []
+        },
+        {
+          "name": "fullbrights",
+          "type": "Set < Integer >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getQuadsForSprite",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "com.google.common.collect.ImmutableList< BakedQuad >",
+      "parameters": [
+        {
+          "name": "tint",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "sprite",
+          "type": "TextureAtlasSprite",
+          "annotations": []
+        },
+        {
+          "name": "transform",
+          "type": "TransformationMatrix",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getQuadsForSprite",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "com.google.common.collect.ImmutableList< BakedQuad >",
+      "parameters": [
+        {
+          "name": "tint",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "sprite",
+          "type": "TextureAtlasSprite",
+          "annotations": []
+        },
+        {
+          "name": "transform",
+          "type": "TransformationMatrix",
+          "annotations": []
+        },
+        {
+          "name": "fullbright",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTextures",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Collection < RenderMaterial >",
+      "parameters": [
+        {
+          "name": "owner",
+          "type": "IModelConfiguration",
+          "annotations": []
+        },
+        {
+          "name": "modelGetter",
+          "type": "Function < ResourceLocation , IUnbakedModel >",
+          "annotations": []
+        },
+        {
+          "name": "missingTextureErrors",
+          "type": "Set <com.mojang.datafixers.util.Pair< String , String >>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "buildSideQuad",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "BakedQuad",
+      "parameters": [
+        {
+          "name": "transform",
+          "type": "TransformationMatrix",
+          "annotations": []
+        },
+        {
+          "name": "side",
+          "type": "Direction",
+          "annotations": []
+        },
+        {
+          "name": "tint",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "sprite",
+          "type": "TextureAtlasSprite",
+          "annotations": []
+        },
+        {
+          "name": "u",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "v",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "size",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "fullbright",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "remap",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "Direction",
+      "parameters": [
+        {
+          "name": "side",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "buildQuad",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "BakedQuad",
+      "parameters": [
+        {
+          "name": "transform",
+          "type": "TransformationMatrix",
+          "annotations": []
+        },
+        {
+          "name": "side",
+          "type": "Direction",
+          "annotations": []
+        },
+        {
+          "name": "sprite",
+          "type": "TextureAtlasSprite",
+          "annotations": []
+        },
+        {
+          "name": "tint",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "fullbright",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "x0",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "y0",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "z0",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "u0",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "v0",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "x1",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "y1",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "z1",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "u1",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "v1",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "x2",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "y2",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "z2",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "u2",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "v2",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "x3",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "y3",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "z3",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "u3",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "v3",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "putVertex",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "consumer",
+          "type": "IVertexConsumer",
+          "annotations": []
+        },
+        {
+          "name": "side",
+          "type": "Direction",
+          "annotations": []
+        },
+        {
+          "name": "x",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "y",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "z",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "u",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "v",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "uLight",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "vLight",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.16.5/net/minecraftforge/client/model/ItemLayerModel.html"
+}

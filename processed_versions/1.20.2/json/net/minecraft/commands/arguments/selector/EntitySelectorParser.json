@@ -1,0 +1,1643 @@
+{
+  "type": "class",
+  "name": "EntitySelectorParser",
+  "qualified_name": "net.minecraft.commands.arguments.selector.EntitySelectorParser",
+  "package": "net.minecraft.commands.arguments.selector",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "SYNTAX_SELECTOR_START",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "char",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SYNTAX_OPTIONS_START",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "char",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SYNTAX_OPTIONS_END",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "char",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SYNTAX_OPTIONS_KEY_VALUE_SEPARATOR",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "char",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SYNTAX_OPTIONS_SEPARATOR",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "char",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SYNTAX_NOT",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "char",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SYNTAX_TAG",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "char",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SELECTOR_NEAREST_PLAYER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "char",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SELECTOR_ALL_PLAYERS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "char",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SELECTOR_RANDOM_PLAYERS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "char",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SELECTOR_CURRENT_ENTITY",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "char",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SELECTOR_ALL_ENTITIES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "char",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ERROR_INVALID_NAME_OR_UUID",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.brigadier.exceptions.SimpleCommandExceptionType",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ERROR_UNKNOWN_SELECTOR_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.brigadier.exceptions.DynamicCommandExceptionType",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ERROR_SELECTORS_NOT_ALLOWED",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.brigadier.exceptions.SimpleCommandExceptionType",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ERROR_MISSING_SELECTOR_TYPE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.brigadier.exceptions.SimpleCommandExceptionType",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ERROR_EXPECTED_END_OF_OPTIONS",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.brigadier.exceptions.SimpleCommandExceptionType",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ERROR_EXPECTED_OPTION_VALUE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.brigadier.exceptions.DynamicCommandExceptionType",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ORDER_NEAREST",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "BiConsumer < Vec3 , List <? extends Entity >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ORDER_FURTHEST",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "BiConsumer < Vec3 , List <? extends Entity >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ORDER_RANDOM",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "BiConsumer < Vec3 , List <? extends Entity >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SUGGEST_NOTHING",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "BiFunction <com.mojang.brigadier.suggestion.SuggestionsBuilder, Consumer <com.mojang.brigadier.suggestion.SuggestionsBuilder>, CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "reader",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.mojang.brigadier.StringReader",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "allowSelectors",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "maxResults",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "includesEntities",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "worldLimited",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "distance",
+      "modifiers": [
+        "private"
+      ],
+      "type": "MinMaxBounds.Doubles",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "level",
+      "modifiers": [
+        "private"
+      ],
+      "type": "MinMaxBounds.Ints",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "x",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Double",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "y",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Double",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "z",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Double",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "deltaX",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Double",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "deltaY",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Double",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "deltaZ",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Double",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rotX",
+      "modifiers": [
+        "private"
+      ],
+      "type": "WrappedMinMaxBounds",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rotY",
+      "modifiers": [
+        "private"
+      ],
+      "type": "WrappedMinMaxBounds",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "predicate",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Predicate < Entity >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "order",
+      "modifiers": [
+        "private"
+      ],
+      "type": "BiConsumer < Vec3 , List <? extends Entity >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "currentEntity",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playerName",
+      "modifiers": [
+        "private"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "startPosition",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "entityUUID",
+      "modifiers": [
+        "private"
+      ],
+      "type": "UUID",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suggestions",
+      "modifiers": [
+        "private"
+      ],
+      "type": "BiFunction <com.mojang.brigadier.suggestion.SuggestionsBuilder, Consumer <com.mojang.brigadier.suggestion.SuggestionsBuilder>, CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasNameEquals",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasNameNotEquals",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isLimited",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isSorted",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasGamemodeEquals",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasGamemodeNotEquals",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasTeamEquals",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasTeamNotEquals",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "type",
+      "modifiers": [
+        "private"
+      ],
+      "type": "EntityType <?>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "typeInverse",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasScores",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasAdvancements",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "usesSelectors",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "EntitySelectorParser",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_121218_",
+          "type": "com.mojang.brigadier.StringReader",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "EntitySelectorParser",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_121220_",
+          "type": "com.mojang.brigadier.StringReader",
+          "annotations": []
+        },
+        {
+          "name": "p_121221_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getSelector",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "EntitySelector",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createAabb",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "AABB",
+      "parameters": [
+        {
+          "name": "p_121234_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_121235_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_121236_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "finalizePredicates",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createRotationPredicate",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Predicate < Entity >",
+      "parameters": [
+        {
+          "name": "p_121255_",
+          "type": "WrappedMinMaxBounds",
+          "annotations": []
+        },
+        {
+          "name": "p_121256_",
+          "type": "ToDoubleFunction < Entity >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "parseSelector",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "parseNameOrUUID",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "parseOptions",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldInvertValue",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isTag",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getReader",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "com.mojang.brigadier.StringReader",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addPredicate",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_121273_",
+          "type": "Predicate < Entity >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setWorldLimited",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDistance",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "MinMaxBounds.Doubles",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setDistance",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_175128_",
+          "type": "MinMaxBounds.Doubles",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "MinMaxBounds.Ints",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_121246_",
+          "type": "MinMaxBounds.Ints",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRotX",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "WrappedMinMaxBounds",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setRotX",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_121253_",
+          "type": "WrappedMinMaxBounds",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRotY",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "WrappedMinMaxBounds",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setRotY",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_121290_",
+          "type": "WrappedMinMaxBounds",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getX",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Double",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getY",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Double",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getZ",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Double",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setX",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_121232_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setY",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_121283_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setZ",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_121306_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setDeltaX",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_121319_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setDeltaY",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_121332_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setDeltaZ",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_121340_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDeltaX",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Double",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDeltaY",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Double",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDeltaZ",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Double",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setMaxResults",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_121238_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setIncludesEntities",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_121280_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getOrder",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BiConsumer < Vec3 , List <? extends Entity >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setOrder",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_121269_",
+          "type": "BiConsumer < Vec3 , List <? extends Entity >>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "parse",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "EntitySelector",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fillSelectorSuggestions",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_121248_",
+          "type": "com.mojang.brigadier.suggestion.SuggestionsBuilder",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suggestNameOrSelector",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>",
+      "parameters": [
+        {
+          "name": "p_121287_",
+          "type": "com.mojang.brigadier.suggestion.SuggestionsBuilder",
+          "annotations": []
+        },
+        {
+          "name": "p_121288_",
+          "type": "Consumer <com.mojang.brigadier.suggestion.SuggestionsBuilder>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suggestName",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>",
+      "parameters": [
+        {
+          "name": "p_121310_",
+          "type": "com.mojang.brigadier.suggestion.SuggestionsBuilder",
+          "annotations": []
+        },
+        {
+          "name": "p_121311_",
+          "type": "Consumer <com.mojang.brigadier.suggestion.SuggestionsBuilder>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suggestSelector",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>",
+      "parameters": [
+        {
+          "name": "p_121323_",
+          "type": "com.mojang.brigadier.suggestion.SuggestionsBuilder",
+          "annotations": []
+        },
+        {
+          "name": "p_121324_",
+          "type": "Consumer <com.mojang.brigadier.suggestion.SuggestionsBuilder>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suggestOpenOptions",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>",
+      "parameters": [
+        {
+          "name": "p_121334_",
+          "type": "com.mojang.brigadier.suggestion.SuggestionsBuilder",
+          "annotations": []
+        },
+        {
+          "name": "p_121335_",
+          "type": "Consumer <com.mojang.brigadier.suggestion.SuggestionsBuilder>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suggestOptionsKeyOrClose",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>",
+      "parameters": [
+        {
+          "name": "p_121342_",
+          "type": "com.mojang.brigadier.suggestion.SuggestionsBuilder",
+          "annotations": []
+        },
+        {
+          "name": "p_121343_",
+          "type": "Consumer <com.mojang.brigadier.suggestion.SuggestionsBuilder>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suggestOptionsKey",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>",
+      "parameters": [
+        {
+          "name": "p_121348_",
+          "type": "com.mojang.brigadier.suggestion.SuggestionsBuilder",
+          "annotations": []
+        },
+        {
+          "name": "p_121349_",
+          "type": "Consumer <com.mojang.brigadier.suggestion.SuggestionsBuilder>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suggestOptionsNextOrClose",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>",
+      "parameters": [
+        {
+          "name": "p_121354_",
+          "type": "com.mojang.brigadier.suggestion.SuggestionsBuilder",
+          "annotations": []
+        },
+        {
+          "name": "p_121355_",
+          "type": "Consumer <com.mojang.brigadier.suggestion.SuggestionsBuilder>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suggestEquals",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>",
+      "parameters": [
+        {
+          "name": "p_175144_",
+          "type": "com.mojang.brigadier.suggestion.SuggestionsBuilder",
+          "annotations": []
+        },
+        {
+          "name": "p_175145_",
+          "type": "Consumer <com.mojang.brigadier.suggestion.SuggestionsBuilder>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isCurrentEntity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setSuggestions",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_121271_",
+          "type": "BiFunction <com.mojang.brigadier.suggestion.SuggestionsBuilder, Consumer <com.mojang.brigadier.suggestion.SuggestionsBuilder>, CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fillSuggestions",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>",
+      "parameters": [
+        {
+          "name": "p_121250_",
+          "type": "com.mojang.brigadier.suggestion.SuggestionsBuilder",
+          "annotations": []
+        },
+        {
+          "name": "p_121251_",
+          "type": "Consumer <com.mojang.brigadier.suggestion.SuggestionsBuilder>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasNameEquals",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setHasNameEquals",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_121303_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasNameNotEquals",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setHasNameNotEquals",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_121316_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isLimited",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setLimited",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_121329_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isSorted",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setSorted",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_121337_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasGamemodeEquals",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setHasGamemodeEquals",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_121345_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasGamemodeNotEquals",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setHasGamemodeNotEquals",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_121351_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasTeamEquals",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setHasTeamEquals",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_121357_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasTeamNotEquals",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setHasTeamNotEquals",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_121360_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "limitToType",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_121242_",
+          "type": "EntityType <?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setTypeLimitedInversely",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isTypeLimited",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isTypeLimitedInversely",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasScores",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setHasScores",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_121366_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasAdvancements",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setHasAdvancements",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_121369_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.2/net/minecraft/commands/arguments/selector/EntitySelectorParser.html"
+}

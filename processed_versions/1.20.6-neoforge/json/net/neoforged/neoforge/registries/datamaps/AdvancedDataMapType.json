@@ -1,0 +1,147 @@
+{
+  "type": "class",
+  "name": "T>>",
+  "qualified_name": "net.neoforged.neoforge.registries.datamaps.T>>",
+  "package": "net.neoforged.neoforge.registries.datamaps",
+  "modifiers": [
+    "public",
+    "final",
+    "class"
+  ],
+  "annotations": [],
+  "description": "A version of data map types that has two more features for compatibility and conflict handling: mergers and removers. A remover will be used to support targeted removals that support decomposition, instead of the removal of the entire value. That way, for instance, one is able to remove just a value with a specific key from a map-based data map, instead of the entire map. To use a remover one has to change the structure of the remove list, to an object: \"remove\": { \"someobject:someid\": {} // Remover object } Or, to an object list: \"remove\": [ { \"key\": someobject:someid\", \"remover\": {} // Remover object. Optional. If not provided, the attached value will be removed from the object completely, without invoking the remover } ] Advanced data map types also have the ability of handling conflicts between datapacks that attach an object to the same registry object. Using mergers , collection-based data maps can, as such, merge values provided by multiple packs in the same collection. The default merge will however have the overriding behaviour of \"last come wins\", similar to recipes.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.neoforged.neoforge.registries.datamaps.DataMapType"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "remover",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.mojang.serialization.Codec< VR extends DataMapValueRemover < R , T >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "merger",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "DataMapValueMerger < R , T >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "AdvancedDataMapType",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [
+        {
+          "name": "registryKey",
+          "type": "ResourceKey < Registry < R >>",
+          "annotations": []
+        },
+        {
+          "name": "id",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "codec",
+          "type": "com.mojang.serialization.Codec< T >",
+          "annotations": []
+        },
+        {
+          "name": "networkCodec",
+          "type": "com.mojang.serialization.Codec< T >",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        },
+        {
+          "name": "mandatorySync",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "remover",
+          "type": "com.mojang.serialization.Codec< VR >",
+          "annotations": []
+        },
+        {
+          "name": "merger",
+          "type": "DataMapValueMerger < R , T >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "remover",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "com.mojang.serialization.Codec< VR >",
+      "parameters": [],
+      "description": "Returns the codec used to create removers.",
+      "deprecated": false
+    },
+    {
+      "name": "merger",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "DataMapValueMerger < R , T >",
+      "parameters": [],
+      "description": "Returns the merger that handles data map conflicts.",
+      "deprecated": false
+    },
+    {
+      "name": "builder",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "AdvancedDataMapType.Builder <T, R, DataMapValueRemover.Default <T, R>>",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "registry",
+          "type": "ResourceKey < Registry <R>>",
+          "annotations": []
+        },
+        {
+          "name": "codec",
+          "type": "com.mojang.serialization.Codec<T>",
+          "annotations": []
+        }
+      ],
+      "description": "Returns an advanced data map type builder.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.6-neoforge/net/neoforged/neoforge/registries/datamaps/AdvancedDataMapType.html"
+}

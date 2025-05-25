@@ -1,0 +1,839 @@
+{
+  "type": "class",
+  "name": "ChatComponent",
+  "qualified_name": "net.minecraft.client.gui.components.ChatComponent",
+  "package": "net.minecraft.client.gui.components",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MAX_CHAT_HISTORY",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MESSAGE_NOT_FOUND",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MESSAGE_INDENT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MESSAGE_TAG_MARGIN_LEFT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BOTTOM_MARGIN",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "TIME_BEFORE_MESSAGE_DELETION",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DELETED_CHAT_MESSAGE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Component",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "minecraft",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Minecraft",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "recentChat",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ArrayListDeque < String >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "allMessages",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "List < GuiMessage >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "trimmedMessages",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "List < GuiMessage.Line >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "chatScrollbarPos",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "newMessageSinceScroll",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "messageDeletionQueue",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "List < ChatComponent.DelayedMessageDeletion >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ChatComponent",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_93768_",
+          "type": "Minecraft",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "render",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_282077_",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "p_283491_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_282406_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_283111_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "drawTagIcon",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_283206_",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "p_281677_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_281878_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_282783_",
+          "type": "GuiMessageTag.Icon",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTagIconLeft",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_240622_",
+          "type": "GuiMessage.Line",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isChatHidden",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTimeFactor",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "double",
+      "parameters": [
+        {
+          "name": "p_93776_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clearMessages",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_93796_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addMessage",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_93786_",
+          "type": "Component",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addMessage",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_241484_",
+          "type": "Component",
+          "annotations": []
+        },
+        {
+          "name": "p_241323_",
+          "type": "MessageSignature",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_241297_",
+          "type": "GuiMessageTag",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "logChatMessage",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_242919_",
+          "type": "Component",
+          "annotations": []
+        },
+        {
+          "name": "p_242840_",
+          "type": "GuiMessageTag",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addMessage",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_240562_",
+          "type": "Component",
+          "annotations": []
+        },
+        {
+          "name": "p_241566_",
+          "type": "MessageSignature",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_240583_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_240624_",
+          "type": "GuiMessageTag",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_240558_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "processMessageDeletionQueue",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "deleteMessage",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_241324_",
+          "type": "MessageSignature",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "deleteMessageOrDelay",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "ChatComponent.DelayedMessageDeletion",
+      "parameters": [
+        {
+          "name": "p_251812_",
+          "type": "MessageSignature",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createDeletedMarker",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "GuiMessage",
+      "parameters": [
+        {
+          "name": "p_249789_",
+          "type": "GuiMessage",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rescaleChat",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "refreshTrimmedMessage",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRecentChat",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ArrayListDeque < String >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addRecentChat",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_93784_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "resetChatScroll",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "scrollChat",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_205361_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleChatQueueClicked",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_93773_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_93774_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getClickedComponentStyleAt",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Style",
+      "parameters": [
+        {
+          "name": "p_93801_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_93802_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMessageTagAt",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "GuiMessageTag",
+      "parameters": [
+        {
+          "name": "p_240576_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_240554_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasSelectedMessageTag",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_240619_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_240547_",
+          "type": "GuiMessage.Line",
+          "annotations": []
+        },
+        {
+          "name": "p_240637_",
+          "type": "GuiMessageTag",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "screenToChatX",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "double",
+      "parameters": [
+        {
+          "name": "p_240580_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "screenToChatY",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "double",
+      "parameters": [
+        {
+          "name": "p_240548_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMessageEndIndexAt",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_249245_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_252282_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMessageLineIndexAt",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_249099_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_250008_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isChatFocused",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getWidth",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getHeight",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getScale",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "double",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getWidth",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_93799_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getHeight",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_93812_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "defaultUnfocusedPct",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "double",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLinesPerPage",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLineHeight",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.1/net/minecraft/client/gui/components/ChatComponent.html"
+}

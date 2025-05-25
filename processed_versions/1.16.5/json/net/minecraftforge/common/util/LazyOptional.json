@@ -1,0 +1,334 @@
+{
+  "type": "class",
+  "name": "LazyOptional<T>",
+  "qualified_name": "net.minecraftforge.common.util.LazyOptional<T>",
+  "package": "net.minecraftforge.common.util",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "This object encapsulates a lazy value, with typical transformation operations (map/ifPresent) available, much like Optional . It also provides the ability to listen for invalidation, via addListener(NonNullConsumer) . This method is invoked when the provider of this object calls invalidate() . To create an instance of this class, use of(NonNullSupplier) . Note that this accepts a NonNullSupplier , so the result of the supplier must never be null. The empty instance can be retrieved with empty() .",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "supplier",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "NonNullSupplier < T >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lock",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Object",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "resolved",
+      "modifiers": [
+        "private"
+      ],
+      "type": "org.apache.commons.lang3.mutable.Mutable< T >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "listeners",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Set < NonNullConsumer < LazyOptional < T >>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isValid",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "EMPTY",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "LazyOptional < Void >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "LazyOptional",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [
+        {
+          "name": "instanceSupplier",
+          "type": "NonNullSupplier < T >",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "of",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "LazyOptional <T>",
+      "parameters": [
+        {
+          "name": "instanceSupplier",
+          "type": "NonNullSupplier <T>",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "Construct a new LazyOptional that wraps the given NonNullSupplier .",
+      "deprecated": false
+    },
+    {
+      "name": "empty",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "LazyOptional <T>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cast",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "LazyOptional <X>",
+      "parameters": [],
+      "description": "This method hides an unchecked cast to the inferred type. Only use this if you are sure the type should match. For capabilities, generally Capability.orEmpty(Capability, LazyOptional) should be used.",
+      "deprecated": false
+    },
+    {
+      "name": "getValue",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "T",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getValueUnsafe",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "T",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isPresent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "Check if this LazyOptional is non-empty.",
+      "deprecated": false
+    },
+    {
+      "name": "ifPresent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "consumer",
+          "type": "NonNullConsumer <? super T >",
+          "annotations": []
+        }
+      ],
+      "description": "If non-empty, invoke the specified NonNullConsumer with the object, otherwise do nothing.",
+      "deprecated": false
+    },
+    {
+      "name": "lazyMap",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "LazyOptional <U>",
+      "parameters": [
+        {
+          "name": "mapper",
+          "type": "NonNullFunction <? super T , ? extends U>",
+          "annotations": []
+        }
+      ],
+      "description": "If a this LazyOptional is non-empty, return a new LazyOptional encapsulating the mapping function. Otherwise, returns empty() . The supplier inside this object is NOT resolved.",
+      "deprecated": false
+    },
+    {
+      "name": "map",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional <U>",
+      "parameters": [
+        {
+          "name": "mapper",
+          "type": "NonNullFunction <? super T , ? extends U>",
+          "annotations": []
+        }
+      ],
+      "description": "If a this LazyOptional is non-empty, return a new Optional encapsulating the mapped value. Otherwise, returns Optional.empty() .",
+      "deprecated": false
+    },
+    {
+      "name": "filter",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < T >",
+      "parameters": [
+        {
+          "name": "predicate",
+          "type": "NonNullPredicate <? super T >",
+          "annotations": []
+        }
+      ],
+      "description": "Resolve the contained supplier if non-empty, and filter it by the given NonNullPredicate , returning empty if false. It is important to note that this method is not lazy, as it must resolve the value of the supplier to validate it with the predicate.",
+      "deprecated": false
+    },
+    {
+      "name": "resolve",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < T >",
+      "parameters": [],
+      "description": "Resolves the value of this LazyOptional, turning it into a standard non-lazy Optional < T >",
+      "deprecated": false
+    },
+    {
+      "name": "orElse",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "other",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "Resolve the contained supplier if non-empty and return the result, otherwise return other .",
+      "deprecated": false
+    },
+    {
+      "name": "orElseGet",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "other",
+          "type": "NonNullSupplier <? extends T >",
+          "annotations": []
+        }
+      ],
+      "description": "Resolve the contained supplier if non-empty and return the result, otherwise return the result of other .",
+      "deprecated": false
+    },
+    {
+      "name": "orElseThrow",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "exceptionSupplier",
+          "type": "NonNullSupplier <? extends X>",
+          "annotations": []
+        }
+      ],
+      "description": "Resolve the contained supplier if non-empty and return the result, otherwise throw the exception created by the provided NonNullSupplier .",
+      "deprecated": false
+    },
+    {
+      "name": "addListener",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "listener",
+          "type": "NonNullConsumer < LazyOptional < T >>",
+          "annotations": []
+        }
+      ],
+      "description": "Register a listener that will be called when this LazyOptional becomes invalid (via invalidate() ). If this LazyOptional is empty, the listener will be called immediately.",
+      "deprecated": false
+    },
+    {
+      "name": "invalidate",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "Invalidate this LazyOptional , making it unavailable for further use, and notifying any listeners that this has become invalid and they should update. This would typically be used with capability objects. For example, a TE would call this, if they are covered with a microblock panel, thus cutting off pipe connectivity to this side. Also should be called for all when a TE is invalidated (for example, when the TE is removed or unloaded), or a world/chunk unloads, or a entity dies, etc... This allows modders to keep a cache of capability objects instead of re-checking them every tick.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.16.5/net/minecraftforge/common/util/LazyOptional.html"
+}

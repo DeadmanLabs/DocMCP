@@ -1,0 +1,33 @@
+{
+  "type": "class",
+  "name": "FMLHandshakeHandler",
+  "qualified_name": "FMLHandshakeHandler",
+  "package": "",
+  "modifiers": [],
+  "annotations": [],
+  "description": "Instance responsible for handling the overall FML network handshake. An instance is created during CPacketHandshake handling, and attached to the NetworkManager.channel via FMLNetworkConstants.FML_HANDSHAKE_HANDLER . The FMLNetworkConstants.handshakeChannel is a SimpleChannel with standard messages flowing in both directions. The loginWrapper transforms these messages into CPacketCustomPayloadLogin and SPacketCustomPayloadLogin compatible messages, by means of wrapping. The handshake is ticked tickLogin(NetworkManager) from the NetHandlerLoginServer#update() method, utilizing the NetHandlerLoginServer.LoginState#NEGOTIATING state, which is otherwise unused in vanilla code. During client to server initiation, on the server , the NetworkEvent.GatherLoginPayloadsEvent is fired, which solicits all registered channels at the NetworkRegistry for any NetworkRegistry.LoginPayload they wish to supply. The collected NetworkRegistry.LoginPayload are sent, one per tick, via the FMLLoginWrapper.wrapPacket(ResourceLocation, PacketBuffer) mechanism to the incoming client connection. Each packet is indexed via CPacketCustomPayloadLogin.transaction , which is the only mechanism available for tracking request/response pairs. Each packet sent from the server should be replied by the client, though not necessarily in sent order. The reply should contain the index of the server's packet it is replying to. The FMLLoginWrapper class handles indexing replies correctly automatically. Once all packets have been dispatched, we wait for all replies to be received. Once all replies are received, the final login phase will commence.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": []
+  },
+  "nested_classes": [],
+  "fields": [],
+  "constructors": [],
+  "methods": [
+    {
+      "name": "tickServer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.13.2/net/minecraftforge/fml/network/FMLHandshakeHandler.html"
+}

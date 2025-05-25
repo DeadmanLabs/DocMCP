@@ -1,0 +1,57 @@
+{
+  "type": "interface",
+  "name": "IExtensibleEnum",
+  "qualified_name": "net.minecraftforge.common.IExtensibleEnum",
+  "package": "net.minecraftforge.common",
+  "modifiers": [
+    "public",
+    "interface"
+  ],
+  "annotations": [],
+  "description": "To be implemented on vanilla enums that should be enhanced with ASM to be extensible. If this is implemented on a class, the class must define a static method called \"create\" which takes a String (enum name), and the rest of the parameters matching a constructor. For example, an enum with the constructor MyEnum(Object foo) would require the method: public static MyEnum create(String name, Object foo) { throw new IllegalStateException(\"Enum not extended\"); } The method contents will be replaced with ASM at runtime. Multiple create methods can be defined as long as each matches a constructor.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": []
+  },
+  "nested_classes": [],
+  "fields": [],
+  "constructors": [],
+  "methods": [
+    {
+      "name": "init",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "Called by generated factory code to do any post-constructor setup required by the enum. Should not be called manually.",
+      "deprecated": false
+    },
+    {
+      "name": "createCodecForExtensibleEnum",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "com.mojang.serialization.Codec<E>",
+      "parameters": [
+        {
+          "name": "valuesSupplier",
+          "type": "Supplier <E[]>",
+          "annotations": []
+        },
+        {
+          "name": "enumValueFromNameFunction",
+          "type": "Function <? super String ,​? extends E>",
+          "annotations": []
+        }
+      ],
+      "description": "Use this instead of StringRepresentable.fromEnum(Supplier, Function) for extensible enums because this not cache the enum values on construction",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.17.1/net/minecraftforge/common/IExtensibleEnum.html"
+}

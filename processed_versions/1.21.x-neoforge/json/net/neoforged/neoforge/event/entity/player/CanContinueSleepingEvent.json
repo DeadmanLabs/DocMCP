@@ -1,0 +1,118 @@
+{
+  "type": "class",
+  "name": "CanContinueSleepingEvent",
+  "qualified_name": "net.neoforged.neoforge.event.entity.player.CanContinueSleepingEvent",
+  "package": "net.neoforged.neoforge.event.entity.player",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "This event is fired when the game checks if a sleeping entity may continue sleeping. It can be used to overwrite the vanilla check, forcing the entity to continue or stop sleeping. This event is only fired on the logical server.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.neoforged.neoforge.event.entity.EntityEvent",
+      "net.neoforged.neoforge.event.entity.living.LivingEvent"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "problem",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "@Nullable Player.BedSleepingProblem",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mayContinueSleeping",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "CanContinueSleepingEvent",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "LivingEntity",
+          "annotations": []
+        },
+        {
+          "name": "problem",
+          "type": "Player.BedSleepingProblem",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getSleepingPos",
+      "modifiers": [],
+      "return_type": "Optional < BlockPos >",
+      "parameters": [],
+      "description": "Returns the sleeping position of the sleeping entity. May be empty.",
+      "deprecated": false
+    },
+    {
+      "name": "getProblem",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@Nullable Player.BedSleepingProblem",
+      "parameters": [],
+      "description": "Returns the current sleeping problem, if any. By default, this event is fired with the following problems: Player.BedSleepingProblem.NOT_POSSIBLE_HERE if the sleeper is missing a bed. Player.BedSleepingProblem.NOT_POSSIBLE_NOW if it is daytime. Mods may fire this event with other problems if they impose additional sleeping conditions.",
+      "deprecated": false
+    },
+    {
+      "name": "mayContinueSleeping",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "Returns if the sleeping entity may continue sleeping.",
+      "deprecated": false
+    },
+    {
+      "name": "setContinueSleeping",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "sleeping",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Sets if the sleeping entity may continue sleeping. By default, the entity may continue sleeping if there was not a problem detected.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21.x-neoforge/net/neoforged/neoforge/event/entity/player/CanContinueSleepingEvent.html"
+}

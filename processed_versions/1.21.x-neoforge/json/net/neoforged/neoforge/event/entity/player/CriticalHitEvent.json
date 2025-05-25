@@ -1,0 +1,193 @@
+{
+  "type": "class",
+  "name": "CriticalHitEvent",
+  "qualified_name": "net.neoforged.neoforge.event.entity.player.CriticalHitEvent",
+  "package": "net.neoforged.neoforge.event.entity.player",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "This event is fired when a player attacks an entity in Player.attack(Entity) . It can be used to change the critical hit status and damage modifier In the event the attack was not a critical hit, the event will still be fired, but it will be preemptively cancelled.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.neoforged.neoforge.event.entity.EntityEvent",
+      "net.neoforged.neoforge.event.entity.living.LivingEvent",
+      "net.neoforged.neoforge.event.entity.player.PlayerEvent"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "target",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Entity",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "vanillaDmgMultiplier",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isVanillaCritical",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dmgMultiplier",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isCriticalHit",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "CriticalHitEvent",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "target",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "dmgMultiplier",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "isCriticalHit",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Fire via CommonHooks.fireCriticalHit(Player, Entity, boolean, float)",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getTarget",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Entity",
+      "parameters": [],
+      "description": "Returns the entity that was attacked by the player.",
+      "deprecated": false
+    },
+    {
+      "name": "getDamageMultiplier",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "The damage multiplier is applied to the base attack's damage if the attack critically hits . A damage multiplier of 1.0 will not change the damage, a value of 1.5 will increase the damage by 50%, and so on.",
+      "deprecated": false
+    },
+    {
+      "name": "setDamageMultiplier",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "dmgMultiplier",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "Sets the damage multiplier for the critical hit. Not used if isCriticalHit() is false. Changing the damage modifier to zero does not guarantee that the attack does zero damage.",
+      "deprecated": false
+    },
+    {
+      "name": "isCriticalHit",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "Returns if the attack will critically hit.",
+      "deprecated": false
+    },
+    {
+      "name": "setCriticalHit",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "isCriticalHit",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Changes the critical hit state.",
+      "deprecated": false
+    },
+    {
+      "name": "getVanillaMultiplier",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "Gets the original damage multiplier set by vanilla. If the event isVanillaCritical() , the damage multiplier will be 1.5, otherwise it will be 1.0",
+      "deprecated": false
+    },
+    {
+      "name": "isVanillaCritical",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "Returns true if the attack was considered a critical hit by vanilla.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21.x-neoforge/net/neoforged/neoforge/event/entity/player/CriticalHitEvent.html"
+}

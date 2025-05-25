@@ -1,0 +1,285 @@
+{
+  "type": "class",
+  "name": "ForgePacketHandler",
+  "qualified_name": "net.minecraftforge.network.ForgePacketHandler",
+  "package": "net.minecraftforge.network",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "TODO: Gathered Payloads During client to server initiation, on the server , the CustomPayloadEvent.GatherLoginPayloadsEvent is fired, which solicits all registered channels at the NetworkRegistry for any NetworkRegistry.LoginPayload they wish to supply.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MARKER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Marker",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registriesToReceive",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Set < ResourceLocation >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registrySnapshots",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Map < ResourceLocation , ForgeRegistry.Snapshot >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "nextAckId",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pendingAcknowledgments",
+      "modifiers": [
+        "private"
+      ],
+      "type": "it.unimi.dsi.fastutil.ints.Int2ObjectMap< BiConsumer < Acknowledge , CustomPayloadEvent.Context >>",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ForgePacketHandler",
+      "modifiers": [],
+      "parameters": [
+        {
+          "name": "connection",
+          "type": "Connection",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "expectAck",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "consumer",
+          "type": "BiConsumer < Acknowledge , CustomPayloadEvent.Context >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleLoginWrapper",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "msg",
+          "type": "LoginWrapper",
+          "annotations": []
+        },
+        {
+          "name": "ctx",
+          "type": "CustomPayloadEvent.Context",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleClientAck",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "msg",
+          "type": "Acknowledge",
+          "annotations": []
+        },
+        {
+          "name": "ctx",
+          "type": "CustomPayloadEvent.Context",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleModVersions",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "list",
+          "type": "ModVersions",
+          "annotations": []
+        },
+        {
+          "name": "ctx",
+          "type": "CustomPayloadEvent.Context",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleChannelVersions",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "list",
+          "type": "ChannelVersions",
+          "annotations": []
+        },
+        {
+          "name": "ctx",
+          "type": "CustomPayloadEvent.Context",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleModMismatchData",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "data",
+          "type": "MismatchData",
+          "annotations": []
+        },
+        {
+          "name": "ctx",
+          "type": "CustomPayloadEvent.Context",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleRegistryList",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "list",
+          "type": "RegistryList",
+          "annotations": []
+        },
+        {
+          "name": "ctx",
+          "type": "CustomPayloadEvent.Context",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleRegistryData",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "msg",
+          "type": "RegistryData",
+          "annotations": []
+        },
+        {
+          "name": "ctx",
+          "type": "CustomPayloadEvent.Context",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleRegistryLoading",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "ctx",
+          "type": "CustomPayloadEvent.Context",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleConfigSync",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "msg",
+          "type": "ConfigData",
+          "annotations": []
+        },
+        {
+          "name": "ctx",
+          "type": "CustomPayloadEvent.Context",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.1/net/minecraftforge/network/ForgePacketHandler.html"
+}

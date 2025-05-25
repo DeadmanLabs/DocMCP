@@ -1,0 +1,444 @@
+{
+  "type": "class",
+  "name": "WorldUpgrader",
+  "qualified_name": "net.minecraft.util.worldupdate.WorldUpgrader",
+  "package": "net.minecraft.util.worldupdate",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "THREAD_FACTORY",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "ThreadFactory",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NEW_DIRECTORY_PREFIX",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "STATUS_UPGRADING_POI",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "MutableComponent",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "STATUS_FINISHED_POI",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "MutableComponent",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "STATUS_UPGRADING_ENTITIES",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "MutableComponent",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "STATUS_FINISHED_ENTITIES",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "MutableComponent",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "STATUS_UPGRADING_CHUNKS",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "MutableComponent",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "STATUS_FINISHED_CHUNKS",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "MutableComponent",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dimensions",
+      "modifiers": [
+        "final"
+      ],
+      "type": "Registry < LevelStem >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "levels",
+      "modifiers": [
+        "final"
+      ],
+      "type": "Set < ResourceKey < Level >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "eraseCache",
+      "modifiers": [
+        "final"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "recreateRegionFiles",
+      "modifiers": [
+        "final"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "levelStorage",
+      "modifiers": [
+        "final"
+      ],
+      "type": "LevelStorageSource.LevelStorageAccess",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "thread",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Thread",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dataFixer",
+      "modifiers": [
+        "final"
+      ],
+      "type": "com.mojang.datafixers.DataFixer",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "running",
+      "modifiers": [
+        "volatile"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "finished",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "progress",
+      "modifiers": [
+        "volatile"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "totalChunks",
+      "modifiers": [
+        "volatile"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "totalFiles",
+      "modifiers": [
+        "volatile"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "converted",
+      "modifiers": [
+        "volatile"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "skipped",
+      "modifiers": [
+        "volatile"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "progressMap",
+      "modifiers": [
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.objects.Reference2FloatMap< ResourceKey < Level >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "status",
+      "modifiers": [
+        "volatile"
+      ],
+      "type": "Component",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "REGEX",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "Pattern",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "overworldDataStorage",
+      "modifiers": [
+        "final"
+      ],
+      "type": "DimensionDataStorage",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "WorldUpgrader",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_249922_",
+          "type": "LevelStorageSource.LevelStorageAccess",
+          "annotations": []
+        },
+        {
+          "name": "p_250273_",
+          "type": "com.mojang.datafixers.DataFixer",
+          "annotations": []
+        },
+        {
+          "name": "p_334652_",
+          "type": "RegistryAccess",
+          "annotations": []
+        },
+        {
+          "name": "p_250738_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_335488_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "cancel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "work",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isFinished",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "levels",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Set < ResourceKey < Level >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dimensionProgress",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_18828_",
+          "type": "ResourceKey < Level >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getProgress",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTotalChunks",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getConverted",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSkipped",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getStatus",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Component",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "resolveRecreateDirectory",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "Path",
+      "parameters": [
+        {
+          "name": "p_330107_",
+          "type": "Path",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21/net/minecraft/util/worldupdate/WorldUpgrader.html"
+}

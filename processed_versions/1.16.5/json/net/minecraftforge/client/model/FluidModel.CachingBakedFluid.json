@@ -1,0 +1,184 @@
+{
+  "type": "class",
+  "name": "FluidModel.CachingBakedFluid",
+  "qualified_name": "net.minecraftforge.client.model.FluidModel.CachingBakedFluid",
+  "package": "net.minecraftforge.client.model",
+  "modifiers": [
+    "private",
+    "static",
+    "final",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraftforge.client.model.FluidModel.BakedFluid"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "modelCache",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.google.common.cache.LoadingCache< Long , FluidModel.BakedFluid >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "CachingBakedFluid",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "transformation",
+          "type": "TransformationMatrix",
+          "annotations": []
+        },
+        {
+          "name": "transforms",
+          "type": "com.google.common.collect.ImmutableMap< ItemCameraTransforms.TransformType , TransformationMatrix >",
+          "annotations": []
+        },
+        {
+          "name": "modelLocation",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "color",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "still",
+          "type": "TextureAtlasSprite",
+          "annotations": []
+        },
+        {
+          "name": "flowing",
+          "type": "TextureAtlasSprite",
+          "annotations": []
+        },
+        {
+          "name": "overlay",
+          "type": "Optional < TextureAtlasSprite >",
+          "annotations": []
+        },
+        {
+          "name": "gas",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "stateOption",
+          "type": "Optional < IModelData >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getCorners",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "int[]",
+      "parameters": [
+        {
+          "name": "stateOption",
+          "type": "Optional < IModelData >",
+          "annotations": []
+        }
+      ],
+      "description": "Gets the quantized fluid levels for each corner. Each value is packed into 10 bits of the model key, so max range is [0,1024). The value is currently stored/interpreted as the closest multiple of 1/864. The divisor is chosen here to allows likely flow values to be exactly representable while also providing good use of the available value range. (For fluids with default quanta, this evenly divides the per-block intervals of 1/9 by 96)",
+      "deprecated": false
+    },
+    {
+      "name": "getFlow",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "stateOption",
+          "type": "Optional < IModelData >",
+          "annotations": []
+        }
+      ],
+      "description": "Gets the quantized flow direction of the fluid. This value comprises 11 bits of the model key, and is signed, so the max range is [-1024,1024). The value is currently stored as the angle rounded to the nearest degree. A value of -1000 is used to signify no flow.",
+      "deprecated": false
+    },
+    {
+      "name": "getOverlay",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "boolean[]",
+      "parameters": [
+        {
+          "name": "stateOption",
+          "type": "Optional < IModelData >",
+          "annotations": []
+        }
+      ],
+      "description": "Gets the overlay texture flag for each side. This value determines if the fluid \"overlay\" texture should be used for that side, instead of the normal \"flowing\" texture (if applicable for that fluid). The sides are stored here by their regular horizontal index.",
+      "deprecated": false
+    },
+    {
+      "name": "getQuads",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "List < BakedQuad >",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "BlockState",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "side",
+          "type": "Direction",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "rand",
+          "type": "Random",
+          "annotations": []
+        },
+        {
+          "name": "modelData",
+          "type": "IModelData",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.16.5/net/minecraftforge/client/model/FluidModel.CachingBakedFluid.html"
+}

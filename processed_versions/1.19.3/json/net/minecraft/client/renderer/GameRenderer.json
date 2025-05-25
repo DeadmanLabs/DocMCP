@@ -1,0 +1,2301 @@
+{
+  "type": "class",
+  "name": "GameRenderer",
+  "qualified_name": "net.minecraft.client.renderer.GameRenderer",
+  "package": "net.minecraft.client.renderer",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "NAUSEA_LOCATION",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "ResourceLocation",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DEPTH_BUFFER_DEBUG",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PROJECTION_Z_NEAR",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "minecraft",
+      "modifiers": [
+        "final"
+      ],
+      "type": "Minecraft",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "resourceManager",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ResourceManager",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "random",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "RandomSource",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderDistance",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "itemInHandRenderer",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "type": "ItemInHandRenderer",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mapRenderer",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "MapRenderer",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderBuffers",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "RenderBuffers",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fov",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "oldFov",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "darkenWorldAmount",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "darkenWorldAmountO",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderHand",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderBlockOutline",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastScreenshotAttempt",
+      "modifiers": [
+        "private"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasWorldScreenshot",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastActiveTime",
+      "modifiers": [
+        "private"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lightTexture",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "LightTexture",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "overlayTexture",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "OverlayTexture",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "panoramicMode",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "zoom",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "zoomX",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "zoomY",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ITEM_ACTIVATION_ANIMATION_LENGTH",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "itemActivationItem",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ItemStack",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "itemActivationTicks",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "itemActivationOffX",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "itemActivationOffY",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "postEffect",
+      "modifiers": [],
+      "type": "PostChain",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "EFFECTS",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "ResourceLocation []",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "EFFECT_NONE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "effectIndex",
+      "modifiers": [],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "effectActive",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mainCamera",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Camera",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blitShader",
+      "modifiers": [
+        "public"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shaders",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < String , ShaderInstance >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "positionShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "positionColorShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "positionColorTexShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "positionTexShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "positionTexColorShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blockShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "newEntityShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "particleShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "positionColorLightmapShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "positionColorTexLightmapShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "positionTexColorNormalShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "positionTexLightmapColorShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeSolidShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeCutoutMippedShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeCutoutShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeTranslucentShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeTranslucentMovingBlockShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeTranslucentNoCrumblingShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeArmorCutoutNoCullShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeEntitySolidShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeEntityCutoutShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeEntityCutoutNoCullShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeEntityCutoutNoCullZOffsetShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeItemEntityTranslucentCullShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeEntityTranslucentCullShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeEntityTranslucentShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeEntityTranslucentEmissiveShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeEntitySmoothCutoutShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeBeaconBeamShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeEntityDecalShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeEntityNoOutlineShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeEntityShadowShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeEntityAlphaShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeEyesShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeEnergySwirlShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeLeashShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeWaterMaskShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeOutlineShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeArmorGlintShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeArmorEntityGlintShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeGlintTranslucentShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeGlintShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeGlintDirectShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeEntityGlintShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeEntityGlintDirectShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeTextShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeTextIntensityShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeTextSeeThroughShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeTextIntensitySeeThroughShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeLightningShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeTripwireShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeEndPortalShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeEndGatewayShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeLinesShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rendertypeCrumblingShader",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ShaderInstance",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "GameRenderer",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_234219_",
+          "type": "Minecraft",
+          "annotations": []
+        },
+        {
+          "name": "p_234220_",
+          "type": "ItemInHandRenderer",
+          "annotations": []
+        },
+        {
+          "name": "p_234221_",
+          "type": "ResourceManager",
+          "annotations": []
+        },
+        {
+          "name": "p_234222_",
+          "type": "RenderBuffers",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "close",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setRenderHand",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_172737_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setRenderBlockOutline",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_172776_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setPanoramicMode",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_172780_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isPanoramicMode",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shutdownEffect",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "togglePostEffect",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "checkEntityPostEffect",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_109107_",
+          "type": "Entity",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cycleEffect",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loadEffect",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_109129_",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createReloadListener",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "PreparableReloadListener",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "preloadUiShader",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_172723_",
+          "type": "ResourceProvider",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "preloadShader",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [
+        {
+          "name": "p_172725_",
+          "type": "ResourceProvider",
+          "annotations": []
+        },
+        {
+          "name": "p_172726_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_172727_",
+          "type": "VertexFormat",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "reloadShaders",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_250719_",
+          "type": "ResourceProvider",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shutdownShaders",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getShader",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [
+        {
+          "name": "p_172735_",
+          "type": "String",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "currentEffect",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "PostChain",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "resize",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_109098_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_109099_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_109088_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickFov",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFov",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "double",
+      "parameters": [
+        {
+          "name": "p_109142_",
+          "type": "Camera",
+          "annotations": []
+        },
+        {
+          "name": "p_109143_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_109144_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "bobHurt",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_109118_",
+          "type": "PoseStack",
+          "annotations": []
+        },
+        {
+          "name": "p_109119_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "bobView",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_109139_",
+          "type": "PoseStack",
+          "annotations": []
+        },
+        {
+          "name": "p_109140_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderZoomed",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_172719_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_172720_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_172721_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderItemInHand",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_109121_",
+          "type": "PoseStack",
+          "annotations": []
+        },
+        {
+          "name": "p_109122_",
+          "type": "Camera",
+          "annotations": []
+        },
+        {
+          "name": "p_109123_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "resetProjectionMatrix",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_253668_",
+          "type": "org.joml.Matrix4f",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getProjectionMatrix",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "org.joml.Matrix4f",
+      "parameters": [
+        {
+          "name": "p_254507_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDepthFar",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getNightVisionScale",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_109109_",
+          "type": "LivingEntity",
+          "annotations": []
+        },
+        {
+          "name": "p_109110_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "render",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_109094_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_109095_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_109096_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tryTakeScreenshotIfNeeded",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "takeAutoScreenshot",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_182643_",
+          "type": "Path",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldRenderBlockOutline",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_109090_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_109091_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_109092_",
+          "type": "PoseStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "resetData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMapRenderer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "MapRenderer",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "displayItemActivation",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_109114_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderItemActivationAnimation",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_109101_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_109102_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_109103_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderConfusionOverlay",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_109146_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMinecraft",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Minecraft",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDarkenWorldAmount",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_109132_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRenderDistance",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMainCamera",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Camera",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lightTexture",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "LightTexture",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "overlayTexture",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "OverlayTexture",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPositionShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPositionColorShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPositionColorTexShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPositionTexShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPositionTexColorShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getNewEntityShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getParticleShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPositionColorLightmapShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPositionColorTexLightmapShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPositionTexColorNormalShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPositionTexLightmapColorShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeSolidShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeCutoutMippedShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeCutoutShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeTranslucentShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeTranslucentMovingBlockShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeTranslucentNoCrumblingShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeArmorCutoutNoCullShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeEntitySolidShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeEntityCutoutShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeEntityCutoutNoCullShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeEntityCutoutNoCullZOffsetShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeItemEntityTranslucentCullShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeEntityTranslucentCullShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeEntityTranslucentShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeEntityTranslucentEmissiveShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeEntitySmoothCutoutShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeBeaconBeamShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeEntityDecalShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeEntityNoOutlineShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeEntityShadowShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeEntityAlphaShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeEyesShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeEnergySwirlShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeLeashShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeWaterMaskShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeOutlineShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeArmorGlintShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeArmorEntityGlintShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeGlintTranslucentShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeGlintShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeGlintDirectShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeEntityGlintShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeEntityGlintDirectShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeTextShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeTextIntensityShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeTextSeeThroughShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeTextIntensitySeeThroughShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeLightningShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeTripwireShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeEndPortalShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeEndGatewayShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeLinesShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRendertypeCrumblingShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ShaderInstance",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.19.3/net/minecraft/client/renderer/GameRenderer.html"
+}

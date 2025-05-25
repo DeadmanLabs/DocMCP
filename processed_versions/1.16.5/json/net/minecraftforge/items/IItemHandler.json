@@ -1,0 +1,133 @@
+{
+  "type": "interface",
+  "name": "IItemHandler",
+  "qualified_name": "net.minecraftforge.items.IItemHandler",
+  "package": "net.minecraftforge.items",
+  "modifiers": [
+    "public",
+    "interface"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": []
+  },
+  "nested_classes": [],
+  "fields": [],
+  "constructors": [],
+  "methods": [
+    {
+      "name": "getSlots",
+      "modifiers": [],
+      "return_type": "int",
+      "parameters": [],
+      "description": "Returns the number of slots available",
+      "deprecated": false
+    },
+    {
+      "name": "getStackInSlot",
+      "modifiers": [],
+      "return_type": "ItemStack",
+      "parameters": [
+        {
+          "name": "slot",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the ItemStack in a given slot. The result's stack size may be greater than the itemstack's max size. If the result is empty, then the slot is empty. IMPORTANT: This ItemStack MUST NOT be modified. This method is not for altering an inventory's contents. Any implementers who are able to detect modification through this method should throw an exception. SERIOUSLY: DO NOT MODIFY THE RETURNED ITEMSTACK",
+      "deprecated": false
+    },
+    {
+      "name": "insertItem",
+      "modifiers": [],
+      "return_type": "ItemStack",
+      "parameters": [
+        {
+          "name": "slot",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": [
+            "Nonnull"
+          ]
+        },
+        {
+          "name": "simulate",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Inserts an ItemStack into the given slot and return the remainder. The ItemStack should not be modified in this function! Note: This behaviour is subtly different from IFluidHandler#fill(FluidStack, boolean)",
+      "deprecated": false
+    },
+    {
+      "name": "extractItem",
+      "modifiers": [],
+      "return_type": "ItemStack",
+      "parameters": [
+        {
+          "name": "slot",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "amount",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "simulate",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Extracts an ItemStack from the given slot. The returned value must be empty if nothing is extracted, otherwise its stack size must be less than or equal to amount and ItemStack.getMaxStackSize() .",
+      "deprecated": false
+    },
+    {
+      "name": "getSlotLimit",
+      "modifiers": [],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "slot",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "Retrieves the maximum stack size allowed to exist in the given slot.",
+      "deprecated": false
+    },
+    {
+      "name": "isItemValid",
+      "modifiers": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "slot",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": [
+            "Nonnull"
+          ]
+        }
+      ],
+      "description": "This function re-implements the vanilla function IInventory#isItemValidForSlot(int, ItemStack) . It should be used instead of simulated insertions in cases where the contents and state of the inventory are irrelevant, mainly for the purpose of automation and logic (for instance, testing if a minecart can wait to deposit its items into a full inventory, or if the items in the minecart can never be placed into the inventory and should move on). isItemValid is false when insertion of the item is never valid. When isItemValid is true, no assumptions can be made and insertion must be simulated case-by-case. The actual items in the inventory, its fullness, or any other state are not considered by isItemValid.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.16.5/net/minecraftforge/items/IItemHandler.html"
+}

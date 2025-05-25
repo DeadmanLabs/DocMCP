@@ -1,0 +1,755 @@
+{
+  "type": "class",
+  "name": "FishingHook",
+  "qualified_name": "net.minecraft.world.entity.projectile.FishingHook",
+  "package": "net.minecraft.world.entity.projectile",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraftforge.common.capabilities.CapabilityProvider",
+      "Entity",
+      "net.minecraft.world.entity.Entity",
+      "net.minecraft.world.entity.projectile.Projectile"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "syncronizedRandom",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "RandomSource",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "biting",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "outOfWaterTime",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MAX_OUT_OF_WATER_TIME",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_HOOKED_ENTITY",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "EntityDataAccessor < Integer >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_BITING",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "EntityDataAccessor < Boolean >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "life",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "nibble",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "timeUntilLured",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "timeUntilHooked",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fishAngle",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "openWater",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hookedIn",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Entity",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "currentState",
+      "modifiers": [
+        "private"
+      ],
+      "type": "FishingHook.FishHookState",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "luck",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lureSpeed",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "FishingHook",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [
+        {
+          "name": "p_150141_",
+          "type": "EntityType <? extends FishingHook >",
+          "annotations": []
+        },
+        {
+          "name": "p_150142_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_150143_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_150144_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "FishingHook",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_150138_",
+          "type": "EntityType <? extends FishingHook >",
+          "annotations": []
+        },
+        {
+          "name": "p_150139_",
+          "type": "Level",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "FishingHook",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_37106_",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "p_37107_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_37108_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_37109_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "defineSynchedData",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onSyncedDataUpdated",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_37153_",
+          "type": "EntityDataAccessor <?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldRenderAtSqrDistance",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_37125_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lerpTo",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_37127_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_37128_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_37129_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_37130_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_37131_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_37132_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_37133_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldStopFishing",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_37137_",
+          "type": "Player",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "checkCollision",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canHitEntity",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_37135_",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onHitEntity",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_37144_",
+          "type": "EntityHitResult",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onHitBlock",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_37142_",
+          "type": "BlockHitResult",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setHookedEntity",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_150158_",
+          "type": "Entity",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "catchingFish",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_37146_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "calculateOpenWater",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_37159_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getOpenWaterTypeForArea",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "FishingHook.OpenWaterType",
+      "parameters": [
+        {
+          "name": "p_37148_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_37149_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getOpenWaterTypeForBlock",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "FishingHook.OpenWaterType",
+      "parameters": [
+        {
+          "name": "p_37164_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isOpenWaterFishing",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addAdditionalSaveData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_37161_",
+          "type": "CompoundTag",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "readAdditionalSaveData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_37151_",
+          "type": "CompoundTag",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "retrieve",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_37157_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleEntityEvent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_37123_",
+          "type": "byte",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pullEntity",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_150156_",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMovementEmission",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "Entity.MovementEmission",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "remove",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_150146_",
+          "type": "Entity.RemovalReason",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onClientRemoval",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setOwner",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_150154_",
+          "type": "Entity",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateOwnerInfo",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_150148_",
+          "type": "FishingHook",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPlayerOwner",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Player",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getHookedIn",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Entity",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canChangeDimensions",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAddEntityPacket",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Packet < ClientGamePacketListener >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "recreateFromPacket",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_150150_",
+          "type": "ClientboundAddEntityPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.19.4/net/minecraft/world/entity/projectile/FishingHook.html"
+}

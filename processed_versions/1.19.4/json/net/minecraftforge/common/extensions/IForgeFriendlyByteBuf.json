@@ -1,0 +1,186 @@
+{
+  "type": "interface",
+  "name": "IForgeFriendlyByteBuf",
+  "qualified_name": "net.minecraftforge.common.extensions.IForgeFriendlyByteBuf",
+  "package": "net.minecraftforge.common.extensions",
+  "modifiers": [
+    "public",
+    "interface"
+  ],
+  "annotations": [],
+  "description": "Extension-Interface providing methods for writing registry-id's instead of their registry-names.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": []
+  },
+  "nested_classes": [],
+  "fields": [],
+  "constructors": [],
+  "methods": [
+    {
+      "name": "self",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "FriendlyByteBuf",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "writeRegistryIdUnsafe",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "registry",
+          "type": "IForgeRegistry <T>",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "entry",
+          "type": "T",
+          "annotations": [
+            "NotNull"
+          ]
+        }
+      ],
+      "description": "Writes the given entries integer id to the buffer. Notice however that this will only write the id of the given entry and will not check whether it actually exists in the given registry. Therefore no safety checks can be performed whilst reading it and if the entry is not in the registry a default value will be written.",
+      "deprecated": false
+    },
+    {
+      "name": "writeRegistryIdUnsafe",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "registry",
+          "type": "IForgeRegistry <?>",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "entryKey",
+          "type": "ResourceLocation",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        }
+      ],
+      "description": "Writes the given entries integer id to the buffer. Notice however that this will only write the id of the given entry and will not check whether it actually exists in the given registry. Therefore no safety checks can be performed whilst reading it and if the entry is not in the registry a default value will be written.",
+      "deprecated": false
+    },
+    {
+      "name": "readRegistryIdUnsafe",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "registry",
+          "type": "IForgeRegistry <T>",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        }
+      ],
+      "description": "Reads an integer value from the buffer, which will be interpreted as an registry-id in the given registry. Notice that if there is no value in the specified registry for the read id, that the registry's default value will be returned.",
+      "deprecated": false
+    },
+    {
+      "name": "writeRegistryId",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "registry",
+          "type": "IForgeRegistry <T>",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "entry",
+          "type": "T",
+          "annotations": [
+            "NotNull"
+          ]
+        }
+      ],
+      "description": "Writes a given registry-entry's integer id to the specified buffer in combination with writing the containing registry's id. In contrast to writeRegistryIdUnsafe(IForgeRegistry, Object) this method checks every single step performed as well as writing the registry-id to the buffer, in order to prevent any unexpected behaviour. Therefore this method is to be preferred whenever possible, over using the unsafe methods.",
+      "deprecated": false
+    },
+    {
+      "name": "readRegistryId",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "T",
+      "parameters": [],
+      "description": "Reads an registry-entry from the specified buffer. Notice however that the type cannot be checked without providing an additional class parameter - see readRegistryIdSafe(Class) for an safe version.",
+      "deprecated": false
+    },
+    {
+      "name": "readRegistryIdSafe",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "registrySuperType",
+          "type": "Class <? super T>",
+          "annotations": []
+        }
+      ],
+      "description": "Reads an registry-entry from the specified buffer. This method also verifies, that the value read is of the appropriate type.",
+      "deprecated": false
+    },
+    {
+      "name": "writeFluidStack",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Writes a FluidStack to the packet buffer, easy enough. If EMPTY, writes a FALSE. This behavior provides parity with the ItemStack method in PacketBuffer.",
+      "deprecated": false
+    },
+    {
+      "name": "readFluidStack",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "FluidStack",
+      "parameters": [],
+      "description": "Reads a FluidStack from this buffer.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.19.4/net/minecraftforge/common/extensions/IForgeFriendlyByteBuf.html"
+}

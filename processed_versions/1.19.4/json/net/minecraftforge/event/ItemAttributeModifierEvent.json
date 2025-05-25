@@ -1,0 +1,221 @@
+{
+  "type": "class",
+  "name": "ItemAttributeModifierEvent",
+  "qualified_name": "net.minecraftforge.event.ItemAttributeModifierEvent",
+  "package": "net.minecraftforge.event",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "This event is fired when the attributes for an ItemStack are being calculated. Attributes are calculated on the server when equipping and unequipping an item to add and remove attributes respectively, both must be consistent. Attributes are calculated on the client when rendering an item's tooltip to show relevant attributes. Note that this event is fired regardless of if the stack has NBT overriding attributes or not. If your attribute should be ignored when attributes are overridden, you can check for the presence of the AttributeModifiers tag. This event is fired on the MinecraftForge.EVENT_BUS .",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "stack",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ItemStack",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "slotType",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "EquipmentSlot",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "originalModifiers",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.google.common.collect.Multimap< Attribute , AttributeModifier >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "unmodifiableModifiers",
+      "modifiers": [
+        "private"
+      ],
+      "type": "com.google.common.collect.Multimap< Attribute , AttributeModifier >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "modifiableModifiers",
+      "modifiers": [
+        "private"
+      ],
+      "type": "@Nullable com.google.common.collect.Multimap< Attribute , AttributeModifier >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ItemAttributeModifierEvent",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "slotType",
+          "type": "EquipmentSlot",
+          "annotations": []
+        },
+        {
+          "name": "modifiers",
+          "type": "com.google.common.collect.Multimap< Attribute , AttributeModifier >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getModifiers",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "com.google.common.collect.Multimap< Attribute , AttributeModifier >",
+      "parameters": [],
+      "description": "Returns an unmodifiable view of the attribute multimap. Use other methods from this event to modify the attributes map. Note that adding attributes based on existing attributes may lead to inconsistent results between the tooltip (client) and the actual attributes (server) if the listener order is different. Using getOriginalModifiers() instead will give more consistent results.",
+      "deprecated": false
+    },
+    {
+      "name": "getOriginalModifiers",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "com.google.common.collect.Multimap< Attribute , AttributeModifier >",
+      "parameters": [],
+      "description": "Returns the attribute map before any changes from other event listeners was made.",
+      "deprecated": false
+    },
+    {
+      "name": "getModifiableMap",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "com.google.common.collect.Multimap< Attribute , AttributeModifier >",
+      "parameters": [],
+      "description": "Gets a modifiable map instance, creating it if the current map is currently unmodifiable",
+      "deprecated": false
+    },
+    {
+      "name": "addModifier",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "attribute",
+          "type": "Attribute",
+          "annotations": []
+        },
+        {
+          "name": "modifier",
+          "type": "AttributeModifier",
+          "annotations": []
+        }
+      ],
+      "description": "Adds a new attribute modifier to the given stack. Modifier must have a consistent UUID for consistency between equipping and unequipping items. Modifier name should clearly identify the mod that added the modifier.",
+      "deprecated": false
+    },
+    {
+      "name": "removeModifier",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "attribute",
+          "type": "Attribute",
+          "annotations": []
+        },
+        {
+          "name": "modifier",
+          "type": "AttributeModifier",
+          "annotations": []
+        }
+      ],
+      "description": "Removes a single modifier for the given attribute",
+      "deprecated": false
+    },
+    {
+      "name": "removeAttribute",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Collection < AttributeModifier >",
+      "parameters": [
+        {
+          "name": "attribute",
+          "type": "Attribute",
+          "annotations": []
+        }
+      ],
+      "description": "Removes all modifiers for the given attribute",
+      "deprecated": false
+    },
+    {
+      "name": "clearModifiers",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "Removes all modifiers for all attributes",
+      "deprecated": false
+    },
+    {
+      "name": "getSlotType",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "EquipmentSlot",
+      "parameters": [],
+      "description": "Gets the slot containing this stack",
+      "deprecated": false
+    },
+    {
+      "name": "getItemStack",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ItemStack",
+      "parameters": [],
+      "description": "Gets the item stack instance",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.19.4/net/minecraftforge/event/ItemAttributeModifierEvent.html"
+}

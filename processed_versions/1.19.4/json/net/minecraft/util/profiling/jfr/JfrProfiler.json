@@ -1,0 +1,382 @@
+{
+  "type": "class",
+  "name": "JfrProfiler",
+  "qualified_name": "net.minecraft.util.profiling.jfr.JfrProfiler",
+  "package": "net.minecraft.util.profiling.jfr",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ROOT_CATEGORY",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "WORLD_GEN_CATEGORY",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "TICK_CATEGORY",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NETWORK_CATEGORY",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CUSTOM_EVENTS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "List < Class <? extends Event >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "FLIGHT_RECORDER_CONFIG",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATE_TIME_FORMATTER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "DateTimeFormatter",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "INSTANCE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "JfrProfiler",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "recording",
+      "modifiers": [],
+      "type": "Recording",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "currentAverageTickTime",
+      "modifiers": [
+        "private"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "networkTrafficByAddress",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < String , NetworkSummaryEvent.SumAggregation >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "JfrProfiler",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getInstance",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "JfrProfiler",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "start",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_185307_",
+          "type": "Environment",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stop",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Path",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isRunning",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isAvailable",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "start",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_185317_",
+          "type": "Reader",
+          "annotations": []
+        },
+        {
+          "name": "p_185318_",
+          "type": "Environment",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setupSummaryListener",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onServerTick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_185300_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onPacketReceived",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_185302_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_185303_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_185304_",
+          "type": "SocketAddress",
+          "annotations": []
+        },
+        {
+          "name": "p_185305_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onPacketSent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_185323_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_185324_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_185325_",
+          "type": "SocketAddress",
+          "annotations": []
+        },
+        {
+          "name": "p_185326_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "networkStatFor",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "NetworkSummaryEvent.SumAggregation",
+      "parameters": [
+        {
+          "name": "p_185320_",
+          "type": "SocketAddress",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onWorldLoadedStarted",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ProfiledDuration",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onChunkGenerate",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ProfiledDuration",
+      "parameters": [
+        {
+          "name": "p_185313_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_185314_",
+          "type": "ResourceKey < Level >",
+          "annotations": []
+        },
+        {
+          "name": "p_185315_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.19.4/net/minecraft/util/profiling/jfr/JfrProfiler.html"
+}

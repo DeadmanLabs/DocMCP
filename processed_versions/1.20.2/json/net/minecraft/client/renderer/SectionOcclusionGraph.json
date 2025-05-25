@@ -1,0 +1,476 @@
+{
+  "type": "class",
+  "name": "SectionOcclusionGraph",
+  "qualified_name": "net.minecraft.client.renderer.SectionOcclusionGraph",
+  "package": "net.minecraft.client.renderer",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DIRECTIONS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Direction []",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MINIMUM_ADVANCED_CULLING_DISTANCE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CEILED_SECTION_DIAGONAL",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "double",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "needsFullUpdate",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fullUpdateTask",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Future <?>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "viewArea",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ViewArea",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "currentGraph",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "AtomicReference < SectionOcclusionGraph.GraphState >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "nextGraphEvents",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "AtomicReference < SectionOcclusionGraph.GraphEvents >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "needsFrustumUpdate",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "AtomicBoolean",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "SectionOcclusionGraph",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "waitAndReset",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_298923_",
+          "type": "ViewArea",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "invalidate",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addSectionsInFrustum",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_299761_",
+          "type": "Frustum",
+          "annotations": []
+        },
+        {
+          "name": "p_301346_",
+          "type": "List < SectionRenderDispatcher.RenderSection >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "consumeFrustumUpdate",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onChunkLoaded",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_299612_",
+          "type": "ChunkPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onSectionCompiled",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_301377_",
+          "type": "SectionRenderDispatcher.RenderSection",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "update",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_301275_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_298972_",
+          "type": "Camera",
+          "annotations": []
+        },
+        {
+          "name": "p_298939_",
+          "type": "Frustum",
+          "annotations": []
+        },
+        {
+          "name": "p_300432_",
+          "type": "List < SectionRenderDispatcher.RenderSection >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "scheduleFullUpdate",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_298569_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_299582_",
+          "type": "Camera",
+          "annotations": []
+        },
+        {
+          "name": "p_297830_",
+          "type": "Vec3",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "runPartialUpdate",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_298388_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_299940_",
+          "type": "Frustum",
+          "annotations": []
+        },
+        {
+          "name": "p_297967_",
+          "type": "List < SectionRenderDispatcher.RenderSection >",
+          "annotations": []
+        },
+        {
+          "name": "p_299094_",
+          "type": "Vec3",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "queueSectionsWithNewNeighbors",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_298801_",
+          "type": "SectionOcclusionGraph.GraphState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addNeighbors",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_300825_",
+          "type": "SectionOcclusionGraph.GraphEvents",
+          "annotations": []
+        },
+        {
+          "name": "p_297758_",
+          "type": "ChunkPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "initializeQueueForFullUpdate",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_298889_",
+          "type": "Camera",
+          "annotations": []
+        },
+        {
+          "name": "p_297605_",
+          "type": "Queue < SectionOcclusionGraph.Node >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "runUpdates",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_299200_",
+          "type": "SectionOcclusionGraph.GraphStorage",
+          "annotations": []
+        },
+        {
+          "name": "p_300018_",
+          "type": "Vec3",
+          "annotations": []
+        },
+        {
+          "name": "p_300570_",
+          "type": "Queue < SectionOcclusionGraph.Node >",
+          "annotations": []
+        },
+        {
+          "name": "p_300892_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_298647_",
+          "type": "Consumer < SectionRenderDispatcher.RenderSection >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isInViewDistance",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_298566_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_298230_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRelativeFrom",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "SectionRenderDispatcher.RenderSection",
+      "parameters": [
+        {
+          "name": "p_298318_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_299737_",
+          "type": "SectionRenderDispatcher.RenderSection",
+          "annotations": []
+        },
+        {
+          "name": "p_301139_",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getNode",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "SectionOcclusionGraph.Node",
+      "parameters": [
+        {
+          "name": "p_299335_",
+          "type": "SectionRenderDispatcher.RenderSection",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.2/net/minecraft/client/renderer/SectionOcclusionGraph.html"
+}

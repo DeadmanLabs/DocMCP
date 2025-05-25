@@ -1,0 +1,145 @@
+{
+  "type": "class",
+  "name": "UseItemOnBlockEvent",
+  "qualified_name": "net.neoforged.neoforge.event.entity.player.UseItemOnBlockEvent",
+  "package": "net.neoforged.neoforge.event.entity.player",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Fires on both the client and server thread when a player interacts with a block. The event fires in three phases, corresponding with the three interaction behaviors: IItemExtension.onItemUseFirst(net.minecraft.world.item.ItemStack, net.minecraft.world.item.context.UseOnContext) , BlockBehaviour.useItemOn(net.minecraft.world.item.ItemStack, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.entity.player.Player, net.minecraft.world.InteractionHand, net.minecraft.world.phys.BlockHitResult) , and Item.useOn(net.minecraft.world.item.context.UseOnContext) . The event fires after the interaction logic decides to run the particular interaction behavior, as opposed to PlayerInteractEvent.RightClickBlock which fires once-per-right-click, before the behavior-choosing logic. If the event is cancelled via cancelWithResult(net.minecraft.world.ItemInteractionResult) , then the normal interaction behavior for that phase will not run, and the specified InteractionResult will be returned instead.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.neoforged.neoforge.event.entity.EntityEvent",
+      "net.neoforged.neoforge.event.entity.living.LivingEvent",
+      "net.neoforged.neoforge.event.entity.player.PlayerEvent",
+      "net.neoforged.neoforge.event.entity.player.PlayerInteractEvent"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "context",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "UseOnContext",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "usePhase",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "UseItemOnBlockEvent.UsePhase",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cancellationResult",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ItemInteractionResult",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "UseItemOnBlockEvent",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "context",
+          "type": "UseOnContext",
+          "annotations": []
+        },
+        {
+          "name": "usePhase",
+          "type": "UseItemOnBlockEvent.UsePhase",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getUseOnContext",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "UseOnContext",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getUsePhase",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "UseItemOnBlockEvent.UsePhase",
+      "parameters": [],
+      "description": "Returns The Use Phase of the interaction.",
+      "deprecated": false
+    },
+    {
+      "name": "cancelWithResult",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "result",
+          "type": "ItemInteractionResult",
+          "annotations": []
+        }
+      ],
+      "description": "Cancels the use interaction (preventing the block or item's use behavior from running) and provides the specified result to the interaction logic instead. Invoke this if you intend to prevent the default interaction behavior and replace it with your own.",
+      "deprecated": false
+    },
+    {
+      "name": "getCancellationResult",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ItemInteractionResult",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setCancellationResult",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "result",
+          "type": "ItemInteractionResult",
+          "annotations": []
+        }
+      ],
+      "description": "Set the ItemInteractionResult that will be returned to vanilla if the event is cancelled, instead of calling the relevant method of the event.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21.x-neoforge/net/neoforged/neoforge/event/entity/player/UseItemOnBlockEvent.html"
+}

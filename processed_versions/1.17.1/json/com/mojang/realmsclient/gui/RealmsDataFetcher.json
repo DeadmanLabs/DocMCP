@@ -1,0 +1,563 @@
+{
+  "type": "class",
+  "name": "RealmsDataFetcher",
+  "qualified_name": "com.mojang.realmsclient.gui.RealmsDataFetcher",
+  "package": "com.mojang.realmsclient.gui",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "minecraft",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Minecraft",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "realmsClient",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "RealmsClient",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "scheduler",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ScheduledExecutorService",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stopped",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "serverListUpdateTask",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "RepeatableTask",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "liveStatsTask",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "RepeatableTask",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pendingInviteUpdateTask",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "RepeatableTask",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "trialAvailabilityTask",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "RepeatableTask",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "unreadNewsTask",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "RepeatableTask",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "newsLocalStorage",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "RealmsPersistence",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removedServers",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Set < RealmsServer >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "servers",
+      "modifiers": [
+        "private"
+      ],
+      "type": "List < RealmsServer >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "livestats",
+      "modifiers": [
+        "private"
+      ],
+      "type": "RealmsServerPlayerLists",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pendingInvitesCount",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "trialAvailable",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasUnreadNews",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "newsLink",
+      "modifiers": [
+        "private"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "serverListScheduledFuture",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ScheduledFuture <?>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pendingInviteScheduledFuture",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ScheduledFuture <?>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "trialAvailableScheduledFuture",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ScheduledFuture <?>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "liveStatsScheduledFuture",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ScheduledFuture <?>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "unreadNewsScheduledFuture",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ScheduledFuture <?>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fetchStatus",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < RealmsDataFetcher.Task ,​ Boolean >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "RealmsDataFetcher",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_167333_",
+          "type": "Minecraft",
+          "annotations": []
+        },
+        {
+          "name": "p_167334_",
+          "type": "RealmsClient",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "RealmsDataFetcher",
+      "modifiers": [
+        "protected"
+      ],
+      "parameters": [
+        {
+          "name": "p_167336_",
+          "type": "Minecraft",
+          "annotations": []
+        },
+        {
+          "name": "p_167337_",
+          "type": "RealmsClient",
+          "annotations": []
+        },
+        {
+          "name": "p_167338_",
+          "type": "RealmsPersistence",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "isStopped",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "init",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "initWithSpecificTaskList",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isFetchedSinceLastTry",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_87821_",
+          "type": "RealmsDataFetcher.Task",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "markClean",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "forceUpdate",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getServers",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "List < RealmsServer >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPendingInvitesCount",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isTrialAvailable",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLivestats",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "RealmsServerPlayerLists",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasUnreadNews",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "newsLink",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stop",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "scheduleTasks",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cancelTasks",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setServers",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_87840_",
+          "type": "List < RealmsServer >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removeItem",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_87819_",
+          "type": "RealmsServer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isActive",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateServersList",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updatePendingInvites",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateTrialAvailable",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateLiveStats",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateUnreadNews",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fetchAndUpdateNewsStorage",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "RealmsPersistence.RealmsPersistenceData",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.17.1/com/mojang/realmsclient/gui/RealmsDataFetcher.html"
+}

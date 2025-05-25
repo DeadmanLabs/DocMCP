@@ -1,0 +1,670 @@
+{
+  "type": "class",
+  "name": "WalkNodeProcessor",
+  "qualified_name": "net.minecraft.pathfinding.WalkNodeProcessor",
+  "package": "net.minecraft.pathfinding",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraft.pathfinding.NodeProcessor"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "oldWaterCost",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pathTypesByPosCache",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.longs.Long2ObjectMap< PathNodeType >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "collisionCache",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.objects.Object2BooleanMap< AxisAlignedBB >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "WalkNodeProcessor",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "prepare",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_225578_1_",
+          "type": "Region",
+          "annotations": []
+        },
+        {
+          "name": "p_225578_2_",
+          "type": "MobEntity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "done",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getStart",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "PathPoint",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasPositiveMalus",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_237239_1_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getGoal",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "FlaggedPathPoint",
+      "parameters": [
+        {
+          "name": "p_224768_1_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_224768_3_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_224768_5_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getNeighbors",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_222859_1_",
+          "type": "PathPoint []",
+          "annotations": []
+        },
+        {
+          "name": "p_222859_2_",
+          "type": "PathPoint",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isNeighborValid",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_237235_1_",
+          "type": "PathPoint",
+          "annotations": []
+        },
+        {
+          "name": "p_237235_2_",
+          "type": "PathPoint",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isDiagonalValid",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_222860_1_",
+          "type": "PathPoint",
+          "annotations": []
+        },
+        {
+          "name": "p_222860_2_",
+          "type": "PathPoint",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_222860_3_",
+          "type": "PathPoint",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_222860_4_",
+          "type": "PathPoint",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canReachWithoutCollision",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_237234_1_",
+          "type": "PathPoint",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFloorLevel",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "double",
+      "parameters": [
+        {
+          "name": "p_197682_0_",
+          "type": "IBlockReader",
+          "annotations": []
+        },
+        {
+          "name": "p_197682_1_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLandNode",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "PathPoint",
+      "parameters": [
+        {
+          "name": "p_186332_1_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_186332_2_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_186332_3_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_186332_4_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_186332_5_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_186332_7_",
+          "type": "Direction",
+          "annotations": []
+        },
+        {
+          "name": "p_186332_8_",
+          "type": "PathNodeType",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasCollisions",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_237236_1_",
+          "type": "AxisAlignedBB",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockPathType",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "PathNodeType",
+      "parameters": [
+        {
+          "name": "p_186319_1_",
+          "type": "IBlockReader",
+          "annotations": []
+        },
+        {
+          "name": "p_186319_2_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_186319_3_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_186319_4_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_186319_5_",
+          "type": "MobEntity",
+          "annotations": []
+        },
+        {
+          "name": "p_186319_6_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_186319_7_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_186319_8_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_186319_9_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_186319_10_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockPathTypes",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "PathNodeType",
+      "parameters": [
+        {
+          "name": "p_193577_1_",
+          "type": "IBlockReader",
+          "annotations": []
+        },
+        {
+          "name": "p_193577_2_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_193577_3_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_193577_4_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_193577_5_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_193577_6_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_193577_7_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_193577_8_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_193577_9_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_193577_10_",
+          "type": "EnumSet < PathNodeType >",
+          "annotations": []
+        },
+        {
+          "name": "p_193577_11_",
+          "type": "PathNodeType",
+          "annotations": []
+        },
+        {
+          "name": "p_193577_12_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "evaluateBlockPathType",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "PathNodeType",
+      "parameters": [
+        {
+          "name": "p_215744_1_",
+          "type": "IBlockReader",
+          "annotations": []
+        },
+        {
+          "name": "p_215744_2_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_215744_3_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_215744_4_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_215744_5_",
+          "type": "PathNodeType",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockPathType",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "PathNodeType",
+      "parameters": [
+        {
+          "name": "p_186329_1_",
+          "type": "MobEntity",
+          "annotations": []
+        },
+        {
+          "name": "p_186329_2_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getCachedBlockType",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "PathNodeType",
+      "parameters": [
+        {
+          "name": "p_237230_1_",
+          "type": "MobEntity",
+          "annotations": []
+        },
+        {
+          "name": "p_237230_2_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_237230_3_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_237230_4_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockPathType",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "PathNodeType",
+      "parameters": [
+        {
+          "name": "p_186330_1_",
+          "type": "IBlockReader",
+          "annotations": []
+        },
+        {
+          "name": "p_186330_2_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_186330_3_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_186330_4_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockPathTypeStatic",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "PathNodeType",
+      "parameters": [
+        {
+          "name": "p_237231_0_",
+          "type": "IBlockReader",
+          "annotations": []
+        },
+        {
+          "name": "p_237231_1_",
+          "type": "BlockPos.Mutable",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "checkNeighbourBlocks",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "PathNodeType",
+      "parameters": [
+        {
+          "name": "p_237232_0_",
+          "type": "IBlockReader",
+          "annotations": []
+        },
+        {
+          "name": "p_237232_1_",
+          "type": "BlockPos.Mutable",
+          "annotations": []
+        },
+        {
+          "name": "p_237232_2_",
+          "type": "PathNodeType",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockPathTypeRaw",
+      "modifiers": [
+        "protected",
+        "static"
+      ],
+      "return_type": "PathNodeType",
+      "parameters": [
+        {
+          "name": "p_237238_0_",
+          "type": "IBlockReader",
+          "annotations": []
+        },
+        {
+          "name": "p_237238_1_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isBurningBlock",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_237233_0_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.16.5/net/minecraft/pathfinding/WalkNodeProcessor.html"
+}

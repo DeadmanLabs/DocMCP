@@ -1,0 +1,1006 @@
+{
+  "type": "class",
+  "name": ">",
+  "qualified_name": "net.minecraft.world.entity.ai.>",
+  "package": "net.minecraft.world.entity.ai",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "codec",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Supplier <com.mojang.serialization.Codec< Brain < E extends LivingEntity >>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SCHEDULE_UPDATE_DELAY",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "memories",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < MemoryModuleType <?>, Optional <? extends ExpirableValue <?>>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sensors",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < SensorType <? extends Sensor <? super E extends LivingEntity >>, Sensor <? super E extends LivingEntity >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "availableBehaviorsByPriority",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < Integer , Map < Activity , Set < BehaviorControl <? super E extends LivingEntity >>>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "schedule",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Schedule",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "activityRequirements",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < Activity , Set <com.mojang.datafixers.util.Pair< MemoryModuleType <?>, MemoryStatus >>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "activityMemoriesToEraseWhenStopped",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < Activity , Set < MemoryModuleType <?>>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "coreActivities",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Set < Activity >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "activeActivities",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Set < Activity >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "defaultActivity",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Activity",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastScheduleUpdate",
+      "modifiers": [
+        "private"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "Brain",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_21855_",
+          "type": "Collection <? extends MemoryModuleType <?>>",
+          "annotations": []
+        },
+        {
+          "name": "p_21856_",
+          "type": "Collection <? extends SensorType <? extends Sensor <? super E >>>",
+          "annotations": []
+        },
+        {
+          "name": "p_21857_",
+          "type": "com.google.common.collect.ImmutableList< Brain.MemoryValue <?>>",
+          "annotations": []
+        },
+        {
+          "name": "p_21858_",
+          "type": "Supplier <com.mojang.serialization.Codec< Brain < E >>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "provider",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "Brain.Provider <E>",
+      "parameters": [
+        {
+          "name": "p_21924_",
+          "type": "Collection <? extends MemoryModuleType <?>>",
+          "annotations": []
+        },
+        {
+          "name": "p_21925_",
+          "type": "Collection <? extends SensorType <? extends Sensor <? super E>>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "codec",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "com.mojang.serialization.Codec< Brain <E>>",
+      "parameters": [
+        {
+          "name": "p_21947_",
+          "type": "Collection <? extends MemoryModuleType <?>>",
+          "annotations": []
+        },
+        {
+          "name": "p_21948_",
+          "type": "Collection <? extends SensorType <? extends Sensor <? super E>>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "serializeStart",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "com.mojang.serialization.DataResult<T>",
+      "parameters": [
+        {
+          "name": "p_21915_",
+          "type": "com.mojang.serialization.DynamicOps<T>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "memories",
+      "modifiers": [],
+      "return_type": "Stream < Brain.MemoryValue <?>>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasMemoryValue",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_21875_",
+          "type": "MemoryModuleType <?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clearMemories",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "eraseMemory",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21937_",
+          "type": "MemoryModuleType <U>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setMemory",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21880_",
+          "type": "MemoryModuleType <U>",
+          "annotations": []
+        },
+        {
+          "name": "p_21881_",
+          "type": "U",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setMemoryWithExpiry",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21883_",
+          "type": "MemoryModuleType <U>",
+          "annotations": []
+        },
+        {
+          "name": "p_21884_",
+          "type": "U",
+          "annotations": []
+        },
+        {
+          "name": "p_21885_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setMemory",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21887_",
+          "type": "MemoryModuleType <U>",
+          "annotations": []
+        },
+        {
+          "name": "p_21888_",
+          "type": "Optional <? extends U>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setMemoryInternal",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21942_",
+          "type": "MemoryModuleType <U>",
+          "annotations": []
+        },
+        {
+          "name": "p_21943_",
+          "type": "Optional <? extends ExpirableValue <?>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMemory",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional <U>",
+      "parameters": [
+        {
+          "name": "p_21953_",
+          "type": "MemoryModuleType <U>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMemoryInternal",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional <U>",
+      "parameters": [
+        {
+          "name": "p_259344_",
+          "type": "MemoryModuleType <U>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTimeUntilExpiry",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "long",
+      "parameters": [
+        {
+          "name": "p_147342_",
+          "type": "MemoryModuleType <U>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMemories",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Map < MemoryModuleType <?>, Optional <? extends ExpirableValue <?>>>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isMemoryValue",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_21939_",
+          "type": "MemoryModuleType <U>",
+          "annotations": []
+        },
+        {
+          "name": "p_21940_",
+          "type": "U",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "checkMemory",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_21877_",
+          "type": "MemoryModuleType <?>",
+          "annotations": []
+        },
+        {
+          "name": "p_21878_",
+          "type": "MemoryStatus",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSchedule",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Schedule",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setSchedule",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21913_",
+          "type": "Schedule",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setCoreActivities",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21931_",
+          "type": "Set < Activity >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getActiveActivities",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Set < Activity >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRunningBehaviors",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "List < BehaviorControl <? super E >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "useDefaultActivity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getActiveNonCoreActivity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < Activity >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setActiveActivityIfPossible",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21890_",
+          "type": "Activity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setActiveActivity",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21961_",
+          "type": "Activity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "eraseMemoriesForOtherActivitesThan",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21967_",
+          "type": "Activity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateActivityFromSchedule",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21863_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_21864_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setActiveActivityToFirstValid",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21927_",
+          "type": "List < Activity >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setDefaultActivity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21945_",
+          "type": "Activity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addActivity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21892_",
+          "type": "Activity",
+          "annotations": []
+        },
+        {
+          "name": "p_21893_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_21894_",
+          "type": "com.google.common.collect.ImmutableList<? extends BehaviorControl <? super E >>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addActivityAndRemoveMemoryWhenStopped",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21896_",
+          "type": "Activity",
+          "annotations": []
+        },
+        {
+          "name": "p_21897_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_21898_",
+          "type": "com.google.common.collect.ImmutableList<? extends BehaviorControl <? super E >>",
+          "annotations": []
+        },
+        {
+          "name": "p_21899_",
+          "type": "MemoryModuleType <?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addActivity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21901_",
+          "type": "Activity",
+          "annotations": []
+        },
+        {
+          "name": "p_21902_",
+          "type": "com.google.common.collect.ImmutableList<? extends com.mojang.datafixers.util.Pair< Integer , ? extends BehaviorControl <? super E >>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addActivityWithConditions",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21904_",
+          "type": "Activity",
+          "annotations": []
+        },
+        {
+          "name": "p_21905_",
+          "type": "com.google.common.collect.ImmutableList<? extends com.mojang.datafixers.util.Pair< Integer , ? extends BehaviorControl <? super E >>>",
+          "annotations": []
+        },
+        {
+          "name": "p_21906_",
+          "type": "Set <com.mojang.datafixers.util.Pair< MemoryModuleType <?>, MemoryStatus >>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addActivityAndRemoveMemoriesWhenStopped",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21908_",
+          "type": "Activity",
+          "annotations": []
+        },
+        {
+          "name": "p_21909_",
+          "type": "com.google.common.collect.ImmutableList<? extends com.mojang.datafixers.util.Pair< Integer , ? extends BehaviorControl <? super E >>>",
+          "annotations": []
+        },
+        {
+          "name": "p_21910_",
+          "type": "Set <com.mojang.datafixers.util.Pair< MemoryModuleType <?>, MemoryStatus >>",
+          "annotations": []
+        },
+        {
+          "name": "p_21911_",
+          "type": "Set < MemoryModuleType <?>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removeAllBehaviors",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isActive",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_21955_",
+          "type": "Activity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "copyWithoutBehaviors",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Brain < E >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21866_",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "p_21867_",
+          "type": "E",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickSensors",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21950_",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "p_21951_",
+          "type": "E",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "forgetOutdatedMemories",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stopAll",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21934_",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "p_21935_",
+          "type": "E",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "startEachNonRunningBehavior",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21958_",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "p_21959_",
+          "type": "E",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickEachRunningBehavior",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_21964_",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "p_21965_",
+          "type": "E",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "activityRequirementsAreMet",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_21970_",
+          "type": "Activity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isEmptyCollection",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_21919_",
+          "type": "Object",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createPriorityPairs",
+      "modifiers": [],
+      "return_type": "com.google.common.collect.ImmutableList<? extends com.mojang.datafixers.util.Pair< Integer , ? extends BehaviorControl <? super E >>>",
+      "parameters": [
+        {
+          "name": "p_21860_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_21861_",
+          "type": "com.google.common.collect.ImmutableList<? extends BehaviorControl <? super E >>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21.x-neoforge/net/minecraft/world/entity/ai/Brain.html"
+}

@@ -1,0 +1,971 @@
+{
+  "type": "class",
+  "name": "FluidStack",
+  "qualified_name": "net.neoforged.neoforge.fluids.FluidStack",
+  "package": "net.neoforged.neoforge.fluids",
+  "modifiers": [
+    "public",
+    "final",
+    "class"
+  ],
+  "annotations": [],
+  "description": "ItemStack equivalent for fluids. The main difference is that a fluid stack is always required to have an amount, while an item stack defaults to 1. Another difference is that the component prototype of a fluid stack is currently always empty, while an item stack gets its component prototype from the item. Most methods in this class are adapted from ItemStack .",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "FLUID_NON_EMPTY_CODEC",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.serialization.Codec< Holder < Fluid >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CODEC",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.serialization.Codec< FluidStack >",
+      "description": "A standard codec for fluid stacks that does not accept empty stacks.",
+      "deprecated": false
+    },
+    {
+      "name": "OPTIONAL_CODEC",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.serialization.Codec< FluidStack >",
+      "description": "A standard codec for fluid stacks that accepts empty stacks, serializing them as {} .",
+      "deprecated": false
+    },
+    {
+      "name": "OPTIONAL_STREAM_CODEC",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "StreamCodec < RegistryFriendlyByteBuf , FluidStack >",
+      "description": "A stream codec for fluid stacks that accepts empty stacks.",
+      "deprecated": false
+    },
+    {
+      "name": "STREAM_CODEC",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "StreamCodec < RegistryFriendlyByteBuf , FluidStack >",
+      "description": "A stream codec for fluid stacks that does not accept empty stacks.",
+      "deprecated": false
+    },
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "EMPTY",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "FluidStack",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "amount",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fluid",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Fluid",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "components",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "PatchedDataComponentMap",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "FluidStack",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "fluid",
+          "type": "Holder < Fluid >",
+          "annotations": []
+        },
+        {
+          "name": "amount",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "patch",
+          "type": "DataComponentPatch",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "FluidStack",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "fluid",
+          "type": "Holder < Fluid >",
+          "annotations": []
+        },
+        {
+          "name": "amount",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "FluidStack",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "fluid",
+          "type": "Fluid",
+          "annotations": []
+        },
+        {
+          "name": "amount",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "FluidStack",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [
+        {
+          "name": "fluid",
+          "type": "Fluid",
+          "annotations": []
+        },
+        {
+          "name": "amount",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "components",
+          "type": "PatchedDataComponentMap",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "FluidStack",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [
+        {
+          "name": "unused",
+          "type": "Void",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "fixedAmountCodec",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "com.mojang.serialization.Codec< FluidStack >",
+      "parameters": [
+        {
+          "name": "amount",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "A standard codec for fluid stacks that always deserializes with a fixed amount, and does not accept empty stacks. Fluid equivalent of ItemStack.SINGLE_ITEM_CODEC .",
+      "deprecated": false
+    },
+    {
+      "name": "getComponents",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "PatchedDataComponentMap",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getComponentsPatch",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "DataComponentPatch",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isComponentsPatchEmpty",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "parse",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "Optional < FluidStack >",
+      "parameters": [
+        {
+          "name": "lookupProvider",
+          "type": "HolderLookup.Provider",
+          "annotations": []
+        },
+        {
+          "name": "tag",
+          "type": "Tag",
+          "annotations": []
+        }
+      ],
+      "description": "Tries to parse a fluid stack. Empty stacks cannot be parsed with this method.",
+      "deprecated": false
+    },
+    {
+      "name": "parseOptional",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "FluidStack",
+      "parameters": [
+        {
+          "name": "lookupProvider",
+          "type": "HolderLookup.Provider",
+          "annotations": []
+        },
+        {
+          "name": "tag",
+          "type": "CompoundTag",
+          "annotations": []
+        }
+      ],
+      "description": "Tries to parse a fluid stack, defaulting to EMPTY on parsing failure.",
+      "deprecated": false
+    },
+    {
+      "name": "isEmpty",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "Checks if this fluid stack is empty.",
+      "deprecated": false
+    },
+    {
+      "name": "split",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "FluidStack",
+      "parameters": [
+        {
+          "name": "amount",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "Splits off a stack of the given amount of this stack and reduces this stack by the amount.",
+      "deprecated": false
+    },
+    {
+      "name": "copyAndClear",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "FluidStack",
+      "parameters": [],
+      "description": "Creates a copy of this stack with 0 amount.",
+      "deprecated": false
+    },
+    {
+      "name": "getFluid",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Fluid",
+      "parameters": [],
+      "description": "Returns the fluid in this stack, or Fluids.EMPTY if this stack is empty.",
+      "deprecated": false
+    },
+    {
+      "name": "getFluidHolder",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Holder < Fluid >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "is",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "tag",
+          "type": "TagKey < Fluid >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "is",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "fluid",
+          "type": "Fluid",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "is",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "holderPredicate",
+          "type": "Predicate < Holder < Fluid >>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "is",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "holder",
+          "type": "Holder < Fluid >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "is",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "holderSet",
+          "type": "HolderSet < Fluid >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTags",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Stream < TagKey < Fluid >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "save",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Tag",
+      "parameters": [
+        {
+          "name": "lookupProvider",
+          "type": "HolderLookup.Provider",
+          "annotations": []
+        },
+        {
+          "name": "prefix",
+          "type": "Tag",
+          "annotations": []
+        }
+      ],
+      "description": "Saves this stack to a tag, directly writing the keys into the passed tag.",
+      "deprecated": false
+    },
+    {
+      "name": "save",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Tag",
+      "parameters": [
+        {
+          "name": "lookupProvider",
+          "type": "HolderLookup.Provider",
+          "annotations": []
+        }
+      ],
+      "description": "Saves this stack to a new tag.",
+      "deprecated": false
+    },
+    {
+      "name": "saveOptional",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Tag",
+      "parameters": [
+        {
+          "name": "lookupProvider",
+          "type": "HolderLookup.Provider",
+          "annotations": []
+        }
+      ],
+      "description": "Saves this stack to a new tag. Empty stacks are supported and will be saved as an empty tag.",
+      "deprecated": false
+    },
+    {
+      "name": "copy",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "FluidStack",
+      "parameters": [],
+      "description": "Creates a copy of this fluid stack.",
+      "deprecated": false
+    },
+    {
+      "name": "copyWithAmount",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "FluidStack",
+      "parameters": [
+        {
+          "name": "amount",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "Creates a copy of this fluid stack with the given amount.",
+      "deprecated": false
+    },
+    {
+      "name": "matches",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "first",
+          "type": "FluidStack",
+          "annotations": []
+        },
+        {
+          "name": "second",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Checks if the two fluid stacks are equal. This checks the fluid, amount, and components.",
+      "deprecated": false
+    },
+    {
+      "name": "isSameFluid",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "first",
+          "type": "FluidStack",
+          "annotations": []
+        },
+        {
+          "name": "second",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Checks if the two fluid stacks have the same fluid. Ignores amount and components.",
+      "deprecated": false
+    },
+    {
+      "name": "isSameFluidSameComponents",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "first",
+          "type": "FluidStack",
+          "annotations": []
+        },
+        {
+          "name": "second",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Checks if the two fluid stacks have the same fluid and components. Ignores amount.",
+      "deprecated": false
+    },
+    {
+      "name": "lenientOtionalFieldOf",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "com.mojang.serialization.MapCodec< FluidStack >",
+      "parameters": [
+        {
+          "name": "fieldName",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hashFluidAndComponents",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "Hashes the fluid and components of this stack, ignoring the amount.",
+      "deprecated": false
+    },
+    {
+      "name": "getDescriptionId",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "Returns the description id of this stack.",
+      "deprecated": false
+    },
+    {
+      "name": "toString",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "set",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "type",
+          "type": "DataComponentType <? super T>",
+          "annotations": []
+        },
+        {
+          "name": "component",
+          "type": "T",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "Sets a data component.",
+      "deprecated": false
+    },
+    {
+      "name": "remove",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "type",
+          "type": "DataComponentType <? extends T>",
+          "annotations": []
+        }
+      ],
+      "description": "Removes a data component.",
+      "deprecated": false
+    },
+    {
+      "name": "applyComponents",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "patch",
+          "type": "DataComponentPatch",
+          "annotations": []
+        }
+      ],
+      "description": "Applies a set of component changes to this stack.",
+      "deprecated": false
+    },
+    {
+      "name": "applyComponents",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "components",
+          "type": "DataComponentMap",
+          "annotations": []
+        }
+      ],
+      "description": "Applies a set of component changes to this stack.",
+      "deprecated": false
+    },
+    {
+      "name": "getHoverName",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Component",
+      "parameters": [],
+      "description": "Returns the hover name of this stack.",
+      "deprecated": false
+    },
+    {
+      "name": "getAmount",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "Returns the amount of this stack.",
+      "deprecated": false
+    },
+    {
+      "name": "setAmount",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "amount",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "Sets the amount of this stack.",
+      "deprecated": false
+    },
+    {
+      "name": "limitSize",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "amount",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "Limits the amount of this stack is at most the given amount.",
+      "deprecated": false
+    },
+    {
+      "name": "grow",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "addedAmount",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "Adds the given amount to this stack.",
+      "deprecated": false
+    },
+    {
+      "name": "shrink",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "removedAmount",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "Removes the given amount from this stack.",
+      "deprecated": false
+    },
+    {
+      "name": "getFluidType",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "FluidType",
+      "parameters": [],
+      "description": "Returns the fluid type of this stack.",
+      "deprecated": false
+    },
+    {
+      "name": "is",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "fluidType",
+          "type": "FluidType",
+          "annotations": []
+        }
+      ],
+      "description": "Check if the fluid type of this stack is equal to the given fluid type.",
+      "deprecated": false
+    },
+    {
+      "name": "getDisplayName",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Component",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTranslationKey",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isFluidEqual",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "other",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Determines if the fluid and the components are equal. This does not check amounts.",
+      "deprecated": false
+    },
+    {
+      "name": "areFluidStackTagsEqual",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "first",
+          "type": "FluidStack",
+          "annotations": []
+        },
+        {
+          "name": "second",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Determines if components are equal.",
+      "deprecated": false
+    },
+    {
+      "name": "containsFluid",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "other",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Determines if Fluids are equal and this stack is larger.",
+      "deprecated": false
+    },
+    {
+      "name": "isFluidStackIdentical",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "other",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Determines if Fluids, Amounts, and components are all equal.",
+      "deprecated": false
+    },
+    {
+      "name": "isFluidEqual",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "other",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "Determines if the FluidIDs and components are equal compared to a container item stack. This does not check amounts.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21.x-neoforge/net/neoforged/neoforge/fluids/FluidStack.html"
+}

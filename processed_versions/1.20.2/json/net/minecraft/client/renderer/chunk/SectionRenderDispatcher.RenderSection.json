@@ -1,0 +1,512 @@
+{
+  "type": "class",
+  "name": "SectionRenderDispatcher.RenderSection",
+  "qualified_name": "net.minecraft.client.renderer.chunk.SectionRenderDispatcher.RenderSection",
+  "package": "net.minecraft.client.renderer.chunk",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "SIZE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "index",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "compiled",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "type": "AtomicReference < SectionRenderDispatcher.CompiledSection >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "initialCompilationCancelCount",
+      "modifiers": [
+        "final"
+      ],
+      "type": "AtomicInteger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastRebuildTask",
+      "modifiers": [
+        "private"
+      ],
+      "type": "SectionRenderDispatcher.RenderSection.RebuildTask",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastResortTransparencyTask",
+      "modifiers": [
+        "private"
+      ],
+      "type": "SectionRenderDispatcher.RenderSection.ResortTransparencyTask",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "globalBlockEntities",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Set < BlockEntity >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "buffers",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < RenderType , VertexBuffer >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "bb",
+      "modifiers": [
+        "private"
+      ],
+      "type": "AABB",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dirty",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "origin",
+      "modifiers": [
+        "final"
+      ],
+      "type": "BlockPos.MutableBlockPos",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "relativeOrigins",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "BlockPos.MutableBlockPos []",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playerChanged",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "RenderSection",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_299358_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_299044_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_300810_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_299840_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "doesChunkExistAt",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_297611_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasAllNeighbors",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBoundingBox",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "AABB",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBuffer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "VertexBuffer",
+      "parameters": [
+        {
+          "name": "p_298748_",
+          "type": "RenderType",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setOrigin",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_298099_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_299019_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_299020_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDistToPlayerSqr",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "double",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "beginLayer",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_300604_",
+          "type": "BufferBuilder",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getCompiled",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SectionRenderDispatcher.CompiledSection",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "reset",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "releaseBuffers",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getOrigin",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BlockPos",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setDirty",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_298731_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setNotDirty",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isDirty",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isDirtyFromPlayer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRelativeOrigin",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BlockPos",
+      "parameters": [
+        {
+          "name": "p_299060_",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "resortTransparency",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_301074_",
+          "type": "RenderType",
+          "annotations": []
+        },
+        {
+          "name": "p_298196_",
+          "type": "SectionRenderDispatcher",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cancelTasks",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createCompileTask",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SectionRenderDispatcher.RenderSection.CompileTask",
+      "parameters": [
+        {
+          "name": "p_300037_",
+          "type": "RenderRegionCache",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rebuildSectionAsync",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_299090_",
+          "type": "SectionRenderDispatcher",
+          "annotations": []
+        },
+        {
+          "name": "p_297331_",
+          "type": "RenderRegionCache",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateGlobalBlockEntities",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_300373_",
+          "type": "Collection < BlockEntity >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "compileSync",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_298605_",
+          "type": "RenderRegionCache",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isAxisAlignedWith",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_297900_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_299871_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_299328_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.2/net/minecraft/client/renderer/chunk/SectionRenderDispatcher.RenderSection.html"
+}

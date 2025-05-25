@@ -1,0 +1,298 @@
+{
+  "type": "class",
+  "name": "TagsCommand",
+  "qualified_name": "net.minecraftforge.server.command.TagsCommand",
+  "package": "net.minecraftforge.server.command",
+  "modifiers": [
+    "class"
+  ],
+  "annotations": [],
+  "description": "The /forge tags command for listing a registry's tags, getting the elements of tags, and querying the tags of a registry object. Each command is paginated, showing 8L entries at a time. When there are more than 0 entries, the text indicating the amount of entries is highlighted and can be clicked to copy the list of all entries (across all pages) to the clipboard. (This is reflected by the use of green text in brackets, mimicking the clickable coordinates in the /locate command's message) The command has three subcommands: /forge tags &lt;registry> list [page] - Lists all available tags in the given registry. /forge tags &lt;registry> get &lt;tag> [page] - Gets all elements of the given tag in the given registry. /forge tags &lt;registry> query &lt;element> [page] - Queries for all tags in the given registry which contain the given registry object.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "PAGE_SIZE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ROOT_REGISTRY_KEY",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "ResourceKey < Registry < Registry <?>>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UNKNOWN_REGISTRY",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.brigadier.exceptions.DynamicCommandExceptionType",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UNKNOWN_TAG",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UNKNOWN_ELEMENT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "TagsCommand",
+      "modifiers": [],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "register",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "com.mojang.brigadier.builder.ArgumentBuilder< CommandSourceStack , ?>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "listTags",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "ctx",
+          "type": "com.mojang.brigadier.context.CommandContext< CommandSourceStack >",
+          "annotations": []
+        },
+        {
+          "name": "page",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "listTagElements",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "ctx",
+          "type": "com.mojang.brigadier.context.CommandContext< CommandSourceStack >",
+          "annotations": []
+        },
+        {
+          "name": "page",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "queryElementTags",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "ctx",
+          "type": "com.mojang.brigadier.context.CommandContext< CommandSourceStack >",
+          "annotations": []
+        },
+        {
+          "name": "page",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createMessage",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "MutableComponent",
+      "parameters": [
+        {
+          "name": "header",
+          "type": "MutableComponent",
+          "annotations": []
+        },
+        {
+          "name": "containsText",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "copyHoverText",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "count",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "currentPage",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "elementColor",
+          "type": "ChatFormatting",
+          "annotations": []
+        },
+        {
+          "name": "names",
+          "type": "Supplier < Stream < String >>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suggestRegistries",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "CompletableFuture <com.mojang.brigadier.suggestion.Suggestions>",
+      "parameters": [
+        {
+          "name": "ctx",
+          "type": "com.mojang.brigadier.context.CommandContext< CommandSourceStack >",
+          "annotations": []
+        },
+        {
+          "name": "builder",
+          "type": "com.mojang.brigadier.suggestion.SuggestionsBuilder",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "suggestFromRegistry",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "com.mojang.brigadier.suggestion.SuggestionProvider< CommandSourceStack >",
+      "parameters": [
+        {
+          "name": "namesFunction",
+          "type": "Function < Registry <?>, Iterable < ResourceLocation >>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getResourceKey",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "Optional < ResourceKey <T>>",
+      "parameters": [
+        {
+          "name": "ctx",
+          "type": "com.mojang.brigadier.context.CommandContext< CommandSourceStack >",
+          "annotations": []
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "registryKey",
+          "type": "ResourceKey < Registry <T>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cast",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "O",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "Object",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.4/net/minecraftforge/server/command/TagsCommand.html"
+}

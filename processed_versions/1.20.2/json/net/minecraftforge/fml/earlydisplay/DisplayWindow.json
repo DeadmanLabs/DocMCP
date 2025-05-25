@@ -1,0 +1,787 @@
+{
+  "type": "class",
+  "name": "DisplayWindow",
+  "qualified_name": "net.minecraftforge.fml.earlydisplay.DisplayWindow",
+  "package": "net.minecraftforge.fml.earlydisplay",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "The Loading Window that is opened Immediately after Forge starts. It is called from the ModDirTransformerDiscoverer, the soonest method that ModLauncher calls into Forge code. In this way, we can be sure that this will not run before any transformer or injection. The window itself is spun off into a secondary thread, and is handed off to the main game by Forge. Because it is created so early, this thread will \"absorb\" the context from OpenGL. Therefore, it is of utmost importance that the Context is made Current for the main thread before handoff, otherwise OS X will crash out. Based on the prior ClientVisualization, with some personal touches.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "GL_VERSIONS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int[][]",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "animationTimerTrigger",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "AtomicBoolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "colourScheme",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ColourScheme",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "elementShader",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ElementShader",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "context",
+      "modifiers": [
+        "private"
+      ],
+      "type": "RenderElement.DisplayContext",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "elements",
+      "modifiers": [
+        "private"
+      ],
+      "type": "List < RenderElement >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "framecount",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "framebuffer",
+      "modifiers": [
+        "private"
+      ],
+      "type": "EarlyFramebuffer",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "windowTick",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ScheduledFuture <?>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "initializationFuture",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ScheduledFuture <?>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "performanceInfo",
+      "modifiers": [
+        "private"
+      ],
+      "type": "PerformanceInfo",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "performanceTick",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ScheduledFuture <?>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "window",
+      "modifiers": [
+        "private"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderScheduler",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ScheduledExecutorService",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fbWidth",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fbHeight",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fbScale",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "winWidth",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "winHeight",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "winX",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "winY",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderLock",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Semaphore",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "maximized",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "glVersion",
+      "modifiers": [
+        "private"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "font",
+      "modifiers": [
+        "private"
+      ],
+      "type": "SimpleFont",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "repaintTick",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Runnable",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MINFRAMETIME",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "nextFrameTime",
+      "modifiers": [
+        "private"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ERROR_URL",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loadingOverlay",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Method",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "DisplayWindow",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "name",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "initialize",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Runnable",
+      "parameters": [
+        {
+          "name": "arguments",
+          "type": "String []",
+          "annotations": []
+        }
+      ],
+      "description": "Description copied from interface: ImmediateWindowProvider",
+      "deprecated": false
+    },
+    {
+      "name": "renderThreadFunc",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "The main render loop. renderThread executes this. Performs initialization and then ticks the screen at 20 fps. When the thread is killed, context is destroyed.",
+      "deprecated": false
+    },
+    {
+      "name": "initRender",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "mcVersion",
+          "type": "String",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        },
+        {
+          "name": "forgeVersion",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "Render initialization methods called by the Render Thread. It compiles the fragment and vertex shaders for rendering text with STB, and sets up basic render framework. Nothing fancy, we just want to draw and render text.",
+      "deprecated": false
+    },
+    {
+      "name": "paintFramebuffer",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [],
+      "description": "Called every frame by the Render Thread to draw to the screen.",
+      "deprecated": false
+    },
+    {
+      "name": "render",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "alpha",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "start",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Runnable",
+      "parameters": [
+        {
+          "name": "mcVersion",
+          "type": "String",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        },
+        {
+          "name": "forgeVersion",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "Start the window and Render Thread; we're ready to go.",
+      "deprecated": false
+    },
+    {
+      "name": "getGLVersion",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "Description copied from interface: ImmediateWindowProvider",
+      "deprecated": false
+    },
+    {
+      "name": "crashElegantly",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "errorDetails",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "initWindow",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "mcVersion",
+          "type": "String",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "Called to initialize the window when preparing for the Render Thread. The act of calling glfwInit here creates a concurrency issue; GL doesn't know whether we're gonna call any GL functions from the secondary thread and the main thread at the same time. It's then our job to make sure this doesn't happen, only calling GL functions where the Context is Current. As long as we can verify that, then GL (and things like OS X) have no complaints with doing this.",
+      "deprecated": false
+    },
+    {
+      "name": "badWindowHandler",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "code",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "desc",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "winResize",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "window",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "width",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "height",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fbResize",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "window",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "width",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "height",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "winMove",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "window",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "x",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "y",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleLastGLFWError",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "handler",
+          "type": "BiConsumer < Integer , String >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setupMinecraftWindow",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "long",
+      "parameters": [
+        {
+          "name": "width",
+          "type": "IntSupplier",
+          "annotations": []
+        },
+        {
+          "name": "height",
+          "type": "IntSupplier",
+          "annotations": []
+        },
+        {
+          "name": "title",
+          "type": "Supplier < String >",
+          "annotations": []
+        },
+        {
+          "name": "monitorSupplier",
+          "type": "LongSupplier",
+          "annotations": []
+        }
+      ],
+      "description": "Hand-off the window to the vanilla game. Called on the main thread instead of the game's initialization.",
+      "deprecated": false
+    },
+    {
+      "name": "positionWindow",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "monitor",
+          "type": "Optional < Object >",
+          "annotations": []
+        },
+        {
+          "name": "widthSetter",
+          "type": "IntConsumer",
+          "annotations": []
+        },
+        {
+          "name": "heightSetter",
+          "type": "IntConsumer",
+          "annotations": []
+        },
+        {
+          "name": "xSetter",
+          "type": "IntConsumer",
+          "annotations": []
+        },
+        {
+          "name": "ySetter",
+          "type": "IntConsumer",
+          "annotations": []
+        }
+      ],
+      "description": "Description copied from interface: ImmediateWindowProvider",
+      "deprecated": false
+    },
+    {
+      "name": "updateFramebufferSize",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "width",
+          "type": "IntConsumer",
+          "annotations": []
+        },
+        {
+          "name": "height",
+          "type": "IntConsumer",
+          "annotations": []
+        }
+      ],
+      "description": "Description copied from interface: ImmediateWindowProvider",
+      "deprecated": false
+    },
+    {
+      "name": "loadingOverlay",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Supplier <T>",
+      "parameters": [
+        {
+          "name": "mc",
+          "type": "Supplier <?>",
+          "annotations": []
+        },
+        {
+          "name": "ri",
+          "type": "Supplier <?>",
+          "annotations": []
+        },
+        {
+          "name": "ex",
+          "type": "Consumer < Optional < Throwable >>",
+          "annotations": []
+        },
+        {
+          "name": "fade",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Description copied from interface: ImmediateWindowProvider",
+      "deprecated": false
+    },
+    {
+      "name": "updateModuleReads",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "layer",
+          "type": "ModuleLayer",
+          "annotations": []
+        }
+      ],
+      "description": "Description copied from interface: ImmediateWindowProvider",
+      "deprecated": false
+    },
+    {
+      "name": "getFramebufferTextureId",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "context",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "RenderElement.DisplayContext",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "periodicTick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "Description copied from interface: ImmediateWindowProvider",
+      "deprecated": false
+    },
+    {
+      "name": "addMojangTexture",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "textureId",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "close",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.2/net/minecraftforge/fml/earlydisplay/DisplayWindow.html"
+}

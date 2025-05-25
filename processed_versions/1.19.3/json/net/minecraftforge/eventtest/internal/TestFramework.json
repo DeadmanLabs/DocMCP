@@ -1,0 +1,193 @@
+{
+  "type": "class",
+  "name": "TestFramework",
+  "qualified_name": "net.minecraftforge.eventtest.internal.TestFramework",
+  "package": "net.minecraftforge.eventtest.internal",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "The backend of the \"curletest\" event testing framework. All tests are registered to this class, and are set up according to the needs they declare. All bootstrap tests will be summed up into a log file when the main menu loads. All gameplay events will be printed to the console when they fire, and written to the above log. To register a new event test, simply create the class in the events package and add it to the list here.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "MODID",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tests",
+      "modifiers": [
+        "final"
+      ],
+      "type": "List < EventTest >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "testNames",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "Map < EventTest , String >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CURLETEST_ANNOTATION",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "org.objectweb.asm.Type",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "bootstrapHandled",
+      "modifiers": [],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "TestFramework",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [],
+      "description": "Pre-initialize the framework and all events.",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "testChangedState",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "test",
+          "type": "EventTest",
+          "annotations": []
+        }
+      ],
+      "description": "Gameplay events require to be able to notify the framework when their task is completed. Bootstrap events are ignored when updates occur.",
+      "deprecated": false
+    },
+    {
+      "name": "gatherEvents",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "List < EventTest >",
+      "parameters": [],
+      "description": "Enumerate all tests that should be ran with the framework. All classes with the @TestHolder annotation are resolved and instantiated as tests.",
+      "deprecated": false
+    },
+    {
+      "name": "collectBootstrapTests",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "event",
+          "type": "ScreenEvent.Opening",
+          "annotations": []
+        }
+      ],
+      "description": "At the mark of the end of the bootstrap period, collect and log all test results. the ScreenOpenEvent fired by TitleScreen is the last event fired without user interaction, so it is the end of the \"automatic\" bootstrap time.",
+      "deprecated": false
+    },
+    {
+      "name": "collectMissedTests",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "event",
+          "type": "GameShuttingDownEvent",
+          "annotations": []
+        }
+      ],
+      "description": "Search for unfired events when the game is shutting down. Summarise all test results.",
+      "deprecated": false
+    },
+    {
+      "name": "prepareLogger",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "Set the LOGGER instance in this class to only write to logs/curletest.log. Log4J is annoying and requires manual initialization and preparation.",
+      "deprecated": false
+    },
+    {
+      "name": "getLoggerConfiguration",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "org.apache.logging.log4j.core.config.LoggerConfig",
+      "parameters": [
+        {
+          "name": "configuration",
+          "type": "org.apache.logging.log4j.core.config.Configuration",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "loggerName",
+          "type": "String",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.19.3/net/minecraftforge/eventtest/internal/TestFramework.html"
+}

@@ -1,0 +1,298 @@
+{
+  "type": "class",
+  "name": "ForgeModelBakery",
+  "qualified_name": "net.minecraftforge.client.model.ForgeModelBakery",
+  "package": "net.minecraftforge.client.model",
+  "modifiers": [
+    "public",
+    "final",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraft.client.resources.model.ModelBakery"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loadingExceptions",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < ResourceLocation , Exception >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "missingModel",
+      "modifiers": [
+        "private"
+      ],
+      "type": "UnbakedModel",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isLoading",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "instance",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "ForgeModelBakery",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "specialModels",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "Set < ResourceLocation >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DEFAULT_MODEL_GETTER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Function < ResourceLocation , UnbakedModel >",
+      "description": "Helper method for registering all itemstacks for given item to map to universal bucket model.",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ForgeModelBakery",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "manager",
+          "type": "ResourceManager",
+          "annotations": []
+        },
+        {
+          "name": "colours",
+          "type": "BlockColors",
+          "annotations": []
+        },
+        {
+          "name": "profiler",
+          "type": "ProfilerFiller",
+          "annotations": []
+        },
+        {
+          "name": "maxMipmapLevel",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "instance",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ForgeModelBakery",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isLoading",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addSpecialModel",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "rl",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "Indicate to vanilla that it should load and bake the given model, even if no blocks or items use it. This is useful if e.g. you have baked models only for entity renderers. Call during ModelRegistryEvent",
+      "deprecated": false
+    },
+    {
+      "name": "getSpecialModels",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Set < ResourceLocation >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getInventoryVariant",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ModelResourceLocation",
+      "parameters": [
+        {
+          "name": "s",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "Hooked from ModelBakery, allows using MRLs that don't end with \"inventory\" for items.",
+      "deprecated": false
+    },
+    {
+      "name": "getModelLocation",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [
+        {
+          "name": "model",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMissingModel",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "UnbakedModel",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getModelOrMissing",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "UnbakedModel",
+      "parameters": [
+        {
+          "name": "location",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "Use this if you don't care about the exception and want some model anyway.",
+      "deprecated": false
+    },
+    {
+      "name": "getModelOrLogError",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "UnbakedModel",
+      "parameters": [
+        {
+          "name": "location",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "error",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "Use this if you want the model, but need to log the error.",
+      "deprecated": false
+    },
+    {
+      "name": "onPostBakeEvent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "modelRegistry",
+          "type": "Map < ResourceLocation , BakedModel >",
+          "annotations": []
+        }
+      ],
+      "description": "Internal, do not use.",
+      "deprecated": false
+    },
+    {
+      "name": "defaultTextureGetter",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "Function < Material , TextureAtlasSprite >",
+      "parameters": [],
+      "description": "Get the default texture getter the models will be baked with.",
+      "deprecated": false
+    },
+    {
+      "name": "defaultModelGetter",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "Function < ResourceLocation , UnbakedModel >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.18.2/net/minecraftforge/client/model/ForgeModelBakery.html"
+}

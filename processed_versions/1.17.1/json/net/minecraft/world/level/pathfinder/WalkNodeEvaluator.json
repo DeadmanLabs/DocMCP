@@ -1,0 +1,709 @@
+{
+  "type": "class",
+  "name": "WalkNodeEvaluator",
+  "qualified_name": "net.minecraft.world.level.pathfinder.WalkNodeEvaluator",
+  "package": "net.minecraft.world.level.pathfinder",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraft.world.level.pathfinder.NodeEvaluator"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "SPACE_BETWEEN_WALL_POSTS",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "double",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "oldWaterCost",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pathTypesByPosCache",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.longs.Long2ObjectMap< BlockPathTypes >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "collisionCache",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.objects.Object2BooleanMap< AABB >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "WalkNodeEvaluator",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "prepare",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_77620_",
+          "type": "PathNavigationRegion",
+          "annotations": []
+        },
+        {
+          "name": "p_77621_",
+          "type": "Mob",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "done",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getStart",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Node",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasPositiveMalus",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_77647_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getGoal",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Target",
+      "parameters": [
+        {
+          "name": "p_77550_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_77551_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_77552_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getNeighbors",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_77640_",
+          "type": "Node []",
+          "annotations": []
+        },
+        {
+          "name": "p_77641_",
+          "type": "Node",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isNeighborValid",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_77627_",
+          "type": "Node",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_77628_",
+          "type": "Node",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isDiagonalValid",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_77630_",
+          "type": "Node",
+          "annotations": []
+        },
+        {
+          "name": "p_77631_",
+          "type": "Node",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_77632_",
+          "type": "Node",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_77633_",
+          "type": "Node",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canReachWithoutCollision",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_77625_",
+          "type": "Node",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFloorLevel",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "double",
+      "parameters": [
+        {
+          "name": "p_164733_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFloorLevel",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "double",
+      "parameters": [
+        {
+          "name": "p_77612_",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "p_77613_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isAmphibious",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "findAcceptedNode",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "Node",
+      "parameters": [
+        {
+          "name": "p_164726_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_164727_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_164728_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_164729_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_164730_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_164731_",
+          "type": "Direction",
+          "annotations": []
+        },
+        {
+          "name": "p_164732_",
+          "type": "BlockPathTypes",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasCollisions",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_77635_",
+          "type": "AABB",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockPathType",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BlockPathTypes",
+      "parameters": [
+        {
+          "name": "p_77594_",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "p_77595_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_77596_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_77597_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_77598_",
+          "type": "Mob",
+          "annotations": []
+        },
+        {
+          "name": "p_77599_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_77600_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_77601_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_77602_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_77603_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockPathTypes",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BlockPathTypes",
+      "parameters": [
+        {
+          "name": "p_77581_",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "p_77582_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_77583_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_77584_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_77585_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_77586_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_77587_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_77588_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_77589_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_77590_",
+          "type": "EnumSet < BlockPathTypes >",
+          "annotations": []
+        },
+        {
+          "name": "p_77591_",
+          "type": "BlockPathTypes",
+          "annotations": []
+        },
+        {
+          "name": "p_77592_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "evaluateBlockPathType",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "BlockPathTypes",
+      "parameters": [
+        {
+          "name": "p_77614_",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "p_77615_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_77616_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_77617_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_77618_",
+          "type": "BlockPathTypes",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockPathType",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "BlockPathTypes",
+      "parameters": [
+        {
+          "name": "p_77573_",
+          "type": "Mob",
+          "annotations": []
+        },
+        {
+          "name": "p_77574_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getCachedBlockType",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "BlockPathTypes",
+      "parameters": [
+        {
+          "name": "p_77568_",
+          "type": "Mob",
+          "annotations": []
+        },
+        {
+          "name": "p_77569_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_77570_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_77571_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockPathType",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BlockPathTypes",
+      "parameters": [
+        {
+          "name": "p_77576_",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "p_77577_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_77578_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_77579_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockPathTypeStatic",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "BlockPathTypes",
+      "parameters": [
+        {
+          "name": "p_77605_",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "p_77606_",
+          "type": "BlockPos.MutableBlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "checkNeighbourBlocks",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "BlockPathTypes",
+      "parameters": [
+        {
+          "name": "p_77608_",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "p_77609_",
+          "type": "BlockPos.MutableBlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_77610_",
+          "type": "BlockPathTypes",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockPathTypeRaw",
+      "modifiers": [
+        "protected",
+        "static"
+      ],
+      "return_type": "BlockPathTypes",
+      "parameters": [
+        {
+          "name": "p_77644_",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "p_77645_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isBurningBlock",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_77623_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.17.1/net/minecraft/world/level/pathfinder/WalkNodeEvaluator.html"
+}

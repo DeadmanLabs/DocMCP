@@ -1,0 +1,548 @@
+{
+  "type": "class",
+  "name": "GenerationChunkHolder",
+  "qualified_name": "net.minecraft.server.level.GenerationChunkHolder",
+  "package": "net.minecraft.server.level",
+  "modifiers": [
+    "public",
+    "abstract",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "CHUNK_STATUSES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "List < ChunkStatus >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NOT_DONE_YET",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "ChunkResult < ChunkAccess >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UNLOADED_CHUNK",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "ChunkResult < ChunkAccess >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UNLOADED_CHUNK_FUTURE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "CompletableFuture < ChunkResult < ChunkAccess >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pos",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "ChunkPos",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "highestAllowedStatus",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "type": "ChunkStatus",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "startedWork",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "AtomicReference < ChunkStatus >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "futures",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "AtomicReferenceArray < CompletableFuture < ChunkResult < ChunkAccess >>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "task",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "AtomicReference < ChunkGenerationTask >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "generationRefCount",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "AtomicInteger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "currentlyLoading",
+      "modifiers": [
+        "public"
+      ],
+      "type": "LevelChunk",
+      "description": "Forge: Used to bypass the future chain when loading chunks, because modders can do weird things that cause deadlocks, modders should never touch this",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "GenerationChunkHolder",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_342238_",
+          "type": "ChunkPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "scheduleChunkGenerationTask",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture < ChunkResult < ChunkAccess >>",
+      "parameters": [
+        {
+          "name": "p_342080_",
+          "type": "ChunkStatus",
+          "annotations": []
+        },
+        {
+          "name": "p_343602_",
+          "type": "ChunkMap",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "applyStep",
+      "modifiers": [],
+      "return_type": "CompletableFuture < ChunkResult < ChunkAccess >>",
+      "parameters": [
+        {
+          "name": "p_344844_",
+          "type": "ChunkStep",
+          "annotations": []
+        },
+        {
+          "name": "p_342173_",
+          "type": "GeneratingChunkMap",
+          "annotations": []
+        },
+        {
+          "name": "p_343026_",
+          "type": "StaticCache2D < GenerationChunkHolder >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateHighestAllowedStatus",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_345117_",
+          "type": "ChunkMap",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "replaceProtoChunk",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_343560_",
+          "type": "ImposterProtoChunk",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removeTask",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_342447_",
+          "type": "ChunkGenerationTask",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rescheduleChunkTask",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_344344_",
+          "type": "ChunkMap",
+          "annotations": []
+        },
+        {
+          "name": "p_343189_",
+          "type": "ChunkStatus",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getOrCreateFuture",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture < ChunkResult < ChunkAccess >>",
+      "parameters": [
+        {
+          "name": "p_342279_",
+          "type": "ChunkStatus",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "failAndClearPendingFuturesBetween",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_343092_",
+          "type": "ChunkStatus",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_345118_",
+          "type": "ChunkStatus",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "failAndClearPendingFuture",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_342343_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_345346_",
+          "type": "CompletableFuture < ChunkResult < ChunkAccess >>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "completeFuture",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_342456_",
+          "type": "ChunkStatus",
+          "annotations": []
+        },
+        {
+          "name": "p_342625_",
+          "type": "ChunkAccess",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "findHighestStatusWithPendingFuture",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "ChunkStatus",
+      "parameters": [
+        {
+          "name": "p_342852_",
+          "type": "ChunkStatus",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "acquireStatusBump",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_343283_",
+          "type": "ChunkStatus",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isStatusDisallowed",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_342117_",
+          "type": "ChunkStatus",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "increaseGenerationRefCount",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "decreaseGenerationRefCount",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getGenerationRefCount",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getChunkIfPresentUnchecked",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChunkAccess",
+      "parameters": [
+        {
+          "name": "p_342422_",
+          "type": "ChunkStatus",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getChunkIfPresent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChunkAccess",
+      "parameters": [
+        {
+          "name": "p_342964_",
+          "type": "ChunkStatus",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLatestChunk",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChunkAccess",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPersistedStatus",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChunkStatus",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPos",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChunkPos",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFullStatus",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "FullChunkStatus",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTicketLevel",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getQueueLevel",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAllFutures",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "List <com.mojang.datafixers.util.Pair< ChunkStatus , CompletableFuture < ChunkResult < ChunkAccess >>>>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLatestStatus",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChunkStatus",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21/net/minecraft/server/level/GenerationChunkHolder.html"
+}

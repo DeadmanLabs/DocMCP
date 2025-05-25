@@ -1,0 +1,522 @@
+{
+  "type": "class",
+  "name": "TierSortingRegistry",
+  "qualified_name": "net.minecraftforge.common.TierSortingRegistry",
+  "package": "net.minecraftforge.common",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ITEM_TIER_ORDERING_JSON",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "ResourceLocation",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasCustomTiers",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tiers",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "com.google.common.collect.BiMap< ResourceLocation , Tier >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "edges",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "com.google.common.collect.Multimap< ResourceLocation , ResourceLocation >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "vanillaEdges",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "com.google.common.collect.Multimap< ResourceLocation , ResourceLocation >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sortedTiers",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "List < Tier >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sortedTiersUnmodifiable",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "List < Tier >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CHANNEL_NAME",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "ResourceLocation",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PROTOCOL_VERSION",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SYNC_CHANNEL",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "SimpleChannel",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "TierSortingRegistry",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "registerTier",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "Tier",
+      "parameters": [
+        {
+          "name": "tier",
+          "type": "Tier",
+          "annotations": []
+        },
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "after",
+          "type": "List < Object >",
+          "annotations": []
+        },
+        {
+          "name": "before",
+          "type": "List < Object >",
+          "annotations": []
+        }
+      ],
+      "description": "Registers a tier into the tier sorting registry.",
+      "deprecated": false
+    },
+    {
+      "name": "getSortedTiers",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "List < Tier >",
+      "parameters": [],
+      "description": "Returns the list of tiers in the order defined by the dependencies. This list will remain valid",
+      "deprecated": false
+    },
+    {
+      "name": "byName",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "@Nullable Tier",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the tier associated with a name, if registered into the sorting system.",
+      "deprecated": false
+    },
+    {
+      "name": "getName",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "@Nullable ResourceLocation",
+      "parameters": [
+        {
+          "name": "tier",
+          "type": "Tier",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the name associated with a tier, if the tier is registered into the sorting system.",
+      "deprecated": false
+    },
+    {
+      "name": "isTierSorted",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "tier",
+          "type": "Tier",
+          "annotations": []
+        }
+      ],
+      "description": "Queries if a tier should be evaluated using the sorting system, by calling isCorrectTierForDrops",
+      "deprecated": false
+    },
+    {
+      "name": "isCorrectTierForDrops",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "tier",
+          "type": "Tier",
+          "annotations": []
+        },
+        {
+          "name": "state",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "Queries if a tier is high enough to be able to get drops for the given blockstate.",
+      "deprecated": false
+    },
+    {
+      "name": "getTiersLowerThan",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "List < Tier >",
+      "parameters": [
+        {
+          "name": "tier",
+          "type": "Tier",
+          "annotations": []
+        }
+      ],
+      "description": "Helper to query all tiers that are lower than the given tier",
+      "deprecated": false
+    },
+    {
+      "name": "isCorrectTierVanilla",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "tier",
+          "type": "Tier",
+          "annotations": []
+        },
+        {
+          "name": "state",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "Fallback for when a tier isn't in the registry, copy of the logic in DiggerItem.isCorrectToolForDrops(net.minecraft.world.level.block.state.BlockState)",
+      "deprecated": false
+    },
+    {
+      "name": "processTier",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "tier",
+          "type": "Tier",
+          "annotations": []
+        },
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "afters",
+          "type": "List < Object >",
+          "annotations": []
+        },
+        {
+          "name": "befores",
+          "type": "List < Object >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTierName",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [
+        {
+          "name": "entry",
+          "type": "Object",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "allowVanilla",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "init",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getReloadListener",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "PreparableReloadListener",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "recalculateItemTiers",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setTierOrder",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "tierList",
+          "type": "List < Tier >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "runInServerThreadIfPossible",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "runnable",
+          "type": "it.unimi.dsi.fastutil.booleans.BooleanConsumer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "syncToAll",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playerLoggedIn",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "event",
+          "type": "PlayerEvent.PlayerLoggedInEvent",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "syncToPlayer",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "serverPlayer",
+          "type": "ServerPlayer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "receive",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "TierSortingRegistry.SyncPacket",
+      "parameters": [
+        {
+          "name": "buffer",
+          "type": "FriendlyByteBuf",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handle",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "packet",
+          "type": "TierSortingRegistry.SyncPacket",
+          "annotations": []
+        },
+        {
+          "name": "context",
+          "type": "Supplier < NetworkEvent.Context >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.19.4/net/minecraftforge/common/TierSortingRegistry.html"
+}

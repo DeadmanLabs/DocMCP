@@ -1,0 +1,729 @@
+{
+  "type": "class",
+  "name": "Goat",
+  "qualified_name": "net.minecraft.world.entity.animal.goat.Goat",
+  "package": "net.minecraft.world.entity.animal.goat",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraftforge.common.capabilities.CapabilityProvider",
+      "Entity",
+      "net.minecraft.world.entity.Entity",
+      "net.minecraft.world.entity.LivingEntity",
+      "net.minecraft.world.entity.Mob",
+      "net.minecraft.world.entity.PathfinderMob",
+      "net.minecraft.world.entity.AgeableMob",
+      "net.minecraft.world.entity.animal.Animal"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LONG_JUMPING_DIMENSIONS",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "EntityDimensions",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ADULT_ATTACK_DAMAGE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BABY_ATTACK_DAMAGE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SENSOR_TYPES",
+      "modifiers": [
+        "protected",
+        "static",
+        "final"
+      ],
+      "type": "com.google.common.collect.ImmutableList< SensorType <? extends Sensor <? super Goat >>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MEMORY_TYPES",
+      "modifiers": [
+        "protected",
+        "static",
+        "final"
+      ],
+      "type": "com.google.common.collect.ImmutableList< MemoryModuleType <?>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "GOAT_FALL_DAMAGE_REDUCTION",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "GOAT_SCREAMING_CHANCE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "double",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UNIHORN_CHANCE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "double",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_IS_SCREAMING_GOAT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "EntityDataAccessor < Boolean >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_HAS_LEFT_HORN",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "EntityDataAccessor < Boolean >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_HAS_RIGHT_HORN",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "EntityDataAccessor < Boolean >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isLoweringHead",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lowerHeadTick",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "Goat",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_149352_",
+          "type": "EntityType <? extends Goat >",
+          "annotations": []
+        },
+        {
+          "name": "p_149353_",
+          "type": "Level",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "createHorn",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ItemStack",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "brainProvider",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "Brain.Provider < Goat >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "makeBrain",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "Brain <?>",
+      "parameters": [
+        {
+          "name": "p_149371_",
+          "type": "com.mojang.serialization.Dynamic<?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createAttributes",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "AttributeSupplier.Builder",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ageBoundaryReached",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "calculateFallDamage",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_149389_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_149390_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAmbientSound",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "SoundEvent",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getHurtSound",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "SoundEvent",
+      "parameters": [
+        {
+          "name": "p_149387_",
+          "type": "DamageSource",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDeathSound",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "SoundEvent",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playStepSound",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_149382_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_149383_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMilkingSound",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "SoundEvent",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBreedOffspring",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Goat",
+      "parameters": [
+        {
+          "name": "p_149376_",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "p_149377_",
+          "type": "AgeableMob",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBrain",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Brain < Goat >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "customServerAiStep",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMaxHeadYRot",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setYHeadRot",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_149400_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getEatingSound",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SoundEvent",
+      "parameters": [
+        {
+          "name": "p_149394_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mobInteract",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "InteractionResult",
+      "parameters": [
+        {
+          "name": "p_149379_",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "p_149380_",
+          "type": "InteractionHand",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "finalizeSpawn",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SpawnGroupData",
+      "parameters": [
+        {
+          "name": "p_149365_",
+          "type": "ServerLevelAccessor",
+          "annotations": []
+        },
+        {
+          "name": "p_149366_",
+          "type": "DifficultyInstance",
+          "annotations": []
+        },
+        {
+          "name": "p_149367_",
+          "type": "MobSpawnType",
+          "annotations": []
+        },
+        {
+          "name": "p_149368_",
+          "type": "SpawnGroupData",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_149369_",
+          "type": "CompoundTag",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "Description copied from class: Mob",
+      "deprecated": false
+    },
+    {
+      "name": "sendDebugPackets",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDimensions",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "EntityDimensions",
+      "parameters": [
+        {
+          "name": "p_149361_",
+          "type": "Pose",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addAdditionalSaveData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_149385_",
+          "type": "CompoundTag",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "readAdditionalSaveData",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_149373_",
+          "type": "CompoundTag",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleEntityEvent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_149356_",
+          "type": "byte",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "aiStep",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "defineSynchedData",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasLeftHorn",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasRightHorn",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dropHorn",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addHorns",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removeHorns",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isScreamingGoat",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setScreamingGoat",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_149406_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRammingXHeadRot",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "checkGoatSpawnRules",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_218753_",
+          "type": "EntityType <? extends Animal >",
+          "annotations": []
+        },
+        {
+          "name": "p_218754_",
+          "type": "LevelAccessor",
+          "annotations": []
+        },
+        {
+          "name": "p_218755_",
+          "type": "MobSpawnType",
+          "annotations": []
+        },
+        {
+          "name": "p_218756_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_218757_",
+          "type": "RandomSource",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPassengerAttachmentPoint",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "org.joml.Vector3f",
+      "parameters": [
+        {
+          "name": "p_297644_",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "p_299635_",
+          "type": "EntityDimensions",
+          "annotations": []
+        },
+        {
+          "name": "p_297595_",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.3/net/minecraft/world/entity/animal/goat/Goat.html"
+}

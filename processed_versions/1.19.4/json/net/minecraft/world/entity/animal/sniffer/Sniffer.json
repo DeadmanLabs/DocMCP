@@ -1,0 +1,781 @@
+{
+  "type": "class",
+  "name": "Sniffer",
+  "qualified_name": "net.minecraft.world.entity.animal.sniffer.Sniffer",
+  "package": "net.minecraft.world.entity.animal.sniffer",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraftforge.common.capabilities.CapabilityProvider",
+      "Entity",
+      "net.minecraft.world.entity.Entity",
+      "net.minecraft.world.entity.LivingEntity",
+      "net.minecraft.world.entity.Mob",
+      "net.minecraft.world.entity.PathfinderMob",
+      "net.minecraft.world.entity.AgeableMob",
+      "net.minecraft.world.entity.animal.Animal"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "DIGGING_PARTICLES_DELAY_TICKS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DIGGING_PARTICLES_DURATION_TICKS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DIGGING_PARTICLES_AMOUNT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DIGGING_DROP_SEED_OFFSET_TICKS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SNIFFING_PROXIMITY_DISTANCE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SNIFFER_BABY_AGE_TICKS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_STATE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "EntityDataAccessor < Sniffer.State >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DATA_DROP_SEED_AT_TICK",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "EntityDataAccessor < Integer >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "walkingAnimationState",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "type": "AnimationState",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "panicAnimationState",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "type": "AnimationState",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "feelingHappyAnimationState",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "type": "AnimationState",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "scentingAnimationState",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "type": "AnimationState",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sniffingAnimationState",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "type": "AnimationState",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "searchingAnimationState",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "type": "AnimationState",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "diggingAnimationState",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "type": "AnimationState",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "risingAnimationState",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "type": "AnimationState",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "Sniffer",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_273717_",
+          "type": "EntityType <? extends Animal >",
+          "annotations": []
+        },
+        {
+          "name": "p_273562_",
+          "type": "Level",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "createAttributes",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "AttributeSupplier.Builder",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getStandingEyeHeight",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_272721_",
+          "type": "Pose",
+          "annotations": []
+        },
+        {
+          "name": "p_273353_",
+          "type": "EntityDimensions",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isMoving",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isMovingInWater",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isMovingOnLand",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isPanicking",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canPlayDiggingSound",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getHeadPosition",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "BlockPos",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getState",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Sniffer.State",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setState",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Sniffer",
+      "parameters": [
+        {
+          "name": "p_273359_",
+          "type": "Sniffer.State",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onSyncedDataUpdated",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_272936_",
+          "type": "EntityDataAccessor <?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "resetAnimations",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "transitionTo",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Sniffer",
+      "parameters": [
+        {
+          "name": "p_273096_",
+          "type": "Sniffer.State",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onDiggingStart",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Sniffer",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onDiggingComplete",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Sniffer",
+      "parameters": [
+        {
+          "name": "p_272677_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "calculateDigPosition",
+      "modifiers": [],
+      "return_type": "Optional < BlockPos >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canRide",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_273768_",
+          "type": "Entity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canDig",
+      "modifiers": [],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canDig",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_272757_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dropSeed",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "emitDiggingParticles",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Sniffer",
+      "parameters": [
+        {
+          "name": "p_273528_",
+          "type": "AnimationState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "storeExploredPosition",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Sniffer",
+      "parameters": [
+        {
+          "name": "p_273015_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getExploredPositions",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Stream < BlockPos >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "jumpFromGround",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mobInteract",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "InteractionResult",
+      "parameters": [
+        {
+          "name": "p_273046_",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "p_272687_",
+          "type": "InteractionHand",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playSearchingSound",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playStepSound",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_272953_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_273729_",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getEatingSound",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SoundEvent",
+      "parameters": [
+        {
+          "name": "p_272747_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAmbientSound",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "SoundEvent",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getHurtSound",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "SoundEvent",
+      "parameters": [
+        {
+          "name": "p_273718_",
+          "type": "DamageSource",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDeathSound",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "SoundEvent",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMaxHeadYRot",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setBaby",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_272995_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBreedOffspring",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "AgeableMob",
+      "parameters": [
+        {
+          "name": "p_273401_",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "p_273310_",
+          "type": "AgeableMob",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canMate",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_272966_",
+          "type": "Animal",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBoundingBoxForCulling",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "AABB",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isFood",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_273659_",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "makeBrain",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "Brain <?>",
+      "parameters": [
+        {
+          "name": "p_273174_",
+          "type": "com.mojang.serialization.Dynamic<?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBrain",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Brain < Sniffer >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "brainProvider",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "Brain.Provider < Sniffer >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "customServerAiStep",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sendDebugPackets",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.19.4/net/minecraft/world/entity/animal/sniffer/Sniffer.html"
+}

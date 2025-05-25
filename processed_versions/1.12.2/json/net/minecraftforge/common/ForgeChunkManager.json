@@ -1,0 +1,481 @@
+{
+  "type": "class",
+  "name": "ForgeChunkManager",
+  "qualified_name": "ForgeChunkManager",
+  "package": "",
+  "modifiers": [],
+  "annotations": [],
+  "description": "Manages chunkloading for mods. The basic principle is a ticket based system. 1. Mods register a callback setForcedChunkLoadingCallback(Object, LoadingCallback) 2. Mods ask for a ticket requestTicket(Object, World, Type) and then hold on to that ticket. 3. Mods request chunks to stay loaded forceChunk(Ticket, ChunkPos) or remove chunks from force loading unforceChunk(Ticket, ChunkPos) . 4. When a world unloads, the tickets associated with that world are saved by the chunk manager. 5. When a world loads, saved tickets are offered to the mods associated with the tickets. The ForgeChunkManager.Ticket.getModData() that is set by the mod should be used to re-register chunks to stay loaded (and maybe take other actions). The chunkloading is configurable at runtime. The file \"config/forgeChunkLoading.cfg\" contains both default configuration for chunkloading, and a sample individual mod specific override section.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": []
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "defaultMaxCount",
+      "modifiers": [],
+      "type": "",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "defaultMaxChunks",
+      "modifiers": [],
+      "type": "",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "overridesEnabled",
+      "modifiers": [],
+      "type": "",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickets",
+      "modifiers": [],
+      "type": "",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ticketConstraints",
+      "modifiers": [],
+      "type": "",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "chunkConstraints",
+      "modifiers": [],
+      "type": "",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playerTickets",
+      "modifiers": [],
+      "type": "",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "callbacks",
+      "modifiers": [],
+      "type": "",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "forcedChunks",
+      "modifiers": [],
+      "type": "",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pendingEntities",
+      "modifiers": [],
+      "type": "",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dormantChunkCache",
+      "modifiers": [],
+      "type": "",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cfgFile",
+      "modifiers": [],
+      "type": "",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "config",
+      "modifiers": [],
+      "type": "",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playerTicketLength",
+      "modifiers": [],
+      "type": "",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dormantChunkCacheSize",
+      "modifiers": [],
+      "type": "",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "asyncChunkLoading",
+      "modifiers": [],
+      "type": "",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MOD_PROP_ORDER",
+      "modifiers": [],
+      "type": "",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "warnedMods",
+      "modifiers": [],
+      "type": "",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ForgeChunkManager",
+      "modifiers": [],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getPersistentChunksIterableFor",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "savedWorldHasForcedChunkTickets",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loadWorld",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "unloadWorld",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setForcedChunkLoadingCallback",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ticketCountAvailableFor",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getContainer",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMaxTicketLengthFor",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMaxChunkDepthFor",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ticketCountAvailableFor",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "requestPlayerTicket",
+      "modifiers": [],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "requestTicket",
+      "modifiers": [],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "releaseTicket",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "forceChunk",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "reorderChunk",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "unforceChunk",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loadConfiguration",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPersistentChunksFor",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "saveWorld",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loadEntity",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "putDormantChunk",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "storeChunkNBT",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fetchDormantChunk",
+      "modifiers": [],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loadChunkEntities",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "captureConfig",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "syncConfigDefaults",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getConfig",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDefaultsCategory",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getModCategories",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getConfigFor",
+      "modifiers": [],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addConfigProperty",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.12.2/net/minecraftforge/common/ForgeChunkManager.html"
+}

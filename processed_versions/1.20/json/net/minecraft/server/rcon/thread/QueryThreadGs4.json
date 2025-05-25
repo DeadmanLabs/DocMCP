@@ -1,0 +1,415 @@
+{
+  "type": "class",
+  "name": "QueryThreadGs4",
+  "qualified_name": "net.minecraft.server.rcon.thread.QueryThreadGs4",
+  "package": "net.minecraft.server.rcon.thread",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraft.server.rcon.thread.GenericThread"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "GAME_TYPE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "GAME_ID",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CHALLENGE_CHECK_INTERVAL",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "RESPONSE_CACHE_TIME",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastChallengeCheck",
+      "modifiers": [
+        "private"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "port",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "serverPort",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "maxPlayers",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "serverName",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "worldName",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "socket",
+      "modifiers": [
+        "private"
+      ],
+      "type": "DatagramSocket",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "buffer",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "byte[]",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hostIp",
+      "modifiers": [
+        "private"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "serverIp",
+      "modifiers": [
+        "private"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "validChallenges",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < SocketAddress , QueryThreadGs4.RequestChallenge >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rulesResponse",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "NetworkDataOutputStream",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastRulesResponse",
+      "modifiers": [
+        "private"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "serverInterface",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ServerInterface",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "QueryThreadGs4",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [
+        {
+          "name": "p_11541_",
+          "type": "ServerInterface",
+          "annotations": []
+        },
+        {
+          "name": "p_11542_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "create",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "QueryThreadGs4",
+      "parameters": [
+        {
+          "name": "p_11554_",
+          "type": "ServerInterface",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sendTo",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_11556_",
+          "type": "byte[]",
+          "annotations": []
+        },
+        {
+          "name": "p_11557_",
+          "type": "DatagramPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "processPacket",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_11550_",
+          "type": "DatagramPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "buildRuleResponse",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "byte[]",
+      "parameters": [
+        {
+          "name": "p_11559_",
+          "type": "DatagramPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getIdentBytes",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "byte[]",
+      "parameters": [
+        {
+          "name": "p_11552_",
+          "type": "SocketAddress",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "validChallenge",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Boolean",
+      "parameters": [
+        {
+          "name": "p_11561_",
+          "type": "DatagramPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sendChallenge",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_11564_",
+          "type": "DatagramPacket",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pruneChallenges",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "run",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "start",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "recoverSocketError",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_11548_",
+          "type": "Exception",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "initSocket",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20/net/minecraft/server/rcon/thread/QueryThreadGs4.html"
+}

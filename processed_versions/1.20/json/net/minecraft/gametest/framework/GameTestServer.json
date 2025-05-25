@@ -1,0 +1,415 @@
+{
+  "type": "class",
+  "name": "GameTestServer",
+  "qualified_name": "net.minecraft.gametest.framework.GameTestServer",
+  "package": "net.minecraft.gametest.framework",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraft.util.thread.BlockableEventLoop",
+      "net.minecraft.util.thread.ReentrantBlockableEventLoop",
+      "TickTask",
+      "net.minecraft.server.MinecraftServer"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PROGRESS_REPORT_INTERVAL",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NO_SERVICES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Services",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "testBatches",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "List < GameTestBatch >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "spawnPos",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "BlockPos",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "TEST_GAME_RULES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "GameRules",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "WORLD_OPTIONS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "WorldOptions",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "testTracker",
+      "modifiers": [
+        "private"
+      ],
+      "type": "MultipleTestTracker",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "GameTestServer",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_206597_",
+          "type": "Thread",
+          "annotations": []
+        },
+        {
+          "name": "p_206598_",
+          "type": "LevelStorageSource.LevelStorageAccess",
+          "annotations": []
+        },
+        {
+          "name": "p_206599_",
+          "type": "PackRepository",
+          "annotations": []
+        },
+        {
+          "name": "p_206600_",
+          "type": "WorldStem",
+          "annotations": []
+        },
+        {
+          "name": "p_206601_",
+          "type": "Collection < GameTestBatch >",
+          "annotations": []
+        },
+        {
+          "name": "p_206602_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "create",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "GameTestServer",
+      "parameters": [
+        {
+          "name": "p_206607_",
+          "type": "Thread",
+          "annotations": []
+        },
+        {
+          "name": "p_206608_",
+          "type": "LevelStorageSource.LevelStorageAccess",
+          "annotations": []
+        },
+        {
+          "name": "p_206609_",
+          "type": "PackRepository",
+          "annotations": []
+        },
+        {
+          "name": "p_206610_",
+          "type": "Collection < GameTestBatch >",
+          "annotations": []
+        },
+        {
+          "name": "p_206611_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "initServer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickServer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_177619_",
+          "type": "BooleanSupplier",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "waitUntilNextTick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fillServerSystemReport",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SystemReport",
+      "parameters": [
+        {
+          "name": "p_177613_",
+          "type": "SystemReport",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onServerExit",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onServerCrash",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_177623_",
+          "type": "CrashReport",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "startTests",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_177625_",
+          "type": "ServerLevel",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "haveTestsStarted",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isHardcore",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getOperatorUserPermissionLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFunctionCompilationLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldRconBroadcast",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isDedicatedServer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRateLimitPacketsPerSecond",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isEpollEnabled",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isCommandBlockEnabled",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isPublished",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldInformAdmins",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isSingleplayerOwner",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_177617_",
+          "type": "com.mojang.authlib.GameProfile",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20/net/minecraft/gametest/framework/GameTestServer.html"
+}

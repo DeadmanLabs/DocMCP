@@ -1,0 +1,349 @@
+{
+  "type": "class",
+  "name": "PacketDistributor<T>",
+  "qualified_name": "net.minecraftforge.fmllegacy.network.PacketDistributor<T>",
+  "package": "net.minecraftforge.fmllegacy.network",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Means to distribute packets in various ways",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "PLAYER",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "PacketDistributor < ServerPlayer >",
+      "description": "Send to the player specified in the Supplier with(Supplier) Player",
+      "deprecated": false
+    },
+    {
+      "name": "DIMENSION",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "PacketDistributor < ResourceKey < Level >>",
+      "description": "Send to everyone in the dimension specified in the Supplier with(Supplier) DimensionType",
+      "deprecated": false
+    },
+    {
+      "name": "NEAR",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "PacketDistributor < PacketDistributor.TargetPoint >",
+      "description": "Send to everyone near the PacketDistributor.TargetPoint specified in the Supplier with(Supplier) TargetPoint",
+      "deprecated": false
+    },
+    {
+      "name": "ALL",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "PacketDistributor < Void >",
+      "description": "Send to everyone noArg()",
+      "deprecated": false
+    },
+    {
+      "name": "SERVER",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "PacketDistributor < Void >",
+      "description": "Send to the server (CLIENT to SERVER) noArg()",
+      "deprecated": false
+    },
+    {
+      "name": "TRACKING_ENTITY",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "PacketDistributor < Entity >",
+      "description": "Send to all tracking the Entity in the Supplier with(Supplier) Entity",
+      "deprecated": false
+    },
+    {
+      "name": "TRACKING_ENTITY_AND_SELF",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "PacketDistributor < Entity >",
+      "description": "Send to all tracking the Entity and Player in the Supplier with(Supplier) Entity",
+      "deprecated": false
+    },
+    {
+      "name": "TRACKING_CHUNK",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "PacketDistributor < LevelChunk >",
+      "description": "Send to all tracking the Chunk in the Supplier with(Supplier) Chunk",
+      "deprecated": false
+    },
+    {
+      "name": "NMLIST",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "PacketDistributor < List < Connection >>",
+      "description": "Send to the supplied list of NetworkManager instances in the Supplier with(Supplier) List of NetworkManager",
+      "deprecated": false
+    },
+    {
+      "name": "functor",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "BiFunction < PacketDistributor < T >,​ Supplier < T >,​ Consumer < Packet <?>>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "direction",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "NetworkDirection",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "PacketDistributor",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "functor",
+          "type": "BiFunction < PacketDistributor < T >,​ Supplier < T >,​ Consumer < Packet <?>>>",
+          "annotations": []
+        },
+        {
+          "name": "direction",
+          "type": "NetworkDirection",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "with",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "PacketDistributor.PacketTarget",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "Supplier < T >",
+          "annotations": []
+        }
+      ],
+      "description": "Apply the supplied value to the specific distributor to generate an instance for sending packets to.",
+      "deprecated": false
+    },
+    {
+      "name": "noArg",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "PacketDistributor.PacketTarget",
+      "parameters": [],
+      "description": "Apply a no argument value to a distributor to generate an instance for sending packets to.",
+      "deprecated": false
+    },
+    {
+      "name": "playerConsumer",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Consumer < Packet <?>>",
+      "parameters": [
+        {
+          "name": "entityPlayerMPSupplier",
+          "type": "Supplier < ServerPlayer >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playerListDimConsumer",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Consumer < Packet <?>>",
+      "parameters": [
+        {
+          "name": "dimensionTypeSupplier",
+          "type": "Supplier < ResourceKey < Level >>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playerListAll",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Consumer < Packet <?>>",
+      "parameters": [
+        {
+          "name": "voidSupplier",
+          "type": "Supplier < Void >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clientToServer",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Consumer < Packet <?>>",
+      "parameters": [
+        {
+          "name": "voidSupplier",
+          "type": "Supplier < Void >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playerListPointConsumer",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Consumer < Packet <?>>",
+      "parameters": [
+        {
+          "name": "targetPointSupplier",
+          "type": "Supplier < PacketDistributor.TargetPoint >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "trackingEntity",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Consumer < Packet <?>>",
+      "parameters": [
+        {
+          "name": "entitySupplier",
+          "type": "Supplier < Entity >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "trackingEntityAndSelf",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Consumer < Packet <?>>",
+      "parameters": [
+        {
+          "name": "entitySupplier",
+          "type": "Supplier < Entity >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "trackingChunk",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Consumer < Packet <?>>",
+      "parameters": [
+        {
+          "name": "chunkPosSupplier",
+          "type": "Supplier < LevelChunk >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "networkManagerList",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Consumer < Packet <?>>",
+      "parameters": [
+        {
+          "name": "nmListSupplier",
+          "type": "Supplier < List < Connection >>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getServer",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "MinecraftServer",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.17.1/net/minecraftforge/fmllegacy/network/PacketDistributor.html"
+}

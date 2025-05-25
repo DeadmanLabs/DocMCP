@@ -1,0 +1,124 @@
+{
+  "type": "interface",
+  "name": "ITeleporter",
+  "qualified_name": "net.minecraftforge.common.util.ITeleporter",
+  "package": "net.minecraftforge.common.util",
+  "modifiers": [
+    "public",
+    "interface"
+  ],
+  "annotations": [],
+  "description": "Interface for handling the placement of entities during dimension change. An implementation of this interface can be used to place the entity in a safe location, or generate a return portal, for instance. See the PortalForcer class, which has been patched to implement this interface, for a vanilla example.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": []
+  },
+  "nested_classes": [],
+  "fields": [],
+  "constructors": [],
+  "methods": [
+    {
+      "name": "placeEntity",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "Entity",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "currentWorld",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "destWorld",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "yaw",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "repositionEntity",
+          "type": "Function < Boolean , Entity >",
+          "annotations": []
+        }
+      ],
+      "description": "Called to handle placing the entity in the new world. The initial position of the entity will be its position in the origin world, multiplied horizontally by the computed cross-dimensional movement factor. Note that the supplied entity has not yet been spawned in the destination world at the time.",
+      "deprecated": false
+    },
+    {
+      "name": "getPortalInfo",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "@Nullable PortalInfo",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "destWorld",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "defaultPortalInfo",
+          "type": "Function < ServerLevel , PortalInfo >",
+          "annotations": []
+        }
+      ],
+      "description": "Gets the PortalInfo. defaultPortalInfo references the vanilla code and should not be used for your purposes. Override this method to handle your own logic. Return null to prevent teleporting.",
+      "deprecated": false
+    },
+    {
+      "name": "isVanilla",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "Is this teleporter the vanilla instance.",
+      "deprecated": false
+    },
+    {
+      "name": "playTeleportSound",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "ServerPlayer",
+          "annotations": []
+        },
+        {
+          "name": "sourceWorld",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "destWorld",
+          "type": "ServerLevel",
+          "annotations": []
+        }
+      ],
+      "description": "Called when vanilla wants to play the portal sound after teleporting. Return true to play the vanilla sound.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.19.3/net/minecraftforge/common/util/ITeleporter.html"
+}

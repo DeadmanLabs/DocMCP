@@ -1,0 +1,138 @@
+{
+  "type": "class",
+  "name": "CapabilityListenerHolder",
+  "qualified_name": "net.neoforged.neoforge.capabilities.CapabilityListenerHolder",
+  "package": "net.neoforged.neoforge.capabilities",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Holder for capability listeners associated to a level.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "byChunkThenBlock",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.longs.Long2ReferenceMap<it.unimi.dsi.fastutil.longs.Long2ReferenceMap< Set < CapabilityListenerHolder.ListenerReference >>>",
+      "description": "Map of chunk pos -> block pos -> listeners map. We have a two-level map to efficiently invalidate entire chunks at once.",
+      "deprecated": false
+    },
+    {
+      "name": "queue",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ReferenceQueue < ICapabilityInvalidationListener >",
+      "description": "Reference queue for the listener references. This allows us to listen to reference garbage collection, and remove empty entries from byChunkThenBlock .",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "CapabilityListenerHolder",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "addListener",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "listener",
+          "type": "ICapabilityInvalidationListener",
+          "annotations": []
+        }
+      ],
+      "description": "Adds a listener.",
+      "deprecated": false
+    },
+    {
+      "name": "invalidatePos",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Invalidates listeners at a specific block position.",
+      "deprecated": false
+    },
+    {
+      "name": "invalidateChunk",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "chunkPos",
+          "type": "ChunkPos",
+          "annotations": []
+        }
+      ],
+      "description": "Invalidates listeners at a specific chunk position.",
+      "deprecated": false
+    },
+    {
+      "name": "invalidateList",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "caches",
+          "type": "Set < CapabilityListenerHolder.ListenerReference >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clean",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "Poll the reference queue, and remove garbage-collected listener references entries from byChunkThenBlock .",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21.x-neoforge/net/neoforged/neoforge/capabilities/CapabilityListenerHolder.html"
+}

@@ -1,0 +1,469 @@
+{
+  "type": "class",
+  "name": "SoundDefinitionsProvider",
+  "qualified_name": "net.minecraftforge.common.data.SoundDefinitionsProvider",
+  "package": "net.minecraftforge.common.data",
+  "modifiers": [
+    "public",
+    "abstract",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Data provider for the sounds.json file, which identifies sound definitions for the various sound events in Minecraft.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "output",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "PackOutput",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "modId",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "helper",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ExistingFileHelper",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sounds",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < String , SoundDefinition >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "SoundDefinitionsProvider",
+      "modifiers": [
+        "protected"
+      ],
+      "parameters": [
+        {
+          "name": "output",
+          "type": "PackOutput",
+          "annotations": []
+        },
+        {
+          "name": "modId",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "helper",
+          "type": "ExistingFileHelper",
+          "annotations": []
+        }
+      ],
+      "description": "Creates a new instance of this data provider.",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "registerSounds",
+      "modifiers": [
+        "public",
+        "abstract"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "Registers the sound definitions that should be generated via one of the add methods.",
+      "deprecated": false
+    },
+    {
+      "name": "run",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture <?>",
+      "parameters": [
+        {
+          "name": "cache",
+          "type": "CachedOutput",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getName",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "definition",
+      "modifiers": [
+        "protected",
+        "static"
+      ],
+      "return_type": "SoundDefinition",
+      "parameters": [],
+      "description": "Creates a new SoundDefinition , which will host a set of SoundDefinition.Sound s and the necessary parameters.",
+      "deprecated": false
+    },
+    {
+      "name": "sound",
+      "modifiers": [
+        "protected",
+        "static"
+      ],
+      "return_type": "SoundDefinition.Sound",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "type",
+          "type": "SoundDefinition.SoundType",
+          "annotations": []
+        }
+      ],
+      "description": "Creates a new sound with the given name and type.",
+      "deprecated": false
+    },
+    {
+      "name": "sound",
+      "modifiers": [
+        "protected",
+        "static"
+      ],
+      "return_type": "SoundDefinition.Sound",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "Creates a new sound with the given name and SoundDefinition.SoundType.SOUND as sound type.",
+      "deprecated": false
+    },
+    {
+      "name": "sound",
+      "modifiers": [
+        "protected",
+        "static"
+      ],
+      "return_type": "SoundDefinition.Sound",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "type",
+          "type": "SoundDefinition.SoundType",
+          "annotations": []
+        }
+      ],
+      "description": "Creates a new sound with the given name and type.",
+      "deprecated": false
+    },
+    {
+      "name": "sound",
+      "modifiers": [
+        "protected",
+        "static"
+      ],
+      "return_type": "SoundDefinition.Sound",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "Creates a new sound with the given name and SoundDefinition.SoundType.SOUND as sound type.",
+      "deprecated": false
+    },
+    {
+      "name": "add",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "soundEvent",
+          "type": "Supplier < SoundEvent >",
+          "annotations": []
+        },
+        {
+          "name": "definition",
+          "type": "SoundDefinition",
+          "annotations": []
+        }
+      ],
+      "description": "Adds the entry name associated with the supplied SoundEvent with the given SoundDefinition to the list. This method should be preferred when dealing with a RegistryObject or RegistryDelegate .",
+      "deprecated": false
+    },
+    {
+      "name": "add",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "soundEvent",
+          "type": "SoundEvent",
+          "annotations": []
+        },
+        {
+          "name": "definition",
+          "type": "SoundDefinition",
+          "annotations": []
+        }
+      ],
+      "description": "Adds the entry name associated with the given SoundEvent with the SoundDefinition to the list. This method should be preferred when a SoundEvent is already available in the method context. If you already have a Supplier for it, refer to add(Supplier, SoundDefinition) .",
+      "deprecated": false
+    },
+    {
+      "name": "add",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "soundEvent",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "definition",
+          "type": "SoundDefinition",
+          "annotations": []
+        }
+      ],
+      "description": "Adds the SoundEvent referenced by the given ResourceLocation with the SoundDefinition to the list.",
+      "deprecated": false
+    },
+    {
+      "name": "add",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "soundEvent",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "definition",
+          "type": "SoundDefinition",
+          "annotations": []
+        }
+      ],
+      "description": "Adds the SoundEvent with the specified name along with its SoundDefinition to the list. The given sound event must NOT contain the namespace the name is a part of, since the sound definition specification doesn't allow sounds to be defined outside the namespace they're in. For this reason, any namespace will automatically be stripped from the name.",
+      "deprecated": false
+    },
+    {
+      "name": "addSounds",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "soundEvent",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "definition",
+          "type": "SoundDefinition",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "validate",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "validate",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "def",
+          "type": "SoundDefinition",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "validate",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "sound",
+          "type": "SoundDefinition.Sound",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "validateSound",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "soundName",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "validateEvent",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "soundName",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "save",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture <?>",
+      "parameters": [
+        {
+          "name": "cache",
+          "type": "CachedOutput",
+          "annotations": []
+        },
+        {
+          "name": "targetFile",
+          "type": "Path",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mapToJson",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "com.google.gson.JsonObject",
+      "parameters": [
+        {
+          "name": "map",
+          "type": "Map < String , SoundDefinition >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.2/net/minecraftforge/common/data/SoundDefinitionsProvider.html"
+}

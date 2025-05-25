@@ -1,0 +1,417 @@
+{
+  "type": "interface",
+  "name": "IClientFluidTypeExtensions",
+  "qualified_name": "net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions",
+  "package": "net.minecraftforge.client.extensions.common",
+  "modifiers": [
+    "public",
+    "interface"
+  ],
+  "annotations": [],
+  "description": "Client-only extensions to FluidType .",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": []
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "DEFAULT",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "IClientFluidTypeExtensions",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [],
+  "methods": [
+    {
+      "name": "of",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "IClientFluidTypeExtensions",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "FluidState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "of",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "IClientFluidTypeExtensions",
+      "parameters": [
+        {
+          "name": "fluid",
+          "type": "Fluid",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "of",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "IClientFluidTypeExtensions",
+      "parameters": [
+        {
+          "name": "type",
+          "type": "FluidType",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTintColor",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "Returns the tint applied to the fluid's textures. The result represents a 32-bit integer where each 8-bits represent the alpha, red, green, and blue channel respectively.",
+      "deprecated": false
+    },
+    {
+      "name": "getStillTexture",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [],
+      "description": "Returns the reference of the texture to apply to a source fluid. This should return a reference to the texture and not the actual texture itself (e.g. minecraft:block/water_still will point to assets/minecraft/textures/block/water_still.png ). Important: This method should only return null for Fluids.EMPTY . All other implementations must define this property.",
+      "deprecated": false
+    },
+    {
+      "name": "getFlowingTexture",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [],
+      "description": "Returns the reference of the texture to apply to a flowing fluid. This should return a reference to the texture and not the actual texture itself (e.g. minecraft:block/water_flow will point to assets/minecraft/textures/block/water_flow.png ). Important: This method should only return null for Fluids.EMPTY . All other implementations must define this property.",
+      "deprecated": false
+    },
+    {
+      "name": "getOverlayTexture",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "@Nullable ResourceLocation",
+      "parameters": [],
+      "description": "Returns the reference of the texture to apply to a fluid directly touching a non-opaque block other than air. If no reference is specified, either #getStillTexture or #getFlowingTexture will be applied instead. This should return a reference to the texture and not the actual texture itself (e.g. minecraft:block/water_overlay will point to assets/minecraft/textures/block/water_overlay.png ).",
+      "deprecated": false
+    },
+    {
+      "name": "getRenderOverlayTexture",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "@Nullable ResourceLocation",
+      "parameters": [
+        {
+          "name": "mc",
+          "type": "Minecraft",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the location of the texture to apply to the camera when it is within the fluid. If no location is specified, no overlay will be applied. This should return a location to the texture and not a reference (e.g. minecraft:textures/misc/underwater.png will use the texture at assets/minecraft/textures/misc/underwater.png ).",
+      "deprecated": false
+    },
+    {
+      "name": "renderOverlay",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "mc",
+          "type": "Minecraft",
+          "annotations": []
+        },
+        {
+          "name": "poseStack",
+          "type": "PoseStack",
+          "annotations": []
+        }
+      ],
+      "description": "Renders #getRenderOverlayTexture onto the camera when within the fluid.",
+      "deprecated": false
+    },
+    {
+      "name": "modifyFogColor",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "@NotNull org.joml.Vector3f",
+      "parameters": [
+        {
+          "name": "camera",
+          "type": "Camera",
+          "annotations": []
+        },
+        {
+          "name": "partialTick",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "ClientLevel",
+          "annotations": []
+        },
+        {
+          "name": "renderDistance",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "darkenWorldAmount",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "fluidFogColor",
+          "type": "org.joml.Vector3f",
+          "annotations": []
+        }
+      ],
+      "description": "Modifies the color of the fog when the camera is within the fluid. The result expects a three float vector representing the red, green, and blue channels respectively. Each channel should be between [0,1].",
+      "deprecated": false
+    },
+    {
+      "name": "modifyFogRender",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "camera",
+          "type": "Camera",
+          "annotations": []
+        },
+        {
+          "name": "mode",
+          "type": "FogRenderer.FogMode",
+          "annotations": []
+        },
+        {
+          "name": "renderDistance",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "partialTick",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "nearDistance",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "farDistance",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "shape",
+          "type": "FogShape",
+          "annotations": []
+        }
+      ],
+      "description": "Modifies how the fog is currently being rendered when the camera is within a fluid.",
+      "deprecated": false
+    },
+    {
+      "name": "getStillTexture",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "FluidState",
+          "annotations": []
+        },
+        {
+          "name": "getter",
+          "type": "BlockAndTintGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the reference of the texture to apply to a source fluid. This should return a reference to the texture and not the actual texture itself (e.g. minecraft:block/water_still will point to assets/minecraft/textures/block/water_still.png ). Important: This method should only return null for Fluids.EMPTY . All other implementations must define this property.",
+      "deprecated": false
+    },
+    {
+      "name": "getFlowingTexture",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "FluidState",
+          "annotations": []
+        },
+        {
+          "name": "getter",
+          "type": "BlockAndTintGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the reference of the texture to apply to a flowing fluid. This should return a reference to the texture and not the actual texture itself (e.g. minecraft:block/water_flow will point to assets/minecraft/textures/block/water_flow.png ). Important: This method should only return null for Fluids.EMPTY . All other implementations must define this property.",
+      "deprecated": false
+    },
+    {
+      "name": "getOverlayTexture",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "FluidState",
+          "annotations": []
+        },
+        {
+          "name": "getter",
+          "type": "BlockAndTintGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the reference of the texture to apply to a fluid directly touching a non-opaque block other than air. If no reference is specified, either #getStillTexture or #getFlowingTexture will be applied instead. This should return a reference to the texture and not the actual texture itself (e.g. minecraft:block/water_overlay will point to assets/minecraft/textures/block/water_overlay.png ).",
+      "deprecated": false
+    },
+    {
+      "name": "getTintColor",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "FluidState",
+          "annotations": []
+        },
+        {
+          "name": "getter",
+          "type": "BlockAndTintGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the tint applied to the fluid's textures. The result represents a 32-bit integer where each 8-bits represent the alpha, red, green, and blue channel respectively.",
+      "deprecated": false
+    },
+    {
+      "name": "getTintColor",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the tint applied to the fluid's textures. The result represents a 32-bit integer where each 8-bits represent the alpha, red, green, and blue channel respectively.",
+      "deprecated": false
+    },
+    {
+      "name": "getStillTexture",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the reference of the texture to apply to a source fluid. This should return a reference to the texture and not the actual texture itself (e.g. minecraft:block/water_still will point to assets/minecraft/textures/block/water_still.png ). Important: This method should only return null for Fluids.EMPTY . All other implementations must define this property.",
+      "deprecated": false
+    },
+    {
+      "name": "getFlowingTexture",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the reference of the texture to apply to a flowing fluid. This should return a reference to the texture and not the actual texture itself (e.g. minecraft:block/water_flow will point to assets/minecraft/textures/block/water_flow.png ). Important: This method should only return null for Fluids.EMPTY . All other implementations must define this property.",
+      "deprecated": false
+    },
+    {
+      "name": "getOverlayTexture",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "FluidStack",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the reference of the texture to apply to a fluid directly touching a non-opaque block other than air. If no reference is specified, either #getStillTexture or #getFlowingTexture will be applied instead. This should return a reference to the texture and not the actual texture itself (e.g. minecraft:block/water_overlay will point to assets/minecraft/textures/block/water_overlay.png ).",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.3/net/minecraftforge/client/extensions/common/IClientFluidTypeExtensions.html"
+}

@@ -1,0 +1,439 @@
+{
+  "type": "class",
+  "name": "BlockSnapshot",
+  "qualified_name": "net.neoforged.neoforge.common.util.BlockSnapshot",
+  "package": "net.neoforged.neoforge.common.util",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Represents a captured snapshot of a block, including the level, position, state, BE data, and setBlock flags. Used to record the prior state and unwind changes if the change was denied, such as during BlockEvent.BreakEvent .",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "DEBUG",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dim",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ResourceKey < Level >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pos",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "BlockPos",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "flags",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "state",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "BlockState",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "nbt",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "@Nullable CompoundTag",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "level",
+      "modifiers": [
+        "private"
+      ],
+      "type": "WeakReference < LevelAccessor >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "toString",
+      "modifiers": [
+        "private"
+      ],
+      "type": "@Nullable String",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "BlockSnapshot",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [
+        {
+          "name": "dim",
+          "type": "ResourceKey < Level >",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "LevelAccessor",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "state",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "nbt",
+          "type": "CompoundTag",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        },
+        {
+          "name": "flags",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "create",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "BlockSnapshot",
+      "parameters": [
+        {
+          "name": "dim",
+          "type": "ResourceKey < Level >",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "LevelAccessor",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "flag",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "Creates a new snapshot of the data at the given position.",
+      "deprecated": false
+    },
+    {
+      "name": "create",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "BlockSnapshot",
+      "parameters": [
+        {
+          "name": "dim",
+          "type": "ResourceKey < Level >",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "LevelAccessor",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Creates a new snapshot with the default block flags ( and Block#UPDATE_CLIENTS .",
+      "deprecated": false
+    },
+    {
+      "name": "getDimension",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ResourceKey < Level >",
+      "parameters": [],
+      "description": "Returns the recorded dimension key.",
+      "deprecated": false
+    },
+    {
+      "name": "getPos",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BlockPos",
+      "parameters": [],
+      "description": "Returns the recorded position.",
+      "deprecated": false
+    },
+    {
+      "name": "getFlags",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTag",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@Nullable CompoundTag",
+      "parameters": [],
+      "description": "Returns the recorded block entity NBT data, if one was present.",
+      "deprecated": false
+    },
+    {
+      "name": "getState",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BlockState",
+      "parameters": [],
+      "description": "Returns the snapshot's recorded block state.",
+      "deprecated": false
+    },
+    {
+      "name": "getLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@Nullable LevelAccessor",
+      "parameters": [],
+      "description": "Returns the stored level, attempting to resolve it from the current server if it has gone out of scope.",
+      "deprecated": false
+    },
+    {
+      "name": "getCurrentState",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BlockState",
+      "parameters": [],
+      "description": "Returns the current (live) block state at the recorded position, not the snapshot's recorded state.",
+      "deprecated": false
+    },
+    {
+      "name": "recreateBlockEntity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@Nullable BlockEntity",
+      "parameters": [
+        {
+          "name": "provider",
+          "type": "HolderLookup.Provider",
+          "annotations": []
+        }
+      ],
+      "description": "Recreates a block entity from the stored data (pos/state/NBT) of this block snapshot.",
+      "deprecated": false
+    },
+    {
+      "name": "restoreToLocation",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "LevelAccessor",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "flags",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "Restores this block snapshot to the target level and position with the specified flags.",
+      "deprecated": false
+    },
+    {
+      "name": "restore",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "flags",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "Calls restoreToLocation(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, int) with the stored level, position, but custom block flags.",
+      "deprecated": false
+    },
+    {
+      "name": "restore",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "Calls restoreToLocation(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, int) with the stored level, position, and block flags.",
+      "deprecated": false
+    },
+    {
+      "name": "restoreBlockEntity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "LevelAccessor",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Loads the stored BlockEntity data if one exists at the given position.",
+      "deprecated": false
+    },
+    {
+      "name": "equals",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "obj",
+          "type": "Object",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hashCode",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "toString",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockEntityTag",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "@Nullable CompoundTag",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "LevelAccessor",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Checks for a block entity at a given position, and saves it to NBT with full metadata if it exists.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21.x-neoforge/net/neoforged/neoforge/common/util/BlockSnapshot.html"
+}

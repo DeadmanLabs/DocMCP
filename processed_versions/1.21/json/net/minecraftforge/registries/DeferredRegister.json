@@ -1,0 +1,523 @@
+{
+  "type": "class",
+  "name": "DeferredRegister<T>",
+  "qualified_name": "net.minecraftforge.registries.DeferredRegister<T>",
+  "package": "net.minecraftforge.registries",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Utility class to help with managing registry entries. Maintains a list of all suppliers for entries and registers them during the proper Register event. Suppliers should return NEW instances every time. Example Usage: private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID); private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID); public static final RegistryObject<Block> ROCK_BLOCK = BLOCKS.register(\"rock\", () -> new Block(Block.Properties.create(Material.ROCK))); public static final RegistryObject<Item> ROCK_ITEM = ITEMS.register(\"rock\", () -> new BlockItem(ROCK_BLOCK.get(), new Item.Properties().group(ItemGroup.MISC))); public ExampleMod() { ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus()); BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus()); }",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "registryKey",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ResourceKey <? extends Registry < T >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "modid",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "optionalRegistry",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "entries",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < RegistryObject < T >, Supplier <? extends T >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "entriesView",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Set < RegistryObject < T >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registryFactory",
+      "modifiers": [
+        "private"
+      ],
+      "type": "@Nullable Supplier < RegistryBuilder <?>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "optionalTags",
+      "modifiers": [
+        "private"
+      ],
+      "type": "@Nullable com.google.common.collect.SetMultimap< TagKey < T >, Supplier < T >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "seenRegisterEvent",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "DeferredRegister",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [
+        {
+          "name": "registryKey",
+          "type": "ResourceKey <? extends Registry < T >>",
+          "annotations": []
+        },
+        {
+          "name": "modid",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "optionalRegistry",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DeferredRegister",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [
+        {
+          "name": "reg",
+          "type": "IForgeRegistry < T >",
+          "annotations": []
+        },
+        {
+          "name": "modid",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "create",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "DeferredRegister <B>",
+      "parameters": [
+        {
+          "name": "reg",
+          "type": "IForgeRegistry <B>",
+          "annotations": []
+        },
+        {
+          "name": "modid",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "DeferredRegister factory for forge registries that exist before this DeferredRegister is created. If you have a supplier, do not use this method. Instead, use one of the other factories that takes in a registry key or registry name.",
+      "deprecated": false
+    },
+    {
+      "name": "create",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "DeferredRegister <B>",
+      "parameters": [
+        {
+          "name": "reg",
+          "type": "DeferredRegister.RegistryHolder <B>",
+          "annotations": []
+        },
+        {
+          "name": "modid",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "DeferredRegister factory for forge registries that exist after this DeferredRegister is created.",
+      "deprecated": false
+    },
+    {
+      "name": "create",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "DeferredRegister <B>",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "ResourceKey <? extends Registry <B>>",
+          "annotations": []
+        },
+        {
+          "name": "modid",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "DeferredRegister factory for custom forge registries or vanilla registries to lookup based on the provided registry key. Supports both registries that already exist or do not exist yet. If the registry is never created, any RegistryObject s made from this DeferredRegister will throw an exception. To allow the optional existence of a registry without error, use createOptional(ResourceKey, String) .",
+      "deprecated": false
+    },
+    {
+      "name": "createOptional",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "DeferredRegister <B>",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "ResourceKey <? extends Registry <B>>",
+          "annotations": []
+        },
+        {
+          "name": "modid",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "DeferredRegister factory for the optional existence of custom forge registries or vanilla registries to lookup based on the provided registry key. Supports both registries that already exist or do not exist yet. If the registry is never created, any RegistryObject s made from this DeferredRegister will never be filled but will not throw an exception.",
+      "deprecated": false
+    },
+    {
+      "name": "create",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "DeferredRegister <B>",
+      "parameters": [
+        {
+          "name": "registryName",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "modid",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "DeferredRegister factory for custom forge registries or vanilla registries to lookup based on the provided registry name. Supports both registries that already exist or do not exist yet. If the registry is never created, any RegistryObject s made from this DeferredRegister will throw an exception. To allow the optional existence of a registry without error, use createOptional(ResourceLocation, String) .",
+      "deprecated": false
+    },
+    {
+      "name": "createOptional",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "DeferredRegister <B>",
+      "parameters": [
+        {
+          "name": "registryName",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "modid",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "DeferredRegister factory for the optional existence of custom forge registries or vanilla registries to lookup based on the provided registry name. Supports both registries that already exist or do not exist yet. If the registry is never created, any RegistryObject s made from this DeferredRegister will never be filled but will not throw an exception.",
+      "deprecated": false
+    },
+    {
+      "name": "register",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "RegistryObject <I>",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "sup",
+          "type": "Supplier <? extends I>",
+          "annotations": []
+        }
+      ],
+      "description": "Adds a new supplier to the list of entries to be registered, and returns a RegistryObject that will be populated with the created entry automatically.",
+      "deprecated": false
+    },
+    {
+      "name": "makeRegistry",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "DeferredRegister.RegistryHolder < T >",
+      "parameters": [
+        {
+          "name": "sup",
+          "type": "Supplier < RegistryBuilder < T >>",
+          "annotations": []
+        }
+      ],
+      "description": "Only used for custom registries to fill the forge registry held in this DeferredRegister. Calls RegistryBuilder.setName(net.minecraft.resources.ResourceLocation) automatically.",
+      "deprecated": false
+    },
+    {
+      "name": "createTagKey",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@NotNull TagKey < T >",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "String",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        }
+      ],
+      "description": "Creates a tag key based on the current modid and provided path as the location and the registry name linked to this DeferredRegister. To control the namespace, use createTagKey(ResourceLocation) .",
+      "deprecated": false
+    },
+    {
+      "name": "createTagKey",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@NotNull TagKey < T >",
+      "parameters": [
+        {
+          "name": "location",
+          "type": "ResourceLocation",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        }
+      ],
+      "description": "Creates a tag key based on the provided resource location and the registry name linked to this DeferredRegister. To use the current modid as the namespace, use createTagKey(String) .",
+      "deprecated": false
+    },
+    {
+      "name": "createOptionalTagKey",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@NotNull TagKey < T >",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "String",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "defaults",
+          "type": "Set <? extends Supplier < T >>",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        }
+      ],
+      "description": "Creates a tag key with the current modid and provided path that will use the set of defaults if the tag is not loaded from any datapacks. Useful on the client side when a server may not provide a specific tag. To control the namespace, use createOptionalTagKey(ResourceLocation, Set) .",
+      "deprecated": false
+    },
+    {
+      "name": "createOptionalTagKey",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@NotNull TagKey < T >",
+      "parameters": [
+        {
+          "name": "location",
+          "type": "ResourceLocation",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "defaults",
+          "type": "Set <? extends Supplier < T >>",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        }
+      ],
+      "description": "Creates a tag key with the provided location that will use the set of defaults if the tag is not loaded from any datapacks. Useful on the client side when a server may not provide a specific tag. To use the current modid as the namespace, use createOptionalTagKey(String, Set) .",
+      "deprecated": false
+    },
+    {
+      "name": "addOptionalTagDefaults",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "TagKey < T >",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "defaults",
+          "type": "Set <? extends Supplier < T >>",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        }
+      ],
+      "description": "Adds defaults to an existing tag key. The set of defaults will be bound to the tag if the tag is not loaded from any datapacks. Useful on the client side when a server may not provide a specific tag.",
+      "deprecated": false
+    },
+    {
+      "name": "register",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "bus",
+          "type": "net.minecraftforge.eventbus.api.IEventBus",
+          "annotations": []
+        }
+      ],
+      "description": "Adds our event handler to the specified event bus, this MUST be called in order for this class to function. See the example usage .",
+      "deprecated": false
+    },
+    {
+      "name": "getEntries",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Collection < RegistryObject < T >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRegistryKey",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ResourceKey <? extends Registry < T >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRegistryName",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@NotNull ResourceLocation",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "makeRegistry",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "DeferredRegister.RegistryHolder < T >",
+      "parameters": [
+        {
+          "name": "registryName",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "sup",
+          "type": "Supplier < RegistryBuilder < T >>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onFill",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "registry",
+          "type": "IForgeRegistry <?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21/net/minecraftforge/registries/DeferredRegister.html"
+}

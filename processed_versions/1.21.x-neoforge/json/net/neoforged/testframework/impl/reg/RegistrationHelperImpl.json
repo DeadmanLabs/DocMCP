@@ -1,0 +1,343 @@
+{
+  "type": "class",
+  "name": "RegistrationHelperImpl",
+  "qualified_name": "net.neoforged.testframework.impl.reg.RegistrationHelperImpl",
+  "package": "net.neoforged.testframework.impl.reg",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "owner",
+      "modifiers": [
+        "private"
+      ],
+      "type": "net.neoforged.fml.ModContainer",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PROVIDERS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Map < Class <?>, RegistrationHelperImpl.DataGenProvider <?>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "modId",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "providers",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.google.common.collect.ListMultimap< Class <?>, Consumer <? extends DataProvider >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "directProviders",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "List < Function < GatherDataEvent , DataProvider >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registrars",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < ResourceKey <? extends Registry <?>>, DeferredRegister <?>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blocks",
+      "modifiers": [
+        "private"
+      ],
+      "type": "DeferredBlocks",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "items",
+      "modifiers": [
+        "private"
+      ],
+      "type": "DeferredItems",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "entityTypes",
+      "modifiers": [
+        "private"
+      ],
+      "type": "DeferredEntityTypes",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "attachments",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "RegistrationHelperImpl.DeferredRegistrar < AttachmentType <?>, DeferredAttachmentTypes >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "bus",
+      "modifiers": [
+        "private"
+      ],
+      "type": "net.neoforged.bus.api.IEventBus",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "listeners",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "List < Consumer <? extends net.neoforged.bus.api.Event>>",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "RegistrationHelperImpl",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "modId",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "registrar",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "DeferredRegister <T>",
+      "parameters": [
+        {
+          "name": "registry",
+          "type": "ResourceKey < Registry <T>>",
+          "annotations": []
+        }
+      ],
+      "description": "Description copied from interface: RegistrationHelper",
+      "deprecated": false
+    },
+    {
+      "name": "blocks",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "DeferredBlocks",
+      "parameters": [],
+      "description": "Description copied from interface: RegistrationHelper",
+      "deprecated": false
+    },
+    {
+      "name": "items",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "DeferredItems",
+      "parameters": [],
+      "description": "Description copied from interface: RegistrationHelper",
+      "deprecated": false
+    },
+    {
+      "name": "entityTypes",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "DeferredEntityTypes",
+      "parameters": [],
+      "description": "Description copied from interface: RegistrationHelper",
+      "deprecated": false
+    },
+    {
+      "name": "attachments",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "DeferredAttachmentTypes",
+      "parameters": [],
+      "description": "Description copied from interface: RegistrationHelper",
+      "deprecated": false
+    },
+    {
+      "name": "registerDataMap",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "M",
+      "parameters": [
+        {
+          "name": "map",
+          "type": "M",
+          "annotations": []
+        }
+      ],
+      "description": "Description copied from interface: RegistrationHelper",
+      "deprecated": false
+    },
+    {
+      "name": "modId",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "Description copied from interface: RegistrationHelper",
+      "deprecated": false
+    },
+    {
+      "name": "registerSubpack",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "provider",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "type",
+          "type": "Class <T>",
+          "annotations": []
+        },
+        {
+          "name": "consumer",
+          "type": "Consumer <T>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addProvider",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "provider",
+          "type": "Function < GatherDataEvent , DataProvider >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "register",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "bus",
+          "type": "net.neoforged.bus.api.IEventBus",
+          "annotations": []
+        },
+        {
+          "name": "container",
+          "type": "net.neoforged.fml.ModContainer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "eventListeners",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Consumer < Consumer <? extends net.neoforged.bus.api.Event>>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "gather",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "event",
+          "type": "GatherDataEvent",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21.x-neoforge/net/neoforged/testframework/impl/reg/RegistrationHelperImpl.html"
+}

@@ -1,0 +1,356 @@
+{
+  "type": "class",
+  "name": "QuadLighter",
+  "qualified_name": "net.minecraftforge.client.model.lighting.QuadLighter",
+  "package": "net.minecraftforge.client.model.lighting",
+  "modifiers": [
+    "public",
+    "abstract",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Base class for all quad lighting providers. Contains all the shared elements needed for BakedQuad processing and defers lighting logic to inheritors.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "WHITE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "float[]",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "colors",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "BlockColors",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "currentHash",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "level",
+      "modifiers": [
+        "private"
+      ],
+      "type": "BlockAndTintGetter",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pos",
+      "modifiers": [
+        "private"
+      ],
+      "type": "BlockPos",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "state",
+      "modifiers": [
+        "private"
+      ],
+      "type": "BlockState",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cachedTintIndex",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cachedTintColor",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "float[]",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "brightness",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "float[]",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lightmap",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int[]",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "positions",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "float[][]",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "normals",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "byte[][]",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "packedLightmaps",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int[]",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "QuadLighter",
+      "modifiers": [
+        "protected"
+      ],
+      "parameters": [
+        {
+          "name": "colors",
+          "type": "BlockColors",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "computeLightingAt",
+      "modifiers": [
+        "protected",
+        "abstract"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "BlockAndTintGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "state",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "calculateBrightness",
+      "modifiers": [
+        "protected",
+        "abstract"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "position",
+          "type": "float[]",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "calculateLightmap",
+      "modifiers": [
+        "protected",
+        "abstract"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "position",
+          "type": "float[]",
+          "annotations": []
+        },
+        {
+          "name": "normal",
+          "type": "byte[]",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setup",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "BlockAndTintGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "state",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "reset",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "process",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "consumer",
+          "type": "VertexConsumer",
+          "annotations": []
+        },
+        {
+          "name": "pose",
+          "type": "PoseStack.Pose",
+          "annotations": []
+        },
+        {
+          "name": "quad",
+          "type": "BakedQuad",
+          "annotations": []
+        },
+        {
+          "name": "overlay",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getColorFast",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "float[]",
+      "parameters": [
+        {
+          "name": "tintIndex",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "calculateShade",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "normalX",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "normalY",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "normalZ",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "constantAmbientLight",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.19.4/net/minecraftforge/client/model/lighting/QuadLighter.html"
+}

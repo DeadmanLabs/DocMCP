@@ -1,0 +1,106 @@
+{
+  "type": "class",
+  "name": "MobSpawnEvent.PositionCheck",
+  "qualified_name": "net.minecraftforge.event.entity.living.MobSpawnEvent.PositionCheck",
+  "package": "net.minecraftforge.event.entity.living",
+  "modifiers": [
+    "public",
+    "static",
+    "class"
+  ],
+  "annotations": [],
+  "description": "This event is fired when a mob checks for a valid spawn position, after SpawnPlacements.checkSpawnRules(net.minecraft.world.entity.EntityType<T>, net.minecraft.world.level.ServerLevelAccessor, net.minecraft.world.entity.MobSpawnType, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource) has been evaluated. Conditions validated here include the following: Obstruction - mobs inside blocks or fluids. Pathfinding - if the spawn block is valid for pathfinding. Sea Level - Ocelots check if the position is above sea level. Spawn Block - Ocelots check if the below block is grass or leaves. These checks are performed by the vanilla methods Mob.checkSpawnRules(net.minecraft.world.level.LevelAccessor, net.minecraft.world.entity.MobSpawnType) and Mob.checkSpawnObstruction(net.minecraft.world.level.LevelReader) . The logical-and of both methods forms the default result of this event. This event has a result. To change the result of this event, use Event.setResult(net.minecraftforge.eventbus.api.Event.Result) . Results are interpreted in the following manner: Allow - The position will be accepted, and the spawn process will continue. Default - The position will be accepted if Mob.checkSpawnRules(net.minecraft.world.level.LevelAccessor, net.minecraft.world.entity.MobSpawnType) and Mob.checkSpawnObstruction(net.minecraft.world.level.LevelReader) are both true. Deny - The position will not be accepted. The spawn process will abort, and further events will not be called. This event is fired on the main Forge event bus , only on the logical server .",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraftforge.event.entity.EntityEvent",
+      "net.minecraftforge.event.entity.living.MobSpawnEvent"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "spawner",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "@Nullable BaseSpawner",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "spawnType",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "MobSpawnType",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "PositionCheck",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "mob",
+          "type": "Mob",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "ServerLevelAccessor",
+          "annotations": []
+        },
+        {
+          "name": "spawnType",
+          "type": "MobSpawnType",
+          "annotations": []
+        },
+        {
+          "name": "spawner",
+          "type": "BaseSpawner",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getSpawner",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "@Nullable BaseSpawner",
+      "parameters": [],
+      "description": "Retrieves the underlying BaseSpawner instance if this mob was created by a Mob Spawner of some form. This is always null unless getSpawnType() is MobSpawnType.SPAWNER , and may still be null even then.",
+      "deprecated": false
+    },
+    {
+      "name": "getSpawnType",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "MobSpawnType",
+      "parameters": [],
+      "description": "Retrieves the type of mob spawn that is happening.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.6/net/minecraftforge/event/entity/living/MobSpawnEvent.PositionCheck.html"
+}

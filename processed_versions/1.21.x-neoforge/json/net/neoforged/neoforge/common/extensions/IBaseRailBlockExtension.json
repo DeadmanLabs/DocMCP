@@ -1,0 +1,186 @@
+{
+  "type": "interface",
+  "name": "IBaseRailBlockExtension",
+  "qualified_name": "net.neoforged.neoforge.common.extensions.IBaseRailBlockExtension",
+  "package": "net.neoforged.neoforge.common.extensions",
+  "modifiers": [
+    "public",
+    "interface"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": []
+  },
+  "nested_classes": [],
+  "fields": [],
+  "constructors": [],
+  "methods": [
+    {
+      "name": "isFlexibleRail",
+      "modifiers": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Return true if the rail can make corners. Used by placement logic.",
+      "deprecated": false
+    },
+    {
+      "name": "canMakeSlopes",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "Returns true if the rail can make up and down slopes. Used by placement logic.",
+      "deprecated": false
+    },
+    {
+      "name": "getRailDirection",
+      "modifiers": [],
+      "return_type": "RailShape",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "BlockGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "cart",
+          "type": "AbstractMinecart",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "Return the rail's direction. Can be used to make the cart think the rail is a different shape, for example when making diamond junctions or switches. The cart parameter will often be null unless it it called from EntityMinecart.",
+      "deprecated": false
+    },
+    {
+      "name": "getRailMaxSpeed",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "cart",
+          "type": "AbstractMinecart",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the max speed of the rail at the specified position.",
+      "deprecated": false
+    },
+    {
+      "name": "onMinecartPass",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "cart",
+          "type": "AbstractMinecart",
+          "annotations": []
+        }
+      ],
+      "description": "This function is called by any minecart that passes over this rail. It is called once per update tick that the minecart is on the rail.",
+      "deprecated": false
+    },
+    {
+      "name": "isValidRailShape",
+      "modifiers": [
+        "default"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "shape",
+          "type": "RailShape",
+          "annotations": []
+        }
+      ],
+      "description": "Returns true if the given RailShape is valid for this rail block. This is called when the RailShape for the initial placement of this block is calculated or when another rail block tries to connect to this block and this block's RailState calculates the new RailShape for its current neigbors.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21.x-neoforge/net/neoforged/neoforge/common/extensions/IBaseRailBlockExtension.html"
+}

@@ -1,0 +1,423 @@
+{
+  "type": "class",
+  "name": "ChunkTaskPriorityQueueSorter",
+  "qualified_name": "net.minecraft.server.level.ChunkTaskPriorityQueueSorter",
+  "package": "net.minecraft.server.level",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "queues",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < ProcessorHandle <?>, ChunkTaskPriorityQueue <? extends Function < ProcessorHandle < Unit >, ?>>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sleeping",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Set < ProcessorHandle <?>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mailbox",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ProcessorMailbox < StrictQueue.IntRunnable >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ChunkTaskPriorityQueueSorter",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_140555_",
+          "type": "List < ProcessorHandle <?>>",
+          "annotations": []
+        },
+        {
+          "name": "p_140556_",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "p_140557_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "hasWork",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "message",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ChunkTaskPriorityQueueSorter.Message <T>",
+      "parameters": [
+        {
+          "name": "p_143182_",
+          "type": "Function < ProcessorHandle < Unit >, T>",
+          "annotations": []
+        },
+        {
+          "name": "p_143183_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_143184_",
+          "type": "IntSupplier",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "message",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ChunkTaskPriorityQueueSorter.Message < Runnable >",
+      "parameters": [
+        {
+          "name": "p_140625_",
+          "type": "Runnable",
+          "annotations": []
+        },
+        {
+          "name": "p_140626_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_140627_",
+          "type": "IntSupplier",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "message",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ChunkTaskPriorityQueueSorter.Message < Runnable >",
+      "parameters": [
+        {
+          "name": "p_140643_",
+          "type": "ChunkHolder",
+          "annotations": []
+        },
+        {
+          "name": "p_140644_",
+          "type": "Runnable",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "message",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ChunkTaskPriorityQueueSorter.Message <T>",
+      "parameters": [
+        {
+          "name": "p_143157_",
+          "type": "ChunkHolder",
+          "annotations": []
+        },
+        {
+          "name": "p_143158_",
+          "type": "Function < ProcessorHandle < Unit >, T>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "release",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ChunkTaskPriorityQueueSorter.Release",
+      "parameters": [
+        {
+          "name": "p_140629_",
+          "type": "Runnable",
+          "annotations": []
+        },
+        {
+          "name": "p_140630_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_140631_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getProcessor",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ProcessorHandle < ChunkTaskPriorityQueueSorter.Message <T>>",
+      "parameters": [
+        {
+          "name": "p_140605_",
+          "type": "ProcessorHandle <T>",
+          "annotations": []
+        },
+        {
+          "name": "p_140606_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getReleaseProcessor",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ProcessorHandle < ChunkTaskPriorityQueueSorter.Release >",
+      "parameters": [
+        {
+          "name": "p_140568_",
+          "type": "ProcessorHandle < Runnable >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onLevelChange",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_140616_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_140617_",
+          "type": "IntSupplier",
+          "annotations": []
+        },
+        {
+          "name": "p_140618_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_140619_",
+          "type": "IntConsumer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "release",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_140570_",
+          "type": "ProcessorHandle <T>",
+          "annotations": []
+        },
+        {
+          "name": "p_140571_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_140572_",
+          "type": "Runnable",
+          "annotations": []
+        },
+        {
+          "name": "p_140573_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "submit",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_140590_",
+          "type": "ProcessorHandle <T>",
+          "annotations": []
+        },
+        {
+          "name": "p_140591_",
+          "type": "Function < ProcessorHandle < Unit >, T>",
+          "annotations": []
+        },
+        {
+          "name": "p_140592_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_140593_",
+          "type": "IntSupplier",
+          "annotations": []
+        },
+        {
+          "name": "p_140594_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pollTask",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_140646_",
+          "type": "ChunkTaskPriorityQueue < Function < ProcessorHandle < Unit >, T>>",
+          "annotations": []
+        },
+        {
+          "name": "p_140647_",
+          "type": "ProcessorHandle <T>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getQueue",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "ChunkTaskPriorityQueue < Function < ProcessorHandle < Unit >, T>>",
+      "parameters": [
+        {
+          "name": "p_140653_",
+          "type": "ProcessorHandle <T>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDebugStatus",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "close",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.2/net/minecraft/server/level/ChunkTaskPriorityQueueSorter.html"
+}

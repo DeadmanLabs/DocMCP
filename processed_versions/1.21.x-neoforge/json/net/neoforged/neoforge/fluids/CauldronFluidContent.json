@@ -1,0 +1,253 @@
+{
+  "type": "class",
+  "name": "CauldronFluidContent",
+  "qualified_name": "net.neoforged.neoforge.fluids.CauldronFluidContent",
+  "package": "net.neoforged.neoforge.fluids",
+  "modifiers": [
+    "public",
+    "final",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Fluid content information for cauldrons. Empty, water and lava cauldrons are registered by default, and additional cauldrons must be registered with RegisterCauldronFluidContentEvent . Contents can be queried with getForBlock(net.minecraft.world.level.block.Block) and getForFluid(net.minecraft.world.level.material.Fluid) . The CauldronFluidContent itself defines: The block of the cauldron. The fluid that can be accepted by the cauldron. NBT is discarded when entering the cauldron. Which fluid amounts can be stored in the cauldron, and how they map to the level property of the cauldron. If levelProperty is null , then maxLevel = 1 , and there is only one level. Otherwise, the levels are all the integer values between 1 and maxLevel (included). totalAmount defines how much fluid (in millibuckets) there is in one level of the cauldron.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "block",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "type": "Block",
+      "description": "Block of the cauldron.",
+      "deprecated": false
+    },
+    {
+      "name": "fluid",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "type": "Fluid",
+      "description": "Fluid stored inside the cauldron.",
+      "deprecated": false
+    },
+    {
+      "name": "totalAmount",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "type": "int",
+      "description": "Amount of #fluid in millibuckets in the entire full cauldron.",
+      "deprecated": false
+    },
+    {
+      "name": "maxLevel",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "type": "int",
+      "description": "Maximum level for levelProperty . 1 if levelProperty is null, otherwise a number >= 1 . The minimum level is always 1.",
+      "deprecated": false
+    },
+    {
+      "name": "levelProperty",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "type": "@Nullable IntegerProperty",
+      "description": "Property storing the level of the cauldron. If it's null , only one level is possible.",
+      "deprecated": false
+    },
+    {
+      "name": "BLOCK_TO_CAULDRON",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Map < Block , CauldronFluidContent >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "FLUID_TO_CAULDRON",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Map < Fluid , CauldronFluidContent >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "CauldronFluidContent",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [
+        {
+          "name": "block",
+          "type": "Block",
+          "annotations": []
+        },
+        {
+          "name": "fluid",
+          "type": "Fluid",
+          "annotations": []
+        },
+        {
+          "name": "totalAmount",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "maxLevel",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "levelProperty",
+          "type": "IntegerProperty",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "currentLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "Return the current level of the cauldron given its block state, or 0 if it's an empty cauldron.",
+      "deprecated": false
+    },
+    {
+      "name": "getForBlock",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "@Nullable CauldronFluidContent",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "Block",
+          "annotations": []
+        }
+      ],
+      "description": "Get the cauldron fluid content for a cauldron block, or null if none was registered (yet).",
+      "deprecated": false
+    },
+    {
+      "name": "getForFluid",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "@Nullable CauldronFluidContent",
+      "parameters": [
+        {
+          "name": "fluid",
+          "type": "Fluid",
+          "annotations": []
+        }
+      ],
+      "description": "Get the cauldron fluid content for a fluid, or null if no cauldron was registered for that fluid (yet).",
+      "deprecated": false
+    },
+    {
+      "name": "init",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "register",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "block",
+          "type": "Block",
+          "annotations": []
+        },
+        {
+          "name": "fluid",
+          "type": "Fluid",
+          "annotations": []
+        },
+        {
+          "name": "totalAmount",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "levelProperty",
+          "type": "IntegerProperty",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "Do not try to call, use the RegisterCauldronFluidContentEvent event instead.",
+      "deprecated": false
+    },
+    {
+      "name": "registerCapabilities",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "event",
+          "type": "RegisterCapabilitiesEvent",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21.x-neoforge/net/neoforged/neoforge/fluids/CauldronFluidContent.html"
+}

@@ -1,0 +1,718 @@
+{
+  "type": "class",
+  "name": "Biome",
+  "qualified_name": "net.minecraft.world.biome.Biome",
+  "package": "net.minecraft.world.biome",
+  "modifiers": [
+    "public",
+    "final",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraftforge.registries.ForgeRegistryEntry",
+      "net.minecraftforge.registries.ForgeRegistryEntry.UncheckedRegistryEntry",
+      "Biome"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DIRECT_CODEC",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.serialization.Codec< Biome >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NETWORK_CODEC",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.serialization.Codec< Biome >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CODEC",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.serialization.Codec< Supplier < Biome >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LIST_CODEC",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.serialization.Codec< List < Supplier < Biome >>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "structuresByStep",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < Integer , List < Structure <?>>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "TEMPERATURE_NOISE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "PerlinNoiseGenerator",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "FROZEN_TEMPERATURE_NOISE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "PerlinNoiseGenerator",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BIOME_INFO_NOISE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "PerlinNoiseGenerator",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "climateSettings",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Biome.Climate",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "generationSettings",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "BiomeGenerationSettings",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mobSettings",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "MobSpawnInfo",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "depth",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "scale",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "float",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "biomeCategory",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Biome.Category",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "specialEffects",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "BiomeAmbience",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "temperatureCache",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ThreadLocal <it.unimi.dsi.fastutil.longs.Long2FloatLinkedOpenHashMap>",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "Biome",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [
+        {
+          "name": "p_i241927_1_",
+          "type": "Biome.Climate",
+          "annotations": []
+        },
+        {
+          "name": "p_i241927_2_",
+          "type": "Biome.Category",
+          "annotations": []
+        },
+        {
+          "name": "p_i241927_3_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_i241927_4_",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "p_i241927_5_",
+          "type": "BiomeAmbience",
+          "annotations": []
+        },
+        {
+          "name": "p_i241927_6_",
+          "type": "BiomeGenerationSettings",
+          "annotations": []
+        },
+        {
+          "name": "p_i241927_7_",
+          "type": "MobSpawnInfo",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getSkyColor",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMobSettings",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "MobSpawnInfo",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPrecipitation",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Biome.RainType",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isHumid",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getHeightAdjustedTemperature",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_242437_1_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTemperature",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "p_225486_1_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldFreeze",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_201848_1_",
+          "type": "IWorldReader",
+          "annotations": []
+        },
+        {
+          "name": "p_201848_2_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldFreeze",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_201854_1_",
+          "type": "IWorldReader",
+          "annotations": []
+        },
+        {
+          "name": "p_201854_2_",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "p_201854_3_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldSnow",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_201850_1_",
+          "type": "IWorldReader",
+          "annotations": []
+        },
+        {
+          "name": "p_201850_2_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getGenerationSettings",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BiomeGenerationSettings",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "generate",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_242427_1_",
+          "type": "StructureManager",
+          "annotations": []
+        },
+        {
+          "name": "p_242427_2_",
+          "type": "ChunkGenerator",
+          "annotations": []
+        },
+        {
+          "name": "p_242427_3_",
+          "type": "WorldGenRegion",
+          "annotations": []
+        },
+        {
+          "name": "p_242427_4_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_242427_6_",
+          "type": "SharedSeedRandom",
+          "annotations": []
+        },
+        {
+          "name": "p_242427_7_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFogColor",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getGrassColor",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_225528_1_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_225528_3_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getGrassColorFromTexture",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFoliageColor",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFoliageColorFromTexture",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "buildSurfaceAt",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_206854_1_",
+          "type": "Random",
+          "annotations": []
+        },
+        {
+          "name": "p_206854_2_",
+          "type": "IChunk",
+          "annotations": []
+        },
+        {
+          "name": "p_206854_3_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_206854_4_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_206854_5_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_206854_6_",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "p_206854_8_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_206854_9_",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "p_206854_10_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_206854_11_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDepth",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDownfall",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getScale",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBaseTemperature",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSpecialEffects",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BiomeAmbience",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getWaterColor",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getWaterFogColor",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAmbientParticle",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < ParticleEffectAmbience >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAmbientLoop",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < SoundEvent >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAmbientMood",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < MoodSoundAmbience >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAmbientAdditions",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < SoundAdditionsAmbience >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBackgroundMusic",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Optional < BackgroundMusicSelector >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBiomeCategory",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "Biome.Category",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "toString",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.16.5/net/minecraft/world/biome/Biome.html"
+}

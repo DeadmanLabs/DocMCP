@@ -1,0 +1,159 @@
+{
+  "type": "interface",
+  "name": "ITagManager<V>",
+  "qualified_name": "net.minecraftforge.registries.tags.ITagManager<V>",
+  "package": "net.minecraftforge.registries.tags",
+  "modifiers": [
+    "public",
+    "interface"
+  ],
+  "annotations": [],
+  "description": "A tag manager holds information about all tags currently bound to a forge registry. This should be preferred to any Holder -related methods.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": []
+  },
+  "nested_classes": [],
+  "fields": [],
+  "constructors": [],
+  "methods": [
+    {
+      "name": "getTag",
+      "modifiers": [],
+      "return_type": "@NotNull ITag < V >",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "TagKey < V >",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        }
+      ],
+      "description": "Queries this tag manager for a tag with the given tag key. If it does not exist, this will create an empty tag and return it.",
+      "deprecated": false
+    },
+    {
+      "name": "getReverseTag",
+      "modifiers": [],
+      "return_type": "@NotNull Optional < IReverseTag < V >>",
+      "parameters": [
+        {
+          "name": "value",
+          "type": "V",
+          "annotations": [
+            "NotNull"
+          ]
+        }
+      ],
+      "description": "Queries a reverse tag for a given value from the forge registry linked to this tag manager. A reverse tag stores all tags that the given value is contained in.",
+      "deprecated": false
+    },
+    {
+      "name": "isKnownTagName",
+      "modifiers": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "TagKey < V >",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        }
+      ],
+      "description": "Checks whether the given tag key exists in this tag manager and is bound. Unlike getTag(TagKey) , this method will not create the tag if it does not exist.",
+      "deprecated": false
+    },
+    {
+      "name": "stream",
+      "modifiers": [],
+      "return_type": "@NotNull Stream < ITag < V >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTagNames",
+      "modifiers": [],
+      "return_type": "@NotNull Stream < TagKey < V >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createTagKey",
+      "modifiers": [],
+      "return_type": "@NotNull TagKey < V >",
+      "parameters": [
+        {
+          "name": "location",
+          "type": "ResourceLocation",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        }
+      ],
+      "description": "Creates a tag key based on the location and the forge registry linked to this tag manager. Custom registries can use DeferredRegister.createTagKey(ResourceLocation) to create tag keys before the tag manager is created.",
+      "deprecated": false
+    },
+    {
+      "name": "createOptionalTagKey",
+      "modifiers": [],
+      "return_type": "@NotNull TagKey < V >",
+      "parameters": [
+        {
+          "name": "location",
+          "type": "ResourceLocation",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "defaults",
+          "type": "Set <? extends Supplier < V >>",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        }
+      ],
+      "description": "Creates a tag key that will use the set of defaults if the tag is not loaded from any datapacks. Useful on the client side when a server may not provide a specific tag. Custom registries can use DeferredRegister.addOptionalTagDefaults(TagKey, Set) to create tag keys before the tag manager is created.",
+      "deprecated": false
+    },
+    {
+      "name": "addOptionalTagDefaults",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "TagKey < V >",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "defaults",
+          "type": "Set <? extends Supplier < V >>",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        }
+      ],
+      "description": "Adds defaults to an existing tag key. The set of defaults will be bound to the tag if the tag is not loaded from any datapacks. Useful on the client side when a server may not provide a specific tag. Custom registries can use DeferredRegister.addOptionalTagDefaults(TagKey, Set) to add defaults before the tag manager is created.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.3/net/minecraftforge/registries/tags/ITagManager.html"
+}

@@ -1,0 +1,336 @@
+{
+  "type": "class",
+  "name": "ChannelBuilder",
+  "qualified_name": "net.minecraftforge.network.ChannelBuilder",
+  "package": "net.minecraftforge.network",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Builder for constructing impl channels using a builder style API.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "name",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ResourceLocation",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "networkProtocolVersion",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clientAcceptedVersions",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Channel.VersionTest",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "serverAcceptedVersions",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Channel.VersionTest",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "attributes",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Map <io.netty.util.AttributeKey<?>, Function < Connection , ?>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "connectionHandler",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Consumer < Connection >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ChannelBuilder",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "named",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ChannelBuilder",
+      "parameters": [
+        {
+          "name": "channelName",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "Creates a new channel builder, The name of the channel must be unique.",
+      "deprecated": false
+    },
+    {
+      "name": "named",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ChannelBuilder",
+      "parameters": [
+        {
+          "name": "channelName",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "Creates a new channel builder, The name of the channel must be unique.",
+      "deprecated": false
+    },
+    {
+      "name": "networkProtocolVersion",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChannelBuilder",
+      "parameters": [
+        {
+          "name": "version",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "The impl protocol version for this channel. This will be gathered during login and sent to the remote partner, where it will be tested with against the relevant predicate. Defaults to 0",
+      "deprecated": false
+    },
+    {
+      "name": "acceptedVersions",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChannelBuilder",
+      "parameters": [
+        {
+          "name": "test",
+          "type": "Channel.VersionTest",
+          "annotations": []
+        }
+      ],
+      "description": "A predicate run on both sides, with the networkProtocolVersion(int) from the server, the channel on the remote side. Defaults to only accepting current version and requiring it to be present.",
+      "deprecated": false
+    },
+    {
+      "name": "clientAcceptedVersions",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChannelBuilder",
+      "parameters": [
+        {
+          "name": "test",
+          "type": "Channel.VersionTest",
+          "annotations": []
+        }
+      ],
+      "description": "A predicate run on the client, with the networkProtocolVersion(int) from the server, the channel on the remote side. Defaults to only accepting current version.",
+      "deprecated": false
+    },
+    {
+      "name": "serverAcceptedVersions",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChannelBuilder",
+      "parameters": [
+        {
+          "name": "test",
+          "type": "Channel.VersionTest",
+          "annotations": []
+        }
+      ],
+      "description": "A predicate run on the server, with the networkProtocolVersion(int) from the server, the channel on the remote side. Defaults to only accepting current version.",
+      "deprecated": false
+    },
+    {
+      "name": "optional",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChannelBuilder",
+      "parameters": [],
+      "description": "Allows a client to connect to a server that is missing this channel. And allows a server to accept a client missing this channel. This includes vanilla connections.",
+      "deprecated": false
+    },
+    {
+      "name": "optionalServer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChannelBuilder",
+      "parameters": [],
+      "description": "Allows a client to connect to a server that is missing this channel.",
+      "deprecated": false
+    },
+    {
+      "name": "optionalClient",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChannelBuilder",
+      "parameters": [],
+      "description": "Tells the server to accept clients that are missing this channel.",
+      "deprecated": false
+    },
+    {
+      "name": "attribute",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChannelBuilder",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "io.netty.util.AttributeKey<T>",
+          "annotations": []
+        },
+        {
+          "name": "factory",
+          "type": "Supplier <T>",
+          "annotations": []
+        }
+      ],
+      "description": "Registers a AttributeKey to be filled when a new connection is created. This is meant as a simple way to attach data on a per-connection bases.",
+      "deprecated": false
+    },
+    {
+      "name": "attribute",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChannelBuilder",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "io.netty.util.AttributeKey<T>",
+          "annotations": []
+        },
+        {
+          "name": "factory",
+          "type": "Function < Connection , T>",
+          "annotations": []
+        }
+      ],
+      "description": "Registers a AttributeKey to be filled when a new connection is created. This is meant as a simple way to attach data on a per-connection bases.",
+      "deprecated": false
+    },
+    {
+      "name": "connectionHandler",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChannelBuilder",
+      "parameters": [
+        {
+          "name": "handler",
+          "type": "Consumer < Connection >",
+          "annotations": []
+        }
+      ],
+      "description": "Registers a function that will be called when a new connection is established. This is meant to allow you to do basic configuration and add context objects. This is equivalent to the ConnectionStartEvent",
+      "deprecated": false
+    },
+    {
+      "name": "createNetworkInstance",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "NetworkInstance",
+      "parameters": [],
+      "description": "Create the impl instance",
+      "deprecated": false
+    },
+    {
+      "name": "getClientAcceptedVersions",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Channel.VersionTest",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getServerAcceptedVersions",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Channel.VersionTest",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "simpleChannel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SimpleChannel",
+      "parameters": [],
+      "description": "Build a new SimpleChannel with this builder's configuration.",
+      "deprecated": false
+    },
+    {
+      "name": "eventNetworkChannel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "EventNetworkChannel",
+      "parameters": [],
+      "description": "Build a new EventNetworkChannel with this builder's configuration.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.2/net/minecraftforge/network/ChannelBuilder.html"
+}

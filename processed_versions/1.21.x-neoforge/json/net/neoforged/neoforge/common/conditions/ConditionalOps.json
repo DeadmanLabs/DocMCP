@@ -1,0 +1,190 @@
+{
+  "type": "class",
+  "name": "ConditionalOps<T>",
+  "qualified_name": "net.neoforged.neoforge.common.conditions.ConditionalOps<T>",
+  "package": "net.neoforged.neoforge.common.conditions",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Extension of RegistryOps that also encapsulates a ICondition.IContext . This allows getting the ICondition.IContext while decoding an entry from within a codec.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraft.resources.DelegatingOps",
+      "net.minecraft.resources.RegistryOps"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "context",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ICondition.IContext",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "DEFAULT_CONDITIONS_KEY",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "Key used for the conditions inside an object.",
+      "deprecated": false
+    },
+    {
+      "name": "CONDITIONAL_VALUE_KEY",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "Key used to store the value associated with conditions, when the value is not represented as a map. For example, if we wanted to store the value 2 with some conditions, we could do: { \"neoforge:conditions\": [ ... ], \"neoforge:value\": 2 }",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ConditionalOps",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "ops",
+          "type": "RegistryOps < T >",
+          "annotations": []
+        },
+        {
+          "name": "context",
+          "type": "ICondition.IContext",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "retrieveContext",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "com.mojang.serialization.MapCodec< ICondition.IContext >",
+      "parameters": [],
+      "description": "Returns a codec that can retrieve a ICondition.IContext from a registry ops, for example with retrieveContext().decode(ops, ops.emptyMap()) .",
+      "deprecated": false
+    },
+    {
+      "name": "createConditionalCodec",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "com.mojang.serialization.Codec< Optional <T>>",
+      "parameters": [
+        {
+          "name": "ownerCodec",
+          "type": "com.mojang.serialization.Codec<T>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createConditionalCodec",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "com.mojang.serialization.Codec< Optional <T>>",
+      "parameters": [
+        {
+          "name": "ownerCodec",
+          "type": "com.mojang.serialization.Codec<T>",
+          "annotations": []
+        },
+        {
+          "name": "conditionalsKey",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "Creates a conditional codec. The conditional codec is generally not suitable for use as a dispatch target because it is never a MapCodec.MapCodecCodec .",
+      "deprecated": false
+    },
+    {
+      "name": "decodeListWithElementConditions",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "com.mojang.serialization.Codec< List <T>>",
+      "parameters": [
+        {
+          "name": "ownerCodec",
+          "type": "com.mojang.serialization.Codec<T>",
+          "annotations": []
+        }
+      ],
+      "description": "Creates a codec that can decode a list of elements, and will check for conditions on each element.",
+      "deprecated": false
+    },
+    {
+      "name": "createConditionalCodecWithConditions",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "com.mojang.serialization.Codec< Optional < WithConditions <T>>>",
+      "parameters": [
+        {
+          "name": "ownerCodec",
+          "type": "com.mojang.serialization.Codec<T>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createConditionalCodecWithConditions",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "com.mojang.serialization.Codec< Optional < WithConditions <T>>>",
+      "parameters": [
+        {
+          "name": "ownerCodec",
+          "type": "com.mojang.serialization.Codec<T>",
+          "annotations": []
+        },
+        {
+          "name": "conditionalsKey",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "Creates a conditional codec. The conditional codec is generally not suitable for use as a dispatch target because it is never a MapCodec.MapCodecCodec .",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21.x-neoforge/net/neoforged/neoforge/common/conditions/ConditionalOps.html"
+}

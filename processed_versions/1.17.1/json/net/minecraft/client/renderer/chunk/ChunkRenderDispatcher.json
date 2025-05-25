@@ -1,0 +1,458 @@
+{
+  "type": "class",
+  "name": "ChunkRenderDispatcher",
+  "qualified_name": "net.minecraft.client.renderer.chunk.ChunkRenderDispatcher",
+  "package": "net.minecraft.client.renderer.chunk",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MAX_WORKERS_32_BIT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "VERTEX_FORMAT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "VertexFormat",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "toBatch",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "PriorityQueue < ChunkRenderDispatcher.RenderChunk.ChunkCompileTask >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "freeBuffers",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Queue < ChunkBufferBuilderPack >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "toUpload",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Queue < Runnable >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "toBatchCount",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "freeBufferCount",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fixedBuffers",
+      "modifiers": [
+        "final"
+      ],
+      "type": "ChunkBufferBuilderPack",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mailbox",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ProcessorMailbox < Runnable >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "executor",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Executor",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "level",
+      "modifiers": [],
+      "type": "Level",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderer",
+      "modifiers": [
+        "final"
+      ],
+      "type": "LevelRenderer",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "camera",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Vec3",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ChunkRenderDispatcher",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_112686_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_112687_",
+          "type": "LevelRenderer",
+          "annotations": []
+        },
+        {
+          "name": "p_112688_",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "p_112689_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_112690_",
+          "type": "ChunkBufferBuilderPack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ChunkRenderDispatcher",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_112686_",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "p_112687_",
+          "type": "LevelRenderer",
+          "annotations": []
+        },
+        {
+          "name": "p_112688_",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "p_112689_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_112690_",
+          "type": "ChunkBufferBuilderPack",
+          "annotations": []
+        },
+        {
+          "name": "countRenderBuilders",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "setLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_112692_",
+          "type": "Level",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "runTask",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getStats",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getToBatchCount",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getToUpload",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFreeBufferCount",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setCamera",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_112694_",
+          "type": "Vec3",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getCameraPosition",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Vec3",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "uploadAllPendingUploads",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rebuildChunkSync",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_112716_",
+          "type": "ChunkRenderDispatcher.RenderChunk",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blockUntilClear",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "schedule",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_112710_",
+          "type": "ChunkRenderDispatcher.RenderChunk.ChunkCompileTask",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "uploadChunkLayer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture < Void >",
+      "parameters": [
+        {
+          "name": "p_112696_",
+          "type": "BufferBuilder",
+          "annotations": []
+        },
+        {
+          "name": "p_112697_",
+          "type": "VertexBuffer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "doUploadChunkLayer",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture < Void >",
+      "parameters": [
+        {
+          "name": "p_112721_",
+          "type": "BufferBuilder",
+          "annotations": []
+        },
+        {
+          "name": "p_112722_",
+          "type": "VertexBuffer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clearBatchQueue",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isQueueEmpty",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dispose",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.17.1/net/minecraft/client/renderer/chunk/ChunkRenderDispatcher.html"
+}

@@ -1,0 +1,856 @@
+{
+  "type": "class",
+  "name": "NoiseBasedChunkGenerator",
+  "qualified_name": "net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator",
+  "package": "net.minecraft.world.level.levelgen",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.minecraft.world.level.chunk.ChunkGenerator"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "CODEC",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "com.mojang.serialization.Codec< NoiseBasedChunkGenerator >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "AIR",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "BlockState",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "EMPTY_COLUMN",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "BlockState []",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cellHeight",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cellWidth",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cellCountX",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cellCountY",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cellCountZ",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "surfaceNoise",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "SurfaceNoise",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "barrierNoise",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "NormalNoise",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "waterLevelNoise",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "NormalNoise",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lavaNoise",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "NormalNoise",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "defaultBlock",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "BlockState",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "defaultFluid",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "BlockState",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "seed",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "settings",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "Supplier < NoiseGeneratorSettings >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "height",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sampler",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "NoiseSampler",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "baseStoneSource",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "BaseStoneSource",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "oreVeinifier",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "OreVeinifier",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "noodleCavifier",
+      "modifiers": [
+        "protected",
+        "final"
+      ],
+      "type": "NoodleCavifier",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "NoiseBasedChunkGenerator",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_64337_",
+          "type": "BiomeSource",
+          "annotations": []
+        },
+        {
+          "name": "p_64338_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_64339_",
+          "type": "Supplier < NoiseGeneratorSettings >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NoiseBasedChunkGenerator",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [
+        {
+          "name": "p_64341_",
+          "type": "BiomeSource",
+          "annotations": []
+        },
+        {
+          "name": "p_64342_",
+          "type": "BiomeSource",
+          "annotations": []
+        },
+        {
+          "name": "p_64343_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_64344_",
+          "type": "Supplier < NoiseGeneratorSettings >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "isAquifersEnabled",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "codec",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "com.mojang.serialization.Codec<? extends ChunkGenerator >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "withSeed",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ChunkGenerator",
+      "parameters": [
+        {
+          "name": "p_64374_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stable",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_64376_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_64377_",
+          "type": "ResourceKey < NoiseGeneratorSettings >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "makeAndFillNoiseColumn",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "double[]",
+      "parameters": [
+        {
+          "name": "p_158392_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158393_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158394_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158395_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fillNoiseColumn",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_158467_",
+          "type": "double[]",
+          "annotations": []
+        },
+        {
+          "name": "p_158468_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158469_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158470_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158471_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBaseHeight",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_158405_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158406_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158407_",
+          "type": "Heightmap.Types",
+          "annotations": []
+        },
+        {
+          "name": "p_158408_",
+          "type": "LevelHeightAccessor",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBaseColumn",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "NoiseColumn",
+      "parameters": [
+        {
+          "name": "p_158401_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158402_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158403_",
+          "type": "LevelHeightAccessor",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBaseStoneSource",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BaseStoneSource",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "iterateNoiseColumn",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "OptionalInt",
+      "parameters": [
+        {
+          "name": "p_158414_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158415_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158416_",
+          "type": "BlockState []",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_158417_",
+          "type": "Predicate < BlockState >",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "p_158418_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158419_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAquifer",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "Aquifer",
+      "parameters": [
+        {
+          "name": "p_158397_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158398_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158399_",
+          "type": "ChunkPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateNoiseAndGenerateBaseState",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "BlockState",
+      "parameters": [
+        {
+          "name": "p_158440_",
+          "type": "Beardifier",
+          "annotations": []
+        },
+        {
+          "name": "p_158441_",
+          "type": "Aquifer",
+          "annotations": []
+        },
+        {
+          "name": "p_158442_",
+          "type": "BaseStoneSource",
+          "annotations": []
+        },
+        {
+          "name": "p_158443_",
+          "type": "NoiseModifier",
+          "annotations": []
+        },
+        {
+          "name": "p_158444_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158445_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158446_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158447_",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "buildSurfaceAndBedrock",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_64381_",
+          "type": "WorldGenRegion",
+          "annotations": []
+        },
+        {
+          "name": "p_64382_",
+          "type": "ChunkAccess",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setBedrock",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_64400_",
+          "type": "ChunkAccess",
+          "annotations": []
+        },
+        {
+          "name": "p_64401_",
+          "type": "Random",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fillFromNoise",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture < ChunkAccess >",
+      "parameters": [
+        {
+          "name": "p_158463_",
+          "type": "Executor",
+          "annotations": []
+        },
+        {
+          "name": "p_158464_",
+          "type": "StructureFeatureManager",
+          "annotations": []
+        },
+        {
+          "name": "p_158465_",
+          "type": "ChunkAccess",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "doFill",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "ChunkAccess",
+      "parameters": [
+        {
+          "name": "p_158428_",
+          "type": "StructureFeatureManager",
+          "annotations": []
+        },
+        {
+          "name": "p_158429_",
+          "type": "ChunkAccess",
+          "annotations": []
+        },
+        {
+          "name": "p_158430_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158431_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createCaveNoiseModifier",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "DoubleFunction < NoiseModifier >",
+      "parameters": [
+        {
+          "name": "p_158421_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158422_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_158423_",
+          "type": "Consumer < NoiseInterpolator >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createBaseStoneSource",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "DoubleFunction < BaseStoneSource >",
+      "parameters": [
+        {
+          "name": "p_158478_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_158479_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_158480_",
+          "type": "Consumer < NoiseInterpolator >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createAquifer",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "Aquifer",
+      "parameters": [
+        {
+          "name": "p_158438_",
+          "type": "ChunkAccess",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getGenDepth",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSeaLevel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMinY",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMobsAt",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "WeightedRandomList < MobSpawnSettings.SpawnerData >",
+      "parameters": [
+        {
+          "name": "p_158433_",
+          "type": "Biome",
+          "annotations": []
+        },
+        {
+          "name": "p_158434_",
+          "type": "StructureFeatureManager",
+          "annotations": []
+        },
+        {
+          "name": "p_158435_",
+          "type": "MobCategory",
+          "annotations": []
+        },
+        {
+          "name": "p_158436_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "spawnOriginalMobs",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_64379_",
+          "type": "WorldGenRegion",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.17.1/net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator.html"
+}

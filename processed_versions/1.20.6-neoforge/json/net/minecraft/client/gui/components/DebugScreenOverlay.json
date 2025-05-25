@@ -1,0 +1,672 @@
+{
+  "type": "class",
+  "name": "DebugScreenOverlay",
+  "qualified_name": "net.minecraft.client.gui.components.DebugScreenOverlay",
+  "package": "net.minecraft.client.gui.components",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "COLOR_GREY",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MARGIN_RIGHT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MARGIN_LEFT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MARGIN_TOP",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "HEIGHTMAP_NAMES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Map < Heightmap.Types , String >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "minecraft",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Minecraft",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "allocationRateCalculator",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "DebugScreenOverlay.AllocationRateCalculator",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "font",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Font",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "block",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "HitResult",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "liquid",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "HitResult",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastPos",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ChunkPos",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clientChunk",
+      "modifiers": [
+        "private"
+      ],
+      "type": "LevelChunk",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "serverChunk",
+      "modifiers": [
+        "private"
+      ],
+      "type": "CompletableFuture < LevelChunk >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderDebug",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderProfilerChart",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderFpsCharts",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderNetworkCharts",
+      "modifiers": [
+        "protected"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "frameTimeLogger",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "LocalSampleLogger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickTimeLogger",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "LocalSampleLogger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pingLogger",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "LocalSampleLogger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "bandwidthLogger",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "LocalSampleLogger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "remoteSupportingLoggers",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < RemoteDebugSampleType , LocalSampleLogger >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fpsChart",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "FpsDebugChart",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tpsChart",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "TpsDebugChart",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pingChart",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "PingDebugChart",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "bandwidthChart",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "BandwidthDebugChart",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "DebugScreenOverlay",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_94039_",
+          "type": "Minecraft",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "clearChunkCache",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "render",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_281427_",
+          "type": "GuiGraphics",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "drawGameInformation",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_281525_",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "gameInformation",
+          "type": "List < String >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "drawSystemInformation",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_281261_",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "systemInformation",
+          "type": "List < String >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderLines",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_286519_",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "p_286665_",
+          "type": "List < String >",
+          "annotations": []
+        },
+        {
+          "name": "p_286644_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getGameInformation",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "List < String >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "printBiome",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "String",
+      "parameters": [
+        {
+          "name": "p_205375_",
+          "type": "Holder < Biome >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getServerLevel",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "ServerLevel",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getServerChunkStats",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getLevel",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Level",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getServerChunk",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "LevelChunk",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getClientChunk",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "LevelChunk",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSystemInformation",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "List < String >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPropertyValueString",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "String",
+      "parameters": [
+        {
+          "name": "p_94072_",
+          "type": "Map.Entry < Property <?>, Comparable <?>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "bytesToMegabytes",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "long",
+      "parameters": [
+        {
+          "name": "p_94051_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "showDebugScreen",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "showProfilerChart",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "showNetworkCharts",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "showFpsCharts",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "toggleOverlay",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "toggleNetworkCharts",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "toggleFpsCharts",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "toggleProfilerChart",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "logFrameDuration",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_299936_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTickTimeLogger",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "LocalSampleLogger",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getPingLogger",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "LocalSampleLogger",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBandwidthLogger",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "LocalSampleLogger",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "logRemoteSample",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_324375_",
+          "type": "long[]",
+          "annotations": []
+        },
+        {
+          "name": "p_324309_",
+          "type": "RemoteDebugSampleType",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "reset",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.6-neoforge/net/minecraft/client/gui/components/DebugScreenOverlay.html"
+}

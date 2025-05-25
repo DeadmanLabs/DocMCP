@@ -1,0 +1,442 @@
+{
+  "type": "class",
+  "name": "GenerationTask",
+  "qualified_name": "net.neoforged.neoforge.server.command.generation.GenerationTask",
+  "package": "net.neoforged.neoforge.server.command.generation",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Special thanks to Jasmine and Gegy for allowing us to use their pregenerator mod as a model to use in NeoForge! Original code: https://github.com/jaskarth/fabric-chunkpregenerator",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BATCH_SIZE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "QUEUE_THRESHOLD",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "COARSE_CELL_SIZE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "server",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "MinecraftServer",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "chunkSource",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ServerChunkCache",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "serverLevel",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ServerLevel",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "iterator",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Iterator < ChunkPos >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "x",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "z",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "radius",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "totalCount",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "queueLock",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Object",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "queuedCount",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "AtomicInteger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "okCount",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "AtomicInteger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "errorCount",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "AtomicInteger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "skippedCount",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "AtomicInteger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "listener",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "type": "GenerationTask.Listener",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stopped",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "NEOFORGE_GENERATE_FORCED",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "TicketType < ChunkPos >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "GenerationTask",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "serverLevel",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "x",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "z",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "radius",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getOkCount",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getErrorCount",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSkippedCount",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getTotalCount",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "run",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "listener",
+          "type": "GenerationTask.Listener",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stop",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tryEnqueueTasks",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "enqueueChunks",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "chunks",
+          "type": "it.unimi.dsi.fastutil.longs.LongList",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "acceptChunkResult",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "chunk",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "result",
+          "type": "ChunkResult < ChunkAccess >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "collectChunks",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "it.unimi.dsi.fastutil.longs.LongList",
+      "parameters": [
+        {
+          "name": "count",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "acquireChunk",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "chunk",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "releaseChunk",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "chunk",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isChunkFullyGenerated",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "chunkPosInLocalSpace",
+          "type": "ChunkPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21.x-neoforge/net/neoforged/neoforge/server/command/generation/GenerationTask.html"
+}

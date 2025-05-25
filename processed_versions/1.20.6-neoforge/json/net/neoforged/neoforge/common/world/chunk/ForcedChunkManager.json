@@ -1,0 +1,570 @@
+{
+  "type": "class",
+  "name": "ForcedChunkManager",
+  "qualified_name": "net.neoforged.neoforge.common.world.chunk.ForcedChunkManager",
+  "package": "net.neoforged.neoforge.common.world.chunk",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BLOCK",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "TicketType < ForcedChunkManager.TicketOwner < BlockPos >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "BLOCK_TICKING",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "TicketType < ForcedChunkManager.TicketOwner < BlockPos >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ENTITY",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "TicketType < ForcedChunkManager.TicketOwner < UUID >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ENTITY_TICKING",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "TicketType < ForcedChunkManager.TicketOwner < UUID >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "initialised",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "controllers",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "Map < ResourceLocation , TicketController >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ForcedChunkManager",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "init",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasForcedChunks",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "ServerLevel",
+          "annotations": []
+        }
+      ],
+      "description": "Checks if a level has any forced chunks. Mainly used for seeing if a level should continue ticking with no players in it.",
+      "deprecated": false
+    },
+    {
+      "name": "forceChunk",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "id",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "owner",
+          "type": "T",
+          "annotations": []
+        },
+        {
+          "name": "chunkX",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "chunkZ",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "add",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "ticking",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "type",
+          "type": "TicketType < ForcedChunkManager.TicketOwner <T>>",
+          "annotations": []
+        },
+        {
+          "name": "ticketGetter",
+          "type": "Function < ForcedChunksSavedData , ForcedChunkManager.TicketTracker <T>>",
+          "annotations": []
+        }
+      ],
+      "description": "Forces a chunk to be loaded for the given mod with the given \"owner\".",
+      "deprecated": false
+    },
+    {
+      "name": "forceChunk",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "type",
+          "type": "TicketType < ForcedChunkManager.TicketOwner <T>>",
+          "annotations": []
+        },
+        {
+          "name": "owner",
+          "type": "ForcedChunkManager.TicketOwner <T>",
+          "annotations": []
+        },
+        {
+          "name": "add",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "ticking",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Adds/Removes a ticket from the level's chunk provider with the proper levels to match the forced chunks.",
+      "deprecated": false
+    },
+    {
+      "name": "reinstatePersistentChunks",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "saveData",
+          "type": "ForcedChunksSavedData",
+          "annotations": []
+        }
+      ],
+      "description": "Reinstates NeoForge's forced chunks when vanilla initially loads a level and reinstates their forced chunks. This method also will validate all the forced chunks with the registered LoadingValidationCallback s.",
+      "deprecated": false
+    },
+    {
+      "name": "gatherTicketsById",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "Map < ResourceLocation , Map <T, TicketSet >>",
+      "parameters": [
+        {
+          "name": "tickets",
+          "type": "ForcedChunkManager.TicketTracker <T>",
+          "annotations": []
+        }
+      ],
+      "description": "Gathers tickets into an ID filtered map for use in providing all tickets a controller has registered to its LoadingValidationCallback .",
+      "deprecated": false
+    },
+    {
+      "name": "gatherTicketsById",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "tickets",
+          "type": "Map < ForcedChunkManager.TicketOwner <T>, it.unimi.dsi.fastutil.longs.LongSet>",
+          "annotations": []
+        },
+        {
+          "name": "typeGetter",
+          "type": "Function < TicketSet , it.unimi.dsi.fastutil.longs.LongSet>",
+          "annotations": []
+        },
+        {
+          "name": "modSortedOwnedChunks",
+          "type": "Map < ResourceLocation , Map <T, TicketSet >>",
+          "annotations": []
+        }
+      ],
+      "description": "Gathers tickets into an ID filtered map for use in providing all tickets a controller has registered to its LoadingValidationCallback .",
+      "deprecated": false
+    },
+    {
+      "name": "reinstatePersistentChunks",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "ServerLevel",
+          "annotations": []
+        },
+        {
+          "name": "type",
+          "type": "TicketType < ForcedChunkManager.TicketOwner <T>>",
+          "annotations": []
+        },
+        {
+          "name": "tickets",
+          "type": "Map < ForcedChunkManager.TicketOwner <T>, it.unimi.dsi.fastutil.longs.LongSet>",
+          "annotations": []
+        },
+        {
+          "name": "ticking",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Adds back any persistent forced chunks to the level's chunk provider.",
+      "deprecated": false
+    },
+    {
+      "name": "writeModForcedChunks",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "nbt",
+          "type": "CompoundTag",
+          "annotations": []
+        },
+        {
+          "name": "blockForcedChunks",
+          "type": "ForcedChunkManager.TicketTracker < BlockPos >",
+          "annotations": []
+        },
+        {
+          "name": "entityForcedChunks",
+          "type": "ForcedChunkManager.TicketTracker < UUID >",
+          "annotations": []
+        }
+      ],
+      "description": "Writes the mod forced chunks into the NBT compound. Format is List{controllerId, List{ChunkPos, List{BlockPos}, List{UUID}}}",
+      "deprecated": false
+    },
+    {
+      "name": "writeForcedChunkOwners",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "forcedEntries",
+          "type": "Map < ResourceLocation , it.unimi.dsi.fastutil.longs.Long2ObjectMap< CompoundTag >>",
+          "annotations": []
+        },
+        {
+          "name": "tracker",
+          "type": "ForcedChunkManager.TicketTracker <T>",
+          "annotations": []
+        },
+        {
+          "name": "listKey",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "listType",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "ownerWriter",
+          "type": "BiConsumer <T, ListTag >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "writeForcedChunkOwners",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "forcedEntries",
+          "type": "Map < ResourceLocation , it.unimi.dsi.fastutil.longs.Long2ObjectMap< CompoundTag >>",
+          "annotations": []
+        },
+        {
+          "name": "forcedChunks",
+          "type": "Map < ForcedChunkManager.TicketOwner <T>, it.unimi.dsi.fastutil.longs.LongSet>",
+          "annotations": []
+        },
+        {
+          "name": "listKey",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "listType",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "ownerWriter",
+          "type": "BiConsumer <T, ListTag >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "readModForcedChunks",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "nbt",
+          "type": "CompoundTag",
+          "annotations": []
+        },
+        {
+          "name": "blockForcedChunks",
+          "type": "ForcedChunkManager.TicketTracker < BlockPos >",
+          "annotations": []
+        },
+        {
+          "name": "entityForcedChunks",
+          "type": "ForcedChunkManager.TicketTracker < UUID >",
+          "annotations": []
+        }
+      ],
+      "description": "Reads the mod forced chunks from the NBT compound. Format is List{controllerId, List{ChunkPos, List{BlockPos}, List{UUID}}}",
+      "deprecated": false
+    },
+    {
+      "name": "readBlockForcedChunks",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "controllerId",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "chunkPos",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "modEntry",
+          "type": "CompoundTag",
+          "annotations": []
+        },
+        {
+          "name": "key",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "blockForcedChunks",
+          "type": "Map < ForcedChunkManager.TicketOwner < BlockPos >, it.unimi.dsi.fastutil.longs.LongSet>",
+          "annotations": []
+        }
+      ],
+      "description": "Reads the forge block forced chunks.",
+      "deprecated": false
+    },
+    {
+      "name": "readBlockPos",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "BlockPos",
+      "parameters": [
+        {
+          "name": "compoundtag",
+          "type": "CompoundTag",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "writeBlockPos",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "CompoundTag",
+      "parameters": [
+        {
+          "name": "blockpos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "readEntityForcedChunks",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "controllerId",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "chunkPos",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "modEntry",
+          "type": "CompoundTag",
+          "annotations": []
+        },
+        {
+          "name": "key",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "entityForcedChunks",
+          "type": "Map < ForcedChunkManager.TicketOwner < UUID >, it.unimi.dsi.fastutil.longs.LongSet>",
+          "annotations": []
+        }
+      ],
+      "description": "Reads the forge entity forced chunks.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.6-neoforge/net/neoforged/neoforge/common/world/chunk/ForcedChunkManager.html"
+}

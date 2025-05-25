@@ -1,0 +1,167 @@
+{
+  "type": "class",
+  "name": "AttachCapabilitiesEvent<T>",
+  "qualified_name": "net.minecraftforge.event.AttachCapabilitiesEvent<T>",
+  "package": "net.minecraftforge.event",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Fired whenever an object with Capabilities support {currently TileEntity/Item/Entity) is created. Allowing for the attachment of arbitrary capability providers. Please note that as this is fired for ALL object creations efficient code is recommended. And if possible use one of the sub-classes to filter your intended objects.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "obj",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "T",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "caps",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < ResourceLocation , ICapabilityProvider >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "view",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < ResourceLocation , ICapabilityProvider >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "listeners",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "List < Runnable >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "listenersView",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "List < Runnable >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "AttachCapabilitiesEvent",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "type",
+          "type": "Class < T >",
+          "annotations": []
+        },
+        {
+          "name": "obj",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getObject",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "T",
+      "parameters": [],
+      "description": "Retrieves the object that is being created, Not much state is set.",
+      "deprecated": false
+    },
+    {
+      "name": "addCapability",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "cap",
+          "type": "ICapabilityProvider",
+          "annotations": []
+        }
+      ],
+      "description": "Adds a capability to be attached to this object. Keys MUST be unique, it is suggested that you set the domain to your mod ID. If the capability is an instance of INBTSerializable, this key will be used when serializing this capability.",
+      "deprecated": false
+    },
+    {
+      "name": "getCapabilities",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Map < ResourceLocation , ICapabilityProvider >",
+      "parameters": [],
+      "description": "A unmodifiable view of the capabilities that will be attached to this object.",
+      "deprecated": false
+    },
+    {
+      "name": "addListener",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "listener",
+          "type": "Runnable",
+          "annotations": []
+        }
+      ],
+      "description": "Adds a callback that is fired when the attached object is invalidated. Such as a Entity/TileEntity being removed from world. All attached providers should invalidate all of their held capability instances.",
+      "deprecated": false
+    },
+    {
+      "name": "getListeners",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "List < Runnable >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20/net/minecraftforge/event/AttachCapabilitiesEvent.html"
+}

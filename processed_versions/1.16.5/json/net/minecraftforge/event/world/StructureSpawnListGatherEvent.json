@@ -1,0 +1,235 @@
+{
+  "type": "class",
+  "name": "StructureSpawnListGatherEvent",
+  "qualified_name": "net.minecraftforge.event.world.StructureSpawnListGatherEvent",
+  "package": "net.minecraftforge.event.world",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "This event fires when a Structure is gathering what mobs/creatures can spawn in it. In order to maintain the most compatibility possible with other mods' modifications to a structure, the event should be assigned a EventPriority as follows: - Additions : EventPriority.HIGH - Removals : EventPriority.NORMAL - Any other modification : EventPriority.LOW Be aware that another mod could have done an operation beforehand, so an expected value out of a vanilla structure might not always be the same, depending on other mods.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "structure",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Structure <?>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "entitySpawns",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < EntityClassification , List < MobSpawnInfo.Spawners >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "entitySpawnsUnmodifiableLists",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < EntityClassification , List < MobSpawnInfo.Spawners >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "entitySpawnsUnmodifiable",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < EntityClassification , List < MobSpawnInfo.Spawners >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "insideOnly",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "StructureSpawnListGatherEvent",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "structure",
+          "type": "Structure <?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "getStructure",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Structure <?>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setInsideOnly",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "insideOnly",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Change if entity spawn location checks are done against the entire bounds of the structure or only the inside the pieces of the structure.",
+      "deprecated": false
+    },
+    {
+      "name": "isInsideOnly",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "Checks if spawns for the structure are restricted to being inside the individual pieces of the structure.",
+      "deprecated": false
+    },
+    {
+      "name": "getEntitySpawns",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "List < MobSpawnInfo.Spawners >",
+      "parameters": [
+        {
+          "name": "classification",
+          "type": "EntityClassification",
+          "annotations": []
+        }
+      ],
+      "description": "Gets an unmodifiable view of the the list representing the entity spawns for the given classification.",
+      "deprecated": false
+    },
+    {
+      "name": "getOrCreateEntitySpawns",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "List < MobSpawnInfo.Spawners >",
+      "parameters": [
+        {
+          "name": "classification",
+          "type": "EntityClassification",
+          "annotations": []
+        }
+      ],
+      "description": "Gets the internal spawn list for a given entity classification, or adds one if needed. (This includes adding it to the unmodifiable view)",
+      "deprecated": false
+    },
+    {
+      "name": "addEntitySpawn",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "classification",
+          "type": "EntityClassification",
+          "annotations": []
+        },
+        {
+          "name": "spawner",
+          "type": "MobSpawnInfo.Spawners",
+          "annotations": []
+        }
+      ],
+      "description": "Adds a spawn to the list of spawns for the given classification.",
+      "deprecated": false
+    },
+    {
+      "name": "addEntitySpawns",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "classification",
+          "type": "EntityClassification",
+          "annotations": []
+        },
+        {
+          "name": "spawners",
+          "type": "List < MobSpawnInfo.Spawners >",
+          "annotations": []
+        }
+      ],
+      "description": "Adds spawns to the list of spawns for the given classification.",
+      "deprecated": false
+    },
+    {
+      "name": "removeEntitySpawn",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "classification",
+          "type": "EntityClassification",
+          "annotations": []
+        },
+        {
+          "name": "spawner",
+          "type": "MobSpawnInfo.Spawners",
+          "annotations": []
+        }
+      ],
+      "description": "Removes a spawn from the list of spawns for the given classification.",
+      "deprecated": false
+    },
+    {
+      "name": "getEntitySpawns",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Map < EntityClassification , List < MobSpawnInfo.Spawners >>",
+      "parameters": [],
+      "description": "Gets an unmodifiable view of the map of spawns based on entity classification that is used to fill in the various spawn lists for the structure.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.16.5/net/minecraftforge/event/world/StructureSpawnListGatherEvent.html"
+}

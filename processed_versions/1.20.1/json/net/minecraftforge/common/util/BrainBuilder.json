@@ -1,0 +1,515 @@
+{
+  "type": "class",
+  "name": ">",
+  "qualified_name": "net.minecraftforge.common.util.>",
+  "package": "net.minecraftforge.common.util",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "This object is used to encapsulate state found inside a Brain instance, to make it easily accessible for modders to manipulate during LivingMakeBrainEvent . Provided are a variety of getter/setter methods to access and manipulate the encapsulated state. Methods marked with \"INTENDED FOR INTERNAL USE\" are only meant to be used inside: ForgeHooks.onLivingMakeBrain(LivingEntity, Brain, Dynamic) Brain.createBuilder() Brain.copyFromBuilder(BrainBuilder) Of course, nothing egregious will happen should a modder choose to use them for their own purposes.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "memoryTypes",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Collection < MemoryModuleType <?>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sensorTypes",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Collection < SensorType <? extends Sensor <? super E extends LivingEntity >>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "availableBehaviorsByPriority",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < Integer , Map < Activity , Set < BehaviorControl <? super E extends LivingEntity >>>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "schedule",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Schedule",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "activityRequirements",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < Activity , Set <com.mojang.datafixers.util.Pair< MemoryModuleType <?>, MemoryStatus >>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "activityMemoriesToEraseWhenStopped",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < Activity , Set < MemoryModuleType <?>>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "coreActivities",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Set < Activity >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "activeActivites",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Set < Activity >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "defaultActivity",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Activity",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "BrainBuilder",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "ignoredBrain",
+          "type": "Brain < E >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "provider",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Brain.Provider < E >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMemoryTypes",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Collection < MemoryModuleType <?>>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSensorTypes",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Collection < SensorType <? extends Sensor <? super E >>>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAvailableBehaviorsByPriority",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Map < Integer , Map < Activity , Set < BehaviorControl <? super E >>>>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getSchedule",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Schedule",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setSchedule",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "schedule",
+          "type": "Schedule",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getActivityRequirements",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Map < Activity , Set <com.mojang.datafixers.util.Pair< MemoryModuleType <?>, MemoryStatus >>>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getActivityMemoriesToEraseWhenStopped",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Map < Activity , Set < MemoryModuleType <?>>>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getCoreActivities",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Set < Activity >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getDefaultActivity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Activity",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setDefaultActivity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "defaultActivity",
+          "type": "Activity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getActiveActivites",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Set < Activity >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setActiveActivites",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "value",
+          "type": "Set < Activity >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addBehaviorToActivityByPriority",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "priority",
+          "type": "Integer",
+          "annotations": []
+        },
+        {
+          "name": "activity",
+          "type": "Activity",
+          "annotations": []
+        },
+        {
+          "name": "behaviorControl",
+          "type": "BehaviorControl <? super E >",
+          "annotations": []
+        }
+      ],
+      "description": "You may use this as a helper method for adding a behavior to an Activity by priority to an entity's brain.",
+      "deprecated": false
+    },
+    {
+      "name": "addRequirementsToActivity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "activity",
+          "type": "Activity",
+          "annotations": []
+        },
+        {
+          "name": "requirements",
+          "type": "Collection <com.mojang.datafixers.util.Pair< MemoryModuleType <?>, MemoryStatus >>",
+          "annotations": []
+        }
+      ],
+      "description": "You may use this as a helper method for adding memory requirements for an Activity to an entity's brain.",
+      "deprecated": false
+    },
+    {
+      "name": "addMemoriesToEraseWhenActivityStopped",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "activity",
+          "type": "Activity",
+          "annotations": []
+        },
+        {
+          "name": "memories",
+          "type": "Collection < MemoryModuleType <?>>",
+          "annotations": []
+        }
+      ],
+      "description": "You may use this as a helper method for adding a collection of memories to erase when an Activity is stopped to entity's brain.",
+      "deprecated": false
+    },
+    {
+      "name": "addAvailableBehaviorsByPriorityFrom",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "addFrom",
+          "type": "Map < Integer , Map < Activity , Set < BehaviorControl <? super E >>>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addAvailableBehaviorsByPriorityTo",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "addTo",
+          "type": "Map < Integer , Map < Activity , Set < BehaviorControl <? super E >>>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addActivityRequirementsFrom",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "addFrom",
+          "type": "Map < Activity , Set <com.mojang.datafixers.util.Pair< MemoryModuleType <?>, MemoryStatus >>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addActivityRequirementsTo",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "addTo",
+          "type": "Map < Activity , Set <com.mojang.datafixers.util.Pair< MemoryModuleType <?>, MemoryStatus >>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addActivityMemoriesToEraseWhenStoppedFrom",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "addFrom",
+          "type": "Map < Activity , Set < MemoryModuleType <?>>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addActivityMemoriesToEraseWhenStoppedTo",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "addTo",
+          "type": "Map < Activity , Set < MemoryModuleType <?>>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addMemoriesToEraseWhenActivityStoppedInternal",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "activityMemoriesToEraseWhenStopped",
+          "type": "Map < Activity , Set < MemoryModuleType <?>>>",
+          "annotations": []
+        },
+        {
+          "name": "activity",
+          "type": "Activity",
+          "annotations": []
+        },
+        {
+          "name": "memories",
+          "type": "Collection < MemoryModuleType <?>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addRequirementsToActivityInternal",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "activityRequirements",
+          "type": "Map < Activity , Set <com.mojang.datafixers.util.Pair< MemoryModuleType <?>, MemoryStatus >>>",
+          "annotations": []
+        },
+        {
+          "name": "activity",
+          "type": "Activity",
+          "annotations": []
+        },
+        {
+          "name": "requirements",
+          "type": "Collection <com.mojang.datafixers.util.Pair< MemoryModuleType <?>, MemoryStatus >>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "makeBrain",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Brain < E >",
+      "parameters": [
+        {
+          "name": "dynamic",
+          "type": "com.mojang.serialization.Dynamic<?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.1/net/minecraftforge/common/util/BrainBuilder.html"
+}

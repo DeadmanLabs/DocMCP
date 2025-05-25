@@ -1,0 +1,513 @@
+{
+  "type": "class",
+  "name": "DeferredRegister<T>",
+  "qualified_name": "net.neoforged.neoforge.registries.DeferredRegister<T>",
+  "package": "net.neoforged.neoforge.registries",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "A helper class to aid in registering objects to modded and vanilla registries and provide deferred suppliers to access those objects. This class maintains a list of all suppliers for entries and registers them during the proper RegisterEvent event, after being registered to an event bus. Suppliers should return new instances every time they are invoked. To create an instance of this helper class, use any of the three factory methods: create(Registry, String) , create(ResourceKey, String) , or create(ResourceLocation, String) . There are also specialized subclasses of this helper for Block s and Item s, created through createBlocks(String) and createItems(String) respectively. (Be sure to store the concrete type of those subclasses, rather than storing them generically as DeferredRegister<Block> or DeferredRegister<Item> .) Here are some common examples for using this class: private static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID); private static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID); private static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, MODID); // If you don't care about the actual Block class, use the simple variants public static final DeferredBlock<Block> ROCK_BLOCK = BLOCKS.registerSimpleBlock(\"rock\", Block.Properties.create(Material.ROCK)); public static final DeferredItem<BlockItem> ROCK_ITEM = ITEMS.registerSimpleBlockItem(ROCK_BLOCK, new Item.Properties()); // Otherwise, use the regular (non-'simple') variants public static final DeferredBlock<SpecialRockBlock> SPECIAL_ROCK_BLOCK = BLOCKS.registerBlock(\"special_rock\", SpecialRockBlock::new, Block.Properties.create(Material.ROCK)); // (#registerSimpleBlockItem does not have a non-'simple' variant -- register an item in the usual way) public static final DeferredItem<SpecialRockItem> SPECIAL_ROCK_ITEM = ITEMS.register(\"special_rock\", () -> new SpecialRockItem(SPECIAL_ROCK_BLOCK.get(), new Item.Properties())) // (Can be DeferredHolder<BlockEntityType<?>, BlockEntityType<RockBlockEntity>> if you prefer) public static final Supplier<BlockEntityType<RockBlockEntity>> ROCK_BLOCK_ENTITY = BLOCK_ENTITIES.register(\"rock\", () -> BlockEntityType.Builder.of(RockBlockEntity::new, ROCK_BLOCK.get()).build(null)); public ExampleMod(IEventBus modBus) { ITEMS.register(modBus); BLOCKS.register(modBus); BLOCK_ENTITIES.register(modBus); }",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "registryKey",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ResourceKey <? extends Registry < T >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "namespace",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "entries",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < DeferredHolder < T , ? extends T >, Supplier <? extends T >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "entriesView",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Set < DeferredHolder < T , ? extends T >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "aliases",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < ResourceLocation , ResourceLocation >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "customRegistry",
+      "modifiers": [
+        "private"
+      ],
+      "type": "@Nullable Registry < T >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registryHolder",
+      "modifiers": [
+        "private"
+      ],
+      "type": "@Nullable DeferredRegister.RegistryHolder < T >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "seenRegisterEvent",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "seenNewRegistryEvent",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registeredEventBus",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "DeferredRegister",
+      "modifiers": [
+        "protected"
+      ],
+      "parameters": [
+        {
+          "name": "registryKey",
+          "type": "ResourceKey <? extends Registry < T >>",
+          "annotations": []
+        },
+        {
+          "name": "namespace",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "create",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "DeferredRegister <T>",
+      "parameters": [
+        {
+          "name": "registry",
+          "type": "Registry <T>",
+          "annotations": []
+        },
+        {
+          "name": "namespace",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "DeferredRegister factory for modded registries or vanilla registries . If the registry is never created, any DeferredHolder s made from this DeferredRegister will throw an exception.",
+      "deprecated": false
+    },
+    {
+      "name": "create",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "DeferredRegister <T>",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "ResourceKey <? extends Registry <T>>",
+          "annotations": []
+        },
+        {
+          "name": "namespace",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "DeferredRegister factory for modded registries or vanilla registries to lookup based on the provided registry key. Supports both registries that already exist or do not exist yet. If the registry is never created, any DeferredHolder s made from this DeferredRegister will throw an exception.",
+      "deprecated": false
+    },
+    {
+      "name": "create",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "DeferredRegister <B>",
+      "parameters": [
+        {
+          "name": "registryName",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "modid",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "DeferredRegister factory for custom forge registries or vanilla registries to lookup based on the provided registry name. Supports both registries that already exist or do not exist yet. If the registry is never created, any DeferredHolder s made from this DeferredRegister will throw an exception.",
+      "deprecated": false
+    },
+    {
+      "name": "createItems",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "DeferredRegister.Items",
+      "parameters": [
+        {
+          "name": "modid",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "Factory for a specialized DeferredRegister for Items .",
+      "deprecated": false
+    },
+    {
+      "name": "createBlocks",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "DeferredRegister.Blocks",
+      "parameters": [
+        {
+          "name": "modid",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "Factory for a specialized DeferredRegister for Blocks .",
+      "deprecated": false
+    },
+    {
+      "name": "createDataComponents",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "DeferredRegister.DataComponents",
+      "parameters": [
+        {
+          "name": "modid",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "Factory for a specialized DeferredRegister for DataComponentTypes .",
+      "deprecated": false
+    },
+    {
+      "name": "register",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "DeferredHolder < T , I>",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "sup",
+          "type": "Supplier <? extends I>",
+          "annotations": []
+        }
+      ],
+      "description": "Adds a new entry to the list of entries to be registered and returns a DeferredHolder that will be populated with the created entry automatically.",
+      "deprecated": false
+    },
+    {
+      "name": "register",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "DeferredHolder < T , I>",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "func",
+          "type": "Function < ResourceLocation , ? extends I>",
+          "annotations": []
+        }
+      ],
+      "description": "Adds a new entry to the list of entries to be registered and returns a DeferredHolder that will be populated with the created entry automatically.",
+      "deprecated": false
+    },
+    {
+      "name": "createHolder",
+      "modifiers": [
+        "protected"
+      ],
+      "return_type": "DeferredHolder < T , I>",
+      "parameters": [
+        {
+          "name": "registryKey",
+          "type": "ResourceKey <? extends Registry < T >>",
+          "annotations": []
+        },
+        {
+          "name": "key",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "Create a DeferredHolder or an inheriting type to be stored.",
+      "deprecated": false
+    },
+    {
+      "name": "makeRegistry",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Registry < T >",
+      "parameters": [
+        {
+          "name": "consumer",
+          "type": "Consumer < RegistryBuilder < T >>",
+          "annotations": []
+        }
+      ],
+      "description": "This method is used to configure a custom modded registry. It can only be invoked by a single DeferredRegister instance for a given registry key.",
+      "deprecated": false
+    },
+    {
+      "name": "getRegistry",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Supplier < Registry < T >>",
+      "parameters": [],
+      "description": "Returns a supplier for the Registry linked to this deferred register. For vanilla registries, this will always return a non-null registry. For modded registries, a non-null registry will only be returned after NewRegistryEvent fires, or if makeRegistry(Consumer) is called on this same DeferredRegister instance. To register additional DeferredRegisters for custom modded registries, use create(ResourceKey, String) which can take a registry key from getRegistryKey() .",
+      "deprecated": false
+    },
+    {
+      "name": "createTagKey",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "TagKey < T >",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "Creates a tag key based on the current namespace and provided path as the location and the registry name linked to this DeferredRegister. To control the namespace, use createTagKey(ResourceLocation) .",
+      "deprecated": false
+    },
+    {
+      "name": "createTagKey",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "TagKey < T >",
+      "parameters": [
+        {
+          "name": "location",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "Creates a tag key based on the provided resource location and the registry name linked to this DeferredRegister. To use the current namespace as the tag key namespace automatically, use createTagKey(String) .",
+      "deprecated": false
+    },
+    {
+      "name": "addAlias",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "from",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "to",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "Adds an alias that maps from the name specified by from to the name specified by to . Any registry lookups that target the first name will resolve as the second name, if the first name is not present.",
+      "deprecated": false
+    },
+    {
+      "name": "register",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "bus",
+          "type": "net.neoforged.bus.api.IEventBus",
+          "annotations": []
+        }
+      ],
+      "description": "Adds our event handler to the specified event bus, this MUST be called in order for this class to function. See the example usage .",
+      "deprecated": false
+    },
+    {
+      "name": "getEntries",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Collection < DeferredHolder < T , ? extends T >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRegistryKey",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ResourceKey <? extends Registry < T >>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRegistryName",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getNamespace",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "Returns the modid/namespace associated with this deferred register.",
+      "deprecated": false
+    },
+    {
+      "name": "makeRegistry",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "Registry < T >",
+      "parameters": [
+        {
+          "name": "registryName",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "consumer",
+          "type": "Consumer < RegistryBuilder < T >>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addEntries",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "event",
+          "type": "RegisterEvent",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addRegistry",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "event",
+          "type": "NewRegistryEvent",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.6-neoforge/net/neoforged/neoforge/registries/DeferredRegister.html"
+}

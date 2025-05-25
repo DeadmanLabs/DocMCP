@@ -1,0 +1,189 @@
+{
+  "type": "interface",
+  "name": "ImmediateWindowProvider",
+  "qualified_name": "net.minecraftforge.fml.loading.ImmediateWindowProvider",
+  "package": "net.minecraftforge.fml.loading",
+  "modifiers": [
+    "public",
+    "interface"
+  ],
+  "annotations": [],
+  "description": "This is for allowing the plugging in of alternative early display implementations. They can be selected through the config value \"earlyWindowProvider\" which defaults to \"fmlearlywindow\" implemented by DisplayWindow There are a few key things to keep in mind if following through on implementation. You cannot access the game state as it literally DOES NOT EXIST at the time this object is constructed. You have to be very careful about managing the handoff to mojang, be sure that if you're trying to tick your window in a background thread (a nice idea!) that you properly transition to the main thread before handoff is complete. Do note that in general, you should construct your GL objects on the MAIN thread before starting your ticker, to ensure MacOS compatibility. No doubt many more things can be said here.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": []
+  },
+  "nested_classes": [],
+  "fields": [],
+  "constructors": [],
+  "methods": [
+    {
+      "name": "name",
+      "modifiers": [],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "initialize",
+      "modifiers": [],
+      "return_type": "Runnable",
+      "parameters": [
+        {
+          "name": "arguments",
+          "type": "String []",
+          "annotations": []
+        }
+      ],
+      "description": "This is called very early on to initialize ourselves. Use this to initialize the window and other GL core resources. One thing we want to ensure is that we try and create the highest GL_PROFILE we can accomplish. GLFW_CONTEXT_VERSION_MAJOR,GLFW_CONTEXT_VERSION_MINOR should be as high as possible on the created window, and it should have all the typical profile settings.",
+      "deprecated": false
+    },
+    {
+      "name": "updateFramebufferSize",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "width",
+          "type": "IntConsumer",
+          "annotations": []
+        },
+        {
+          "name": "height",
+          "type": "IntConsumer",
+          "annotations": []
+        }
+      ],
+      "description": "This will be called during the handoff to minecraft to update minecraft with the size of the framebuffer we have. Generally won't be called because Minecraft figures it out for itself.",
+      "deprecated": false
+    },
+    {
+      "name": "setupMinecraftWindow",
+      "modifiers": [],
+      "return_type": "long",
+      "parameters": [
+        {
+          "name": "width",
+          "type": "IntSupplier",
+          "annotations": []
+        },
+        {
+          "name": "height",
+          "type": "IntSupplier",
+          "annotations": []
+        },
+        {
+          "name": "title",
+          "type": "Supplier < String >",
+          "annotations": []
+        },
+        {
+          "name": "monitor",
+          "type": "LongSupplier",
+          "annotations": []
+        }
+      ],
+      "description": "This is called to setup the minecraft window, as if Mojang had done it themselves in their Window class. This handoff is difficult to get right - you have to make sure that any activities you're doing to the window are finished prior to returning. You should try and setup the width and height as Mojang expects - the suppliers give you all that information. Alternatively, you can force Mojang to update from the current position of the window in positionWindow(Optional, IntConsumer, IntConsumer, IntConsumer, IntConsumer) instead. This might give a more seamless experience.",
+      "deprecated": false
+    },
+    {
+      "name": "positionWindow",
+      "modifiers": [],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "monitor",
+          "type": "Optional < Object >",
+          "annotations": []
+        },
+        {
+          "name": "widthSetter",
+          "type": "IntConsumer",
+          "annotations": []
+        },
+        {
+          "name": "heightSetter",
+          "type": "IntConsumer",
+          "annotations": []
+        },
+        {
+          "name": "xSetter",
+          "type": "IntConsumer",
+          "annotations": []
+        },
+        {
+          "name": "ySetter",
+          "type": "IntConsumer",
+          "annotations": []
+        }
+      ],
+      "description": "This is called after window handoff to allow us to tell Mojang about our window's position. This might give a preferrable user experience to users, because we just tell Mojang our truth, rather than accept theirs.",
+      "deprecated": false
+    },
+    {
+      "name": "loadingOverlay",
+      "modifiers": [],
+      "return_type": "Supplier <T>",
+      "parameters": [
+        {
+          "name": "mc",
+          "type": "Supplier <?>",
+          "annotations": []
+        },
+        {
+          "name": "ri",
+          "type": "Supplier <?>",
+          "annotations": []
+        },
+        {
+          "name": "ex",
+          "type": "Consumer < Optional < Throwable >>",
+          "annotations": []
+        },
+        {
+          "name": "fade",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Return a Supplier of an object extending the LoadingOverlay class from Mojang. This is what will be used once the Mojang window code has taken over rendering of the window, to render the later stages of the loading process.",
+      "deprecated": false
+    },
+    {
+      "name": "updateModuleReads",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "layer",
+          "type": "ModuleLayer",
+          "annotations": []
+        }
+      ],
+      "description": "This is called during the module loading process to allow us to find objects inside the GAME layer, such as a later loading screen.",
+      "deprecated": false
+    },
+    {
+      "name": "periodicTick",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [],
+      "description": "This is called periodically during the loading process to \"tick\" the window. It is typically the same as the Runnable from initialize(String[])",
+      "deprecated": false
+    },
+    {
+      "name": "getGLVersion",
+      "modifiers": [],
+      "return_type": "String",
+      "parameters": [],
+      "description": "This is called to construct a ForgeFeature for the GL_VERSION we managed to create for the window. Should be a string of the format {MAJOR}.{MINOR}, such as 4.6, 4.5 or such.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.3/net/minecraftforge/fml/loading/ImmediateWindowProvider.html"
+}

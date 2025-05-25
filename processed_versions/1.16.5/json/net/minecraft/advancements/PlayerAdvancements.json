@@ -1,0 +1,498 @@
+{
+  "type": "class",
+  "name": "PlayerAdvancements",
+  "qualified_name": "net.minecraft.advancements.PlayerAdvancements",
+  "package": "net.minecraft.advancements",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "GSON",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "com.google.gson.Gson",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "TYPE_TOKEN",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "com.google.gson.reflect.TypeToken< Map < ResourceLocation , AdvancementProgress >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dataFixer",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.mojang.datafixers.DataFixer",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playerList",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "PlayerList",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "file",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "File",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "advancements",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < Advancement , AdvancementProgress >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "visible",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Set < Advancement >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "visibilityChanged",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Set < Advancement >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "progressChanged",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Set < Advancement >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "player",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ServerPlayerEntity",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastSelectedTab",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Advancement",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isFirstPacket",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "PlayerAdvancements",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_i232594_1_",
+          "type": "com.mojang.datafixers.DataFixer",
+          "annotations": []
+        },
+        {
+          "name": "p_i232594_2_",
+          "type": "PlayerList",
+          "annotations": []
+        },
+        {
+          "name": "p_i232594_3_",
+          "type": "AdvancementManager",
+          "annotations": []
+        },
+        {
+          "name": "p_i232594_4_",
+          "type": "File",
+          "annotations": []
+        },
+        {
+          "name": "p_i232594_5_",
+          "type": "ServerPlayerEntity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "setPlayer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_192739_1_",
+          "type": "ServerPlayerEntity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stopListening",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "reload",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_240918_1_",
+          "type": "AdvancementManager",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registerListeners",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_240919_1_",
+          "type": "AdvancementManager",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ensureAllVisible",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "checkForAutomaticTriggers",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_240920_1_",
+          "type": "AdvancementManager",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "load",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_240921_1_",
+          "type": "AdvancementManager",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "save",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "award",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_192750_1_",
+          "type": "Advancement",
+          "annotations": []
+        },
+        {
+          "name": "p_192750_2_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "revoke",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_192744_1_",
+          "type": "Advancement",
+          "annotations": []
+        },
+        {
+          "name": "p_192744_2_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registerListeners",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_193764_1_",
+          "type": "Advancement",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "unregisterListeners",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_193765_1_",
+          "type": "Advancement",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "flushDirty",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_192741_1_",
+          "type": "ServerPlayerEntity",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setSelectedTab",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_194220_1_",
+          "type": "Advancement",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getOrStartProgress",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "AdvancementProgress",
+      "parameters": [
+        {
+          "name": "p_192747_1_",
+          "type": "Advancement",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "startProgress",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_192743_1_",
+          "type": "Advancement",
+          "annotations": []
+        },
+        {
+          "name": "p_192743_2_",
+          "type": "AdvancementProgress",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ensureVisibility",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_192742_1_",
+          "type": "Advancement",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldBeVisible",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_192738_1_",
+          "type": "Advancement",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "hasCompletedChildrenOrSelf",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_192746_1_",
+          "type": "Advancement",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.16.5/net/minecraft/advancements/PlayerAdvancements.html"
+}

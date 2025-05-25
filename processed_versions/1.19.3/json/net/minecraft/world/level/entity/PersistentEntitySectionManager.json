@@ -1,0 +1,677 @@
+{
+  "type": "class",
+  "name": ">",
+  "qualified_name": "net.minecraft.world.level.entity.>",
+  "package": "net.minecraft.world.level.entity",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "knownUuids",
+      "modifiers": [
+        "final"
+      ],
+      "type": "Set < UUID >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "callbacks",
+      "modifiers": [
+        "final"
+      ],
+      "type": "LevelCallback < T extends EntityAccess >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "permanentStorage",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "EntityPersistentStorage < T extends EntityAccess >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "visibleEntityStorage",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "EntityLookup < T extends EntityAccess >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sectionStorage",
+      "modifiers": [
+        "final"
+      ],
+      "type": "EntitySectionStorage < T extends EntityAccess >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "entityGetter",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "LevelEntityGetter < T extends EntityAccess >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "chunkVisibility",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.longs.Long2ObjectMap< Visibility >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "chunkLoadStatuses",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.longs.Long2ObjectMap< PersistentEntitySectionManager.ChunkLoadStatus >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "chunksToUnload",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "it.unimi.dsi.fastutil.longs.LongSet",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loadingInbox",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Queue < ChunkEntities < T extends EntityAccess >>",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "PersistentEntitySectionManager",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_157503_",
+          "type": "Class < T >",
+          "annotations": []
+        },
+        {
+          "name": "p_157504_",
+          "type": "LevelCallback < T >",
+          "annotations": []
+        },
+        {
+          "name": "p_157505_",
+          "type": "EntityPersistentStorage < T >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "removeSectionIfEmpty",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157510_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_157511_",
+          "type": "EntitySection < T >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addEntityUuid",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_157558_",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addNewEntity",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_157534_",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addNewEntityWithoutEvent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addEntity",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_157539_",
+          "type": "T",
+          "annotations": []
+        },
+        {
+          "name": "p_157540_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addEntityWithoutEvent",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_157539_",
+          "type": "T",
+          "annotations": []
+        },
+        {
+          "name": "p_157540_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getEffectiveStatus",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "Visibility",
+      "parameters": [
+        {
+          "name": "p_157536_",
+          "type": "T",
+          "annotations": []
+        },
+        {
+          "name": "p_157537_",
+          "type": "Visibility",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addLegacyChunkEntities",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157553_",
+          "type": "Stream < T >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "addWorldGenChunkEntities",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157560_",
+          "type": "Stream < T >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "startTicking",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157565_",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stopTicking",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157571_",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "startTracking",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157576_",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stopTracking",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157581_",
+          "type": "T",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateChunkStatus",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157525_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_157526_",
+          "type": "ChunkHolder.FullChunkStatus",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateChunkStatus",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157528_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_157529_",
+          "type": "Visibility",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ensureChunkQueuedForLoad",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157556_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "storeChunkSections",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_157513_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_157514_",
+          "type": "Consumer < T >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "requestChunkLoad",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157563_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "processChunkUnload",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_157569_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "unloadEntity",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157586_",
+          "type": "EntityAccess",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "processUnloads",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "processPendingLoads",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getAllChunksToSave",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "it.unimi.dsi.fastutil.longs.LongSet",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "autoSave",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "saveAll",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "close",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isLoaded",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_157551_",
+          "type": "UUID",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getEntityGetter",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "LevelEntityGetter < T >",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canPositionTick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_202168_",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canPositionTick",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_202166_",
+          "type": "ChunkPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "areEntitiesLoaded",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_157508_",
+          "type": "long",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dumpSections",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_157549_",
+          "type": "Writer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "gatherStats",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.19.3/net/minecraft/world/level/entity/PersistentEntitySectionManager.html"
+}

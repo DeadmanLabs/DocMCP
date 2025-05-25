@@ -1,0 +1,131 @@
+{
+  "type": "record",
+  "name": "IExtensionPoint.DisplayTest",
+  "qualified_name": "net.minecraftforge.fml.IExtensionPoint.DisplayTest",
+  "package": "net.minecraftforge.fml",
+  "modifiers": [
+    "public",
+    "static",
+    "record"
+  ],
+  "annotations": [],
+  "description": "Compatibility display test for the mod. Used for displaying compatibility with remote servers with the same mod, and on disk saves. The supplier provides my \"local\" version for sending across the network or writing to disk The predicate tests the version from a remote instance or save for acceptability (Boolean is true for network, false for local save) and returns true if the version is compatible. Return net.minecraftforge.fmllegacy.network.FMLNetworkConstants#IGNORESERVERONLY in the supplier, if you wish to be ignored as a server side only mod. Return true in the predicate for all values of the input string (when network boolean is true) if you are client side, and don't care about matching any potential server version. Examples: A server only mod registerExtensionPoint(DISPLAYTEST, ()->Pair.of( ()->FMLNetworkConstants.IGNORESERVERONLY, // ignore me, I'm a server only mod (s,b)->true // i accept anything from the server or the save, if I'm asked ) Examples: A client only mod registerExtensionPoint(DISPLAYTEST, ()->Pair.of( ()->\"anything. i don't care\", // if i'm actually on the server, this string is sent but i'm a client only mod, so it won't be (remoteversionstring,networkbool)->networkbool // i accept anything from the server, by returning true if it's asking about the server )",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "java.lang.Record"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "suppliedVersion",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Supplier < String >",
+      "description": "The field for the suppliedVersion record component.",
+      "deprecated": false
+    },
+    {
+      "name": "remoteVersionTest",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "BiPredicate < String ,​ Boolean >",
+      "description": "The field for the remoteVersionTest record component.",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "DisplayTest",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "suppliedVersion",
+          "type": "Supplier < String >",
+          "annotations": []
+        },
+        {
+          "name": "remoteVersionTest",
+          "type": "BiPredicate < String ,​ Boolean >",
+          "annotations": []
+        }
+      ],
+      "description": "Creates an instance of a DisplayTest record class.",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "toString",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "String",
+      "parameters": [],
+      "description": "Returns a string representation of this record class. The representation contains the name of the class, followed by the name and value of each of the record components.",
+      "deprecated": false
+    },
+    {
+      "name": "hashCode",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "Returns a hash code value for this object. The value is derived from the hash code of each of the record components.",
+      "deprecated": false
+    },
+    {
+      "name": "equals",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Object",
+          "annotations": []
+        }
+      ],
+      "description": "Indicates whether some other object is \"equal to\" this one. The objects are equal if the other object is of the same class and if all the record components are equal. All components in this record class are compared with Objects::equals(Object,Object) .",
+      "deprecated": false
+    },
+    {
+      "name": "suppliedVersion",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Supplier < String >",
+      "parameters": [],
+      "description": "Returns the value of the suppliedVersion record component.",
+      "deprecated": false
+    },
+    {
+      "name": "remoteVersionTest",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "BiPredicate < String ,​ Boolean >",
+      "parameters": [],
+      "description": "Returns the value of the remoteVersionTest record component.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.17.1/net/minecraftforge/fml/IExtensionPoint.DisplayTest.html"
+}

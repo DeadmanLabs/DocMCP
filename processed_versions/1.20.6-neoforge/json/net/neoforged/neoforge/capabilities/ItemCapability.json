@@ -1,0 +1,158 @@
+{
+  "type": "class",
+  "name": "C>",
+  "qualified_name": "net.neoforged.neoforge.capabilities.C>",
+  "package": "net.neoforged.neoforge.capabilities",
+  "modifiers": [
+    "public",
+    "final",
+    "class"
+  ],
+  "annotations": [],
+  "description": "An ItemCapability gives flexible access to objects of type T from item stacks. Querying an item capability To get an object of type T , use IItemStackExtension.getCapability(ItemCapability) . For example, to query an item handler from an item stack: ItemStack stack = ...; IItemHandler maybeHandler = stack.getCapability(Capabilities.ItemHandler.ITEM); if (maybeHandler != null) { // Use maybeHandler } Providing an item capability To provide objects of type T , register providers to RegisterCapabilitiesEvent . For example: modBus.addListener((RegisterCapabilitiesEvent event) -> { event.registerItem( Capabilities.ItemHandler.ITEM, // capability to register for (itemStack, context) -> <return the IItemHandler for the itemStack>, MY_ITEM); });",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "net.neoforged.neoforge.capabilities.BaseCapability"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "registry",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "CapabilityRegistry < ItemCapability <?, ?>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "providers",
+      "modifiers": [
+        "final"
+      ],
+      "type": "Map < Item , List < ICapabilityProvider < ItemStack , C , T >>>",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ItemCapability",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "typeClass",
+          "type": "Class < T >",
+          "annotations": []
+        },
+        {
+          "name": "contextClass",
+          "type": "Class < C >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "create",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ItemCapability <T, C>",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "typeClass",
+          "type": "Class <T>",
+          "annotations": []
+        },
+        {
+          "name": "contextClass",
+          "type": "Class <C>",
+          "annotations": []
+        }
+      ],
+      "description": "Creates a new item capability, or gets it if it already exists.",
+      "deprecated": false
+    },
+    {
+      "name": "createVoid",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ItemCapability <T, Void >",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "typeClass",
+          "type": "Class <T>",
+          "annotations": []
+        }
+      ],
+      "description": "Creates a new item capability with Void context, or gets it if it already exists. This should be used for capabilities that do not require any additional context.",
+      "deprecated": false
+    },
+    {
+      "name": "getAll",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "List < ItemCapability <?, ?>>",
+      "parameters": [],
+      "description": "Returns a new immutable copy of all the currently known item capabilities.",
+      "deprecated": false
+    },
+    {
+      "name": "getCapability",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "T",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "context",
+          "type": "C",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.6-neoforge/net/neoforged/neoforge/capabilities/ItemCapability.html"
+}

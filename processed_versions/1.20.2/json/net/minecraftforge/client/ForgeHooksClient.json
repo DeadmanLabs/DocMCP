@@ -1,0 +1,2780 @@
+{
+  "type": "class",
+  "name": "ForgeHooksClient",
+  "qualified_name": "net.minecraftforge.client.ForgeHooksClient",
+  "package": "net.minecraftforge.client",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CLIENTHOOKS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Marker",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "guiLayers",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Stack < Screen >",
+      "description": "Contains the *extra* GUI layers. The current top layer stays in Minecraft#currentScreen, and the rest serve as a background for it.",
+      "deprecated": false
+    },
+    {
+      "name": "forgeStatusLine",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "slotMainHand",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "layerDefinitions",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Map < ModelLayerLocation , Supplier < LayerDefinition >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ICON_SHEET",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "ResourceLocation",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SYSTEM_CHAT_TYPE_DECORATION",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "ChatTypeDecoration",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SYSTEM_CHAT_TYPE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "ChatType",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SYSTEM_CHAT_TYPE_BOUND",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "ChatType.Bound",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "initializedClientHooks",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ForgeHooksClient",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "resizeGuiLayers",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "minecraft",
+          "type": "Minecraft",
+          "annotations": []
+        },
+        {
+          "name": "width",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "height",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clearGuiLayers",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "minecraft",
+          "type": "Minecraft",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "popGuiLayerInternal",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "minecraft",
+          "type": "Minecraft",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pushGuiLayer",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "minecraft",
+          "type": "Minecraft",
+          "annotations": []
+        },
+        {
+          "name": "screen",
+          "type": "Screen",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "popGuiLayer",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "minecraft",
+          "type": "Minecraft",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getGuiFarPlane",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "float",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onClientPauseUpdate",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "paused",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getArmorTexture",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "String",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "armor",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "_default",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "slot",
+          "type": "EquipmentSlot",
+          "annotations": []
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onDrawHighlight",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "context",
+          "type": "LevelRenderer",
+          "annotations": []
+        },
+        {
+          "name": "camera",
+          "type": "Camera",
+          "annotations": []
+        },
+        {
+          "name": "target",
+          "type": "HitResult",
+          "annotations": []
+        },
+        {
+          "name": "partialTick",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "poseStack",
+          "type": "PoseStack",
+          "annotations": []
+        },
+        {
+          "name": "bufferSource",
+          "type": "MultiBufferSource",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "dispatchRenderStage",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "renderType",
+          "type": "RenderType",
+          "annotations": []
+        },
+        {
+          "name": "levelRenderer",
+          "type": "LevelRenderer",
+          "annotations": []
+        },
+        {
+          "name": "poseStack",
+          "type": "PoseStack",
+          "annotations": []
+        },
+        {
+          "name": "projectionMatrix",
+          "type": "org.joml.Matrix4f",
+          "annotations": []
+        },
+        {
+          "name": "renderTick",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "camera",
+          "type": "Camera",
+          "annotations": []
+        },
+        {
+          "name": "frustum",
+          "type": "Frustum",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderSpecificFirstPersonHand",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "hand",
+          "type": "InteractionHand",
+          "annotations": []
+        },
+        {
+          "name": "poseStack",
+          "type": "PoseStack",
+          "annotations": []
+        },
+        {
+          "name": "bufferSource",
+          "type": "MultiBufferSource",
+          "annotations": []
+        },
+        {
+          "name": "packedLight",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "partialTick",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "interpPitch",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "swingProgress",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "equipProgress",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderSpecificFirstPersonArm",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "poseStack",
+          "type": "PoseStack",
+          "annotations": []
+        },
+        {
+          "name": "multiBufferSource",
+          "type": "MultiBufferSource",
+          "annotations": []
+        },
+        {
+          "name": "packedLight",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "player",
+          "type": "AbstractClientPlayer",
+          "annotations": []
+        },
+        {
+          "name": "arm",
+          "type": "HumanoidArm",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onTextureStitchedPost",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "map",
+          "type": "TextureAtlas",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onBlockColorsInit",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "blockColors",
+          "type": "BlockColors",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onItemColorsInit",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "itemColors",
+          "type": "ItemColors",
+          "annotations": []
+        },
+        {
+          "name": "blockColors",
+          "type": "BlockColors",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getArmorModel",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "Model",
+      "parameters": [
+        {
+          "name": "entityLiving",
+          "type": "LivingEntity",
+          "annotations": []
+        },
+        {
+          "name": "itemStack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "slot",
+          "type": "EquipmentSlot",
+          "annotations": []
+        },
+        {
+          "name": "_default",
+          "type": "HumanoidModel <?>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "copyModelProperties",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "original",
+          "type": "HumanoidModel <T>",
+          "annotations": []
+        },
+        {
+          "name": "replacement",
+          "type": "HumanoidModel <?>",
+          "annotations": []
+        }
+      ],
+      "description": "Copies humanoid model properties from the original model to another, used for armor models",
+      "deprecated": false
+    },
+    {
+      "name": "fixDomain",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "String",
+      "parameters": [
+        {
+          "name": "base",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "complex",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFieldOfViewModifier",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "float",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "fovModifier",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFieldOfView",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "double",
+      "parameters": [
+        {
+          "name": "renderer",
+          "type": "GameRenderer",
+          "annotations": []
+        },
+        {
+          "name": "camera",
+          "type": "Camera",
+          "annotations": []
+        },
+        {
+          "name": "partialTick",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "fov",
+          "type": "double",
+          "annotations": []
+        },
+        {
+          "name": "usedConfiguredFov",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderMainMenu",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "gui",
+          "type": "TitleScreen",
+          "annotations": []
+        },
+        {
+          "name": "graphics",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "font",
+          "type": "Font",
+          "annotations": []
+        },
+        {
+          "name": "width",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "height",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "alpha",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playSound",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "@Nullable SoundInstance",
+      "parameters": [
+        {
+          "name": "manager",
+          "type": "SoundEngine",
+          "annotations": []
+        },
+        {
+          "name": "sound",
+          "type": "SoundInstance",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "drawScreen",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "screen",
+          "type": "Screen",
+          "annotations": []
+        },
+        {
+          "name": "guiGraphics",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "mouseX",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "mouseY",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "partialTick",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "drawScreenInternal",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "screen",
+          "type": "Screen",
+          "annotations": []
+        },
+        {
+          "name": "guiGraphics",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "mouseX",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "mouseY",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "partialTick",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFogColor",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "org.joml.Vector3f",
+      "parameters": [
+        {
+          "name": "camera",
+          "type": "Camera",
+          "annotations": []
+        },
+        {
+          "name": "partialTick",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "ClientLevel",
+          "annotations": []
+        },
+        {
+          "name": "renderDistance",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "darkenWorldAmount",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "fogRed",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "fogGreen",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "fogBlue",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onFogRender",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "mode",
+          "type": "FogRenderer.FogMode",
+          "annotations": []
+        },
+        {
+          "name": "type",
+          "type": "FogType",
+          "annotations": []
+        },
+        {
+          "name": "camera",
+          "type": "Camera",
+          "annotations": []
+        },
+        {
+          "name": "partialTick",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "renderDistance",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "nearDistance",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "farDistance",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "shape",
+          "type": "FogShape",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onCameraSetup",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ViewportEvent.ComputeCameraAngles",
+      "parameters": [
+        {
+          "name": "renderer",
+          "type": "GameRenderer",
+          "annotations": []
+        },
+        {
+          "name": "camera",
+          "type": "Camera",
+          "annotations": []
+        },
+        {
+          "name": "partial",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onModifyBakingResult",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "models",
+          "type": "Map < ResourceLocation , BakedModel >",
+          "annotations": []
+        },
+        {
+          "name": "modelBakery",
+          "type": "ModelBakery",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onModelBake",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "modelManager",
+          "type": "ModelManager",
+          "annotations": []
+        },
+        {
+          "name": "models",
+          "type": "Map < ResourceLocation , BakedModel >",
+          "annotations": []
+        },
+        {
+          "name": "modelBakery",
+          "type": "ModelBakery",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleCameraTransforms",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "BakedModel",
+      "parameters": [
+        {
+          "name": "poseStack",
+          "type": "PoseStack",
+          "annotations": []
+        },
+        {
+          "name": "model",
+          "type": "BakedModel",
+          "annotations": []
+        },
+        {
+          "name": "cameraTransformType",
+          "type": "ItemDisplayContext",
+          "annotations": []
+        },
+        {
+          "name": "applyLeftHandTransform",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getFluidSprites",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "TextureAtlasSprite []",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "BlockAndTintGetter",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "fluidStateIn",
+          "type": "FluidState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getBlockMaterial",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "Material",
+      "parameters": [
+        {
+          "name": "loc",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fillNormal",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "faceData",
+          "type": "int[]",
+          "annotations": []
+        },
+        {
+          "name": "facing",
+          "type": "Direction",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "fillNormal",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "faceData",
+          "type": "int[]",
+          "annotations": []
+        },
+        {
+          "name": "facing",
+          "type": "Direction",
+          "annotations": []
+        },
+        {
+          "name": "calculateNormals",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "internal, relies on fixed format of FaceBakery",
+      "deprecated": false
+    },
+    {
+      "name": "getVertexPos",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "org.joml.Vector3f",
+      "parameters": [
+        {
+          "name": "data",
+          "type": "int[]",
+          "annotations": []
+        },
+        {
+          "name": "vertex",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "calculateFaceWithoutAO",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "getter",
+          "type": "BlockAndTintGetter",
+          "annotations": []
+        },
+        {
+          "name": "state",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "quad",
+          "type": "BakedQuad",
+          "annotations": []
+        },
+        {
+          "name": "isFaceCubic",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "brightness",
+          "type": "float[]",
+          "annotations": []
+        },
+        {
+          "name": "lightmap",
+          "type": "int[]",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loadEntityShader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "entityRenderer",
+          "type": "GameRenderer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldCauseReequipAnimation",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "from",
+          "type": "ItemStack",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "to",
+          "type": "ItemStack",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "slot",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onCustomizeBossEventProgress",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "CustomizeGuiOverlayEvent.BossEventProgress",
+      "parameters": [
+        {
+          "name": "guiGraphics",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "window",
+          "type": "Window",
+          "annotations": []
+        },
+        {
+          "name": "bossInfo",
+          "type": "LerpingBossEvent",
+          "annotations": []
+        },
+        {
+          "name": "x",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "y",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "increment",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onScreenshot",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ScreenshotEvent",
+      "parameters": [
+        {
+          "name": "image",
+          "type": "NativeImage",
+          "annotations": []
+        },
+        {
+          "name": "screenshotFile",
+          "type": "File",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onClientChangeGameType",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "info",
+          "type": "PlayerInfo",
+          "annotations": []
+        },
+        {
+          "name": "currentGameMode",
+          "type": "GameType",
+          "annotations": []
+        },
+        {
+          "name": "newGameMode",
+          "type": "GameType",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onMovementInputUpdate",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "movementInput",
+          "type": "Input",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onScreenKeyPressedPre",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "guiScreen",
+          "type": "Screen",
+          "annotations": []
+        },
+        {
+          "name": "keyCode",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "scanCode",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "modifiers",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onScreenKeyPressedPost",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "guiScreen",
+          "type": "Screen",
+          "annotations": []
+        },
+        {
+          "name": "keyCode",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "scanCode",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "modifiers",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onScreenKeyReleasedPre",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "guiScreen",
+          "type": "Screen",
+          "annotations": []
+        },
+        {
+          "name": "keyCode",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "scanCode",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "modifiers",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onScreenKeyReleasedPost",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "guiScreen",
+          "type": "Screen",
+          "annotations": []
+        },
+        {
+          "name": "keyCode",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "scanCode",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "modifiers",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onScreenCharTypedPre",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "guiScreen",
+          "type": "Screen",
+          "annotations": []
+        },
+        {
+          "name": "codePoint",
+          "type": "char",
+          "annotations": []
+        },
+        {
+          "name": "modifiers",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onScreenCharTypedPost",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "guiScreen",
+          "type": "Screen",
+          "annotations": []
+        },
+        {
+          "name": "codePoint",
+          "type": "char",
+          "annotations": []
+        },
+        {
+          "name": "modifiers",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onRecipesUpdated",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "mgr",
+          "type": "RecipeManager",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onKeyInput",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "scanCode",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "action",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "modifiers",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onClickInput",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "InputEvent.InteractionKeyMappingTriggered",
+      "parameters": [
+        {
+          "name": "button",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "keyBinding",
+          "type": "KeyMapping",
+          "annotations": []
+        },
+        {
+          "name": "hand",
+          "type": "InteractionHand",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isNameplateInRenderDistance",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "Entity",
+          "annotations": []
+        },
+        {
+          "name": "squareDistance",
+          "type": "double",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderPistonMovedBlocks",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        },
+        {
+          "name": "state",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "stack",
+          "type": "PoseStack",
+          "annotations": []
+        },
+        {
+          "name": "bufferSource",
+          "type": "MultiBufferSource",
+          "annotations": []
+        },
+        {
+          "name": "level",
+          "type": "Level",
+          "annotations": []
+        },
+        {
+          "name": "checkSides",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "packedOverlay",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "blockRenderer",
+          "type": "BlockRenderDispatcher",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldRenderEffect",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "effectInstance",
+          "type": "MobEffectInstance",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loadSpriteContents",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "@Nullable SpriteContents",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "resource",
+          "type": "Resource",
+          "annotations": []
+        },
+        {
+          "name": "frameSize",
+          "type": "FrameSize",
+          "annotations": []
+        },
+        {
+          "name": "image",
+          "type": "NativeImage",
+          "annotations": []
+        },
+        {
+          "name": "animationMeta",
+          "type": "ResourceMetadata",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loadTextureAtlasSprite",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "@Nullable TextureAtlasSprite",
+      "parameters": [
+        {
+          "name": "atlasName",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "contents",
+          "type": "SpriteContents",
+          "annotations": []
+        },
+        {
+          "name": "atlasWidth",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "atlasHeight",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "spriteX",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "spriteY",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "mipmapLevel",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registerLayerDefinition",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "layerLocation",
+          "type": "ModelLayerLocation",
+          "annotations": []
+        },
+        {
+          "name": "supplier",
+          "type": "Supplier < LayerDefinition >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loadLayerDefinitions",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "builder",
+          "type": "com.google.common.collect.ImmutableMap.Builder< ModelLayerLocation , LayerDefinition >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "processForgeListPingData",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "packet",
+          "type": "ServerStatus",
+          "annotations": []
+        },
+        {
+          "name": "target",
+          "type": "ServerData",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "drawForgePingInfo",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "gui",
+          "type": "JoinMultiplayerScreen",
+          "annotations": []
+        },
+        {
+          "name": "target",
+          "type": "ServerData",
+          "annotations": []
+        },
+        {
+          "name": "guiGraphics",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "x",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "y",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "width",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "relativeMouseX",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "relativeMouseY",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getClientConnection",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "Connection",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleClientLevelClosing",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "ClientLevel",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "firePlayerLogin",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "pc",
+          "type": "MultiPlayerGameMode",
+          "annotations": []
+        },
+        {
+          "name": "player",
+          "type": "LocalPlayer",
+          "annotations": []
+        },
+        {
+          "name": "networkManager",
+          "type": "Connection",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "firePlayerLogout",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "pc",
+          "type": "MultiPlayerGameMode",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        },
+        {
+          "name": "player",
+          "type": "LocalPlayer",
+          "annotations": [
+            "Nullable",
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "firePlayerRespawn",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "pc",
+          "type": "MultiPlayerGameMode",
+          "annotations": []
+        },
+        {
+          "name": "oldPlayer",
+          "type": "LocalPlayer",
+          "annotations": []
+        },
+        {
+          "name": "newPlayer",
+          "type": "LocalPlayer",
+          "annotations": []
+        },
+        {
+          "name": "networkManager",
+          "type": "Connection",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onRegisterParticleProviders",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "particleEngine",
+          "type": "ParticleEngine",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onRegisterKeyMappings",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "options",
+          "type": "Options",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onRegisterAdditionalModels",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "additionalModels",
+          "type": "Set < ResourceLocation >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onClientChat",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "@Nullable Component",
+      "parameters": [
+        {
+          "name": "boundChatType",
+          "type": "ChatType.Bound",
+          "annotations": []
+        },
+        {
+          "name": "message",
+          "type": "Component",
+          "annotations": []
+        },
+        {
+          "name": "sender",
+          "type": "UUID",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onClientPlayerChat",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "@Nullable Component",
+      "parameters": [
+        {
+          "name": "boundChatType",
+          "type": "ChatType.Bound",
+          "annotations": []
+        },
+        {
+          "name": "message",
+          "type": "Component",
+          "annotations": []
+        },
+        {
+          "name": "playerChatMessage",
+          "type": "PlayerChatMessage",
+          "annotations": []
+        },
+        {
+          "name": "sender",
+          "type": "UUID",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onClientSystemChat",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "@Nullable Component",
+      "parameters": [
+        {
+          "name": "message",
+          "type": "Component",
+          "annotations": []
+        },
+        {
+          "name": "overlay",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onClientSendMessage",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "@NotNull String",
+      "parameters": [
+        {
+          "name": "message",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getEntityRenderType",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "@NotNull RenderType",
+      "parameters": [
+        {
+          "name": "chunkRenderType",
+          "type": "RenderType",
+          "annotations": []
+        },
+        {
+          "name": "cull",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "Mimics the behavior of ItemBlockRenderTypes.getRenderType(BlockState, boolean) for the input RenderType .",
+      "deprecated": false
+    },
+    {
+      "name": "getTooltipFont",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "Font",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "fallbackFont",
+          "type": "Font",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onRenderTooltipPre",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "RenderTooltipEvent.Pre",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "graphics",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "x",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "y",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "screenWidth",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "screenHeight",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "components",
+          "type": "List < ClientTooltipComponent >",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "fallbackFont",
+          "type": "Font",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "positioner",
+          "type": "ClientTooltipPositioner",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onRenderTooltipColor",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "RenderTooltipEvent.Color",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "graphics",
+          "type": "GuiGraphics",
+          "annotations": []
+        },
+        {
+          "name": "x",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "y",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "font",
+          "type": "Font",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        },
+        {
+          "name": "components",
+          "type": "List < ClientTooltipComponent >",
+          "annotations": [
+            "NotNull",
+            "NotNull"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "gatherTooltipComponents",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "List < ClientTooltipComponent >",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "textElements",
+          "type": "List <? extends FormattedText >",
+          "annotations": []
+        },
+        {
+          "name": "mouseX",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "screenWidth",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "screenHeight",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "fallbackFont",
+          "type": "Font",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "gatherTooltipComponents",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "List < ClientTooltipComponent >",
+      "parameters": [
+        {
+          "name": "stack",
+          "type": "ItemStack",
+          "annotations": []
+        },
+        {
+          "name": "textElements",
+          "type": "List <? extends FormattedText >",
+          "annotations": []
+        },
+        {
+          "name": "itemComponent",
+          "type": "Optional < TooltipComponent >",
+          "annotations": []
+        },
+        {
+          "name": "mouseX",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "screenWidth",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "screenHeight",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "fallbackFont",
+          "type": "Font",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "splitLine",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "Stream < ClientTooltipComponent >",
+      "parameters": [
+        {
+          "name": "text",
+          "type": "FormattedText",
+          "annotations": []
+        },
+        {
+          "name": "font",
+          "type": "Font",
+          "annotations": []
+        },
+        {
+          "name": "maxWidth",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "makeParticleRenderTypeComparator",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "Comparator < ParticleRenderType >",
+      "parameters": [
+        {
+          "name": "renderOrder",
+          "type": "List < ParticleRenderType >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onScreenPotionSize",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ScreenEvent.RenderInventoryMobEffects",
+      "parameters": [
+        {
+          "name": "screen",
+          "type": "Screen",
+          "annotations": []
+        },
+        {
+          "name": "availableSpace",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "compact",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "horizontalOffset",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onToastAdd",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "toast",
+          "type": "Toast",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isBlockInSolidLayer",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "state",
+          "type": "BlockState",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "createWorldConfirmationScreen",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "doConfirmedWorldLoad",
+          "type": "Runnable",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderFireOverlay",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "mat",
+          "type": "PoseStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderWaterOverlay",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "mat",
+          "type": "PoseStack",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "renderBlockOverlay",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "player",
+          "type": "Player",
+          "annotations": []
+        },
+        {
+          "name": "mat",
+          "type": "PoseStack",
+          "annotations": []
+        },
+        {
+          "name": "type",
+          "type": "RenderBlockScreenEffectEvent.OverlayType",
+          "annotations": []
+        },
+        {
+          "name": "block",
+          "type": "BlockState",
+          "annotations": []
+        },
+        {
+          "name": "pos",
+          "type": "BlockPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMaxMipmapLevel",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "width",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "height",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getShaderImportLocation",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ResourceLocation",
+      "parameters": [
+        {
+          "name": "basePath",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "isRelative",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "importPath",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getNearestStable",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "Direction",
+      "parameters": [
+        {
+          "name": "nX",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "nY",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "nZ",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "This function is a clone of Direction.getNearest(float, float, float) designed to return a consistent direction when the normal is at an inflection point (ie 45 degrees) rounding errors from associated matrix multiplication (such as during SheetedDecalTextureGenerator.endVertex() can cause the direction chosen to be unstable. The function will only take effect if the Forge Client config option \"stabilizeDirectionGetNearest\" is enabled. This is a port of the downstream changes from https://github.com/neoforged/NeoForge PR #26",
+      "deprecated": false
+    },
+    {
+      "name": "initClientHooks",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "mc",
+          "type": "Minecraft",
+          "annotations": []
+        },
+        {
+          "name": "resourceManager",
+          "type": "ReloadableResourceManager",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onClientDisconnect",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "connection",
+          "type": "Connection",
+          "annotations": []
+        },
+        {
+          "name": "mc",
+          "type": "Minecraft",
+          "annotations": []
+        },
+        {
+          "name": "parent",
+          "type": "Screen",
+          "annotations": []
+        },
+        {
+          "name": "message",
+          "type": "Component",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.2/net/minecraftforge/client/ForgeHooksClient.html"
+}

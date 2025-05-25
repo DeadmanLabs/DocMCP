@@ -1,0 +1,303 @@
+{
+  "type": "class",
+  "name": "ChunkGenerationTask",
+  "qualified_name": "net.minecraft.server.level.ChunkGenerationTask",
+  "package": "net.minecraft.server.level",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "chunkMap",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "GeneratingChunkMap",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pos",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "ChunkPos",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "scheduledStatus",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ChunkStatus",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "targetStatus",
+      "modifiers": [
+        "public",
+        "final"
+      ],
+      "type": "ChunkStatus",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "markedForCancellation",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "scheduledLayer",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "List < CompletableFuture < ChunkResult < ChunkAccess >>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cache",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "StaticCache2D < GenerationChunkHolder >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "needsGeneration",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ChunkGenerationTask",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [
+        {
+          "name": "p_344029_",
+          "type": "GeneratingChunkMap",
+          "annotations": []
+        },
+        {
+          "name": "p_344351_",
+          "type": "ChunkStatus",
+          "annotations": []
+        },
+        {
+          "name": "p_344140_",
+          "type": "ChunkPos",
+          "annotations": []
+        },
+        {
+          "name": "p_343399_",
+          "type": "StaticCache2D < GenerationChunkHolder >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "create",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ChunkGenerationTask",
+      "parameters": [
+        {
+          "name": "p_344659_",
+          "type": "GeneratingChunkMap",
+          "annotations": []
+        },
+        {
+          "name": "p_344444_",
+          "type": "ChunkStatus",
+          "annotations": []
+        },
+        {
+          "name": "p_342415_",
+          "type": "ChunkPos",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "runUntilWait",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "CompletableFuture <?>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "scheduleNextLayer",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "markForCancellation",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "releaseClaim",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "canLoadWithoutGeneration",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getCenter",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "GenerationChunkHolder",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "scheduleLayer",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_342139_",
+          "type": "ChunkStatus",
+          "annotations": []
+        },
+        {
+          "name": "p_342359_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRadiusForLayer",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "p_343532_",
+          "type": "ChunkStatus",
+          "annotations": []
+        },
+        {
+          "name": "p_343456_",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "scheduleChunkInLayer",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_342275_",
+          "type": "ChunkStatus",
+          "annotations": []
+        },
+        {
+          "name": "p_344389_",
+          "type": "boolean",
+          "annotations": []
+        },
+        {
+          "name": "p_343540_",
+          "type": "GenerationChunkHolder",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "waitForScheduledLayer",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "CompletableFuture <?>",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21/net/minecraft/server/level/ChunkGenerationTask.html"
+}

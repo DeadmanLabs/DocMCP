@@ -1,0 +1,347 @@
+{
+  "type": "class",
+  "name": "ModelLoaderRegistry",
+  "qualified_name": "net.minecraftforge.client.model.ModelLoaderRegistry",
+  "package": "net.minecraftforge.client.model",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Central hub for custom model loaders.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "WHITE_TEXTURE",
+      "modifiers": [
+        "public",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ITEM_MODEL_GENERATOR",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "ItemModelGenerator",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loaders",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Map < ResourceLocation , IModelLoader <?>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registryFrozen",
+      "modifiers": [
+        "private",
+        "static",
+        "volatile"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "FILESYSTEM_PATH_TO_RESLOC",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Pattern",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "ModelLoaderRegistry",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "init",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "onModelLoadingStart",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "INTERNAL METHOD, DO NOT CALL",
+      "deprecated": false
+    },
+    {
+      "name": "afterFirstReload",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "Internal method, only present for enabling legacy behavior of automatic registration of model loaders as resource reload listeners.",
+      "deprecated": false
+    },
+    {
+      "name": "registerLoader",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "loader",
+          "type": "IModelLoader <?>",
+          "annotations": []
+        }
+      ],
+      "description": "Makes system aware of your loader. Must be called from within ModelRegistryEvent Note: This method currently registers the model loader as a resource reload listener automatically, if it is not already registered. This behavior is deprecated and will be removed in the future. If the model loader needs to be a resource reload listener as well, use RegisterClientReloadListenersEvent .",
+      "deprecated": false
+    },
+    {
+      "name": "getModel",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "IModelGeometry <?>",
+      "parameters": [
+        {
+          "name": "loaderId",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "deserializationContext",
+          "type": "com.google.gson.JsonDeserializationContext",
+          "annotations": []
+        },
+        {
+          "name": "data",
+          "type": "com.google.gson.JsonObject",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "deserializeGeometry",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "IModelGeometry <?>",
+      "parameters": [
+        {
+          "name": "deserializationContext",
+          "type": "com.google.gson.JsonDeserializationContext",
+          "annotations": []
+        },
+        {
+          "name": "object",
+          "type": "com.google.gson.JsonObject",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "resolveTexture",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "Material",
+      "parameters": [
+        {
+          "name": "tex",
+          "type": "String",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "owner",
+          "type": "IModelConfiguration",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blockMaterial",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "Material",
+      "parameters": [
+        {
+          "name": "location",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blockMaterial",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "Material",
+      "parameters": [
+        {
+          "name": "location",
+          "type": "ResourceLocation",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "deserializeModelTransforms",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "ModelState",
+      "parameters": [
+        {
+          "name": "deserializationContext",
+          "type": "com.google.gson.JsonDeserializationContext",
+          "annotations": []
+        },
+        {
+          "name": "modelData",
+          "type": "com.google.gson.JsonObject",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "deserializeTransform",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "Optional < ModelState >",
+      "parameters": [
+        {
+          "name": "context",
+          "type": "com.google.gson.JsonDeserializationContext",
+          "annotations": []
+        },
+        {
+          "name": "transformData",
+          "type": "com.google.gson.JsonElement",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "bakeHelper",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "BakedModel",
+      "parameters": [
+        {
+          "name": "blockModel",
+          "type": "BlockModel",
+          "annotations": []
+        },
+        {
+          "name": "modelBakery",
+          "type": "ModelBakery",
+          "annotations": []
+        },
+        {
+          "name": "otherModel",
+          "type": "BlockModel",
+          "annotations": []
+        },
+        {
+          "name": "spriteGetter",
+          "type": "Function < Material , TextureAtlasSprite >",
+          "annotations": []
+        },
+        {
+          "name": "modelTransform",
+          "type": "ModelState",
+          "annotations": []
+        },
+        {
+          "name": "modelLocation",
+          "type": "ResourceLocation",
+          "annotations": []
+        },
+        {
+          "name": "guiLight3d",
+          "type": "boolean",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.18.2/net/minecraftforge/client/model/ModelLoaderRegistry.html"
+}

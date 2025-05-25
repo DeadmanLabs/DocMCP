@@ -1,0 +1,142 @@
+{
+  "type": "class",
+  "name": "SpawnPlacementRegisterEvent",
+  "qualified_name": "net.minecraftforge.event.entity.SpawnPlacementRegisterEvent",
+  "package": "net.minecraftforge.event.entity",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "This event allows each EntityType to have a SpawnPlacements.SpawnPredicate registered or modified. Spawn Predicates are checked whenever an Entity of the given EntityType spawns in the world naturally. If registering your own entity's spawn placements, you should use register(EntityType, SpawnPlacements.Type, Heightmap.Types, SpawnPlacements.SpawnPredicate, Operation) So that you ensure that your entity has a heightmap type and placement type registered. If modifying vanilla or another mod's spawn placements, you can use three operations: REPLACE: checked first, the last mod to replace the predicate wipes out all other predicates. Listen with a low EventPriority if you need to do this. OR: checked second, only one of these predicates must pass along with the original predicate AND: checked third, these predicates must all pass along with the original predicate This event is not cancellable and does not have a result. Fired on the Mod bus IModBusEvent .",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "map",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < EntityType <?>, SpawnPlacementRegisterEvent.MergedSpawnPredicate <?>>",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "SpawnPlacementRegisterEvent",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "map",
+          "type": "Map < EntityType <?>, SpawnPlacementRegisterEvent.MergedSpawnPredicate <?>>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "register",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "entityType",
+          "type": "EntityType <T>",
+          "annotations": []
+        },
+        {
+          "name": "predicate",
+          "type": "SpawnPlacements.SpawnPredicate <T>",
+          "annotations": []
+        }
+      ],
+      "description": "Register an optional spawn placement predicate for a given entityType",
+      "deprecated": false
+    },
+    {
+      "name": "register",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "entityType",
+          "type": "EntityType <T>",
+          "annotations": []
+        },
+        {
+          "name": "predicate",
+          "type": "SpawnPlacements.SpawnPredicate <T>",
+          "annotations": []
+        },
+        {
+          "name": "operation",
+          "type": "SpawnPlacementRegisterEvent.Operation",
+          "annotations": []
+        }
+      ],
+      "description": "Register a predicate for a given entityType with a given operation for handling",
+      "deprecated": false
+    },
+    {
+      "name": "register",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "entityType",
+          "type": "EntityType <T>",
+          "annotations": []
+        },
+        {
+          "name": "placementType",
+          "type": "SpawnPlacements.Type",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "heightmap",
+          "type": "Heightmap.Types",
+          "annotations": [
+            "Nullable"
+          ]
+        },
+        {
+          "name": "predicate",
+          "type": "SpawnPlacements.SpawnPredicate <T>",
+          "annotations": []
+        },
+        {
+          "name": "operation",
+          "type": "SpawnPlacementRegisterEvent.Operation",
+          "annotations": []
+        }
+      ],
+      "description": "Register a predicate for a given entityType and operation With the option of changing the placementType and heightmap . These are only applied if SpawnPlacementRegisterEvent.Operation.REPLACE is used. Use null for the placement or heightmap to leave them as is (which should be done in almost every case)",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.2/net/minecraftforge/event/entity/SpawnPlacementRegisterEvent.html"
+}

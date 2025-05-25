@@ -1,0 +1,447 @@
+{
+  "type": "class",
+  "name": "SimpleChannel",
+  "qualified_name": "net.minecraftforge.network.simple.SimpleChannel",
+  "package": "net.minecraftforge.network.simple",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "instance",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "NetworkInstance",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "indexedCodec",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "IndexedMessageCodec",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registryChangeConsumer",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Optional < Consumer < NetworkEvent.ChannelRegistrationChangeEvent >>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loginPackets",
+      "modifiers": [
+        "private"
+      ],
+      "type": "List < Function < Boolean , ? extends List <? extends org.apache.commons.lang3.tuple.Pair< String , ?>>>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "packetsNeedResponse",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Map < Class <?>, Boolean >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "SimpleChannel",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "instance",
+          "type": "NetworkInstance",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SimpleChannel",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [
+        {
+          "name": "instance",
+          "type": "NetworkInstance",
+          "annotations": []
+        },
+        {
+          "name": "registryChangeNotify",
+          "type": "Optional < Consumer < NetworkEvent.ChannelRegistrationChangeEvent >>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SimpleChannel",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "instance",
+          "type": "NetworkInstance",
+          "annotations": []
+        },
+        {
+          "name": "registryChangeNotify",
+          "type": "Consumer < NetworkEvent.ChannelRegistrationChangeEvent >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "networkLoginGather",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "gatherEvent",
+          "type": "NetworkEvent.GatherLoginPayloadsEvent",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "networkEventListener",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "networkEvent",
+          "type": "NetworkEvent",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "encodeMessage",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [
+        {
+          "name": "message",
+          "type": "MSG",
+          "annotations": []
+        },
+        {
+          "name": "target",
+          "type": "FriendlyByteBuf",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registerMessage",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "IndexedMessageCodec.MessageHandler <MSG>",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "messageType",
+          "type": "Class <MSG>",
+          "annotations": []
+        },
+        {
+          "name": "encoder",
+          "type": "BiConsumer <MSG, FriendlyByteBuf >",
+          "annotations": []
+        },
+        {
+          "name": "decoder",
+          "type": "Function < FriendlyByteBuf , MSG>",
+          "annotations": []
+        },
+        {
+          "name": "messageConsumer",
+          "type": "BiConsumer <MSG, Supplier < NetworkEvent.Context >>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registerMessage",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "IndexedMessageCodec.MessageHandler <MSG>",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "messageType",
+          "type": "Class <MSG>",
+          "annotations": []
+        },
+        {
+          "name": "encoder",
+          "type": "BiConsumer <MSG, FriendlyByteBuf >",
+          "annotations": []
+        },
+        {
+          "name": "decoder",
+          "type": "Function < FriendlyByteBuf , MSG>",
+          "annotations": []
+        },
+        {
+          "name": "messageConsumer",
+          "type": "BiConsumer <MSG, Supplier < NetworkEvent.Context >>",
+          "annotations": []
+        },
+        {
+          "name": "networkDirection",
+          "type": "Optional < NetworkDirection >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "toBuffer",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "org.apache.commons.lang3.tuple.Pair< FriendlyByteBuf , Integer >",
+      "parameters": [
+        {
+          "name": "msg",
+          "type": "MSG",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sendToServer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "message",
+          "type": "MSG",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sendTo",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "message",
+          "type": "MSG",
+          "annotations": []
+        },
+        {
+          "name": "manager",
+          "type": "Connection",
+          "annotations": []
+        },
+        {
+          "name": "direction",
+          "type": "NetworkDirection",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "send",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "target",
+          "type": "PacketDistributor.PacketTarget",
+          "annotations": []
+        },
+        {
+          "name": "message",
+          "type": "MSG",
+          "annotations": []
+        }
+      ],
+      "description": "Send a message to the PacketDistributor.PacketTarget from a PacketDistributor instance. channel.send(PacketDistributor.PLAYER.with(()->player), message)",
+      "deprecated": false
+    },
+    {
+      "name": "toVanillaPacket",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "Packet <?>",
+      "parameters": [
+        {
+          "name": "message",
+          "type": "MSG",
+          "annotations": []
+        },
+        {
+          "name": "direction",
+          "type": "NetworkDirection",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "reply",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "msgToReply",
+          "type": "MSG",
+          "annotations": []
+        },
+        {
+          "name": "context",
+          "type": "NetworkEvent.Context",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isRemotePresent",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "manager",
+          "type": "Connection",
+          "annotations": []
+        }
+      ],
+      "description": "Returns true if the channel is present in the given connection.",
+      "deprecated": false
+    },
+    {
+      "name": "messageBuilder",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SimpleChannel.MessageBuilder <M>",
+      "parameters": [
+        {
+          "name": "type",
+          "type": "Class <M>",
+          "annotations": []
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "Build a new MessageBuilder. The type should implement IntSupplier if it is a login packet.",
+      "deprecated": false
+    },
+    {
+      "name": "messageBuilder",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SimpleChannel.MessageBuilder <M>",
+      "parameters": [
+        {
+          "name": "type",
+          "type": "Class <M>",
+          "annotations": []
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "direction",
+          "type": "NetworkDirection",
+          "annotations": []
+        }
+      ],
+      "description": "Build a new MessageBuilder. The type should implement IntSupplier if it is a login packet.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.19.3/net/minecraftforge/network/simple/SimpleChannel.html"
+}

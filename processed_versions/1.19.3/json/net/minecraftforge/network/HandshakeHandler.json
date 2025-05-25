@@ -1,0 +1,463 @@
+{
+  "type": "class",
+  "name": "HandshakeHandler",
+  "qualified_name": "net.minecraftforge.network.HandshakeHandler",
+  "package": "net.minecraftforge.network",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "Instance responsible for handling the overall FML impl handshake. An instance is created during ClientIntentionPacket handling, and attached to the Connection.channel() via NetworkConstants.FML_HANDSHAKE_HANDLER . The NetworkConstants.handshakeChannel is a SimpleChannel with standard messages flowing in both directions. The loginWrapper transforms these messages into ServerboundCustomQueryPacket and ClientboundCustomQueryPacket compatible messages, by means of wrapping. The handshake is ticked #tickLogin(NetworkManager) from the ServerLoginPacketListenerImpl.tick() method, utilizing the ServerLoginPacketListenerImpl.State#NEGOTIATING state, which is otherwise unused in vanilla code. During client to server initiation, on the server , the NetworkEvent.GatherLoginPayloadsEvent is fired, which solicits all registered channels at the NetworkRegistry for any NetworkRegistry.LoginPayload they wish to supply. The collected NetworkRegistry.LoginPayload are sent, one per tick, via the FMLLoginWrapper#wrapPacket(ResourceLocation, net.minecraft.impl.FriendlyByteBuf) mechanism to the incoming client connection. Each packet is indexed via ServerboundCustomQueryPacket.getTransactionId() , which is the only mechanism available for tracking request/response pairs. Each packet sent from the server should be replied by the client, though not necessarily in sent order. The reply should contain the index of the server's packet it is replying to. The LoginWrapper class handles indexing replies correctly automatically. Once all packets have been dispatched, we wait for all replies to be received. Once all replies are received, the final login phase will commence.",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "FMLHSMARKER",
+      "modifiers": [
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Marker",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "loginWrapper",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "LoginWrapper",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "messageList",
+      "modifiers": [
+        "private"
+      ],
+      "type": "List < NetworkRegistry.LoginPayload >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sentMessages",
+      "modifiers": [
+        "private"
+      ],
+      "type": "List < Integer >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "direction",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "NetworkDirection",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "manager",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Connection",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "packetPosition",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registrySnapshots",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Map < ResourceLocation , ForgeRegistry.Snapshot >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registriesToReceive",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Set < ResourceLocation >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registryHashes",
+      "modifiers": [
+        "private"
+      ],
+      "type": "Map < ResourceLocation , String >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "negotiationStarted",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "pendingFutures",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "List < Future < Void >>",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "HandshakeHandler",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [
+        {
+          "name": "networkManager",
+          "type": "Connection",
+          "annotations": []
+        },
+        {
+          "name": "side",
+          "type": "NetworkDirection",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "registerHandshake",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "manager",
+          "type": "Connection",
+          "annotations": []
+        },
+        {
+          "name": "direction",
+          "type": "NetworkDirection",
+          "annotations": []
+        }
+      ],
+      "description": "Create a new handshake instance. Called when connection is first created during the ClientIntentionPacket handling.",
+      "deprecated": false
+    },
+    {
+      "name": "tickLogin",
+      "modifiers": [
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "networkManager",
+          "type": "Connection",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "biConsumerFor",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "BiConsumer <MSG, Supplier < NetworkEvent.Context >>",
+      "parameters": [
+        {
+          "name": "consumer",
+          "type": "HandshakeHandler.HandshakeConsumer <MSG>",
+          "annotations": []
+        }
+      ],
+      "description": "Transforms a two-argument instance method reference into a BiConsumer based on the getHandshake(Supplier) function. This should only be used for login message types.",
+      "deprecated": false
+    },
+    {
+      "name": "indexFirst",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "BiConsumer <MSG, Supplier < NetworkEvent.Context >>",
+      "parameters": [
+        {
+          "name": "next",
+          "type": "HandshakeHandler.HandshakeConsumer <MSG>",
+          "annotations": []
+        }
+      ],
+      "description": "Transforms a two-argument instance method reference into a BiConsumer biConsumerFor(HandshakeConsumer) , first calling the handleIndexedMessage(IntSupplier, Supplier) method to handle index tracking. Used for client to server replies. This should only be used for login messages.",
+      "deprecated": false
+    },
+    {
+      "name": "getHandshake",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "HandshakeHandler",
+      "parameters": [
+        {
+          "name": "contextSupplier",
+          "type": "Supplier < NetworkEvent.Context >",
+          "annotations": []
+        }
+      ],
+      "description": "Retrieve the handshake from the NetworkEvent.Context",
+      "deprecated": false
+    },
+    {
+      "name": "handleServerModListOnClient",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "serverModList",
+          "type": "HandshakeMessages.S2CModList",
+          "annotations": []
+        },
+        {
+          "name": "c",
+          "type": "Supplier < NetworkEvent.Context >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleModData",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "serverModData",
+          "type": "HandshakeMessages.S2CModData",
+          "annotations": []
+        },
+        {
+          "name": "c",
+          "type": "Supplier < NetworkEvent.Context >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleIndexedMessage",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "message",
+          "type": "MSG",
+          "annotations": []
+        },
+        {
+          "name": "c",
+          "type": "Supplier < NetworkEvent.Context >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleClientModListOnServer",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "clientModList",
+          "type": "HandshakeMessages.C2SModListReply",
+          "annotations": []
+        },
+        {
+          "name": "c",
+          "type": "Supplier < NetworkEvent.Context >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleModMismatchData",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "modMismatchData",
+          "type": "HandshakeMessages.S2CChannelMismatchData",
+          "annotations": []
+        },
+        {
+          "name": "c",
+          "type": "Supplier < NetworkEvent.Context >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleRegistryMessage",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "registryPacket",
+          "type": "HandshakeMessages.S2CRegistry",
+          "annotations": []
+        },
+        {
+          "name": "contextSupplier",
+          "type": "Supplier < NetworkEvent.Context >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleRegistryLoading",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "contextSupplier",
+          "type": "Supplier < NetworkEvent.Context >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleClientAck",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "msg",
+          "type": "HandshakeMessages.C2SAcknowledge",
+          "annotations": []
+        },
+        {
+          "name": "contextSupplier",
+          "type": "Supplier < NetworkEvent.Context >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleConfigSync",
+      "modifiers": [],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "msg",
+          "type": "HandshakeMessages.S2CConfigData",
+          "annotations": []
+        },
+        {
+          "name": "contextSupplier",
+          "type": "Supplier < NetworkEvent.Context >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tickServer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "FML will send packets, from Server to Client, from the messages queue until the queue is drained. Each message will be indexed, and placed into the \"pending acknowledgement\" queue. As indexed packets are received at the server, they will be removed from the \"pending acknowledgement\" queue. Once the pending queue is drained, this method returns true - indicating that login processing can proceed to the next step.",
+      "deprecated": false
+    },
+    {
+      "name": "packetNeedsResponse",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "mgr",
+          "type": "Connection",
+          "annotations": []
+        },
+        {
+          "name": "packetPosition",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "Helper method to determine if the S2C packet at the given packet position needs a response in form of a packet handled in handleIndexedMessage(MSG, java.util.function.Supplier<net.minecraftforge.network.NetworkEvent.Context>) for the handshake to progress.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.19.3/net/minecraftforge/network/HandshakeHandler.html"
+}

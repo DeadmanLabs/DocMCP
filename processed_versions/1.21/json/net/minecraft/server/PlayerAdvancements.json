@@ -1,0 +1,563 @@
+{
+  "type": "class",
+  "name": "PlayerAdvancements",
+  "qualified_name": "net.minecraft.server.PlayerAdvancements",
+  "package": "net.minecraft.server",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "GSON",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "com.google.gson.Gson",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playerList",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "PlayerList",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "playerSavePath",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Path",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "tree",
+      "modifiers": [
+        "private"
+      ],
+      "type": "AdvancementTree",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "progress",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Map < AdvancementHolder , AdvancementProgress >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "visible",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Set < AdvancementHolder >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "progressChanged",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Set < AdvancementHolder >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "rootsToUpdate",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "Set < AdvancementNode >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "player",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ServerPlayer",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "lastSelectedTab",
+      "modifiers": [
+        "private"
+      ],
+      "type": "AdvancementHolder",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isFirstPacket",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "codec",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "com.mojang.serialization.Codec< PlayerAdvancements.Data >",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "PlayerAdvancements",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_265655_",
+          "type": "com.mojang.datafixers.DataFixer",
+          "annotations": []
+        },
+        {
+          "name": "p_265703_",
+          "type": "PlayerList",
+          "annotations": []
+        },
+        {
+          "name": "p_265166_",
+          "type": "ServerAdvancementManager",
+          "annotations": []
+        },
+        {
+          "name": "p_265268_",
+          "type": "Path",
+          "annotations": []
+        },
+        {
+          "name": "p_265673_",
+          "type": "ServerPlayer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "setPlayer",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_135980_",
+          "type": "ServerPlayer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "stopListening",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "reload",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_135982_",
+          "type": "ServerAdvancementManager",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registerListeners",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_135995_",
+          "type": "ServerAdvancementManager",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "checkForAutomaticTriggers",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_136003_",
+          "type": "ServerAdvancementManager",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "load",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_136007_",
+          "type": "ServerAdvancementManager",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "save",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "applyFrom",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_299201_",
+          "type": "ServerAdvancementManager",
+          "annotations": []
+        },
+        {
+          "name": "p_300341_",
+          "type": "PlayerAdvancements.Data",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "asData",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "PlayerAdvancements.Data",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "award",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_298135_",
+          "type": "AdvancementHolder",
+          "annotations": []
+        },
+        {
+          "name": "p_135990_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "revoke",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_297905_",
+          "type": "AdvancementHolder",
+          "annotations": []
+        },
+        {
+          "name": "p_136000_",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "markForVisibilityUpdate",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_298258_",
+          "type": "AdvancementHolder",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registerListeners",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_299071_",
+          "type": "AdvancementHolder",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "registerListener",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_297859_",
+          "type": "AdvancementHolder",
+          "annotations": []
+        },
+        {
+          "name": "p_300029_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_298869_",
+          "type": "Criterion <T>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "unregisterListeners",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_298363_",
+          "type": "AdvancementHolder",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "removeListener",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_301071_",
+          "type": "AdvancementHolder",
+          "annotations": []
+        },
+        {
+          "name": "p_298445_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_297428_",
+          "type": "Criterion <T>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "flushDirty",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_135993_",
+          "type": "ServerPlayer",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setSelectedTab",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_300452_",
+          "type": "AdvancementHolder",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getOrStartProgress",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "AdvancementProgress",
+      "parameters": [
+        {
+          "name": "p_299379_",
+          "type": "AdvancementHolder",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "startProgress",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_299830_",
+          "type": "AdvancementHolder",
+          "annotations": []
+        },
+        {
+          "name": "p_135987_",
+          "type": "AdvancementProgress",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "updateTreeVisibility",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_298387_",
+          "type": "AdvancementNode",
+          "annotations": []
+        },
+        {
+          "name": "p_265206_",
+          "type": "Set < AdvancementHolder >",
+          "annotations": []
+        },
+        {
+          "name": "p_265593_",
+          "type": "Set < ResourceLocation >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.21/net/minecraft/server/PlayerAdvancements.html"
+}

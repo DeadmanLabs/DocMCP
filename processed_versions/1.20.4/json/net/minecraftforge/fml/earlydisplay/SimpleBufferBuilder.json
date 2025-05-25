@@ -1,0 +1,406 @@
+{
+  "type": "class",
+  "name": "SimpleBufferBuilder",
+  "qualified_name": "net.minecraftforge.fml.earlydisplay.SimpleBufferBuilder",
+  "package": "net.minecraftforge.fml.earlydisplay",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "A very simple, Mojang inspired BufferBuilder. This has been customized for 2d rendering such as text and simple planar textures Not bound to any specific format, ideally should be held onto for re-use. Can be used for 'immediate mode' style rendering using draw() , or upload to external vertex arrays for proper instancing using finishAndUpload() . This is a Triangles only buffer, all data uploaded is in Triangles. Quads are converted to triangles using 0, 1, 2, 0, 2, 3 . Any given SimpleBufferBuilder.Format should have its individual SimpleBufferBuilder.Element components buffered in the order specified by the SimpleBufferBuilder.Format , followed by an endVertex() call to prepare for the next vertex. It is illegal to buffer primitives in any format other than the one specified to begin(Format, Mode) .",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "ALLOCATOR",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.lwjgl.system.MemoryUtil.MemoryAllocator",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "VERTEX_ARRAYS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int[]",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "VERTEX_BUFFERS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int[]",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "VERTEX_BUFFER_LENGTHS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int[]",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "elementBuffer",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "elementBufferVertexLength",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "bufferAddr",
+      "modifiers": [
+        "private"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "buffer",
+      "modifiers": [
+        "private"
+      ],
+      "type": "ByteBuffer",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "format",
+      "modifiers": [
+        "private"
+      ],
+      "type": "SimpleBufferBuilder.Format",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "mode",
+      "modifiers": [
+        "private"
+      ],
+      "type": "SimpleBufferBuilder.Mode",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "building",
+      "modifiers": [
+        "private"
+      ],
+      "type": "boolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "elementIndex",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "index",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "vertices",
+      "modifiers": [
+        "private"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "SimpleBufferBuilder",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "capacity",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "Create a new SimpleBufferBuilder with an initial capacity. The buffer will be doubled as required. Generally picking a small number, around 128/256 should be a safe bet. Provided you cache your buffers, it should not mean much overall.",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "destroy",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "ensureElementBufferLength",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "vertices",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "begin",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SimpleBufferBuilder",
+      "parameters": [
+        {
+          "name": "format",
+          "type": "SimpleBufferBuilder.Format",
+          "annotations": []
+        },
+        {
+          "name": "mode",
+          "type": "SimpleBufferBuilder.Mode",
+          "annotations": []
+        }
+      ],
+      "description": "Start building a new set of vertex data in the given format and mode.",
+      "deprecated": false
+    },
+    {
+      "name": "pos",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SimpleBufferBuilder",
+      "parameters": [
+        {
+          "name": "x",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "y",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "Buffer a position element.",
+      "deprecated": false
+    },
+    {
+      "name": "tex",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SimpleBufferBuilder",
+      "parameters": [
+        {
+          "name": "u",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "v",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "Buffer a texture element.",
+      "deprecated": false
+    },
+    {
+      "name": "colour",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SimpleBufferBuilder",
+      "parameters": [
+        {
+          "name": "r",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "g",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "b",
+          "type": "float",
+          "annotations": []
+        },
+        {
+          "name": "a",
+          "type": "float",
+          "annotations": []
+        }
+      ],
+      "description": "Buffer a color element.",
+      "deprecated": false
+    },
+    {
+      "name": "colour",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SimpleBufferBuilder",
+      "parameters": [
+        {
+          "name": "packedColor",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "colour",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SimpleBufferBuilder",
+      "parameters": [
+        {
+          "name": "r",
+          "type": "byte",
+          "annotations": []
+        },
+        {
+          "name": "g",
+          "type": "byte",
+          "annotations": []
+        },
+        {
+          "name": "b",
+          "type": "byte",
+          "annotations": []
+        },
+        {
+          "name": "a",
+          "type": "byte",
+          "annotations": []
+        }
+      ],
+      "description": "Buffer a color element.",
+      "deprecated": false
+    },
+    {
+      "name": "endVertex",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "SimpleBufferBuilder",
+      "parameters": [],
+      "description": "End building the current vertex and prepare for the next.",
+      "deprecated": false
+    },
+    {
+      "name": "ensureSpace",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "newBytes",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "finishAndUpload",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "int",
+      "parameters": [],
+      "description": "Upload the current buffer. This will bind a GL15C.GL_ARRAY_BUFFER and GL15C.GL_ELEMENT_ARRAY_BUFFER The vertex data and index data is uploaded to their respective buffers. Uploading the buffers finishes drawing and resets for the next buffer operation. This should not be called in conjunction with draw()",
+      "deprecated": false
+    },
+    {
+      "name": "draw",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "Upload and draw this buffer using one of a number of re-usable set of buffers. This will immediately upload the buffer, resetting this builder for the next buffer operation, and draw the uploaded data. You will need to bind shaders, textures, etc, before calling this function.",
+      "deprecated": false
+    },
+    {
+      "name": "close",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "Clear this builder's cached buffer. If you are completely done, call destroy()",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.4/net/minecraftforge/fml/earlydisplay/SimpleBufferBuilder.html"
+}

@@ -1,0 +1,175 @@
+{
+  "type": "enum",
+  "name": "CapabilityManager",
+  "qualified_name": "net.minecraftforge.common.capabilities.CapabilityManager",
+  "package": "net.minecraftforge.common.capabilities",
+  "modifiers": [
+    "public",
+    "enum"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object",
+      "java.lang.Enum",
+      "CapabilityManager"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.apache.logging.log4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "CAP_INJECT",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.objectweb.asm.Type",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "providers",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "IdentityHashMap < String , Capability <?>>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "callbacks",
+      "modifiers": [
+        "private",
+        "volatile"
+      ],
+      "type": "IdentityHashMap < String , List < Function < Capability <?>, Object >>>",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "CapabilityManager",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "values",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "CapabilityManager []",
+      "parameters": [],
+      "description": "Returns an array containing the constants of this enum class, in the order they are declared.",
+      "deprecated": false
+    },
+    {
+      "name": "valueOf",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "CapabilityManager",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "Returns the enum constant of this class with the specified name. The string must match exactly an identifier used to declare an enum constant in this class. (Extraneous whitespace characters are not permitted.)",
+      "deprecated": false
+    },
+    {
+      "name": "register",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "type",
+          "type": "Class <T>",
+          "annotations": []
+        },
+        {
+          "name": "storage",
+          "type": "Capability.IStorage <T>",
+          "annotations": []
+        },
+        {
+          "name": "factory",
+          "type": "Callable <? extends T>",
+          "annotations": []
+        }
+      ],
+      "description": "Registers a capability to be consumed by others. APIs who define the capability should call this. To retrieve the Capability instance, use the @CapabilityInject annotation. This method is safe to call during parallel mod loading.",
+      "deprecated": false
+    },
+    {
+      "name": "injectCapabilities",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "data",
+          "type": "List <net.minecraftforge.forgespi.language.ModFileScanData>",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "attachCapabilityToMethod",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "cbs",
+          "type": "Map < String , List < Function < Capability <?>, Object >>>",
+          "annotations": []
+        },
+        {
+          "name": "entry",
+          "type": "net.minecraftforge.forgespi.language.ModFileScanData.AnnotationData",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.16.5/net/minecraftforge/common/capabilities/CapabilityManager.html"
+}

@@ -1,0 +1,387 @@
+{
+  "type": "class",
+  "name": "FileUpload",
+  "qualified_name": "com.mojang.realmsclient.client.FileUpload",
+  "package": "com.mojang.realmsclient.client",
+  "modifiers": [
+    "public",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "MAX_RETRIES",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "UPLOAD_PATH",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "file",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "File",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "worldId",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "long",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "slotId",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "int",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "uploadInfo",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "UploadInfo",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "sessionId",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "username",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "clientVersion",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "String",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "uploadStatus",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "UploadStatus",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cancelled",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "AtomicBoolean",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "uploadTask",
+      "modifiers": [
+        "private"
+      ],
+      "type": "CompletableFuture < UploadResult >",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "requestConfig",
+      "modifiers": [
+        "private",
+        "final"
+      ],
+      "type": "org.apache.http.client.config.RequestConfig",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "FileUpload",
+      "modifiers": [
+        "public"
+      ],
+      "parameters": [
+        {
+          "name": "p_87071_",
+          "type": "File",
+          "annotations": []
+        },
+        {
+          "name": "p_87072_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_87073_",
+          "type": "int",
+          "annotations": []
+        },
+        {
+          "name": "p_87074_",
+          "type": "UploadInfo",
+          "annotations": []
+        },
+        {
+          "name": "p_87075_",
+          "type": "User",
+          "annotations": []
+        },
+        {
+          "name": "p_87076_",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "p_87077_",
+          "type": "UploadStatus",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "upload",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_87085_",
+          "type": "Consumer < UploadResult >",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cancel",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "requestUpload",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "UploadResult",
+      "parameters": [
+        {
+          "name": "p_87080_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "cleanup",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_87094_",
+          "type": "org.apache.http.client.methods.HttpPost",
+          "annotations": []
+        },
+        {
+          "name": "p_87095_",
+          "type": "org.apache.http.impl.client.CloseableHttpClient",
+          "annotations": [
+            "Nullable"
+          ]
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "setupRequest",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_87092_",
+          "type": "org.apache.http.client.methods.HttpPost",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "handleResponse",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "p_87089_",
+          "type": "org.apache.http.HttpResponse",
+          "annotations": []
+        },
+        {
+          "name": "p_87090_",
+          "type": "UploadResult.Builder",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "shouldRetry",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "boolean",
+      "parameters": [
+        {
+          "name": "p_87082_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_87083_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "retryUploadAfter",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "UploadResult",
+      "parameters": [
+        {
+          "name": "p_87098_",
+          "type": "long",
+          "annotations": []
+        },
+        {
+          "name": "p_87099_",
+          "type": "int",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getRetryDelaySeconds",
+      "modifiers": [
+        "private"
+      ],
+      "return_type": "long",
+      "parameters": [
+        {
+          "name": "p_87087_",
+          "type": "org.apache.http.HttpResponse",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "isFinished",
+      "modifiers": [
+        "public"
+      ],
+      "return_type": "boolean",
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.1/com/mojang/realmsclient/client/FileUpload.html"
+}

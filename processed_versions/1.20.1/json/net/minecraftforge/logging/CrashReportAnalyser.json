@@ -1,0 +1,303 @@
+{
+  "type": "class",
+  "name": "CrashReportAnalyser",
+  "qualified_name": "net.minecraftforge.logging.CrashReportAnalyser",
+  "package": "net.minecraftforge.logging",
+  "modifiers": [
+    "public",
+    "final",
+    "class"
+  ],
+  "annotations": [],
+  "description": "",
+  "inheritance": {
+    "extends": null,
+    "implements": [],
+    "inheritance_tree": [
+      "java.lang.Object"
+    ]
+  },
+  "nested_classes": [],
+  "fields": [
+    {
+      "name": "LOGGER",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "org.slf4j.Logger",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "PACKAGE_MOD_CACHE",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Map < String , net.minecraftforge.forgespi.language.IModInfo>",
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "SUSPECTED_MODS",
+      "modifiers": [
+        "private",
+        "static",
+        "final"
+      ],
+      "type": "Map <net.minecraftforge.forgespi.language.IModInfo, String []>",
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "CrashReportAnalyser",
+      "modifiers": [
+        "private"
+      ],
+      "parameters": [],
+      "description": "",
+      "deprecated": false
+    }
+  ],
+  "methods": [
+    {
+      "name": "appendSuspectedMods",
+      "modifiers": [
+        "public",
+        "static"
+      ],
+      "return_type": "String",
+      "parameters": [
+        {
+          "name": "throwable",
+          "type": "Throwable",
+          "annotations": []
+        },
+        {
+          "name": "uncategorizedStackTrace",
+          "type": "StackTraceElement []",
+          "annotations": []
+        }
+      ],
+      "description": "Tries to cache, analyze and append the suspected mods for this crash to the crash report.",
+      "deprecated": false
+    },
+    {
+      "name": "analyseCrashReport",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "throwable",
+          "type": "Throwable",
+          "annotations": []
+        },
+        {
+          "name": "uncategorizedStackTrace",
+          "type": "StackTraceElement []",
+          "annotations": []
+        }
+      ],
+      "description": "Tries to analyze the given exception and uncategorized stacktrace of the crash report. It checks the stacktrace for any occurrence of the package names cached in the PACKAGE_MOD_CACHE , including mixin classes.",
+      "deprecated": false
+    },
+    {
+      "name": "buildSuspectedModsSection",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "stringBuilder",
+          "type": "StringBuilder",
+          "annotations": []
+        }
+      ],
+      "description": "Converts the suspected mod(s) for this crash to a String to be added to the crash report, including the mods name, its id, version and an issues link if available, as well as the position where the exception occurred (either the stacktrace element or the mixin class and its target(s))",
+      "deprecated": false
+    },
+    {
+      "name": "scanThrowable",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "throwable",
+          "type": "Throwable",
+          "annotations": []
+        }
+      ],
+      "description": "Checks the stacktrace of the given throwable and all its children for any occurrence of the package names cached in the PACKAGE_MOD_CACHE , including mixin classes.",
+      "deprecated": false
+    },
+    {
+      "name": "scanStacktrace",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "stackTrace",
+          "type": "StackTraceElement []",
+          "annotations": []
+        }
+      ],
+      "description": "Checks the given stacktrace for any occurrence of the package names cached in the PACKAGE_MOD_CACHE , including mixin classes.",
+      "deprecated": false
+    },
+    {
+      "name": "cacheModList",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [],
+      "description": "Iterates over all loaded mods, resolving and caching their package names with the corresponding IModInfo .",
+      "deprecated": false
+    },
+    {
+      "name": "identifyByClass",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "stackTraceElement",
+          "type": "StackTraceElement",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "identifyByMixins",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "stackTraceElement",
+          "type": "StackTraceElement",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blameIfPresent",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "stackTraceElement",
+          "type": "StackTraceElement",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "blameIfPresent",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "void",
+      "parameters": [
+        {
+          "name": "className",
+          "type": "String",
+          "annotations": []
+        },
+        {
+          "name": "position",
+          "type": "String ...",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "findMatchingPackage",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "String",
+      "parameters": [
+        {
+          "name": "className",
+          "type": "String",
+          "annotations": []
+        }
+      ],
+      "description": "Checks if the beginning of the given class name is contained in the PACKAGE_MOD_CACHE",
+      "deprecated": false
+    },
+    {
+      "name": "findMixinMerged",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "org.spongepowered.asm.mixin.transformer.meta.MixinMerged",
+      "parameters": [
+        {
+          "name": "element",
+          "type": "StackTraceElement",
+          "annotations": []
+        }
+      ],
+      "description": "",
+      "deprecated": false
+    },
+    {
+      "name": "getMixinInfo",
+      "modifiers": [
+        "private",
+        "static"
+      ],
+      "return_type": "org.spongepowered.asm.mixin.extensibility.IMixinInfo",
+      "parameters": [
+        {
+          "name": "element",
+          "type": "StackTraceElement",
+          "annotations": []
+        }
+      ],
+      "description": "Tries to identify any applied mixin for the class and method provided by the stacktrace element.",
+      "deprecated": false
+    }
+  ],
+  "enum_constants": [],
+  "since": null,
+  "deprecated": false,
+  "source_file": "Frameworks/1.20.1/net/minecraftforge/logging/CrashReportAnalyser.html"
+}
